@@ -1,0 +1,181 @@
+import { Project, PortfolioData } from '@/types'
+
+export const projects: PortfolioData = {
+  personal: [
+    {
+      id: 1,
+      title: "E-commerce Platform",
+      description:
+        "Plataforma completa de e-commerce com painel administrativo, sistema de pagamentos integrado, gestão de estoque em tempo real e analytics avançados.",
+      technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Stripe", "Tailwind CSS"],
+      status: "Em desenvolvimento",
+      category: "Full Stack",
+      startDate: "2024-01",
+      endDate: null,
+      image: "/images/project-placeholder-1.png",
+      highlights: [
+        "Sistema de pagamentos integrado com Stripe",
+        "Dashboard administrativo completo",
+        "API RESTful com documentação Swagger",
+      ],
+      featured: true,
+      links: {
+        demo: "#",
+        github: "#",
+        case_study: null,
+      },
+    },
+    {
+      id: 2,
+      title: "Task Management App",
+      description:
+        "Aplicativo de gerenciamento de tarefas com funcionalidades de colaboração em tempo real, notificações push e integração com calendários.",
+      technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Express", "JWT"],
+      status: "Concluído",
+      category: "Full Stack",
+      startDate: "2023-08",
+      endDate: "2023-12",
+      image: "/images/project-placeholder-2.png",
+      highlights: [
+        "Colaboração em tempo real com WebSockets",
+        "Sistema de notificações push",
+        "Integração com Google Calendar",
+      ],
+      featured: true,
+      links: {
+        demo: "#",
+        github: "#",
+        case_study: "#",
+      },
+    },
+    {
+      id: 3,
+      title: "Weather Dashboard",
+      description:
+        "Dashboard meteorológico responsivo com visualizações interativas, previsões detalhadas e alertas personalizados.",
+      technologies: ["Vue.js", "Chart.js", "OpenWeather API", "Tailwind CSS"],
+      status: "Concluído",
+      category: "Frontend",
+      startDate: "2023-06",
+      endDate: "2023-08",
+      image: "/images/project-placeholder-3.png",
+      highlights: [
+        "Visualizações em tempo real",
+        "Sistema de alertas customizáveis",
+        "Interface responsiva e intuitiva",
+      ],
+      featured: false,
+      links: {
+        demo: "#",
+        github: "#",
+        case_study: null,
+      },
+    },
+    {
+      id: 4,
+      title: "Blog Engine",
+      description:
+        "Sistema de blog moderno com editor rich-text, sistema de comentários, tags, categorias e otimização SEO automática.",
+      technologies: ["Next.js", "MDX", "Prisma", "SQLite", "NextAuth"],
+      status: "Em produção",
+      category: "Full Stack",
+      startDate: "2023-03",
+      endDate: "2023-06",
+      image: "/images/project-placeholder-4.png",
+      highlights: [
+        "Editor de texto avançado",
+        "SEO automático otimizado",
+        "Sistema de comentários integrado",
+      ],
+      featured: false,
+      links: {
+        demo: "#",
+        github: "#",
+        case_study: "#",
+      },
+    },
+    {
+      id: 5,
+      title: "Crypto Portfolio Tracker",
+      description:
+        "Aplicativo para rastreamento de portfólio de criptomoedas com gráficos em tempo real, alertas de preço e análise de performance.",
+      technologies: ["React Native", "React", "CoinGecko API", "SQLite", "Chart.js"],
+      status: "Concluído",
+      category: "Mobile/Web",
+      startDate: "2022-12",
+      endDate: "2023-03",
+      image: "/images/project-placeholder-5.png",
+      highlights: [
+        "Sincronização cross-platform",
+        "Alertas de preço em tempo real",
+        "Análise detalhada de performance",
+      ],
+      featured: false,
+      links: {
+        demo: "#",
+        github: "#",
+        case_study: null,
+      },
+    },
+  ],
+  collaborative: [
+    {
+      id: 6,
+      title: "Plataforma de Educação Online",
+      description:
+        "Plataforma completa de ensino à distância com sistema de videoconferência, quizzes interativos, certificações e analytics de aprendizado.",
+      technologies: ["React", "Express.js", "PostgreSQL", "AWS", "FFmpeg", "WebRTC"],
+      status: "Concluído",
+      category: "Full Stack",
+      startDate: "2022-06",
+      endDate: "2023-02",
+      image: "/images/project-placeholder-6.png",
+      team: {
+        size: 8,
+        role: "Full Stack Developer",
+        description: "Equipe de 8 desenvolvedores",
+      },
+      client: "EduTech Solutions",
+      highlights: [
+        "5.000+ alunos ativos",
+        "Sistema de videoconferência integrado",
+        "Certificações digitais blockchain",
+      ],
+      featured: true,
+      links: {
+        demo: "#",
+        github: null,
+        case_study: "#",
+      },
+    },
+    {
+      id: 7,
+      title: "App de Delivery",
+      description:
+        "Aplicativo mobile e web para delivery de comida com rastreamento em tempo real, sistema de pagamentos e avaliações.",
+      technologies: ["React Native", "React", "Node.js", "MongoDB", "Socket.io", "Google Maps API"],
+      status: "Concluído",
+      category: "Mobile/Web",
+      startDate: "2022-03",
+      endDate: "2022-08",
+      image: "/images/project-placeholder-7.png",
+      team: {
+        size: 6,
+        role: "Mobile Developer",
+        description: "Equipe de 6 desenvolvedores",
+      },
+      client: "FoodTech Startup",
+      highlights: [
+        "Rastreamento GPS em tempo real",
+        "Integração com múltiplos pagamentos",
+        "Sistema de avaliações e reviews",
+      ],
+      featured: false,
+      links: {
+        demo: "#",
+        github: null,
+        case_study: null,
+      },
+    },
+  ],
+}
