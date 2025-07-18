@@ -1,0 +1,61 @@
+# Arquivos e diretórios ignorados pelo Docker
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Arquivos de ambiente local
+.env*.local
+.env.development
+.env.test
+
+# Arquivos do Vercel
+.vercel
+
+# Arquivos do TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Arquivos de IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Coverage directory usado por ferramentas como istanbul
+coverage
+*.lcov
+
+# Dependency directories
+jspm_packages/
+
+# Arquivos temporários
+.tmp
+.temp
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Documentação
+README.md
+*.md
+
+# Arquivos de configuração local
+.eslintrc.json
+.prettierrc
+.editorconfig

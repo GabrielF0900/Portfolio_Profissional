@@ -1,0 +1,61 @@
+# Use a imagem oficial do Node.js como base
+FROM node:18-alpine AS base
+
+# Instalar dependências necessárias para Alpine
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+
+# Instalar dependências
+FROM base AS deps
+COPY package.json pnpm-lock.yaml* ./
+RUN corepack enable pnpm && pnpm i --frozen-lockfile
+
+# Build da aplicação
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+# Desabilitar telemetria do Next.js
+ENV NEXT_TELEMETRY_DISABLED 1
+
+# Gerar Prisma Client (apenas se schema existir)
+RUN if [ -f "prisma/schema.prisma" ]; then npx prisma generate; fi
+
+# Build do Next.js
+RUN corepack enable pnpm && pnpm run build
+
+# Imagem de produção
+FROM base AS runner
+WORKDIR /app
+
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
+
+# Criar usuário não-root
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copiar arquivos públicos
+COPY --from=builder /app/public ./public
+
+# Criar diretório .next com permissões corretas
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+
+# Copiar build do Next.js
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Criar diretórios para Prisma caso existam
+RUN mkdir -p ./prisma ./node_modules
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+ENV HOSTNAME "0.0.0.0"
+
+# Comando de inicialização
+CMD ["node", "server.js"]
