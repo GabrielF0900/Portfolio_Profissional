@@ -42,6 +42,7 @@ export const projects: PortfolioData = {
       ],
       featured: false,
       links: {
+        demo: "#",
         github: "https://github.com/GabrielF0900/NodeAuth_API",
         case_study: "#",
       },
