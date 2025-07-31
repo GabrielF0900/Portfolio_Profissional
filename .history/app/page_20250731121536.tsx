@@ -1,5 +1,3 @@
-
-import * as React from "react"
 "use client"
 
 // Layout Components
@@ -12,6 +10,7 @@ import ExperienceSection from "../src/components/sections/ExperienceSection"
 import ProjectsSection from "../src/components/sections/ProjectsSection"
 import TechnologiesSection from "../src/components/sections/TechnologiesSection"
 import SkillsSection from "../src/components/sections/SkillsSection"
+import ContactSection from "../src/components/sections/ContactSection"
 import CTASection from "../src/components/sections/CTASection"
 import Footer from "../src/components/layout/Footer"
 
