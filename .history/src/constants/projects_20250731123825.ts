@@ -57,7 +57,7 @@ export const projects: PortfolioData = {
       category: "Full Stack",
       startDate: "2025-07",
       endDate: "2025-07",
-      image: "/tarefix.jpg",
+      image: "/Tarefix.png",
       highlights: [
         "Criação de tarefas com prazos e prioridades.",
         "Atualização e exclusão de tarefas.",
@@ -65,7 +65,8 @@ export const projects: PortfolioData = {
       ],
       featured: false,
       links: {
-        github: "https://github.com/GabrielF0900/Tarefix",
+        demo: "#",
+        github: "#",
         case_study: null,
       },
     },

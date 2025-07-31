@@ -57,7 +57,7 @@ export const projects: PortfolioData = {
       category: "Full Stack",
       startDate: "2025-07",
       endDate: "2025-07",
-      image: "/tarefix.jpg",
+      image: "/images/tarefix.png",
       highlights: [
         "Criação de tarefas com prazos e prioridades.",
         "Atualização e exclusão de tarefas.",
