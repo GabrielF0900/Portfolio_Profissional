@@ -34,7 +34,7 @@ export const projects: PortfolioData = {
       category: "Backend",
       startDate: "2025-06",
       endDate: "2025-06",
-      image: "/auth.jpg",
+      image: "/auth.",
       highlights: [
         "Separação de papeis.",
         "Middlewares para controle de acesso.",
