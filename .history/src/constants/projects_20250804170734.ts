@@ -121,7 +121,7 @@ export const projects: PortfolioData = {
       description:
         "Nosso Sistema de Gerenciamento de TCC permite cadastrar usuários, criar e acompanhar o desenvolvimento dos Trabalhos de Conclusão de Curso por meio de um algoritmo exclusivo que calcula o progresso em cinco etapas. Com foco em desmistificar e reduzir o medo dos alunos em relação ao TCC, oferecemos uma gestão clara, estruturada e motivadora para garantir que cada etapa seja cumprida com segurança e eficiência.",
       technologies: ["TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "React", "Express", "JWT"],
-      status: "Concluído",
+      status: "Concluido",
       category: "Full Stack",
       startDate: "2025-07",
       endDate: null,
