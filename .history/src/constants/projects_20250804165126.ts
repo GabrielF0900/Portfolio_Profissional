@@ -81,12 +81,13 @@ export const projects: PortfolioData = {
       image: "/ChatPRO.jpg",
       highlights: [
         "Comunicação em tempo real com Socket.IO",
-        "Interface amigável e responsiva",
-        "Gerenciamento de usuários com autenticação JWT",
+        "SEO automático otimizado",
+        "Sistema de comentários integrado",
       ],
       featured: false,
       links: {
-        github: "https://github.com/GabrielF0900/ChatPRO",
+        demo: "#",
+        github: "#",
         case_study: "#",
       },
     },

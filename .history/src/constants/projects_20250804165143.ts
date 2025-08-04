@@ -86,7 +86,7 @@ export const projects: PortfolioData = {
       ],
       featured: false,
       links: {
-        github: "https://github.com/GabrielF0900/ChatPRO",
+        github: "#",
         case_study: "#",
       },
     },
