@@ -6,7 +6,7 @@
 
 **Desenvolvedor Full Stack | Criando experiências digitais excepcionais**
 
-[🌐 Ver Portfolio](https://portfolio-gabriel-falcao.vercel.app) · [📧 Contato](mailto:gabriel@example.com) · [💼 LinkedIn](https://www.linkedin.com/in/gabrielfalcaodev/)
+[🌐 Ver Portfolio](https://portfolio-profissional-omega.vercel.app/) · [📧 Contato](mailto:gabriel@example.com) · [💼 LinkedIn](https://www.linkedin.com/in/gabrielfalcaodev/)
 
 ---
 
