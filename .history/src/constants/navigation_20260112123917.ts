@@ -1,4 +1,4 @@
-import { NavigationItem } from "../types";
+import { NavigationItem } from '../types'
 
 export const navigationItems: NavigationItem[] = [
   { id: "inicio", label: "Início" },
@@ -8,7 +8,7 @@ export const navigationItems: NavigationItem[] = [
   { id: "projetos", label: "Projetos" },
   { id: "tecnologias", label: "Tecnologias" },
   { id: "skills", label: "Skills" },
-];
+]
 
 export const softSkills: string[] = [
   "Comunicação eficaz",
@@ -19,4 +19,4 @@ export const softSkills: string[] = [
   "Liderança técnica",
   "Gestão de tempo",
   "Aprendizado contínuo",
-];
+]

@@ -71,7 +71,7 @@ export const useScrollToSection = () => {
       const elapsed = currentTime - start;
       const progress = Math.min(elapsed / duration, 1);
       const ease = easeInOutQuad(progress);
-
+      
       window.scrollTo(0, startPosition + distance * ease);
 
       if (progress < 1) {

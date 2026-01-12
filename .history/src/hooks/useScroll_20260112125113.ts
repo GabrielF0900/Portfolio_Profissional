@@ -54,32 +54,9 @@ export const useScrollToSection = () => {
     if (!isClient) return;
 
     const element = document.getElementById(sectionId);
-    if (!element) return;
-
-    const targetPosition = element.offsetTop;
-    const startPosition = window.scrollY;
-    const distance = targetPosition - startPosition;
-    const duration = 1000; // 1 segundo
-    let start: number | null = null;
-
-    const easeInOutQuad = (t: number) => {
-      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-    };
-
-    const animation = (currentTime: number) => {
-      if (start === null) start = currentTime;
-      const elapsed = currentTime - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const ease = easeInOutQuad(progress);
-
-      window.scrollTo(0, startPosition + distance * ease);
-
-      if (progress < 1) {
-        requestAnimationFrame(animation);
-      }
-    };
-
-    requestAnimationFrame(animation);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return scrollToSection;
