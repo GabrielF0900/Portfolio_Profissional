@@ -330,9 +330,9 @@ export default function ProjectsSection() {
                     className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
                   >
                     <div className="aspect-video overflow-hidden relative cursor-pointer group">
-                      {project.links.demo || project.links.github ? (
+                      {project.links.demo ? (
                         <a
-                          href={project.links.demo || project.links.github}
+                          href={project.links.demo}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block w-full h-full"

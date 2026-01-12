@@ -58,9 +58,9 @@ export default function ProjectsSection() {
                     className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
                   >
                     <div className="aspect-video overflow-hidden relative cursor-pointer group">
-                      {project.links.demo || project.links.github ? (
+                      {project.links.demo ? (
                         <a
-                          href={project.links.demo || project.links.github}
+                          href={project.links.demo}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block w-full h-full"
@@ -205,13 +205,8 @@ export default function ProjectsSection() {
                     className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
                   >
                     <div className="aspect-video overflow-hidden relative cursor-pointer group">
-                      {project.links.demo || project.links.github ? (
-                        <a
-                          href={project.links.demo || project.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block w-full h-full"
-                        >
+                      {project.links.demo ? (
+                        <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
                           <img
                             src={project.image || "/placeholder.svg"}
                             alt={project.title}
@@ -329,27 +324,12 @@ export default function ProjectsSection() {
                     key={project.id}
                     className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
                   >
-                    <div className="aspect-video overflow-hidden relative cursor-pointer group">
-                      {project.links.demo || project.links.github ? (
-                        <a
-                          href={project.links.demo || project.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block w-full h-full"
-                        >
-                          <img
-                            src={project.image || "/placeholder.svg"}
-                            alt={project.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                        </a>
-                      ) : (
-                        <img
-                          src={project.image || "/placeholder.svg"}
-                          alt={project.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      )}
+                    <div className="aspect-video overflow-hidden">
+                      <img
+                        src={project.image || "/placeholder.svg"}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
                     <CardHeader>
                       <div className="flex items-start justify-between">
