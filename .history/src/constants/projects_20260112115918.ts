@@ -225,21 +225,15 @@ export const projects: PortfolioData = {
     },
     {
       id: 9,
-      title: "Aws High Availability Scaling Archtecture",
+      title: "Aws High Availability Archtecture",
       description:
         "Implementação de uma infraestrutura resiliente e tolerante a falhas utilizando as melhores práticas de arquitetura em nuvem. O projeto foca no provisionamento de um cluster de servidores web que se auto-gerencia com base na demanda de tráfego e saúde das instâncias.",
-      technologies: [
-        "AWS",
-        "Auto Scaling",
-        "Load Balancer",
-        "EC2",
-        "CloudWatch",
-      ],
+      technologies: ["AWS", "Auto Scaling", "Load Balancer", "EC2", "CloudWatch"],
       status: "Concluído",
       category: "Infrastructure",
       startDate: "2025-01",
       endDate: "2025-01",
-      image: "/imagensCloud/aws-high-availability-scaling-archtecture.jpeg",
+      image: "/imagensCloud/conexao-backend-database.jpg",
       highlights: [
         "Infraestrutura resiliente e tolerante a falhas",
         "Auto-scaling baseado em demanda",
@@ -248,8 +242,7 @@ export const projects: PortfolioData = {
       ],
       featured: false,
       links: {
-        github:
-          "https://github.com/GabrielF0900/aws-high-availability-scaling-architecture",
+        github: "https://github.com/GabrielF0900/aws-high-availability-scaling-architecture",
         case_study: null,
       },
     },
@@ -292,7 +285,7 @@ export const projects: PortfolioData = {
       },
     },
     {
-      id: 11,
+      id: 10,
       title: "Sistema de Gerenciamento de Chamados",
       description:
         "Nosso Sistema de Gerenciamento de Chamados permite cadastrar usuários com criptografia de ponta a ponta para segurança das senhas e permite resolver problemas a distância graças ao algoritmo de chat em tempo real via WebSocket.",

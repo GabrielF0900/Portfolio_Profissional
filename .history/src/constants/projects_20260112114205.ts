@@ -1,4 +1,4 @@
-import { Project, PortfolioData } from "../types";
+import { Project, PortfolioData } from '../types'
 
 export const projects: PortfolioData = {
   personal: [
@@ -7,13 +7,7 @@ export const projects: PortfolioData = {
       title: "LoginFull",
       description:
         "LoginFull é um sistema completo de autenticação e autorização, projetado para ser integrado facilmente em aplicações web. Ele oferece funcionalidades como registro de usuário, login, logout com segurança em JWT e separação de papeis.",
-      technologies: [
-        "React",
-        "Tailwind CSS",
-        "PostgreSQL",
-        "TypeScript",
-        "ORM Prisma",
-      ],
+      technologies: ["React", "Tailwind CSS", "PostgreSQL", "TypeScript", "ORM Prisma"],
       status: "Concluído",
       category: "Full Stack",
       startDate: "2025-07",
@@ -35,15 +29,7 @@ export const projects: PortfolioData = {
       title: "NodeAuth_API",
       description:
         "Uma API robusta de autenticação e autorização, desenvolvida com foco em JWT e separação de papéis. Ideal para aplicações que necessitam de controle de acesso seguro e eficiente.",
-      technologies: [
-        "Node.js",
-        "Express",
-        "Docker",
-        "JWT",
-        "Prisma",
-        "PostgreSQL",
-        "TypeScript",
-      ],
+      technologies: [ "Node.js",  "Express", "Docker", "JWT", "Prisma", "PostgreSQL", "TypeScript"],
       status: "Concluído",
       category: "Backend",
       startDate: "2025-06",
@@ -65,15 +51,7 @@ export const projects: PortfolioData = {
       title: "Tarefix - Sistema de Gerenciamento de Tarefas",
       description:
         "E um sistema de gerenciamento de tarefas que visa facilitar a organização e o acompanhamento de atividades.",
-      technologies: [
-        "Tailwind CSS",
-        "React",
-        "TypeScript",
-        "Prisma",
-        "PostgreSQL",
-        "Node.js",
-        "Express",
-      ],
+      technologies: [ "Tailwind CSS", "React", "TypeScript", "Prisma", "PostgreSQL", "Node.js", "Express"],
       status: "Concluído",
       category: "Full Stack",
       startDate: "2025-07",
@@ -95,17 +73,7 @@ export const projects: PortfolioData = {
       title: "ChatPRO",
       description:
         "É um sistema de chat em tempo real que permite a comunicação entre usuários de forma rápida e eficiente.",
-      technologies: [
-        "React",
-        "Tailwind CSS",
-        "TypeScript",
-        "Node.js",
-        "Express",
-        "Socket.IO",
-        "Prisma",
-        "PostgreSQL",
-        "JWT",
-      ],
+      technologies: ["React", "Tailwind CSS", "TypeScript", "Node.js", "Express", "Socket.IO", "Prisma", "PostgreSQL", "JWT"],
       status: "Concluído",
       category: "Full Stack",
       startDate: "2025-08",
@@ -132,7 +100,7 @@ export const projects: PortfolioData = {
       category: "Infrastructure",
       startDate: "2025-01",
       endDate: "2025-01",
-      image: "/imagensCloud/EC2-Security-Landing-Page.jpeg",
+      image: "/imagensCloud/EC2-Security-Landing-Page.png",
       highlights: [
         "Provisão de servidor virtual (EC2) na AWS",
         "Configuração de regras de segurança de rede",
@@ -145,130 +113,14 @@ export const projects: PortfolioData = {
         case_study: null,
       },
     },
-    {
-      id: 6,
-      title: "Conexão Backend Database",
-      description:
-        "Este repositório documenta a implementação prática de uma infraestrutura robusta na Amazon Web Services (AWS). O projeto simula um cenário real de produção, onde foi criada uma rede privada virtual (VPC) segmentada para hospedar uma aplicação Node.js (EC2) que se comunica de forma segura com um banco de dados relacional (RDS) e um serviço de armazenamento de objetos (S3).",
-      technologies: ["AWS", "EC2", "RDS", "S3", "VPC", "Node.js"],
-      status: "Concluído",
-      category: "Infrastructure",
-      startDate: "2025-01",
-      endDate: "2025-01",
-      image: "/imagensCloud/conexao-backend-database.jpg",
-      highlights: [
-        "VPC segmentada e segura",
-        "Aplicação Node.js em EC2",
-        "Banco de dados relacional RDS",
-        "Armazenamento de objetos S3",
-      ],
-      featured: false,
-      links: {
-        github:
-          "https://github.com/GabrielF0900/Projeto-02-A-Conexao-o-Backend-Database",
-        case_study: null,
-      },
-    },
-    {
-      id: 7,
-      title: "Aws Serveless Product Catalog",
-      description:
-        "Este repositório documenta a jornada de criação de um catálogo de produtos usando a stack Serverless da AWS. Mais do que um projeto técnico, este é o registro de como contornar as restrições de um ambiente de Sandbox real para entregar uma solução funcional. De modo simples, é uma arquitetura para um CRUD. Bem-vindo ao caos organizado!",
-      technologies: ["AWS", "DynamoDB", "Lambda", "API Gateway", "Serverless"],
-      status: "Concluído",
-      category: "Infrastructure",
-      startDate: "2025-01",
-      endDate: "2025-01",
-      image: "/imagensCloud/amazon-dynamo-db.jpeg",
-      highlights: [
-        "Stack Serverless da AWS",
-        "DynamoDB para armazenamento",
-        "Lambda para processamento",
-        "CRUD completo",
-      ],
-      featured: false,
-      links: {
-        github:
-          "https://github.com/GabrielF0900/aws-serverless-product-catalog",
-        case_study: null,
-      },
-    },
-    {
-      id: 8,
-      title: "Aws Resilient Order Process",
-      description:
-        "Neste projeto, desenvolvi uma pipeline de processamento de pedidos assíncrona utilizando uma arquitetura 100% serverless na AWS. O desafio principal foi criar uma estrutura resiliente capaz de suportar picos de carga (spikes) sem perda de dados, mesmo sob restrições severas de ambiente de laboratório.",
-      technologies: [
-        "AWS",
-        "Lambda",
-        "SQS",
-        "DynamoDB",
-        "Serverless",
-        "EventBridge",
-      ],
-      status: "Concluído",
-      category: "Infrastructure",
-      startDate: "2025-01",
-      endDate: "2025-01",
-      image: "/imagensCloud/conexao-backend-database.jpg",
-      highlights: [
-        "Pipeline de processamento assíncrona",
-        "Arquitetura 100% Serverless",
-        "Resiliência a picos de carga",
-        "Sem perda de dados",
-      ],
-      featured: false,
-      links: {
-        github: "https://github.com/GabrielF0900/aws-resilient-order-processor",
-        case_study: null,
-      },
-    },
-    {
-      id: 9,
-      title: "Aws High Availability Scaling Archtecture",
-      description:
-        "Implementação de uma infraestrutura resiliente e tolerante a falhas utilizando as melhores práticas de arquitetura em nuvem. O projeto foca no provisionamento de um cluster de servidores web que se auto-gerencia com base na demanda de tráfego e saúde das instâncias.",
-      technologies: [
-        "AWS",
-        "Auto Scaling",
-        "Load Balancer",
-        "EC2",
-        "CloudWatch",
-      ],
-      status: "Concluído",
-      category: "Infrastructure",
-      startDate: "2025-01",
-      endDate: "2025-01",
-      image: "/imagensCloud/aws-high-availability-scaling-archtecture.jpeg",
-      highlights: [
-        "Infraestrutura resiliente e tolerante a falhas",
-        "Auto-scaling baseado em demanda",
-        "Monitoramento de saúde das instâncias",
-        "Load balancing distribuído",
-      ],
-      featured: false,
-      links: {
-        github:
-          "https://github.com/GabrielF0900/aws-high-availability-scaling-architecture",
-        case_study: null,
-      },
-    },
   ],
   collaborative: [
     {
-      id: 10,
+      id: 6,
       title: "Sistema de Gerenciamento de TCC",
       description:
         "Nosso Sistema de Gerenciamento de TCC permite cadastrar usuários, criar e acompanhar o desenvolvimento dos Trabalhos de Conclusão de Curso por meio de um algoritmo exclusivo que calcula o progresso em cinco etapas. Com foco em desmistificar e reduzir o medo dos alunos em relação ao TCC, oferecemos uma gestão clara, estruturada e motivadora para garantir que cada etapa seja cumprida com segurança e eficiência.",
-      technologies: [
-        "TypeScript",
-        "Prisma",
-        "PostgreSQL",
-        "Tailwind CSS",
-        "React",
-        "Express",
-        "JWT",
-      ],
+      technologies: ["TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "React", "Express", "JWT"],
       status: "Concluído",
       category: "Full Stack",
       startDate: "2025-07",
@@ -292,19 +144,11 @@ export const projects: PortfolioData = {
       },
     },
     {
-      id: 11,
+      id: 7,
       title: "Sistema de Gerenciamento de Chamados",
       description:
         "Nosso Sistema de Gerenciamento de Chamados permite cadastrar usuários com criptografia de ponta a ponta para segurança das senhas e permite resolver problemas a distância graças ao algoritmo de chat em tempo real via WebSocket.",
-      technologies: [
-        "TypeScript",
-        "Prisma",
-        "PostgreSQL",
-        "Tailwind CSS",
-        "React",
-        "Express",
-        "JWT",
-      ],
+      technologies: ["TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "React", "Express", "JWT"],
       status: "Concluído",
       category: "Full Stack",
       startDate: "2024-03",
@@ -323,10 +167,9 @@ export const projects: PortfolioData = {
       ],
       featured: true,
       links: {
-        github:
-          "https://github.com/Neukox/Sistema_De_Gerenciamento_De_Chamados",
+        github: "https://github.com/Neukox/Sistema_De_Gerenciamento_De_Chamados",
         case_study: null,
       },
     },
   ],
-};
+}

@@ -188,75 +188,14 @@ export const projects: PortfolioData = {
       ],
       featured: false,
       links: {
-        github:
-          "https://github.com/GabrielF0900/aws-serverless-product-catalog",
-        case_study: null,
-      },
-    },
-    {
-      id: 8,
-      title: "Aws Resilient Order Process",
-      description:
-        "Neste projeto, desenvolvi uma pipeline de processamento de pedidos assíncrona utilizando uma arquitetura 100% serverless na AWS. O desafio principal foi criar uma estrutura resiliente capaz de suportar picos de carga (spikes) sem perda de dados, mesmo sob restrições severas de ambiente de laboratório.",
-      technologies: [
-        "AWS",
-        "Lambda",
-        "SQS",
-        "DynamoDB",
-        "Serverless",
-        "EventBridge",
-      ],
-      status: "Concluído",
-      category: "Infrastructure",
-      startDate: "2025-01",
-      endDate: "2025-01",
-      image: "/imagensCloud/conexao-backend-database.jpg",
-      highlights: [
-        "Pipeline de processamento assíncrona",
-        "Arquitetura 100% Serverless",
-        "Resiliência a picos de carga",
-        "Sem perda de dados",
-      ],
-      featured: false,
-      links: {
-        github: "https://github.com/GabrielF0900/aws-resilient-order-processor",
-        case_study: null,
-      },
-    },
-    {
-      id: 9,
-      title: "Aws High Availability Scaling Archtecture",
-      description:
-        "Implementação de uma infraestrutura resiliente e tolerante a falhas utilizando as melhores práticas de arquitetura em nuvem. O projeto foca no provisionamento de um cluster de servidores web que se auto-gerencia com base na demanda de tráfego e saúde das instâncias.",
-      technologies: [
-        "AWS",
-        "Auto Scaling",
-        "Load Balancer",
-        "EC2",
-        "CloudWatch",
-      ],
-      status: "Concluído",
-      category: "Infrastructure",
-      startDate: "2025-01",
-      endDate: "2025-01",
-      image: "/imagensCloud/aws-high-availability-scaling-archtecture.jpeg",
-      highlights: [
-        "Infraestrutura resiliente e tolerante a falhas",
-        "Auto-scaling baseado em demanda",
-        "Monitoramento de saúde das instâncias",
-        "Load balancing distribuído",
-      ],
-      featured: false,
-      links: {
-        github:
-          "https://github.com/GabrielF0900/aws-high-availability-scaling-architecture",
+        github: "https://github.com/GabrielF0900/aws-serverless-product-catalog",
         case_study: null,
       },
     },
   ],
   collaborative: [
     {
-      id: 10,
+      id: 8,
       title: "Sistema de Gerenciamento de TCC",
       description:
         "Nosso Sistema de Gerenciamento de TCC permite cadastrar usuários, criar e acompanhar o desenvolvimento dos Trabalhos de Conclusão de Curso por meio de um algoritmo exclusivo que calcula o progresso em cinco etapas. Com foco em desmistificar e reduzir o medo dos alunos em relação ao TCC, oferecemos uma gestão clara, estruturada e motivadora para garantir que cada etapa seja cumprida com segurança e eficiência.",
@@ -292,7 +231,7 @@ export const projects: PortfolioData = {
       },
     },
     {
-      id: 11,
+      id: 9,
       title: "Sistema de Gerenciamento de Chamados",
       description:
         "Nosso Sistema de Gerenciamento de Chamados permite cadastrar usuários com criptografia de ponta a ponta para segurança das senhas e permite resolver problemas a distância graças ao algoritmo de chat em tempo real via WebSocket.",

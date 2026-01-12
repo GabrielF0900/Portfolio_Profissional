@@ -228,13 +228,7 @@ export const projects: PortfolioData = {
       title: "Aws High Availability Scaling Archtecture",
       description:
         "Implementação de uma infraestrutura resiliente e tolerante a falhas utilizando as melhores práticas de arquitetura em nuvem. O projeto foca no provisionamento de um cluster de servidores web que se auto-gerencia com base na demanda de tráfego e saúde das instâncias.",
-      technologies: [
-        "AWS",
-        "Auto Scaling",
-        "Load Balancer",
-        "EC2",
-        "CloudWatch",
-      ],
+      technologies: ["AWS", "Auto Scaling", "Load Balancer", "EC2", "CloudWatch"],
       status: "Concluído",
       category: "Infrastructure",
       startDate: "2025-01",
@@ -248,8 +242,7 @@ export const projects: PortfolioData = {
       ],
       featured: false,
       links: {
-        github:
-          "https://github.com/GabrielF0900/aws-high-availability-scaling-architecture",
+        github: "https://github.com/GabrielF0900/aws-high-availability-scaling-architecture",
         case_study: null,
       },
     },
