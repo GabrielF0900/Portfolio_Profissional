@@ -5,10 +5,10 @@
   "packageManager": "pnpm@9.0.0",
   "scripts": {
     "build": "next build",
-    "dev": "node -e \"const fs = require('fs'); const path = require('path'); const dir = path.join(process.cwd(), '.next'); if(fs.existsSync(dir)) { fs.rmSync(dir, {recursive: true, force: true}); }\" && next dev",
+    "dev": "rimraf .next && next dev",
     "lint": "next lint",
     "start": "next start",
-    "clean": "node -e \"const fs = require('fs'); const path = require('path'); const dir = path.join(process.cwd(), '.next'); if(fs.existsSync(dir)) { fs.rmSync(dir, {recursive: true, force: true}); } console.log('Pasta .next limpa com sucesso');\""
+    "clean": "rimraf .next"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

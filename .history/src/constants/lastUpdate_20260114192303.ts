@@ -1,5 +1,6 @@
-// 📅 Data da última atualização do portfolio
-// Atualize manualmente quando fizer mudanças significativas
+// ⚠️ IMPORTANTE: Este arquivo é atualizado automaticamente pelos git hooks
+// Quando você faz um commit, a data e hora são atualizadas automaticamente
+// NÃO EDITE MANUALMENTE
 
 export const LAST_UPDATE = {
   dia: 14,
