@@ -17,16 +17,16 @@ export default function Footer() {
                 <Clock className="relative w-6 h-6 text-blue-500 dark:text-blue-400 animate-pulse" />
               </div>
               <div className="flex-1">
-                <p className="text-base font-bold text-slate-700 dark:!text-[#ffffff] uppercase tracking-wider">
+                <p className="text-base font-bold text-slate-700 dark:text-white uppercase tracking-wider">
                   Última Atualização
                 </p>
-                <p className="text-lg font-bold text-slate-900 dark:!text-[#ffffff]">
+                <p className="text-lg font-bold text-slate-900 dark:text-white">
                   {lastUpdate}
                 </p>
               </div>
               <div className="hidden sm:flex items-center gap-2">
                 <span className="inline-flex h-2.5 w-2.5 rounded-full bg-green-500"></span>
-                <span className="text-base text-slate-700 dark:!text-[#ffffff] font-bold">
+                <span className="text-base text-slate-700 dark:text-white font-bold">
                   Ativo
                 </span>
               </div>
@@ -35,10 +35,10 @@ export default function Footer() {
 
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <h3 className="text-xl font-bold text-slate-900 dark:!text-[#ffffff] mb-2">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                 Gabriel Falcão da Cruz
               </h3>
-              <p className="text-sm text-slate-700 dark:!text-[#ffffff] font-bold">
+              <p className="text-sm text-slate-700 dark:text-white font-bold">
                 Desenvolvedor Full Stack
               </p>
             </div>
@@ -48,7 +48,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/in/gabrielfalcaodev/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-700 dark:!text-[#ffffff] hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+                  className="text-slate-700 dark:text-white hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
@@ -58,7 +58,7 @@ export default function Footer() {
                   href="https://github.com/GabrielF0900"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-700 dark:!text-[#ffffff] hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+                  className="text-slate-700 dark:text-white hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
                 >
                   <Github className="w-5 h-5" />
                 </a>
@@ -66,7 +66,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="border-t border-slate-200 dark:border-slate-700 mt-8 pt-8 text-center">
-            <p className="text-sm text-slate-700 dark:!text-[#ffffff] font-bold">
+            <p className="text-sm text-slate-700 dark:text-white font-bold">
               © 2025 Gabriel Falcão da Cruz. Todos os direitos reservados.
             </p>
           </div>

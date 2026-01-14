@@ -19,21 +19,21 @@ const now = new Date();
 
 // Função para extrair valores da formatação
 function getBrasiliaDateTime() {
-  const formatter = new Intl.DateTimeFormat("pt-BR", {
-    timeZone: "America/Sao_Paulo",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false,
+  const formatter = new Intl.DateTimeFormat('pt-BR', {
+    timeZone: 'America/Sao_Paulo',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
   });
 
   const parts = formatter.formatToParts(now);
   const values = {};
-  parts.forEach((part) => {
-    if (part.type !== "literal") {
+  parts.forEach(part => {
+    if (part.type !== 'literal') {
       values[part.type] = part.value;
     }
   });
@@ -43,7 +43,7 @@ function getBrasiliaDateTime() {
     month: values.month,
     year: parseInt(values.year, 10),
     hour: parseInt(values.hour, 10),
-    minute: parseInt(values.minute, 10),
+    minute: parseInt(values.minute, 10)
   };
 }
 

@@ -14,47 +14,17 @@ if (!commitMessage.trim()) {
   commitMessage = "chore: update last update timestamp";
 }
 
-// Pega a data/hora atual em Brasília usando Intl.DateTimeFormat
+// Pega a data/hora atual em Brasília
 const now = new Date();
+const utcDate = new Date(now.getTime() + now.getTimezoneOffset() * 60 * 1000);
+const brasiliaTime = new Date(utcDate.getTime() - 3 * 60 * 60 * 1000); // UTC-3
 
-// Função para extrair valores da formatação
-function getBrasiliaDateTime() {
-  const formatter = new Intl.DateTimeFormat("pt-BR", {
-    timeZone: "America/Sao_Paulo",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false,
-  });
+const day = brasiliaTime.getUTCDate();
+const monthIndex = brasiliaTime.getUTCMonth();
+const year = brasiliaTime.getUTCFullYear();
+const hour = brasiliaTime.getUTCHours();
+const minute = brasiliaTime.getUTCMinutes();
 
-  const parts = formatter.formatToParts(now);
-  const values = {};
-  parts.forEach((part) => {
-    if (part.type !== "literal") {
-      values[part.type] = part.value;
-    }
-  });
-
-  return {
-    day: parseInt(values.day, 10),
-    month: values.month,
-    year: parseInt(values.year, 10),
-    hour: parseInt(values.hour, 10),
-    minute: parseInt(values.minute, 10),
-  };
-}
-
-const brasiliaDateTime = getBrasiliaDateTime();
-const day = brasiliaDateTime.day;
-const year = brasiliaDateTime.year;
-const hour = brasiliaDateTime.hour;
-const minute = brasiliaDateTime.minute;
-
-// Map do mês em número para nome
-const monthNumber = parseInt(brasiliaDateTime.month, 10);
 const months = [
   "janeiro",
   "fevereiro",
@@ -69,7 +39,8 @@ const months = [
   "novembro",
   "dezembro",
 ];
-const monthPT = months[monthNumber - 1];
+
+const monthPT = months[monthIndex];
 const hourFormatted = String(hour).padStart(2, "0");
 const minFormatted = String(minute).padStart(2, "0");
 

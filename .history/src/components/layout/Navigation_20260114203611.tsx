@@ -114,7 +114,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
                     href="https://www.linkedin.com/in/gabrielfalcaodev/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-600 dark:text-white hover:text-primary dark:hover:text-slate-200"
+                    className="text-slate-600 hover:text-primary"
                   >
                     <Linkedin className="w-4 h-4" />
                   </a>
@@ -124,7 +124,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
                     href="https://github.com/GabrielF0900"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-600 dark:text-white hover:text-primary dark:hover:text-slate-200"
+                    className="text-slate-600 hover:text-primary"
                   >
                     <Github className="w-4 h-4" />
                   </a>
