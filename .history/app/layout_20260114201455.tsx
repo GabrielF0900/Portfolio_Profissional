@@ -29,11 +29,11 @@ export default function RootLayout({
       <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
-          {children}
+          <TimeBasedThemeProvider>{children}</TimeBasedThemeProvider>
         </ThemeProvider>
       </body>
     </html>

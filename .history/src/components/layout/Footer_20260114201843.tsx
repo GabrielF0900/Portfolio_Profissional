@@ -38,7 +38,7 @@ export default function Footer() {
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                 Gabriel Falcão da Cruz
               </h3>
-              <p className="text-sm text-slate-700 dark:text-slate-200 font-medium">
+              <p className="text-sm text-slate-600 dark:text-slate-400">
                 Desenvolvedor Full Stack
               </p>
             </div>
@@ -48,7 +48,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/in/gabrielfalcaodev/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
+                  className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
@@ -58,7 +58,7 @@ export default function Footer() {
                   href="https://github.com/GabrielF0900"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
+                  className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                 >
                   <Github className="w-5 h-5" />
                 </a>

@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   title: "Gabriel Falcão - Desenvolvedor",
   description: "Portfolio pessoal de Gabriel Falcão, desenvolvedor web",
   icons: {
-    icon: "/favicon-gabriel.svg",
-    shortcut: "/favicon-gabriel.svg",
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
   },
   openGraph: {
     title: "Gabriel Falcão - Desenvolvedor",

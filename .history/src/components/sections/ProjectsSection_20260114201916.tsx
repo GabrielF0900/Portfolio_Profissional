@@ -36,22 +36,13 @@ export default function ProjectsSection() {
 
           <Tabs defaultValue="personal" className="w-full">
             <TabsList className="grid w-full grid-cols-3 max-w-lg mx-auto mb-12">
-              <TabsTrigger
-                value="featured"
-                className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
-              >
+              <TabsTrigger value="featured" className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white">
                 Em Destaque
               </TabsTrigger>
-              <TabsTrigger
-                value="personal"
-                className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
-              >
+              <TabsTrigger value="personal" className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white">
                 Pessoais
               </TabsTrigger>
-              <TabsTrigger
-                value="collaborative"
-                className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
-              >
+              <TabsTrigger value="collaborative" className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white">
                 Colaborativos
               </TabsTrigger>
             </TabsList>

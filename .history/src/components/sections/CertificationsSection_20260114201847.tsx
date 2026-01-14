@@ -39,8 +39,8 @@ export default function CertificationsSection() {
                       <span
                         className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${
                           cert.status === "Certificado"
-                            ? "border-green-600 text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-950/50 dark:border-green-500"
-                            : "border-slate-400 dark:border-slate-500 text-slate-900 dark:text-slate-100 bg-slate-100 dark:bg-slate-700"
+                            ? "border-green-600 text-green-600 bg-green-50"
+                            : "border-gray-900 text-gray-900 bg-gray-100"
                         }`}
                       >
                         {cert.status}

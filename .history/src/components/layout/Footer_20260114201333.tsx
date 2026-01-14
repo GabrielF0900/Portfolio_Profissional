@@ -20,15 +20,11 @@ export default function Footer() {
                 <p className="text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                   Última Atualização
                 </p>
-                <p className="text-lg font-bold text-slate-900 dark:text-white">
-                  {lastUpdate}
-                </p>
+                <p className="text-lg font-bold text-slate-900 dark:text-white">{lastUpdate}</p>
               </div>
               <div className="hidden sm:flex items-center gap-2">
                 <span className="inline-flex h-2.5 w-2.5 rounded-full bg-green-500"></span>
-                <span className="text-xs text-slate-600 dark:text-slate-400">
-                  Ativo
-                </span>
+                <span className="text-xs text-slate-600 dark:text-slate-400">Ativo</span>
               </div>
             </div>
           </div>
@@ -38,9 +34,7 @@ export default function Footer() {
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                 Gabriel Falcão da Cruz
               </h3>
-              <p className="text-sm text-slate-700 dark:text-slate-200 font-medium">
-                Desenvolvedor Full Stack
-              </p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Desenvolvedor Full Stack</p>
             </div>
             <div className="flex gap-4">
               <Button variant="ghost" size="sm" asChild>
@@ -48,7 +42,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/in/gabrielfalcaodev/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
+                  className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
@@ -58,7 +52,7 @@ export default function Footer() {
                   href="https://github.com/GabrielF0900"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
+                  className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                 >
                   <Github className="w-5 h-5" />
                 </a>
@@ -66,7 +60,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="border-t border-slate-200 dark:border-slate-800 mt-8 pt-8 text-center">
-            <p className="text-sm text-slate-700 dark:text-slate-200 font-medium">
+            <p className="text-sm text-slate-600 dark:text-slate-400">
               © 2025 Gabriel Falcão da Cruz. Todos os direitos reservados.
             </p>
           </div>
