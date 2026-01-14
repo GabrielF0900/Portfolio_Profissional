@@ -5,7 +5,7 @@ export const LAST_UPDATE = {
   dia: 14,
   mes: "janeiro",
   ano: 2026,
-  hora: 23,
+  hora: 20,
   minuto: 29,
 };
 
