@@ -1,12 +1,12 @@
-// 📅 Data da última atualização do portfolio
-// Atualize manualmente quando fizer mudanças significativas
+// Data da ultima atualizacao do portfolio
+// Atualizada automaticamente antes de cada push
 
 export const LAST_UPDATE = {
-  dia: 14,
-  mes: "janeiro",
-  ano: 2026,
-  hora: 19,
-  minuto: 14,
+  dia: NaN,
+  mes: "undefined",
+  ano: NaN,
+  hora: NaN,
+  minuto: NaN,
 };
 
 export function getLastUpdateFormatted(): string {
