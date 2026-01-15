@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Clock } from "lucide-react";
-import { getLastUpdateFormatted } from "@/src/constants/lastUpdate";
+import { getLastUpdateFormatted } from "@/constants/lastUpdate";
 
 export default function Footer() {
   const lastUpdate = getLastUpdateFormatted();

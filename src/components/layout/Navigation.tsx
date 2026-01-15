@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Menu, X } from "lucide-react";
+import { Github, Linkedin, Menu, X, Download } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { navigationItems } from "../../constants/navigation";
 import { useScrollToSection } from "../../hooks/useScroll";
@@ -19,6 +19,27 @@ export default function Navigation({ activeSection }: NavigationProps) {
   const handleSectionClick = (sectionId: string) => {
     scrollToSection(sectionId);
     setIsMenuOpen(false);
+  };
+
+  const handleDownloadCV = async () => {
+    try {
+      const response = await fetch("/curriculo-gabriel-falcao.pdf");
+      if (!response.ok) {
+        throw new Error("Erro ao baixar o currículo");
+      }
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "curriculo-gabriel-falcao.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Erro ao baixar currículo:", error);
+      alert("Erro ao baixar o currículo. Tente novamente.");
+    }
   };
 
   return (
@@ -52,6 +73,15 @@ export default function Navigation({ activeSection }: NavigationProps) {
 
           {/* Social Links Desktop */}
           <div className="hidden md:flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleDownloadCV}
+              className="text-slate-600 dark:text-white border-slate-300 dark:border-slate-600 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Baixar CV
+            </Button>
             <ThemeToggle />
             <Button variant="ghost" size="sm" asChild>
               <a
@@ -108,6 +138,15 @@ export default function Navigation({ activeSection }: NavigationProps) {
                 </button>
               ))}
               <div className="flex items-center gap-2 px-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleDownloadCV}
+                  className="text-slate-600 dark:text-white border-slate-300 dark:border-slate-600 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Baixar CV
+                </Button>
                 <ThemeToggle />
                 <Button variant="ghost" size="sm" asChild>
                   <a
