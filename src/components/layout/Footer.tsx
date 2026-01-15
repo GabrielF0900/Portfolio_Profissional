@@ -48,7 +48,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/in/gabrielfalcaodev/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
+                  className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
@@ -58,7 +58,7 @@ export default function Footer() {
                   href="https://github.com/GabrielF0900"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
+                  className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
                 >
                   <Github className="w-5 h-5" />
                 </a>

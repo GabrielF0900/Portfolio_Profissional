@@ -74,10 +74,9 @@ export default function Navigation({ activeSection }: NavigationProps) {
           {/* Social Links Desktop */}
           <div className="hidden md:flex items-center gap-2">
             <Button
-              variant="outline"
               size="sm"
               onClick={handleDownloadCV}
-              className="text-slate-600 dark:text-white border-slate-300 dark:border-slate-600 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+              className="text-black dark:text-white bg-slate-200 dark:bg-slate-600 hover:bg-primary hover:text-primary-foreground transition-colors font-bold border-0"
             >
               <Download className="w-4 h-4 mr-2" />
               Baixar CV
@@ -88,7 +87,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
                 href="https://www.linkedin.com/in/gabrielfalcaodev/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-600 dark:text-white hover:text-primary dark:hover:text-slate-200"
+                className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
@@ -98,7 +97,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
                 href="https://github.com/GabrielF0900"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-600 dark:text-white hover:text-primary dark:hover:text-slate-200"
+                className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
               >
                 <Github className="w-4 h-4" />
               </a>
@@ -139,10 +138,9 @@ export default function Navigation({ activeSection }: NavigationProps) {
               ))}
               <div className="flex items-center gap-2 px-3 pt-2 border-t border-slate-200 dark:border-slate-700">
                 <Button
-                  variant="outline"
                   size="sm"
                   onClick={handleDownloadCV}
-                  className="text-slate-600 dark:text-white border-slate-300 dark:border-slate-600 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+                  className="text-black dark:text-white bg-slate-200 dark:bg-slate-600 hover:bg-primary hover:text-primary-foreground transition-colors font-bold border-0"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Baixar CV
@@ -153,7 +151,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
                     href="https://www.linkedin.com/in/gabrielfalcaodev/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-600 dark:text-white hover:text-primary dark:hover:text-slate-200"
+                    className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
                   >
                     <Linkedin className="w-4 h-4" />
                   </a>
@@ -163,7 +161,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
                     href="https://github.com/GabrielF0900"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-600 dark:text-white hover:text-primary dark:hover:text-slate-200"
+                    className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
                   >
                     <Github className="w-4 h-4" />
                   </a>

@@ -22,7 +22,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="sm"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary"
+      className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
       title={theme === "dark" ? "Modo Claro" : "Modo Escuro"}
     >
       {theme === "dark" ? (
