@@ -10,6 +10,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { ExternalLink, Github, Code } from "lucide-react";
 import { projects } from "../../constants/projects";
 import {
@@ -184,9 +189,28 @@ export default function ProjectsSection() {
                             </Badge>
                           ))}
                         {project.technologies.length > 3 && (
-                          <Badge variant="outline" className="text-xs">
-                            +{project.technologies.length - 3}
-                          </Badge>
+                          <Popover>
+                            <PopoverTrigger>
+                              <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors cursor-pointer hover:bg-accent border-input bg-background">
+                                +{project.technologies.length - 3}
+                              </span>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-auto p-3">
+                              <div className="flex flex-wrap gap-2">
+                                {project.technologies
+                                  .slice(3)
+                                  .map((tech: string) => (
+                                    <Badge
+                                      key={tech}
+                                      variant="outline"
+                                      className="text-xs"
+                                    >
+                                      {tech}
+                                    </Badge>
+                                  ))}
+                              </div>
+                            </PopoverContent>
+                          </Popover>
                         )}
                       </div>
 
@@ -297,7 +321,7 @@ export default function ProjectsSection() {
                                   <div className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                                   <span>{highlight}</span>
                                 </li>
-                              )
+                              ),
                             )}
                           </ul>
                         </div>
@@ -316,9 +340,28 @@ export default function ProjectsSection() {
                             </Badge>
                           ))}
                         {project.technologies.length > 4 && (
-                          <Badge variant="outline" className="text-xs">
-                            +{project.technologies.length - 4}
-                          </Badge>
+                          <Popover>
+                            <PopoverTrigger>
+                              <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors cursor-pointer hover:bg-accent border-input bg-background">
+                                +{project.technologies.length - 4}
+                              </span>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-auto p-3">
+                              <div className="flex flex-wrap gap-2">
+                                {project.technologies
+                                  .slice(4)
+                                  .map((tech: string) => (
+                                    <Badge
+                                      key={tech}
+                                      variant="outline"
+                                      className="text-xs"
+                                    >
+                                      {tech}
+                                    </Badge>
+                                  ))}
+                              </div>
+                            </PopoverContent>
+                          </Popover>
                         )}
                       </div>
 
@@ -434,7 +477,7 @@ export default function ProjectsSection() {
                                   <div className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                                   <span>{highlight}</span>
                                 </li>
-                              )
+                              ),
                             )}
                           </ul>
                         </div>
@@ -453,9 +496,28 @@ export default function ProjectsSection() {
                             </Badge>
                           ))}
                         {project.technologies.length > 5 && (
-                          <Badge variant="outline" className="text-xs">
-                            +{project.technologies.length - 5}
-                          </Badge>
+                          <Popover>
+                            <PopoverTrigger>
+                              <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors cursor-pointer hover:bg-accent border-input bg-background">
+                                +{project.technologies.length - 5}
+                              </span>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-auto p-3">
+                              <div className="flex flex-wrap gap-2">
+                                {project.technologies
+                                  .slice(5)
+                                  .map((tech: string) => (
+                                    <Badge
+                                      key={tech}
+                                      variant="outline"
+                                      className="text-xs"
+                                    >
+                                      {tech}
+                                    </Badge>
+                                  ))}
+                              </div>
+                            </PopoverContent>
+                          </Popover>
                         )}
                       </div>
 

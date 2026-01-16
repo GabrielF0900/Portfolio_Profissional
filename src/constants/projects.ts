@@ -3,6 +3,30 @@ import { Project, PortfolioData } from "../types";
 export const projects: PortfolioData = {
   personal: [
     {
+      id: 12,
+      title: "AWS Proactive Monitoring",
+      description:
+        "Pipeline de monitoramento proativo de integridade na AWS. O projeto implementa uma arquitetura que monitora a utilização de CPU de instâncias EC2 e envia alertas via e-mail quando o uso ultrapassa 80%. Combina VPC personalizada, CloudWatch Alarms para métricas e SNS para notificações, criando um sistema de alerta automatizado e econômico.",
+      technologies: ["AWS", "EC2", "VPC", "CloudWatch", "SNS"],
+      status: "Concluído",
+      category: "Infrastructure",
+      startDate: "2026-01",
+      endDate: "2026-01",
+      image: "/imagensCloud/25-instancia-estressada-recebimento-de-sns.jpeg",
+      highlights: [
+        "VPC com sub-rede pública configurada",
+        "Monitoramento proativo de CPU com CloudWatch",
+        "Notificações automáticas via SNS e e-mail",
+        "Security Group configurado para máxima segurança",
+        "Arquitetura econômica (custo mínimo ou zero no Free Tier)",
+      ],
+      featured: true,
+      links: {
+        github: "https://github.com/GabrielF0900/aws-proactive-monitoring",
+        case_study: null,
+      },
+    },
+    {
       id: 5,
       title: "EC2 Security Landing Page",
       description:
