@@ -3,6 +3,37 @@ import { Project, PortfolioData } from "../types";
 export const projects: PortfolioData = {
   personal: [
     {
+      id: 13,
+      title: "AWS S3 Auto Remediator",
+      description:
+        "Sistema automatizado de remediação de buckets S3 públicos não-intencional utilizando AWS Lambda e EventBridge. O projeto implementa uma arquitetura de defesa em profundidade que monitora continuamente a criação de buckets S3 através do CloudTrail e bloqueia automaticamente o acesso público quando detectado, garantindo conformidade de segurança em tempo real.",
+      technologies: [
+        "AWS",
+        "Lambda",
+        "S3",
+        "EventBridge",
+        "CloudTrail",
+        "CloudWatch",
+      ],
+      status: "Concluído",
+      category: "Infrastructure",
+      startDate: "2026-01",
+      endDate: "2026-01",
+      image: "/imagensCloud/aws-s3-auto-remediator.jpeg",
+      highlights: [
+        "Monitoramento automático de buckets S3 via CloudTrail",
+        "Função Lambda executora que bloqueia acesso público",
+        "Gatilho EventBridge integrado na Lambda",
+        "Detecção e remediação em tempo real",
+        "Conformidade de segurança automatizada",
+      ],
+      featured: true,
+      links: {
+        github: "https://github.com/GabrielF0900/aws-s3-auto-remediator",
+        case_study: null,
+      },
+    },
+    {
       id: 12,
       title: "AWS Proactive Monitoring",
       description:
@@ -94,37 +125,6 @@ export const projects: PortfolioData = {
       links: {
         github:
           "https://github.com/GabrielF0900/aws-serverless-product-catalog",
-        case_study: null,
-      },
-    },
-    {
-      id: 13,
-      title: "AWS S3 Auto Remediator",
-      description:
-        "Sistema automatizado de remediação de buckets S3 públicos não-intencional utilizando AWS Lambda e EventBridge. O projeto implementa uma arquitetura de defesa em profundidade que monitora continuamente a criação de buckets S3 através do CloudTrail e bloqueia automaticamente o acesso público quando detectado, garantindo conformidade de segurança em tempo real.",
-      technologies: [
-        "AWS",
-        "Lambda",
-        "S3",
-        "EventBridge",
-        "CloudTrail",
-        "CloudWatch",
-      ],
-      status: "Concluído",
-      category: "Infrastructure",
-      startDate: "2026-01",
-      endDate: "2026-01",
-      image: "/imagensCloud/aws-s3-auto-remediator.jpeg",
-      highlights: [
-        "Monitoramento automático de buckets S3 via CloudTrail",
-        "Função Lambda executora que bloqueia acesso público",
-        "Gatilho EventBridge integrado na Lambda",
-        "Detecção e remediação em tempo real",
-        "Conformidade de segurança automatizada",
-      ],
-      featured: true,
-      links: {
-        github: "https://github.com/GabrielF0900/aws-s3-auto-remediator",
         case_study: null,
       },
     },
