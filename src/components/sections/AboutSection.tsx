@@ -17,6 +17,13 @@ export default function AboutSection() {
                 para Cloud Architecture.
               </p>
 
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                Atualmente, estou me especializando em Cloud Computing através
+                da Escola da Nuvem, onde aprofundo meus conhecimentos em
+                arquiteturas escaláveis, seguras e resilientes utilizando
+                serviços AWS.
+              </p>
+
               <h3 className="text-xl font-semibold mb-4 mt-8">
                 Meu Diferencial Técnico:
               </h3>
