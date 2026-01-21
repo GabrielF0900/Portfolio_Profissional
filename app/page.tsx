@@ -17,22 +17,26 @@ import Footer from "../src/components/layout/Footer";
 
 // Hooks
 import { useActiveSection } from "../src/hooks/useScroll";
+import ScrollToTop from "../src/components/ScrollToTop";
 
 export default function Page() {
   const activeSection = useActiveSection();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-      <Navigation activeSection={activeSection} />
-      <HeroSection />
-      <AboutSection />
-      <ExperienceSection />
-      <CertificationsSection />
-      <ProjectsSection />
-      <TechnologiesSection />
-      <SkillsSection />
-      <CTASection />
-      <Footer />
-    </div>
+    <>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+        <Navigation activeSection={activeSection} />
+        <HeroSection />
+        <AboutSection />
+        <ExperienceSection />
+        <CertificationsSection />
+        <ProjectsSection />
+        <TechnologiesSection />
+        <SkillsSection />
+        <CTASection />
+        <Footer />
+      </div>
+      <ScrollToTop />
+    </>
   );
 }

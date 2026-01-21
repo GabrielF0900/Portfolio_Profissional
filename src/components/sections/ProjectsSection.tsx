@@ -69,10 +69,30 @@ export default function ProjectsSection() {
                 ].map((project: Project) => (
                   <Card
                     key={project.id}
-                    className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
+                    className={`group hover:shadow-xl transition-all duration-300 overflow-hidden ${
+                      project.status === "Em Breve"
+                        ? "border-2 border-amber-500 dark:border-amber-400 bg-amber-50 dark:bg-amber-950/20"
+                        : ""
+                    }`}
                   >
-                    <div className="aspect-video overflow-hidden relative cursor-pointer group">
-                      {project.links.demo || project.links.github ? (
+                    <div
+                      className={`aspect-video overflow-hidden relative cursor-pointer group ${
+                        project.status === "Em Breve"
+                          ? "bg-gradient-to-br from-amber-200 to-amber-100 dark:from-amber-900 dark:to-amber-800 flex items-center justify-center"
+                          : ""
+                      }`}
+                    >
+                      {project.status === "Em Breve" ? (
+                        <div className="text-center">
+                          <div className="text-4xl mb-2">🚀</div>
+                          <p className="text-lg font-bold text-amber-900 dark:text-amber-100">
+                            Em Breve
+                          </p>
+                          <p className="text-sm text-amber-800 dark:text-amber-200">
+                            Projeto Inovador
+                          </p>
+                        </div>
+                      ) : project.links.demo || project.links.github ? (
                         <a
                           href={project.links.demo || project.links.github}
                           target="_blank"
@@ -92,12 +112,23 @@ export default function ProjectsSection() {
                           className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                         />
                       )}
-                      <div className="absolute top-3 left-3">
+                      <div className="absolute top-3 left-3 flex gap-2">
+                        {project.status === "Em Breve" && (
+                          <Badge className="bg-primary/90 text-primary-foreground">
+                            Destaque
+                          </Badge>
+                        )}
                         <Badge
                           variant="secondary"
-                          className="bg-primary/90 text-primary-foreground"
+                          className={
+                            project.status === "Em Breve"
+                              ? "bg-amber-600 text-white"
+                              : "bg-primary/90 text-primary-foreground"
+                          }
                         >
-                          Destaque
+                          {project.status === "Em Breve"
+                            ? "Próximo"
+                            : "Destaque"}
                         </Badge>
                       </div>
                     </div>
@@ -235,10 +266,30 @@ export default function ProjectsSection() {
                 {projects.personal.map((project: Project) => (
                   <Card
                     key={project.id}
-                    className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
+                    className={`group hover:shadow-xl transition-all duration-300 overflow-hidden ${
+                      project.status === "Em Breve"
+                        ? "border-2 border-amber-500 dark:border-amber-400 bg-amber-50 dark:bg-amber-950/20"
+                        : ""
+                    }`}
                   >
-                    <div className="aspect-video overflow-hidden relative cursor-pointer group">
-                      {project.links.demo || project.links.github ? (
+                    <div
+                      className={`aspect-video overflow-hidden relative cursor-pointer group ${
+                        project.status === "Em Breve"
+                          ? "bg-gradient-to-br from-amber-200 to-amber-100 dark:from-amber-900 dark:to-amber-800 flex items-center justify-center"
+                          : ""
+                      }`}
+                    >
+                      {project.status === "Em Breve" ? (
+                        <div className="text-center">
+                          <div className="text-4xl mb-2">🚀</div>
+                          <p className="text-lg font-bold text-amber-900 dark:text-amber-100">
+                            Em Breve
+                          </p>
+                          <p className="text-sm text-amber-800 dark:text-amber-200">
+                            Projeto Inovador
+                          </p>
+                        </div>
+                      ) : project.links.demo || project.links.github ? (
                         <a
                           href={project.links.demo || project.links.github}
                           target="_blank"

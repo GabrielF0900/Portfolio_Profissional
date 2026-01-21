@@ -9,21 +9,57 @@ export default function AboutSection() {
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold mb-6">Sobre mim</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Olá! Me chamo Gabriel, sou Desenvolvedor Full Stack com
-                experiência prática na criação de aplicações completas usando
-                React, Node.js, TypeScript e bancos de dados. Tenho foco em
-                performance, estrutura de código e boas experiências para o
-                usuário.
+                Olá, sou Gabriel Falcão.
               </p>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Busco desenvolver softwares sólidos, pensando no longo prazo e
-                aplicando boas práticas que estudo constantemente, como
-                arquitetura limpa e padrões de projeto. Tenho grande interesse
-                por Cloud Computing e Inteligência Artificial, áreas que me
-                motivam a evoluir e criar soluções escaláveis, eficientes e com
-                impacto real.
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                Sou Desenvolvedor Full Stack Júnior e estudante de Sistemas de
+                Informação (5º semestre), atualmente em transição estratégica
+                para Cloud Architecture.
               </p>
-              <div className="flex items-center gap-2 text-muted-foreground">
+
+              <h3 className="text-xl font-semibold mb-4 mt-8">
+                Meu Diferencial Técnico:
+              </h3>
+
+              <div className="space-y-4 mb-8">
+                <div>
+                  <h4 className="font-semibold text-base mb-2">
+                    Foco em Nuvem
+                  </h4>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Preparando-me para a certificação AWS Solutions Architect –
+                    Associate, com foco em arquiteturas escaláveis, seguras e
+                    desacopladas.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-base mb-2">
+                    Neurodiversidade como Ativo
+                  </h4>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Como autista diagnosticado, utilizo meu hiperfoco analítico
+                    e atenção rigorosa aos detalhes para garantir a integridade
+                    de sistemas complexos e otimização de processos em nuvem.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-base mb-2">Cultura Ágil</h4>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Certificado em Scrum Fundamentals (SFC™), aplicando
+                    agilidade e organização em projetos de alto nível.
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Meu objetivo não é apenas escrever código, mas projetar
+                infraestruturas sólidas e resilientes que sustentem o
+                crescimento do negócio.
+              </p>
+
+              <div className="flex items-center gap-2 text-muted-foreground mt-8">
                 <MapPin className="w-5 h-5" />
                 <span>Brasil</span>
               </div>

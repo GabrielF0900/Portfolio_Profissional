@@ -1,5 +1,6 @@
+"use client";
+
 import * as React from "react";
-("use client");
 
 // Layout Components
 import Navigation from "../layout/Navigation";
@@ -18,6 +19,7 @@ import LastUpdateWidget from "../LastUpdateWidget";
 
 // Hooks
 import { useActiveSection } from "../../hooks/useScroll";
+import ScrollToTop from "../ScrollToTop";
 
 export default function Portfolio() {
   const activeSection = useActiveSection();
@@ -35,6 +37,7 @@ export default function Portfolio() {
       <CTASection />
       <Footer />
       <LastUpdateWidget />
+      <ScrollToTop />
     </div>
   );
 }
