@@ -3,6 +3,29 @@ import { Project, PortfolioData } from "../types";
 export const projects: PortfolioData = {
   personal: [
     {
+      id: 15,
+      title: "Em Breve: Um Projeto Inovador",
+      description:
+        "Estou trabalhando em um projeto inovador que combinará arquitetura em nuvem com soluções práticas do mundo real. Este projeto explorará conceitos avançados de cloud computing, automação e otimização de infraestrutura. Fique atento para mais detalhes!",
+      technologies: ["Em desenvolvimento"],
+      status: "Em Breve",
+      category: "Innovation",
+      startDate: "2026-02",
+      endDate: null,
+      image: "/imagensCloud/coming-soon.svg",
+      highlights: [
+        "Projeto inovador em desenvolvimento",
+        "Combinação de cloud computing e soluções práticas",
+        "Arquitetura avançada",
+        "Detalhes em breve",
+      ],
+      featured: true,
+      links: {
+        github: null,
+        case_study: null,
+      },
+    },
+    {
       id: 14,
       title: "AWS Serverless Order Orchestrator",
       description:
@@ -13,7 +36,6 @@ export const projects: PortfolioData = {
         "Lambda",
         "DynamoDB",
         "SNS",
-        "CloudTrail",
         "IAM",
         "CloudWatch",
       ],
@@ -34,7 +56,8 @@ export const projects: PortfolioData = {
       ],
       featured: true,
       links: {
-        github: "https://github.com/GabrielF0900/AWS-serverless-order-orchestrator",
+        github:
+          "https://github.com/GabrielF0900/AWS-serverless-order-orchestrator",
         case_study: null,
       },
     },
