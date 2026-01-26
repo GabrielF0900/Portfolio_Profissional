@@ -29,7 +29,7 @@ export const projects: PortfolioData = {
       id: 14,
       title: "AWS Serverless Order Orchestrator",
       description:
-        "Uma arquitetura serverless completa para processamento de pedidos utilizando AWS Step Functions, Lambda, DynamoDB e SNS com foco em orquestração de microserviços, desacoplamento e segurança (SSE). Este é um diário detalhado de uma jornada rumo às certificações AWS Practitioner (CLF-C02) e AWS Solutions Architect Associate (SAA-C03), documentando cada etapa desde a criação de tabelas DynamoDB até a implementação de funções Lambda para validação de estoque e processamento de pagamentos, com orquestração completa via Step Functions.",
+        "Uma arquitetura serverless completa para processamento de pedidos utilizando AWS Step Functions, Lambda, DynamoDB e SNS com foco em orquestração de microserviços, desacoplamento e segurança (SSE). Este é um diário detalhado de uma jornada rumo às certificações AWS Practitioner (CLF-C02) e AWS Solutions Architect Associate (SAA-C03), documentando cada etapa desde a criação de tabelas DynamoDB até a implementação de funções Lambda para validação de estoque e processamento de pagamentos, com orquestração completa via Step Functions. Implementa o pilar de Excelência Operacional do AWS Well-Architected Framework através do CloudWatch para monitoramento contínuo, registro de logs e melhoria contínua de processos.",
       technologies: [
         "AWS",
         "Step Functions",
@@ -51,7 +51,8 @@ export const projects: PortfolioData = {
         "Armazenamento de pedidos com DynamoDB",
         "Notificações por email via SNS com criptografia de servidor",
         "Implementação de privilégio mínimo em IAM",
-        "Monitoramento com CloudWatch e CloudTrail",
+        "Monitoramento contínuo com CloudWatch (logs, métricas e alertas)",
+        "CloudWatch como pilar de Excelência Operacional - monitorar sistemas e melhorar continuamente",
         "Fluxo de trabalho com lógica condicional (Choice State)",
       ],
       featured: true,
