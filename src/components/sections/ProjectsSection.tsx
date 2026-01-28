@@ -2,20 +2,13 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { ExternalLink, Github, Code } from "lucide-react";
+import { ExternalLink, Github, Rocket, Orbit, Satellite, Star } from "lucide-react";
 import { projects } from "../../constants/projects";
 import {
   formatDate,
@@ -24,559 +17,257 @@ import {
 } from "../../lib/utils";
 import { Project } from "../../types";
 
-export default function ProjectsSection() {
+function ProjectCard({ project, featured = false }: { project: Project; featured?: boolean }) {
+  const isComingSoon = project.status === "Em Breve";
+  
   return (
-    <section id="projetos" className="py-20">
-      <div className="container mx-auto px-4">
+    <div
+      className={`group relative glass-card-hover rounded-2xl overflow-hidden transition-all duration-500 ${
+        isComingSoon 
+          ? "border-amber-500/30" 
+          : "hover:shadow-[0_0_30px_rgba(34,211,238,0.15)]"
+      }`}
+    >
+      {/* Project Image */}
+      <div
+        className={`aspect-video overflow-hidden relative ${
+          isComingSoon
+            ? "bg-gradient-to-br from-amber-500/20 to-amber-600/10 flex items-center justify-center"
+            : "bg-secondary/30"
+        }`}
+      >
+        {isComingSoon ? (
+          <div className="text-center p-6">
+            <Rocket className="w-12 h-12 mx-auto mb-3 text-amber-400 animate-float" />
+            <p className="text-lg font-display font-bold text-amber-400">Em Breve</p>
+            <p className="text-sm text-amber-400/70">Missao em Preparacao</p>
+          </div>
+        ) : project.links.demo || project.links.github ? (
+          <a
+            href={project.links.demo || project.links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full h-full"
+          >
+            <img
+              src={project.image || "/placeholder.svg"}
+              alt={project.title}
+              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          </a>
+        ) : (
+          <img
+            src={project.image || "/placeholder.svg"}
+            alt={project.title}
+            className="w-full h-full object-contain"
+          />
+        )}
+        
+        {/* Featured Badge */}
+        {featured && (
+          <div className="absolute top-3 left-3">
+            <Badge className="bg-primary/90 text-primary-foreground border-0 gap-1">
+              <Star className="w-3 h-3" />
+              Destaque
+            </Badge>
+          </div>
+        )}
+      </div>
+      
+      {/* Content */}
+      <div className="p-6">
+        {/* Header */}
+        <div className="flex items-start justify-between gap-4 mb-4">
+          <div className="flex-1">
+            <div className="flex flex-wrap gap-2 mb-2">
+              <Badge variant="outline" className="text-xs bg-secondary/50 border-border">
+                {project.category}
+              </Badge>
+              {project.team && (
+                <Badge variant="outline" className="text-xs bg-secondary/50 border-border">
+                  {project.team.role}
+                </Badge>
+              )}
+            </div>
+            <h3 className="text-lg font-display font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1">
+              {project.title}
+            </h3>
+            <p className="text-xs text-muted-foreground mt-1">
+              {formatDate(project.startDate)} - {formatDate(project.endDate)}
+            </p>
+          </div>
+          
+          {/* Action Buttons */}
+          <div className="flex gap-1 flex-shrink-0">
+            {project.links.demo && (
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="h-8 w-8 text-muted-foreground hover:text-primary hover:bg-primary/10"
+                asChild
+              >
+                <a href={project.links.demo} target="_blank" rel="noopener noreferrer" title="Ver Demo">
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </Button>
+            )}
+            {project.links.github && (
+              <Button 
+                variant="ghost" 
+                size="icon"
+                className="h-8 w-8 text-muted-foreground hover:text-primary hover:bg-primary/10"
+                asChild
+              >
+                <a href={project.links.github} target="_blank" rel="noopener noreferrer" title="Ver Codigo">
+                  <Github className="w-4 h-4" />
+                </a>
+              </Button>
+            )}
+          </div>
+        </div>
+        
+        {/* Description */}
+        <p className="text-sm text-muted-foreground mb-4 line-clamp-3 leading-relaxed">
+          {project.description}
+        </p>
+        
+        {/* Highlights */}
+        {project.highlights && project.highlights.length > 0 && (
+          <div className="mb-4">
+            <h4 className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wider">
+              Destaques da Missao
+            </h4>
+            <ul className="space-y-1">
+              {project.highlights.slice(0, 2).map((highlight: string, index: number) => (
+                <li key={index} className="flex items-start gap-2 text-xs text-muted-foreground">
+                  <span className="w-1 h-1 bg-primary rounded-full mt-1.5 flex-shrink-0" />
+                  <span className="line-clamp-1">{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {project.technologies.slice(0, 4).map((tech: string) => (
+            <Badge
+              key={tech}
+              variant="outline"
+              className="text-xs bg-secondary/30 border-border/50 hover:border-primary/50 hover:text-primary transition-colors"
+            >
+              {tech}
+            </Badge>
+          ))}
+          {project.technologies.length > 4 && (
+            <Popover>
+              <PopoverTrigger asChild>
+                <button className="inline-flex items-center rounded-full border border-border/50 bg-secondary/30 px-2 py-0.5 text-xs font-medium hover:border-primary/50 hover:text-primary transition-colors cursor-pointer">
+                  +{project.technologies.length - 4}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-3 glass-card border-border">
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.slice(4).map((tech: string) => (
+                    <Badge key={tech} variant="outline" className="text-xs">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </PopoverContent>
+            </Popover>
+          )}
+        </div>
+        
+        {/* Footer */}
+        <div className="flex items-center justify-between">
+          <Badge className={`${getStatusColor(project.status)} text-xs`}>
+            {project.status}
+          </Badge>
+          {project.team && (
+            <span className="text-xs text-muted-foreground">
+              {project.team.description}
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function ProjectsSection() {
+  const featuredProjects = [
+    ...getFeaturedProjects(projects.personal),
+    ...getFeaturedProjects(projects.collaborative),
+  ];
+
+  return (
+    <section id="projetos" className="py-24 relative">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/10 to-transparent pointer-events-none" />
+      
+      <div className="container mx-auto px-4 relative">
         <div className="max-w-6xl mx-auto">
+          {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Meus Projetos
+            <div className="inline-flex items-center gap-2 mb-4">
+              <Satellite className="w-5 h-5 text-primary" />
+              <span className="text-sm uppercase tracking-widest text-primary font-medium">Portfolio</span>
+              <Orbit className="w-5 h-5 text-primary" />
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-display font-bold mb-2 text-foreground">
+              Missoes e Exploracoes
             </h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 rounded-full" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Uma seleção dos meus trabalhos mais recentes, desde projetos
-              pessoais até colaborações em equipe.
+              Uma selecao dos meus trabalhos mais recentes, desde projetos pessoais ate colaboracoes em equipe
             </p>
           </div>
 
-          <Tabs defaultValue="personal" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 max-w-lg mx-auto mb-12">
+          {/* Tabs */}
+          <Tabs defaultValue="featured" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 max-w-lg mx-auto mb-12 glass-card p-1 rounded-xl">
               <TabsTrigger
                 value="featured"
-                className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-lg transition-all"
               >
                 Em Destaque
               </TabsTrigger>
               <TabsTrigger
                 value="personal"
-                className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-lg transition-all"
               >
                 Pessoais
               </TabsTrigger>
               <TabsTrigger
                 value="collaborative"
-                className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-lg transition-all"
               >
                 Colaborativos
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="featured">
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {[
-                  ...getFeaturedProjects(projects.personal),
-                  ...getFeaturedProjects(projects.collaborative),
-                ].map((project: Project) => (
-                  <Card
-                    key={project.id}
-                    className={`group hover:shadow-xl transition-all duration-300 overflow-hidden ${
-                      project.status === "Em Breve"
-                        ? "border-2 border-amber-500 dark:border-amber-400 bg-amber-50 dark:bg-amber-950/20"
-                        : ""
-                    }`}
-                  >
-                    <div
-                      className={`aspect-video overflow-hidden relative cursor-pointer group ${
-                        project.status === "Em Breve"
-                          ? "bg-gradient-to-br from-amber-200 to-amber-100 dark:from-amber-900 dark:to-amber-800 flex items-center justify-center"
-                          : ""
-                      }`}
-                    >
-                      {project.status === "Em Breve" ? (
-                        <div className="text-center">
-                          <div className="text-4xl mb-2">🚀</div>
-                          <p className="text-lg font-bold text-amber-900 dark:text-amber-100">
-                            Em Breve
-                          </p>
-                          <p className="text-sm text-amber-800 dark:text-amber-200">
-                            Projeto Inovador
-                          </p>
-                        </div>
-                      ) : project.links.demo || project.links.github ? (
-                        <a
-                          href={project.links.demo || project.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block w-full h-full"
-                        >
-                          <img
-                            src={project.image || "/placeholder.svg"}
-                            alt={project.title}
-                            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                          />
-                        </a>
-                      ) : (
-                        <img
-                          src={project.image || "/placeholder.svg"}
-                          alt={project.title}
-                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                        />
-                      )}
-                      <div className="absolute top-3 left-3 flex gap-2">
-                        {project.status === "Em Breve" && (
-                          <Badge className="bg-primary/90 text-primary-foreground">
-                            Destaque
-                          </Badge>
-                        )}
-                        <Badge
-                          variant="secondary"
-                          className={
-                            project.status === "Em Breve"
-                              ? "bg-amber-600 text-white"
-                              : "bg-primary/90 text-primary-foreground"
-                          }
-                        >
-                          {project.status === "Em Breve"
-                            ? "Próximo"
-                            : "Destaque"}
-                        </Badge>
-                      </div>
-                    </div>
-                    <CardHeader>
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <div className="flex gap-2 mb-2">
-                            <Badge variant="outline" className="text-xs">
-                              {project.category}
-                            </Badge>
-                            {project.team && (
-                              <Badge variant="outline" className="text-xs">
-                                {project.team.role}
-                              </Badge>
-                            )}
-                          </div>
-                          <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                            {project.title}
-                          </CardTitle>
-                          <p className="text-sm text-muted-foreground mt-1">
-                            {formatDate(project.startDate)} -{" "}
-                            {formatDate(project.endDate)}
-                          </p>
-                        </div>
-                        <div className="flex gap-1">
-                          {project.links.demo && (
-                            <Button variant="ghost" size="sm" asChild>
-                              <a
-                                href={project.links.demo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                title="Ver Demo"
-                              >
-                                <ExternalLink className="w-4 h-4" />
-                              </a>
-                            </Button>
-                          )}
-                          {project.links.github && (
-                            <Button variant="ghost" size="sm" asChild>
-                              <a
-                                href={project.links.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                title="Ver Código"
-                              >
-                                <Github className="w-5 h-5" />
-                              </a>
-                            </Button>
-                          )}
-                        </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription className="mb-4 text-base line-clamp-3">
-                        {project.description}
-                      </CardDescription>
-
-                      {project.highlights && (
-                        <div className="mb-4">
-                          <h4 className="text-sm font-semibold mb-2">
-                            Destaques:
-                          </h4>
-                          <ul className="text-xs text-muted-foreground space-y-1">
-                            {project.highlights
-                              .slice(0, 2)
-                              .map((highlight: string, index: number) => (
-                                <li
-                                  key={index}
-                                  className="flex items-start gap-2"
-                                >
-                                  <div className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                                  <span>{highlight}</span>
-                                </li>
-                              ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies
-                          .slice(0, 3)
-                          .map((tech: string) => (
-                            <Badge
-                              key={tech}
-                              variant="outline"
-                              className="text-xs"
-                            >
-                              {tech}
-                            </Badge>
-                          ))}
-                        {project.technologies.length > 3 && (
-                          <Popover>
-                            <PopoverTrigger>
-                              <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors cursor-pointer hover:bg-accent border-input bg-background">
-                                +{project.technologies.length - 3}
-                              </span>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-auto p-3">
-                              <div className="flex flex-wrap gap-2">
-                                {project.technologies
-                                  .slice(3)
-                                  .map((tech: string) => (
-                                    <Badge
-                                      key={tech}
-                                      variant="outline"
-                                      className="text-xs"
-                                    >
-                                      {tech}
-                                    </Badge>
-                                  ))}
-                              </div>
-                            </PopoverContent>
-                          </Popover>
-                        )}
-                      </div>
-
-                      <div className="flex items-center justify-between">
-                        <Badge className={getStatusColor(project.status)}>
-                          {project.status}
-                        </Badge>
-                        {project.team && (
-                          <span className="text-xs text-muted-foreground">
-                            {project.team.description}
-                          </span>
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
+            <TabsContent value="featured" className="animate-fade-in">
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {featuredProjects.map((project: Project) => (
+                  <ProjectCard key={project.id} project={project} featured />
                 ))}
               </div>
             </TabsContent>
 
-            <TabsContent value="personal">
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <TabsContent value="personal" className="animate-fade-in">
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {projects.personal.map((project: Project) => (
-                  <Card
-                    key={project.id}
-                    className={`group hover:shadow-xl transition-all duration-300 overflow-hidden ${
-                      project.status === "Em Breve"
-                        ? "border-2 border-amber-500 dark:border-amber-400 bg-amber-50 dark:bg-amber-950/20"
-                        : ""
-                    }`}
-                  >
-                    <div
-                      className={`aspect-video overflow-hidden relative cursor-pointer group ${
-                        project.status === "Em Breve"
-                          ? "bg-gradient-to-br from-amber-200 to-amber-100 dark:from-amber-900 dark:to-amber-800 flex items-center justify-center"
-                          : ""
-                      }`}
-                    >
-                      {project.status === "Em Breve" ? (
-                        <div className="text-center">
-                          <div className="text-4xl mb-2">🚀</div>
-                          <p className="text-lg font-bold text-amber-900 dark:text-amber-100">
-                            Em Breve
-                          </p>
-                          <p className="text-sm text-amber-800 dark:text-amber-200">
-                            Projeto Inovador
-                          </p>
-                        </div>
-                      ) : project.links.demo || project.links.github ? (
-                        <a
-                          href={project.links.demo || project.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block w-full h-full"
-                        >
-                          <img
-                            src={project.image || "/placeholder.svg"}
-                            alt={project.title}
-                            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                          />
-                        </a>
-                      ) : (
-                        <img
-                          src={project.image || "/placeholder.svg"}
-                          alt={project.title}
-                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                        />
-                      )}
-                    </div>
-                    <CardHeader>
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <Badge variant="secondary" className="mb-2">
-                            {project.category}
-                          </Badge>
-                          <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                            {project.title}
-                          </CardTitle>
-                          <p className="text-sm text-muted-foreground mt-1">
-                            {formatDate(project.startDate)} -{" "}
-                            {formatDate(project.endDate)}
-                          </p>
-                        </div>
-                        <div className="flex gap-1">
-                          {project.links.demo && (
-                            <Button variant="ghost" size="sm" asChild>
-                              <a
-                                href={project.links.demo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                title="Ver Demo"
-                              >
-                                <ExternalLink className="w-4 h-4" />
-                              </a>
-                            </Button>
-                          )}
-                          {project.links.github && (
-                            <Button variant="ghost" size="sm" asChild>
-                              <a
-                                href={project.links.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                title="Ver Código"
-                              >
-                                <Github className="w-5 h-5" />
-                              </a>
-                            </Button>
-                          )}
-                        </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription className="mb-4 text-base">
-                        {project.description}
-                      </CardDescription>
-
-                      {project.highlights && (
-                        <div className="mb-4">
-                          <h4 className="text-sm font-semibold mb-2">
-                            Principais recursos:
-                          </h4>
-                          <ul className="text-xs text-muted-foreground space-y-1">
-                            {project.highlights.map(
-                              (highlight: string, index: number) => (
-                                <li
-                                  key={index}
-                                  className="flex items-start gap-2"
-                                >
-                                  <div className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                                  <span>{highlight}</span>
-                                </li>
-                              ),
-                            )}
-                          </ul>
-                        </div>
-                      )}
-
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies
-                          .slice(0, 4)
-                          .map((tech: string) => (
-                            <Badge
-                              key={tech}
-                              variant="outline"
-                              className="text-xs"
-                            >
-                              {tech}
-                            </Badge>
-                          ))}
-                        {project.technologies.length > 4 && (
-                          <Popover>
-                            <PopoverTrigger>
-                              <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors cursor-pointer hover:bg-accent border-input bg-background">
-                                +{project.technologies.length - 4}
-                              </span>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-auto p-3">
-                              <div className="flex flex-wrap gap-2">
-                                {project.technologies
-                                  .slice(4)
-                                  .map((tech: string) => (
-                                    <Badge
-                                      key={tech}
-                                      variant="outline"
-                                      className="text-xs"
-                                    >
-                                      {tech}
-                                    </Badge>
-                                  ))}
-                              </div>
-                            </PopoverContent>
-                          </Popover>
-                        )}
-                      </div>
-
-                      <Badge className={getStatusColor(project.status)}>
-                        {project.status}
-                      </Badge>
-                    </CardContent>
-                  </Card>
+                  <ProjectCard key={project.id} project={project} />
                 ))}
               </div>
             </TabsContent>
 
-            <TabsContent value="collaborative">
-              <div className="grid gap-8 md:grid-cols-2">
+            <TabsContent value="collaborative" className="animate-fade-in">
+              <div className="grid gap-6 md:grid-cols-2">
                 {projects.collaborative.map((project: Project) => (
-                  <Card
-                    key={project.id}
-                    className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
-                  >
-                    <div className="aspect-video overflow-hidden relative cursor-pointer group">
-                      {project.links.demo || project.links.github ? (
-                        <a
-                          href={project.links.demo || project.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block w-full h-full"
-                        >
-                          <img
-                            src={project.image || "/placeholder.svg"}
-                            alt={project.title}
-                            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                          />
-                        </a>
-                      ) : (
-                        <img
-                          src={project.image || "/placeholder.svg"}
-                          alt={project.title}
-                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                        />
-                      )}
-                    </div>
-                    <CardHeader>
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <div className="flex gap-2 mb-2">
-                            <Badge variant="secondary">
-                              {project.category}
-                            </Badge>
-                            {project.team && (
-                              <Badge variant="outline" className="text-xs">
-                                {project.team.role}
-                              </Badge>
-                            )}
-                          </div>
-                          <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                            {project.title}
-                          </CardTitle>
-                          <p className="text-sm text-muted-foreground mt-1">
-                            {project.client} • {formatDate(project.startDate)} -{" "}
-                            {formatDate(project.endDate)}
-                          </p>
-                          {project.team && (
-                            <p className="text-sm text-muted-foreground">
-                              {project.team.description}
-                            </p>
-                          )}
-                        </div>
-                        <div className="flex gap-1">
-                          {project.links.demo && (
-                            <Button variant="ghost" size="sm" asChild>
-                              <a
-                                href={project.links.demo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                title="Ver Demo"
-                              >
-                                <ExternalLink className="w-4 h-4" />
-                              </a>
-                            </Button>
-                          )}
-                          {project.links.case_study && (
-                            <Button variant="ghost" size="sm" asChild>
-                              <a
-                                href={project.links.case_study}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                title="Case Study"
-                              >
-                                <Code className="w-4 h-4" />
-                              </a>
-                            </Button>
-                          )}
-                        </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription className="mb-4 text-base">
-                        {project.description}
-                      </CardDescription>
-
-                      {project.highlights && (
-                        <div className="mb-4">
-                          <h4 className="text-sm font-semibold mb-2">
-                            Resultados alcançados:
-                          </h4>
-                          <ul className="text-xs text-muted-foreground space-y-1">
-                            {project.highlights.map(
-                              (highlight: string, index: number) => (
-                                <li
-                                  key={index}
-                                  className="flex items-start gap-2"
-                                >
-                                  <div className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                                  <span>{highlight}</span>
-                                </li>
-                              ),
-                            )}
-                          </ul>
-                        </div>
-                      )}
-
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies
-                          .slice(0, 5)
-                          .map((tech: string) => (
-                            <Badge
-                              key={tech}
-                              variant="outline"
-                              className="text-xs"
-                            >
-                              {tech}
-                            </Badge>
-                          ))}
-                        {project.technologies.length > 5 && (
-                          <Popover>
-                            <PopoverTrigger>
-                              <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors cursor-pointer hover:bg-accent border-input bg-background">
-                                +{project.technologies.length - 5}
-                              </span>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-auto p-3">
-                              <div className="flex flex-wrap gap-2">
-                                {project.technologies
-                                  .slice(5)
-                                  .map((tech: string) => (
-                                    <Badge
-                                      key={tech}
-                                      variant="outline"
-                                      className="text-xs"
-                                    >
-                                      {tech}
-                                    </Badge>
-                                  ))}
-                              </div>
-                            </PopoverContent>
-                          </Popover>
-                        )}
-                      </div>
-
-                      <Badge className={getStatusColor(project.status)}>
-                        {project.status}
-                      </Badge>
-                    </CardContent>
-                  </Card>
+                  <ProjectCard key={project.id} project={project} />
                 ))}
               </div>
             </TabsContent>

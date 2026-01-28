@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Menu, X, Download } from "lucide-react";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { Github, Linkedin, Menu, X, Download, Orbit, Sparkles } from "lucide-react";
 import { navigationItems } from "../../constants/navigation";
 import { useScrollToSection } from "../../hooks/useScroll";
 import { NavigationItem } from "../../types";
@@ -25,7 +24,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
     try {
       const response = await fetch("/curriculo-gabriel-falcao.pdf");
       if (!response.ok) {
-        throw new Error("Erro ao baixar o currículo");
+        throw new Error("Erro ao baixar o curriculo");
       }
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
@@ -37,36 +36,45 @@ export default function Navigation({ activeSection }: NavigationProps) {
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (error) {
-      console.error("Erro ao baixar currículo:", error);
-      alert("Erro ao baixar o currículo. Tente novamente.");
+      console.error("Erro ao baixar curriculo:", error);
+      alert("Erro ao baixar o curriculo. Tente novamente.");
     }
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/60 backdrop-blur-xl border-b border-border/50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo with Space Icon */}
           <button
             onClick={() => handleSectionClick("inicio")}
-            className="text-xl font-bold text-primary hover:text-primary/80 transition-colors"
+            className="flex items-center gap-2 group"
           >
-            Gabriel Falcão
+            <div className="relative">
+              <Orbit className="w-6 h-6 text-primary group-hover:animate-spin-slow transition-all" />
+              <Sparkles className="absolute -top-1 -right-1 w-3 h-3 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+            <span className="text-xl font-display font-bold text-foreground group-hover:text-primary transition-colors">
+              Gabriel Falcao
+            </span>
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center gap-1">
             {navigationItems.map((item: NavigationItem) => (
               <button
                 key={item.id}
                 onClick={() => handleSectionClick(item.id)}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   activeSection === item.id
-                    ? "bg-primary text-primary-foreground"
-                    : "text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-primary/10"
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                 }`}
               >
-                {item.label}
+                {activeSection === item.id && (
+                  <span className="absolute inset-0 rounded-lg border border-primary/30 glow-cyan-sm" />
+                )}
+                <span className="relative">{item.label}</span>
               </button>
             ))}
           </div>
@@ -76,30 +84,39 @@ export default function Navigation({ activeSection }: NavigationProps) {
             <Button
               size="sm"
               onClick={handleDownloadCV}
-              className="text-black dark:text-white bg-slate-200 dark:bg-slate-600 hover:bg-primary hover:text-primary-foreground transition-colors font-bold border-0"
+              className="bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground border border-primary/30 hover:glow-cyan transition-all duration-300"
             >
               <Download className="w-4 h-4 mr-2" />
               Baixar CV
             </Button>
-            <ThemeToggle />
-            <Button variant="ghost" size="sm" asChild>
+            <Button 
+              variant="ghost" 
+              size="icon"
+              className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+              asChild
+            >
               <a
                 href="https://www.linkedin.com/in/gabrielfalcaodev/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
+                aria-label="LinkedIn"
               >
-                <Linkedin className="w-4 h-4" />
+                <Linkedin className="w-5 h-5" />
               </a>
             </Button>
-            <Button variant="ghost" size="sm" asChild>
+            <Button 
+              variant="ghost" 
+              size="icon"
+              className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+              asChild
+            >
               <a
                 href="https://github.com/GabrielF0900"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
+                aria-label="GitHub"
               >
-                <Github className="w-4 h-4" />
+                <Github className="w-5 h-5" />
               </a>
             </Button>
           </div>
@@ -107,63 +124,63 @@ export default function Navigation({ activeSection }: NavigationProps) {
           {/* Mobile Menu Button */}
           <Button
             variant="ghost"
-            size="sm"
-            className="md:hidden"
+            size="icon"
+            className="md:hidden text-foreground"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
           >
             {isMenuOpen ? (
-              <X className="w-5 h-5" />
+              <X className="w-6 h-6" />
             ) : (
-              <Menu className="w-5 h-5" />
+              <Menu className="w-6 h-6" />
             )}
           </Button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-slate-200 dark:border-slate-700">
-            <div className="flex flex-col space-y-2">
+          <div className="md:hidden py-4 border-t border-border/50 animate-fade-in">
+            <div className="flex flex-col gap-2">
               {navigationItems.map((item: NavigationItem) => (
                 <button
                   key={item.id}
                   onClick={() => handleSectionClick(item.id)}
-                  className={`px-3 py-2 rounded-md text-left text-sm font-medium transition-colors ${
+                  className={`px-4 py-3 rounded-lg text-left text-sm font-medium transition-all ${
                     activeSection === item.id
-                      ? "bg-primary text-primary-foreground"
-                      : "text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-primary/10"
+                      ? "bg-primary/10 text-primary border border-primary/30"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                   }`}
                 >
                   {item.label}
                 </button>
               ))}
-              <div className="flex items-center gap-2 px-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+              <div className="flex items-center gap-2 px-4 pt-4 border-t border-border/50 mt-2">
                 <Button
                   size="sm"
                   onClick={handleDownloadCV}
-                  className="text-black dark:text-white bg-slate-200 dark:bg-slate-600 hover:bg-primary hover:text-primary-foreground transition-colors font-bold border-0"
+                  className="flex-1 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground border border-primary/30"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Baixar CV
                 </Button>
-                <ThemeToggle />
-                <Button variant="ghost" size="sm" asChild>
+                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary" asChild>
                   <a
                     href="https://www.linkedin.com/in/gabrielfalcaodev/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
+                    aria-label="LinkedIn"
                   >
-                    <Linkedin className="w-4 h-4" />
+                    <Linkedin className="w-5 h-5" />
                   </a>
                 </Button>
-                <Button variant="ghost" size="sm" asChild>
+                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary" asChild>
                   <a
                     href="https://github.com/GabrielF0900"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
+                    aria-label="GitHub"
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="w-5 h-5" />
                   </a>
                 </Button>
               </div>
