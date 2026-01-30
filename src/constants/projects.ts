@@ -3,7 +3,7 @@ import { Project, PortfolioData } from "../types";
 export const projects: PortfolioData = {
   personal: [
     {
-      id: 15,
+      id: 16,
       title: "Em Breve: Um Projeto Inovador",
       description:
         "Estou trabalhando em um projeto inovador que combinará arquitetura em nuvem com soluções práticas do mundo real. Este projeto explorará conceitos avançados de cloud computing, automação e otimização de infraestrutura. Fique atento para mais detalhes!",
@@ -22,6 +22,42 @@ export const projects: PortfolioData = {
       featured: true,
       links: {
         github: null,
+        case_study: null,
+      },
+    },
+    {
+      id: 15,
+      title: "CloudFront - NewEdge",
+      description:
+        "Uma arquitetura moderna e escalável que combina Amazon S3, Amazon CloudFront e Origin Access Control (OAC) para distribuição global de conteúdo estático com foco em segurança de borda e baixa latência. O projeto documenta uma jornada completa desde a criação de um bucket S3 seguro até a implantação de uma distribuição CloudFront com 600+ edge locations ao redor do mundo, garantindo entrega rápida e segura de conteúdo para usuários globalmente. Implementa as melhores práticas de segurança cloud com bloqueio de acesso público, autenticação via OAC e monitoramento contínuo, sendo uma solução custo-eficiente para portfólios, landing pages e aplicações estáticas que precisam de alcance global.",
+      technologies: [
+        "AWS",
+        "CloudFront",
+        "S3",
+        "Origin Access Control (OAC)",
+        "HTTPS",
+        "Cache Strategy",
+        "CloudWatch",
+      ],
+      status: "Concluído",
+      category: "Infrastructure",
+      startDate: "2026-01",
+      endDate: "2026-01",
+      image: "/imagensCloud/32-pagina-online-globalmente.jpeg",
+      highlights: [
+        "Distribuição global via 600+ edge locations do CloudFront",
+        "Armazenamento seguro com Amazon S3 e bloqueio de acesso público",
+        "Origin Access Control (OAC) para segurança de borda sem exposição do S3",
+        "HTTPS com criptografia automática para todas as requisições",
+        "Estratégia de cache de alta performance para velocidade máxima",
+        "Monitoramento contínuo com CloudWatch (logs, métricas e alertas)",
+        "Arquitetura serverless com custo zero ou mínimo no Free Tier",
+        "Escalabilidade automática conforme o crescimento do tráfego",
+        "Seleção inteligente do modelo de preço Pay As You Go para máxima economia",
+      ],
+      featured: true,
+      links: {
+        github: "https://github.com/GabrielF0900/CloudFront-NewEdge",
         case_study: null,
       },
     },
