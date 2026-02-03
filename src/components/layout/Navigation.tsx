@@ -23,7 +23,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
 
   const handleDownloadCV = async () => {
     try {
-      const response = await fetch("/curriculo-gabriel-falcao.pdf");
+      const response = await fetch("/CV_GabrielFalcaoDaCruz.pdf");
       if (!response.ok) {
         throw new Error("Erro ao baixar o currículo");
       }
@@ -31,7 +31,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = "curriculo-gabriel-falcao.pdf";
+      link.download = "CV_GabrielFalcaoDaCruz.pdf";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
