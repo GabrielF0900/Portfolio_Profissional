@@ -21,25 +21,11 @@ export default function Navigation({ activeSection }: NavigationProps) {
     setIsMenuOpen(false);
   };
 
-  const handleDownloadCV = async () => {
-    try {
-      const response = await fetch("/CV_GabrielFalcaoDaCruz.pdf");
-      if (!response.ok) {
-        throw new Error("Erro ao baixar o currículo");
-      }
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "CV_GabrielFalcaoDaCruz.pdf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error("Erro ao baixar currículo:", error);
-      alert("Erro ao baixar o currículo. Tente novamente.");
-    }
+  const handleDownloadCV = () => {
+    const link = document.createElement("a");
+    link.href = "/CV_GabrielFalcaoDaCruz.pdf";
+    link.download = "CV_GabrielFalcaoDaCruz.pdf";
+    link.click();
   };
 
   return (
