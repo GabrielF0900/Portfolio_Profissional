@@ -9,12 +9,21 @@ import { ExternalLink } from "lucide-react";
 import { certifications } from "../../constants/certifications";
 
 export default function CertificationsSection() {
-  const [activeTab, setActiveTab] = useState("all");
+  const [activeTab, setActiveTab] = useState("Certificação");
 
-  const filteredCertifications = certifications.filter((cert) => {
-    if (activeTab === "all") return true;
-    return cert.type === activeTab;
-  });
+  const filteredCertifications = certifications
+    .filter((cert) => {
+      if (activeTab === "all") return true;
+      return cert.type === activeTab;
+    })
+    .sort((a, b) => {
+      // Quando for "all", Certificações vêm primeiro
+      if (activeTab === "all") {
+        if (a.type === "Certificação" && b.type !== "Certificação") return -1;
+        if (a.type !== "Certificação" && b.type === "Certificação") return 1;
+      }
+      return 0;
+    });
 
   return (
     <section id="certificacoes" className="py-20 px-4">
@@ -29,7 +38,7 @@ export default function CertificationsSection() {
         </div>
 
         <Tabs
-          defaultValue="all"
+          defaultValue="Certificação"
           value={activeTab}
           onValueChange={setActiveTab}
           className="w-full"
