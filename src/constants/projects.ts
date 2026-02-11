@@ -438,7 +438,7 @@ export const projects: PortfolioData = {
       status: "Concluído",
       category: "Full Stack",
       startDate: "2025-07",
-      endDate: null,
+      endDate: "2025-08",
       image: "/sistematcc.jpg",
       team: {
         size: 4,
