@@ -7,7 +7,9 @@ export default function AboutSection() {
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Sobre mim</h2>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
+                Sobre mim
+              </h2>
               <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
                 Olá, sou Gabriel Falcão.
               </p>

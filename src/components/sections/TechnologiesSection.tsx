@@ -1,17 +1,23 @@
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Code, Palette, Server, Zap } from "lucide-react"
-import { technologies } from "../../constants/technologies"
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Code, Palette, Server, Zap } from "lucide-react";
+import { technologies } from "../../constants/technologies";
 
 export default function TechnologiesSection() {
   return (
-    <section id="tecnologias" className="py-12 md:py-20 bg-white dark:bg-slate-900">
+    <section
+      id="tecnologias"
+      className="py-12 md:py-20 bg-white dark:bg-slate-900"
+    >
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Tecnologias</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
+              Tecnologias
+            </h2>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Ferramentas e tecnologias que utilizo para criar soluções robustas e escaláveis.
+              Ferramentas e tecnologias que utilizo para criar soluções robustas
+              e escaláveis.
             </p>
           </div>
 
@@ -91,5 +97,5 @@ export default function TechnologiesSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

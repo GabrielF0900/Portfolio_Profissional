@@ -1,9 +1,15 @@
-"use client"
+"use client";
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   ExternalLink,
   Github,
@@ -17,45 +23,56 @@ import {
   Zap,
   Menu,
   X,
-} from "lucide-react"
-import { useState, useEffect } from "react"
+} from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Portfolio() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState("inicio")
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("inicio");
 
   // Função para scroll suave
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-      setIsMenuOpen(false) // Fecha o menu mobile após clicar
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsMenuOpen(false); // Fecha o menu mobile após clicar
     }
-  }
+  };
 
   // Hook para detectar seção ativa
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["inicio", "sobre", "experiencia", "projetos", "tecnologias", "skills", "contato"]
-      const scrollPosition = window.scrollY + 100
+      const sections = [
+        "inicio",
+        "sobre",
+        "experiencia",
+        "projetos",
+        "tecnologias",
+        "skills",
+        "contato",
+      ];
+      const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
-        const element = document.getElementById(section)
+        const element = document.getElementById(section);
         if (element) {
-          const offsetTop = element.offsetTop
-          const offsetHeight = element.offsetHeight
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
 
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(section);
+            break;
           }
         }
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const projects = {
     personal: [
@@ -64,7 +81,14 @@ export default function Portfolio() {
         title: "E-commerce Platform",
         description:
           "Plataforma completa de e-commerce com painel administrativo, sistema de pagamentos integrado, gestão de estoque em tempo real e analytics avançados.",
-        technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Stripe", "Tailwind CSS"],
+        technologies: [
+          "Next.js",
+          "TypeScript",
+          "Prisma",
+          "PostgreSQL",
+          "Stripe",
+          "Tailwind CSS",
+        ],
         status: "Em desenvolvimento",
         category: "Full Stack",
         startDate: "2024-01",
@@ -87,7 +111,14 @@ export default function Portfolio() {
         title: "Task Management App",
         description:
           "Aplicativo de gerenciamento de tarefas com funcionalidades de colaboração em tempo real, notificações push e integração com calendários.",
-        technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Express", "JWT"],
+        technologies: [
+          "React",
+          "Node.js",
+          "Socket.io",
+          "MongoDB",
+          "Express",
+          "JWT",
+        ],
         status: "Concluído",
         category: "Full Stack",
         startDate: "2023-08",
@@ -110,7 +141,14 @@ export default function Portfolio() {
         title: "API REST Financeira",
         description:
           "API robusta para gestão financeira pessoal com autenticação JWT, documentação completa e testes automatizados.",
-        technologies: ["Node.js", "Express", "PostgreSQL", "Swagger", "Jest", "Docker"],
+        technologies: [
+          "Node.js",
+          "Express",
+          "PostgreSQL",
+          "Swagger",
+          "Jest",
+          "Docker",
+        ],
         status: "Concluído",
         category: "Backend",
         startDate: "2023-05",
@@ -133,7 +171,13 @@ export default function Portfolio() {
         title: "Portfolio Website",
         description:
           "Site pessoal desenvolvido com foco em performance e SEO, incluindo blog integrado e sistema de contato.",
-        technologies: ["Next.js", "TypeScript", "MDX", "Tailwind CSS", "Vercel"],
+        technologies: [
+          "Next.js",
+          "TypeScript",
+          "MDX",
+          "Tailwind CSS",
+          "Vercel",
+        ],
         status: "Concluído",
         category: "Frontend",
         startDate: "2023-03",
@@ -144,7 +188,11 @@ export default function Portfolio() {
           github: "#",
           case_study: null,
         },
-        highlights: ["Score 100 no Google PageSpeed", "Blog integrado com MDX", "Design responsivo e acessível"],
+        highlights: [
+          "Score 100 no Google PageSpeed",
+          "Blog integrado com MDX",
+          "Design responsivo e acessível",
+        ],
         featured: false,
       },
     ],
@@ -171,7 +219,11 @@ export default function Portfolio() {
           github: null,
           case_study: "#",
         },
-        highlights: ["Gestão de 10.000+ pacientes", "Conformidade com LGPD", "Sistema de backup automatizado"],
+        highlights: [
+          "Gestão de 10.000+ pacientes",
+          "Conformidade com LGPD",
+          "Sistema de backup automatizado",
+        ],
         featured: true,
       },
       {
@@ -179,7 +231,14 @@ export default function Portfolio() {
         title: "Plataforma de Educação Online",
         description:
           "LMS completo com sistema de videoaulas, exercícios interativos, acompanhamento de progresso e certificações digitais.",
-        technologies: ["React", "Express.js", "PostgreSQL", "AWS", "FFmpeg", "WebRTC"],
+        technologies: [
+          "React",
+          "Express.js",
+          "PostgreSQL",
+          "AWS",
+          "FFmpeg",
+          "WebRTC",
+        ],
         status: "Concluído",
         category: "Full Stack",
         startDate: "2022-06",
@@ -208,7 +267,14 @@ export default function Portfolio() {
         title: "App de Delivery",
         description:
           "Aplicativo mobile e web para delivery de comida com rastreamento em tempo real, sistema de pagamentos e avaliações.",
-        technologies: ["React Native", "React", "Node.js", "MongoDB", "Socket.io", "Google Maps API"],
+        technologies: [
+          "React Native",
+          "React",
+          "Node.js",
+          "MongoDB",
+          "Socket.io",
+          "Google Maps API",
+        ],
         status: "Concluído",
         category: "Mobile/Web",
         startDate: "2022-03",
@@ -233,41 +299,82 @@ export default function Portfolio() {
         featured: false,
       },
     ],
-  }
+  };
 
   // Função para filtrar projetos em destaque
   const getFeaturedProjects = (projectList: any[]) => {
-    return projectList.filter((project: any) => project.featured)
-  }
+    return projectList.filter((project: any) => project.featured);
+  };
 
   // Função para formatar data
   const formatDate = (dateString: string | null) => {
-    if (!dateString) return "Presente"
-    const [year, month] = dateString.split("-")
-    const months = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
-    return `${months[Number.parseInt(month) - 1]} ${year}`
-  }
+    if (!dateString) return "Presente";
+    const [year, month] = dateString.split("-");
+    const months = [
+      "Jan",
+      "Fev",
+      "Mar",
+      "Abr",
+      "Mai",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Set",
+      "Out",
+      "Nov",
+      "Dez",
+    ];
+    return `${months[Number.parseInt(month) - 1]} ${year}`;
+  };
 
   // Função para obter cor do status
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Concluído":
-        return "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400"
+        return "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400";
       case "Em desenvolvimento":
-        return "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400"
+        return "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400";
       case "Em produção":
-        return "bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400"
+        return "bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400";
       default:
-        return "bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400"
+        return "bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400";
     }
-  }
+  };
 
   const technologies = {
-    frontend: ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Sass"],
-    backend: ["Node.js", "Express.js", "Laravel", "PHP", "Python", "Django", "PostgreSQL", "MySQL", "MongoDB"],
+    frontend: [
+      "React",
+      "Next.js",
+      "Vue.js",
+      "TypeScript",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Sass",
+    ],
+    backend: [
+      "Node.js",
+      "Express.js",
+      "Laravel",
+      "PHP",
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+    ],
     tools: ["Git", "GitHub", "VS Code", "Figma", "Postman", "Jest", "Cypress"],
-    infrastructure: ["Docker", "AWS", "Vercel", "Netlify", "Linux", "Nginx", "CI/CD"],
-  }
+    infrastructure: [
+      "Docker",
+      "AWS",
+      "Vercel",
+      "Netlify",
+      "Linux",
+      "Nginx",
+      "CI/CD",
+    ],
+  };
 
   const softSkills = [
     "Comunicação eficaz",
@@ -278,7 +385,7 @@ export default function Portfolio() {
     "Liderança técnica",
     "Gestão de tempo",
     "Aprendizado contínuo",
-  ]
+  ];
 
   const navigationItems = [
     { id: "inicio", label: "Início" },
@@ -288,7 +395,7 @@ export default function Portfolio() {
     { id: "tecnologias", label: "Tecnologias" },
     { id: "skills", label: "Skills" },
     { id: "contato", label: "Contato" },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
@@ -324,20 +431,39 @@ export default function Portfolio() {
             {/* Social Links Desktop */}
             <div className="hidden md:flex items-center gap-2">
               <Button variant="ghost" size="sm" asChild>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-primary">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-600 hover:text-primary"
+                >
                   <Linkedin className="w-4 h-4" />
                 </a>
               </Button>
               <Button variant="ghost" size="sm" asChild>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-primary">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-600 hover:text-primary"
+                >
                   <Github className="w-4 h-4" />
                 </a>
               </Button>
             </div>
 
             {/* Mobile Menu Button */}
-            <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="md:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </Button>
           </div>
 
@@ -360,12 +486,22 @@ export default function Portfolio() {
                 ))}
                 <div className="flex items-center gap-2 px-3 pt-2">
                   <Button variant="ghost" size="sm" asChild>
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-primary">
+                    <a
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-600 hover:text-primary"
+                    >
                       <Linkedin className="w-4 h-4" />
                     </a>
                   </Button>
                   <Button variant="ghost" size="sm" asChild>
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-primary">
+                    <a
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-600 hover:text-primary"
+                    >
                       <Github className="w-4 h-4" />
                     </a>
                   </Button>
@@ -391,16 +527,28 @@ export default function Portfolio() {
                 <span className="block text-primary">da Cruz</span>
               </h1>
               <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Desenvolvedor Full Stack & Cloud focado em arquiteturas resilientes, seguras e acessíveis.
+                Cloud-Native Developer focado em projetar arquiteturas
+                resilientes, seguras e acessíveis. Unindo o desenvolvimento Full
+                Stack moderno com o poder da computação em nuvem AWS para
+                garantir a continuidade de negócio.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button size="lg" className="text-lg px-8" onClick={() => scrollToSection("projetos")}>
+              <Button
+                size="lg"
+                className="text-lg px-8"
+                onClick={() => scrollToSection("projetos")}
+              >
                 Ver Projetos
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 bg-transparent" asChild>
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-lg px-8 bg-transparent"
+                asChild
+              >
                 <a href="mailto:gabriel@example.com">
                   <Mail className="w-5 h-5 mr-2" />
                   Entrar em Contato
@@ -440,16 +588,20 @@ export default function Portfolio() {
           <div className="max-w-4xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl lg:text-4xl font-bold mb-6">Sobre mim</h2>
+                <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+                  Sobre mim
+                </h2>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Com mais de 3 anos de experiência em desenvolvimento web, especializo-me em criar aplicações modernas
-                  e escaláveis. Minha paixão está em transformar ideias complexas em soluções digitais elegantes e
-                  funcionais.
+                  Com mais de 3 anos de experiência em desenvolvimento web,
+                  especializo-me em criar aplicações modernas e escaláveis.
+                  Minha paixão está em transformar ideias complexas em soluções
+                  digitais elegantes e funcionais.
                 </p>
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  Trabalho com as tecnologias mais atuais do mercado e tenho experiência tanto em projetos individuais
-                  quanto em equipes multidisciplinares, sempre focando na qualidade do código e na experiência do
-                  usuário.
+                  Trabalho com as tecnologias mais atuais do mercado e tenho
+                  experiência tanto em projetos individuais quanto em equipes
+                  multidisciplinares, sempre focando na qualidade do código e na
+                  experiência do usuário.
                 </p>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <MapPin className="w-5 h-5" />
@@ -471,9 +623,12 @@ export default function Portfolio() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Experiência Profissional</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+                Experiência Profissional
+              </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Minha trajetória profissional e contribuições em organizações de destaque.
+                Minha trajetória profissional e contribuições em organizações de
+                destaque.
               </p>
             </div>
 
@@ -495,72 +650,111 @@ export default function Portfolio() {
                   <CardHeader>
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                       <div>
-                        <CardTitle className="text-xl text-primary">Fundador e Programador Full Stack</CardTitle>
+                        <CardTitle className="text-xl text-primary">
+                          Fundador e Programador Full Stack
+                        </CardTitle>
                         <h3 className="text-lg font-semibold mt-1">Neukox</h3>
                       </div>
                       <div className="flex flex-col md:items-end">
                         <Badge variant="secondary" className="w-fit">
                           2022 - Presente
                         </Badge>
-                        <span className="text-sm text-muted-foreground mt-1">2+ anos</span>
+                        <span className="text-sm text-muted-foreground mt-1">
+                          2+ anos
+                        </span>
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <CardDescription className="text-base mb-4">
-                      Como fundador da Neukox, lidero o desenvolvimento técnico e a visão estratégica da empresa.
-                      Responsável por toda a arquitetura de software e desenvolvimento de soluções inovadoras.
+                      Como fundador da Neukox, lidero o desenvolvimento técnico
+                      e a visão estratégica da empresa. Responsável por toda a
+                      arquitetura de software e desenvolvimento de soluções
+                      inovadoras.
                     </CardDescription>
 
                     <div className="space-y-4">
                       <div>
-                        <h4 className="font-semibold mb-2">Principais Responsabilidades:</h4>
+                        <h4 className="font-semibold mb-2">
+                          Principais Responsabilidades:
+                        </h4>
                         <ul className="space-y-1 text-sm text-muted-foreground">
                           <li className="flex items-start gap-2">
                             <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                            <span>Fundação e liderança técnica da empresa Neukox</span>
+                            <span>
+                              Fundação e liderança técnica da empresa Neukox
+                            </span>
                           </li>
                           <li className="flex items-start gap-2">
                             <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                            <span>Desenvolvimento de aplicações web usando React, Next.js e TypeScript</span>
+                            <span>
+                              Desenvolvimento de aplicações web usando React,
+                              Next.js e TypeScript
+                            </span>
                           </li>
                           <li className="flex items-start gap-2">
                             <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                            <span>Arquitetura e implementação de sistemas escaláveis e APIs RESTful</span>
+                            <span>
+                              Arquitetura e implementação de sistemas escaláveis
+                              e APIs RESTful
+                            </span>
                           </li>
                           <li className="flex items-start gap-2">
                             <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                            <span>Gestão de equipe de desenvolvimento e definição de processos técnicos</span>
+                            <span>
+                              Gestão de equipe de desenvolvimento e definição de
+                              processos técnicos
+                            </span>
                           </li>
                           <li className="flex items-start gap-2">
                             <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                            <span>Tomada de decisões estratégicas sobre tecnologia e produto</span>
+                            <span>
+                              Tomada de decisões estratégicas sobre tecnologia e
+                              produto
+                            </span>
                           </li>
                           <li className="flex items-start gap-2">
                             <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                            <span>Mentoria de desenvolvedores e estabelecimento de padrões de código</span>
+                            <span>
+                              Mentoria de desenvolvedores e estabelecimento de
+                              padrões de código
+                            </span>
                           </li>
                         </ul>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold mb-2">Principais Conquistas:</h4>
+                        <h4 className="font-semibold mb-2">
+                          Principais Conquistas:
+                        </h4>
                         <ul className="space-y-1 text-sm text-muted-foreground">
                           <li className="flex items-start gap-2">
                             <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <span>Fundação e crescimento da Neukox como empresa de tecnologia</span>
+                            <span>
+                              Fundação e crescimento da Neukox como empresa de
+                              tecnologia
+                            </span>
                           </li>
                           <li className="flex items-start gap-2">
                             <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <span>Desenvolvimento de arquitetura que suporta crescimento exponencial de usuários</span>
+                            <span>
+                              Desenvolvimento de arquitetura que suporta
+                              crescimento exponencial de usuários
+                            </span>
                           </li>
                           <li className="flex items-start gap-2">
                             <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <span>Liderança de equipe que entregou projetos com 40% de melhoria em performance</span>
+                            <span>
+                              Liderança de equipe que entregou projetos com 40%
+                              de melhoria em performance
+                            </span>
                           </li>
                           <li className="flex items-start gap-2">
                             <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <span>Estabelecimento de cultura de desenvolvimento ágil e qualidade de código</span>
+                            <span>
+                              Estabelecimento de cultura de desenvolvimento ágil
+                              e qualidade de código
+                            </span>
                           </li>
                         </ul>
                       </div>
@@ -606,8 +800,12 @@ export default function Portfolio() {
                 <Card className="flex-1 border-dashed">
                   <CardContent className="pt-6">
                     <div className="text-center text-muted-foreground">
-                      <p className="text-sm">Experiências anteriores e projetos freelance</p>
-                      <p className="text-xs mt-1">Disponível para discussão durante entrevista</p>
+                      <p className="text-sm">
+                        Experiências anteriores e projetos freelance
+                      </p>
+                      <p className="text-xs mt-1">
+                        Disponível para discussão durante entrevista
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -622,9 +820,12 @@ export default function Portfolio() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Meus Projetos</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+                Meus Projetos
+              </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Uma seleção dos meus trabalhos mais recentes, desde projetos pessoais até colaborações em equipe.
+                Uma seleção dos meus trabalhos mais recentes, desde projetos
+                pessoais até colaborações em equipe.
               </p>
             </div>
 
@@ -643,114 +844,134 @@ export default function Portfolio() {
 
               <TabsContent value="featured">
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                  {[...getFeaturedProjects(projects.personal), ...getFeaturedProjects(projects.collaborative)].map(
-                    (project) => (
-                      <Card
-                        key={project.id}
-                        className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
-                      >
-                        <div className="aspect-video overflow-hidden relative">
-                          <img
-                            src={project.image || "/placeholder.svg"}
-                            alt={project.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                          <div className="absolute top-3 left-3">
-                            <Badge variant="secondary" className="bg-primary/90 text-primary-foreground">
-                              Destaque
-                            </Badge>
+                  {[
+                    ...getFeaturedProjects(projects.personal),
+                    ...getFeaturedProjects(projects.collaborative),
+                  ].map((project) => (
+                    <Card
+                      key={project.id}
+                      className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
+                    >
+                      <div className="aspect-video overflow-hidden relative">
+                        <img
+                          src={project.image || "/placeholder.svg"}
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute top-3 left-3">
+                          <Badge
+                            variant="secondary"
+                            className="bg-primary/90 text-primary-foreground"
+                          >
+                            Destaque
+                          </Badge>
+                        </div>
+                      </div>
+                      <CardHeader>
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <div className="flex gap-2 mb-2">
+                              <Badge variant="outline" className="text-xs">
+                                {project.category}
+                              </Badge>
+                              {project.team && (
+                                <Badge variant="outline" className="text-xs">
+                                  {project.team.role}
+                                </Badge>
+                              )}
+                            </div>
+                            <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                              {project.title}
+                            </CardTitle>
+                            <p className="text-sm text-muted-foreground mt-1">
+                              {formatDate(project.startDate)} -{" "}
+                              {formatDate(project.endDate)}
+                            </p>
+                          </div>
+                          <div className="flex gap-1">
+                            {project.links.demo && (
+                              <Button variant="ghost" size="sm" asChild>
+                                <a
+                                  href={project.links.demo}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  title="Ver Demo"
+                                >
+                                  <ExternalLink className="w-4 h-4" />
+                                </a>
+                              </Button>
+                            )}
+                            {project.links.github && (
+                              <Button variant="ghost" size="sm" asChild>
+                                <a
+                                  href={project.links.github}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  title="Ver Código"
+                                >
+                                  <Github className="w-4 h-4" />
+                                </a>
+                              </Button>
+                            )}
                           </div>
                         </div>
-                        <CardHeader>
-                          <div className="flex items-start justify-between">
-                            <div>
-                              <div className="flex gap-2 mb-2">
-                                <Badge variant="outline" className="text-xs">
-                                  {project.category}
-                                </Badge>
-                                {project.team && (
-                                  <Badge variant="outline" className="text-xs">
-                                    {project.team.role}
-                                  </Badge>
-                                )}
-                              </div>
-                              <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                                {project.title}
-                              </CardTitle>
-                              <p className="text-sm text-muted-foreground mt-1">
-                                {formatDate(project.startDate)} - {formatDate(project.endDate)}
-                              </p>
-                            </div>
-                            <div className="flex gap-1">
-                              {project.links.demo && (
-                                <Button variant="ghost" size="sm" asChild>
-                                  <a
-                                    href={project.links.demo}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    title="Ver Demo"
-                                  >
-                                    <ExternalLink className="w-4 h-4" />
-                                  </a>
-                                </Button>
-                              )}
-                              {project.links.github && (
-                                <Button variant="ghost" size="sm" asChild>
-                                  <a
-                                    href={project.links.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    title="Ver Código"
-                                  >
-                                    <Github className="w-4 h-4" />
-                                  </a>
-                                </Button>
-                              )}
-                            </div>
-                          </div>
-                        </CardHeader>
-                        <CardContent>
-                          <CardDescription className="mb-4 text-base line-clamp-3">
-                            {project.description}
-                          </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <CardDescription className="mb-4 text-base line-clamp-3">
+                          {project.description}
+                        </CardDescription>
 
-                          {project.highlights && (
-                            <div className="mb-4">
-                              <h4 className="text-sm font-semibold mb-2">Destaques:</h4>
-                              <ul className="text-xs text-muted-foreground space-y-1">
-                                {project.highlights.slice(0, 2).map((highlight, index) => (
-                                  <li key={index} className="flex items-start gap-2">
+                        {project.highlights && (
+                          <div className="mb-4">
+                            <h4 className="text-sm font-semibold mb-2">
+                              Destaques:
+                            </h4>
+                            <ul className="text-xs text-muted-foreground space-y-1">
+                              {project.highlights
+                                .slice(0, 2)
+                                .map((highlight, index) => (
+                                  <li
+                                    key={index}
+                                    className="flex items-start gap-2"
+                                  >
                                     <div className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                                     <span>{highlight}</span>
                                   </li>
                                 ))}
-                              </ul>
-                            </div>
+                            </ul>
+                          </div>
+                        )}
+
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.technologies.slice(0, 3).map((tech) => (
+                            <Badge
+                              key={tech}
+                              variant="outline"
+                              className="text-xs"
+                            >
+                              {tech}
+                            </Badge>
+                          ))}
+                          {project.technologies.length > 3 && (
+                            <Badge variant="outline" className="text-xs">
+                              +{project.technologies.length - 3}
+                            </Badge>
                           )}
+                        </div>
 
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {project.technologies.slice(0, 3).map((tech) => (
-                              <Badge key={tech} variant="outline" className="text-xs">
-                                {tech}
-                              </Badge>
-                            ))}
-                            {project.technologies.length > 3 && (
-                              <Badge variant="outline" className="text-xs">
-                                +{project.technologies.length - 3}
-                              </Badge>
-                            )}
-                          </div>
-
-                          <div className="flex items-center justify-between">
-                            <Badge className={getStatusColor(project.status)}>{project.status}</Badge>
-                            {project.team && (
-                              <span className="text-xs text-muted-foreground">{project.team.description}</span>
-                            )}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ),
-                  )}
+                        <div className="flex items-center justify-between">
+                          <Badge className={getStatusColor(project.status)}>
+                            {project.status}
+                          </Badge>
+                          {project.team && (
+                            <span className="text-xs text-muted-foreground">
+                              {project.team.description}
+                            </span>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
                 </div>
               </TabsContent>
 
@@ -778,13 +999,19 @@ export default function Portfolio() {
                               {project.title}
                             </CardTitle>
                             <p className="text-sm text-muted-foreground mt-1">
-                              {formatDate(project.startDate)} - {formatDate(project.endDate)}
+                              {formatDate(project.startDate)} -{" "}
+                              {formatDate(project.endDate)}
                             </p>
                           </div>
                           <div className="flex gap-1">
                             {project.links.demo && (
                               <Button variant="ghost" size="sm" asChild>
-                                <a href={project.links.demo} target="_blank" rel="noopener noreferrer" title="Ver Demo">
+                                <a
+                                  href={project.links.demo}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  title="Ver Demo"
+                                >
                                   <ExternalLink className="w-4 h-4" />
                                 </a>
                               </Button>
@@ -805,14 +1032,21 @@ export default function Portfolio() {
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <CardDescription className="mb-4 text-base">{project.description}</CardDescription>
+                        <CardDescription className="mb-4 text-base">
+                          {project.description}
+                        </CardDescription>
 
                         {project.highlights && (
                           <div className="mb-4">
-                            <h4 className="text-sm font-semibold mb-2">Principais recursos:</h4>
+                            <h4 className="text-sm font-semibold mb-2">
+                              Principais recursos:
+                            </h4>
                             <ul className="text-xs text-muted-foreground space-y-1">
                               {project.highlights.map((highlight, index) => (
-                                <li key={index} className="flex items-start gap-2">
+                                <li
+                                  key={index}
+                                  className="flex items-start gap-2"
+                                >
                                   <div className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                                   <span>{highlight}</span>
                                 </li>
@@ -823,7 +1057,11 @@ export default function Portfolio() {
 
                         <div className="flex flex-wrap gap-2 mb-4">
                           {project.technologies.slice(0, 4).map((tech) => (
-                            <Badge key={tech} variant="outline" className="text-xs">
+                            <Badge
+                              key={tech}
+                              variant="outline"
+                              className="text-xs"
+                            >
                               {tech}
                             </Badge>
                           ))}
@@ -834,7 +1072,9 @@ export default function Portfolio() {
                           )}
                         </div>
 
-                        <Badge className={getStatusColor(project.status)}>{project.status}</Badge>
+                        <Badge className={getStatusColor(project.status)}>
+                          {project.status}
+                        </Badge>
                       </CardContent>
                     </Card>
                   ))}
@@ -859,7 +1099,9 @@ export default function Portfolio() {
                         <div className="flex items-start justify-between">
                           <div>
                             <div className="flex gap-2 mb-2">
-                              <Badge variant="secondary">{project.category}</Badge>
+                              <Badge variant="secondary">
+                                {project.category}
+                              </Badge>
                               <Badge variant="outline" className="text-xs">
                                 {project.team.role}
                               </Badge>
@@ -868,14 +1110,22 @@ export default function Portfolio() {
                               {project.title}
                             </CardTitle>
                             <p className="text-sm text-muted-foreground mt-1">
-                              {project.client} • {formatDate(project.startDate)} - {formatDate(project.endDate)}
+                              {project.client} • {formatDate(project.startDate)}{" "}
+                              - {formatDate(project.endDate)}
                             </p>
-                            <p className="text-sm text-muted-foreground">{project.team.description}</p>
+                            <p className="text-sm text-muted-foreground">
+                              {project.team.description}
+                            </p>
                           </div>
                           <div className="flex gap-1">
                             {project.links.demo && (
                               <Button variant="ghost" size="sm" asChild>
-                                <a href={project.links.demo} target="_blank" rel="noopener noreferrer" title="Ver Demo">
+                                <a
+                                  href={project.links.demo}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  title="Ver Demo"
+                                >
                                   <ExternalLink className="w-4 h-4" />
                                 </a>
                               </Button>
@@ -896,14 +1146,21 @@ export default function Portfolio() {
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <CardDescription className="mb-4 text-base">{project.description}</CardDescription>
+                        <CardDescription className="mb-4 text-base">
+                          {project.description}
+                        </CardDescription>
 
                         {project.highlights && (
                           <div className="mb-4">
-                            <h4 className="text-sm font-semibold mb-2">Resultados alcançados:</h4>
+                            <h4 className="text-sm font-semibold mb-2">
+                              Resultados alcançados:
+                            </h4>
                             <ul className="text-xs text-muted-foreground space-y-1">
                               {project.highlights.map((highlight, index) => (
-                                <li key={index} className="flex items-start gap-2">
+                                <li
+                                  key={index}
+                                  className="flex items-start gap-2"
+                                >
                                   <div className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                                   <span>{highlight}</span>
                                 </li>
@@ -914,7 +1171,11 @@ export default function Portfolio() {
 
                         <div className="flex flex-wrap gap-2 mb-4">
                           {project.technologies.slice(0, 5).map((tech) => (
-                            <Badge key={tech} variant="outline" className="text-xs">
+                            <Badge
+                              key={tech}
+                              variant="outline"
+                              className="text-xs"
+                            >
                               {tech}
                             </Badge>
                           ))}
@@ -925,7 +1186,9 @@ export default function Portfolio() {
                           )}
                         </div>
 
-                        <Badge className={getStatusColor(project.status)}>{project.status}</Badge>
+                        <Badge className={getStatusColor(project.status)}>
+                          {project.status}
+                        </Badge>
                       </CardContent>
                     </Card>
                   ))}
@@ -941,9 +1204,12 @@ export default function Portfolio() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Tecnologias</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+                Tecnologias
+              </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Ferramentas e tecnologias que utilizo para criar soluções robustas e escaláveis.
+                Ferramentas e tecnologias que utilizo para criar soluções
+                robustas e escaláveis.
               </p>
             </div>
 
@@ -1029,9 +1295,12 @@ export default function Portfolio() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Soft Skills</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+                Soft Skills
+              </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Habilidades interpessoais que complementam minha expertise técnica.
+                Habilidades interpessoais que complementam minha expertise
+                técnica.
               </p>
             </div>
 
@@ -1057,15 +1326,20 @@ export default function Portfolio() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Entre em Contato</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+                Entre em Contato
+              </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Tem um projeto em mente? Vamos conversar sobre como posso ajudar a transformar sua ideia em realidade.
+                Tem um projeto em mente? Vamos conversar sobre como posso ajudar
+                a transformar sua ideia em realidade.
               </p>
             </div>
 
             <Card className="max-w-2xl mx-auto">
               <CardHeader>
-                <CardTitle className="text-2xl text-center">Envie uma Mensagem</CardTitle>
+                <CardTitle className="text-2xl text-center">
+                  Envie uma Mensagem
+                </CardTitle>
                 <CardDescription className="text-center">
                   Preencha o formulário abaixo e entrarei em contato em breve.
                 </CardDescription>
@@ -1156,12 +1430,20 @@ export default function Portfolio() {
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Vamos trabalhar juntos?</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              Vamos trabalhar juntos?
+            </h2>
             <p className="text-xl mb-8 opacity-90">
-              Estou sempre aberto a novos desafios e oportunidades interessantes.
+              Estou sempre aberto a novos desafios e oportunidades
+              interessantes.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="text-lg px-8" asChild>
+              <Button
+                size="lg"
+                variant="secondary"
+                className="text-lg px-8"
+                asChild
+              >
                 <a href="mailto:gabriel@example.com">
                   <Mail className="w-5 h-5 mr-2" />
                   Entrar em Contato
@@ -1189,28 +1471,42 @@ export default function Portfolio() {
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <h3 className="text-xl font-bold text-white mb-2">Gabriel Falcão da Cruz</h3>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  Gabriel Falcão da Cruz
+                </h3>
                 <p className="text-sm">Desenvolvedor Full Stack</p>
               </div>
               <div className="flex gap-4">
                 <Button variant="ghost" size="sm" asChild>
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white">
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-400 hover:text-white"
+                  >
                     <Linkedin className="w-5 h-5" />
                   </a>
                 </Button>
                 <Button variant="ghost" size="sm" asChild>
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white">
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-400 hover:text-white"
+                  >
                     <Github className="w-5 h-5" />
                   </a>
                 </Button>
               </div>
             </div>
             <div className="border-t border-slate-800 mt-8 pt-8 text-center">
-              <p className="text-sm text-slate-400">© 2024 Gabriel Falcão da Cruz. Todos os direitos reservados.</p>
+              <p className="text-sm text-slate-400">
+                © 2024 Gabriel Falcão da Cruz. Todos os direitos reservados.
+              </p>
             </div>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
