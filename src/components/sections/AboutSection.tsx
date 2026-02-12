@@ -2,22 +2,22 @@ import { MapPin } from "lucide-react";
 
 export default function AboutSection() {
   return (
-    <section id="sobre" className="py-20 bg-white dark:bg-slate-900">
+    <section id="sobre" className="py-12 md:py-20 bg-white dark:bg-slate-900">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">Sobre mim</h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Sobre mim</h2>
+              <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
                 Olá, sou Gabriel Falcão.
               </p>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
                 Sou Desenvolvedor Full Stack Júnior e estudante de Sistemas de
                 Informação (5º semestre), atualmente em transição estratégica
                 para Cloud Architecture.
               </p>
 
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
                 Atualmente, estou me especializando em Cloud Computing através
                 da Escola da Nuvem, onde aprofundo meus conhecimentos em
                 arquiteturas escaláveis, seguras e resilientes utilizando
@@ -33,7 +33,7 @@ export default function AboutSection() {
                   <h4 className="font-semibold text-base mb-2">
                     Foco em Nuvem
                   </h4>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                     Preparando-me para a certificação AWS Solutions Architect –
                     Associate, com foco em arquiteturas escaláveis, seguras e
                     desacopladas.
@@ -44,7 +44,7 @@ export default function AboutSection() {
                   <h4 className="font-semibold text-base mb-2">
                     Neurodiversidade como Ativo
                   </h4>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                     Como autista diagnosticado, utilizo meu hiperfoco analítico
                     e atenção rigorosa aos detalhes para garantir a integridade
                     de sistemas complexos e otimização de processos em nuvem.
@@ -53,14 +53,14 @@ export default function AboutSection() {
 
                 <div>
                   <h4 className="font-semibold text-base mb-2">Cultura Ágil</h4>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                     Certificado em Scrum Fundamentals (SFC™), aplicando
                     agilidade e organização em projetos de alto nível.
                   </p>
                 </div>
               </div>
 
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                 Meu objetivo não é apenas escrever código, mas projetar
                 infraestruturas sólidas e resilientes que sustentem o
                 crescimento do negócio.

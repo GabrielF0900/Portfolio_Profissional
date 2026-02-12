@@ -9,14 +9,14 @@ import {
 
 export default function ExperienceSection() {
   return (
-    <section id="experiencia" className="py-20">
+    <section id="experiencia" className="py-12 md:py-20">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
               Experiência Profissional
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
               Minha trajetória profissional e contribuições em organizações de
               destaque.
             </p>

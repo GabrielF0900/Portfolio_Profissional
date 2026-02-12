@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -9,10 +9,12 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Mail, Linkedin, Github, Copy, Check } from "lucide-react";
+import { toast } from "sonner";
 
 export default function CTASection() {
   const [isContactOpen, setIsContactOpen] = useState(false)
   const [copied, setCopied] = useState(false)
+  const emailClickedRef = useRef(false)
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("falcaocruz.tech@gmail.com")
@@ -20,17 +22,43 @@ export default function CTASection() {
     setTimeout(() => setCopied(false), 2000)
   }
 
+  const handleOpenGmail = () => {
+    emailClickedRef.current = true
+    setIsContactOpen(false)
+    toast.info("Abrindo Gmail... ", {
+      description: "Você será redirecionado para compor seu email.",
+      duration: 3000,
+    })
+  }
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible" && emailClickedRef.current) {
+        emailClickedRef.current = false
+        setTimeout(() => {
+          toast.success("Email enviado para Gabriel Falcão?", {
+            description: "Obrigado pelo contato! Ele te retornará em breve.",
+            duration: 5000,
+          })
+        }, 500)
+      }
+    }
+
+    document.addEventListener("visibilitychange", handleVisibilityChange)
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange)
+  }, [])
+
   return (
-    <section className="py-20 bg-primary text-primary-foreground">
+    <section className="py-12 md:py-20 bg-primary text-primary-foreground">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
             Vamos trabalhar juntos?
           </h2>
-          <p className="text-xl mb-8 opacity-90">
+          <p className="text-base md:text-xl mb-8 opacity-90">
             Estou sempre aberto a novos desafios e oportunidades interessantes.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col md:flex-row gap-4 justify-center">
             <Button
               size="lg"
               variant="secondary"
@@ -64,9 +92,9 @@ export default function CTASection() {
                       )}
                     </Button>
                   </div>
-                  <Button asChild className="mt-2">
-                    <a href="mailto:falcaocruz.tech@gmail.com">
-                      Abrir Cliente de Email
+                  <Button asChild className="mt-2" onClick={handleOpenGmail}>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=falcaocruz.tech@gmail.com" target="_blank" rel="noopener noreferrer">
+                      Abrir no Gmail
                     </a>
                   </Button>
                 </div>

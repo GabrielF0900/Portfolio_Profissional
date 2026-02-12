@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -10,11 +10,13 @@ import {
 } from "@/components/ui/dialog"
 import { ArrowRight, Github, Linkedin, Mail, Zap, Copy, Check } from "lucide-react"
 import { useScrollToSection } from "../../hooks/useScroll"
+import { toast } from "sonner"
 
 export default function HeroSection() {
   const scrollToSection = useScrollToSection()
   const [isContactOpen, setIsContactOpen] = useState(false)
   const [copied, setCopied] = useState(false)
+  const emailClickedRef = useRef(false)
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("falcaocruz.tech@gmail.com")
@@ -22,26 +24,52 @@ export default function HeroSection() {
     setTimeout(() => setCopied(false), 2000)
   }
 
+  const handleOpenGmail = () => {
+    emailClickedRef.current = true
+    setIsContactOpen(false)
+    toast.info("Abrindo Gmail... ", {
+      description: "Você será redirecionado para compor seu email.",
+      duration: 3000,
+    })
+  }
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible" && emailClickedRef.current) {
+        emailClickedRef.current = false
+        setTimeout(() => {
+          toast.success("Email enviado para Gabriel Falcão?", {
+            description: "Obrigado pelo contato! Ele te retornará em breve.",
+            duration: 5000,
+          })
+        }, 500)
+      }
+    }
+
+    document.addEventListener("visibilitychange", handleVisibilityChange)
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange)
+  }, [])
+
   return (
     <section id="inicio" className="relative overflow-hidden pt-16">
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]" />
-      <div className="relative container mx-auto px-4 py-24 lg:py-32">
+      <div className="relative container mx-auto px-4 py-16 md:py-24 lg:py-32">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs md:text-sm font-medium mb-6">
               <Zap className="w-4 h-4" />
               Disponível para novos projetos
             </div>
-            <h1 className="text-5xl lg:text-7xl font-bold tracking-tight mb-6">
+            <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-6">
               Gabriel Falcão
               <span className="block text-primary">da Cruz</span>
             </h1>
-            <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Desenvolvedor Full Stack apaixonado por criar experiências digitais excepcionais e soluções inovadoras.
+            <p className="text-base md:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Desenvolvedor Full Stack & Cloud focado em arquiteturas resilientes, seguras e acessíveis.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex flex-col md:flex-row gap-4 justify-center mb-12">
             <Button size="lg" className="text-lg px-8" onClick={() => scrollToSection("projetos")}>
               Ver Projetos
               <ArrowRight className="w-5 h-5 ml-2" />
@@ -79,9 +107,9 @@ export default function HeroSection() {
                       )}
                     </Button>
                   </div>
-                  <Button asChild className="mt-2">
-                    <a href="mailto:falcaocruz.tech@gmail.com">
-                      Abrir Cliente de Email
+                  <Button asChild className="mt-2" onClick={handleOpenGmail}>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=falcaocruz.tech@gmail.com" target="_blank" rel="noopener noreferrer">
+                      Abrir no Gmail
                     </a>
                   </Button>
                 </div>

@@ -391,7 +391,7 @@ export default function Portfolio() {
                 <span className="block text-primary">da Cruz</span>
               </h1>
               <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Desenvolvedor Full Stack apaixonado por criar experiências digitais excepcionais e soluções inovadoras.
+                Desenvolvedor Full Stack & Cloud focado em arquiteturas resilientes, seguras e acessíveis.
               </p>
             </div>
 

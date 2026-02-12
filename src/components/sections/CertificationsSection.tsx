@@ -26,13 +26,13 @@ export default function CertificationsSection() {
     });
 
   return (
-    <section id="certificacoes" className="py-20 px-4">
+    <section id="certificacoes" className="py-12 md:py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
             Certificações/Certificados
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-300">
+          <p className="text-base md:text-lg text-slate-600 dark:text-slate-300">
             Minhas qualificações profissionais
           </p>
         </div>
@@ -65,7 +65,7 @@ export default function CertificationsSection() {
           </TabsList>
 
           <TabsContent value={activeTab} className="w-full">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
               {filteredCertifications.map((cert) => (
                 <Card
                   key={cert.id}

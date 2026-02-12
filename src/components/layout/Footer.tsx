@@ -6,12 +6,12 @@ export default function Footer() {
   const lastUpdate = getLastUpdateFormatted();
 
   return (
-    <footer className="py-12 bg-white dark:bg-slate-900 text-slate-700 dark:text-white">
+    <footer className="py-8 md:py-12 bg-white dark:bg-slate-900 text-slate-700 dark:text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Seção de última atualização */}
-          <div className="mb-8 pb-8 border-b border-slate-200 dark:border-slate-700">
-            <div className="bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-900 rounded-xl p-4 flex items-center gap-4 hover:from-slate-200 hover:to-slate-100 dark:hover:from-slate-700 dark:hover:to-slate-800 transition-all duration-300">
+          <div className="mb-6 md:mb-8 pb-6 md:pb-8 border-b border-slate-200 dark:border-slate-700">
+            <div className="bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-900 rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center gap-4 hover:from-slate-200 hover:to-slate-100 dark:hover:from-slate-700 dark:hover:to-slate-800 transition-all duration-300">
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur opacity-20"></div>
                 <Clock className="relative w-6 h-6 text-blue-500 dark:text-blue-400 animate-pulse" />
@@ -24,7 +24,7 @@ export default function Footer() {
                   {lastUpdate}
                 </p>
               </div>
-              <div className="hidden sm:flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <span className="inline-flex h-2.5 w-2.5 rounded-full bg-green-500"></span>
                 <span className="text-base font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider">
                   Ativo

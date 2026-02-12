@@ -26,14 +26,14 @@ import { Project } from "../../types";
 
 export default function ProjectsSection() {
   return (
-    <section id="projetos" className="py-20">
+    <section id="projetos" className="py-12 md:py-20">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
               Meus Projetos
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
               Uma seleção dos meus trabalhos mais recentes, desde projetos
               pessoais até colaborações em equipe.
             </p>
@@ -62,7 +62,7 @@ export default function ProjectsSection() {
             </TabsList>
 
             <TabsContent value="featured">
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {[
                   ...getFeaturedProjects(projects.personal),
                   ...getFeaturedProjects(projects.collaborative),
@@ -262,7 +262,7 @@ export default function ProjectsSection() {
             </TabsContent>
 
             <TabsContent value="personal">
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {projects.personal.map((project: Project) => (
                   <Card
                     key={project.id}
@@ -426,7 +426,7 @@ export default function ProjectsSection() {
             </TabsContent>
 
             <TabsContent value="collaborative">
-              <div className="grid gap-8 md:grid-cols-2">
+              <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
                 {projects.collaborative.map((project: Project) => (
                   <Card
                     key={project.id}

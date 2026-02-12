@@ -5,17 +5,17 @@ import { technologies } from "../../constants/technologies"
 
 export default function TechnologiesSection() {
   return (
-    <section id="tecnologias" className="py-20 bg-white dark:bg-slate-900">
+    <section id="tecnologias" className="py-12 md:py-20 bg-white dark:bg-slate-900">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Tecnologias</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Tecnologias</h2>
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
               Ferramentas e tecnologias que utilizo para criar soluções robustas e escaláveis.
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">

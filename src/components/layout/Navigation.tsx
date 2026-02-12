@@ -113,7 +113,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
                 <button
                   key={item.id}
                   onClick={() => handleSectionClick(item.id)}
-                  className={`px-3 py-2 rounded-md text-left text-sm font-medium transition-colors ${
+                  className={`px-3 py-2.5 rounded-md text-left text-sm font-medium transition-colors ${
                     activeSection === item.id
                       ? "bg-primary text-primary-foreground"
                       : "text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-primary/10"
@@ -122,7 +122,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
                   {item.label}
                 </button>
               ))}
-              <div className="flex items-center gap-2 px-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+              <div className="flex flex-wrap items-center gap-2 px-3 pt-3 border-t border-slate-200 dark:border-slate-700">
                 <Button
                   size="sm"
                   onClick={handleDownloadCV}
