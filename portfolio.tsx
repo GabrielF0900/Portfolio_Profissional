@@ -527,10 +527,10 @@ export default function Portfolio() {
                 <span className="block text-primary">da Cruz</span>
               </h1>
               <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Cloud-Native Developer focado em projetar arquiteturas
-                resilientes, seguras e acessíveis. Unindo o desenvolvimento Full
-                Stack moderno com o poder da computação em nuvem AWS para
-                garantir a continuidade de negócio.
+                Full Stack Developer focado em projetar arquiteturas acessíveis,
+                seguras e performáticas. Unindo o desenvolvimento Full Stack
+                moderno com o poder da computação em nuvem AWS para garantir a
+                continuidade de negócio e a eficiência de sistemas escaláveis.
               </p>
             </div>
 
