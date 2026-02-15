@@ -215,98 +215,102 @@ export default function CertificationsSection() {
         }}
       >
         {selectedCert && (
-          <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
-            <DialogHeader>
-              <DialogTitle className="text-xl font-bold pr-8">
-                {selectedCert.title}
-              </DialogTitle>
-              <DialogDescription asChild>
-                <div className="flex flex-col gap-1 pt-1">
-                  <span className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-                    <Building2 size={14} />
-                    {selectedCert.issuer}
-                  </span>
-                  {selectedCert.date && (
-                    <span className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-                      <Calendar size={14} />
-                      {selectedCert.date}
+          <DialogContent className="max-w-md p-5 gap-0">
+            {/* Topo: Imagem + Info lado a lado */}
+            <div className="flex gap-4">
+              {/* Imagem compacta no canto direito superior */}
+              <div className="order-2 flex-shrink-0 w-20 h-20 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center p-1.5">
+                <img
+                  src={selectedCert.image}
+                  alt={selectedCert.title}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+
+              {/* Titulo e meta */}
+              <DialogHeader className="order-1 flex-1 space-y-0 text-left">
+                <DialogTitle className="text-base font-bold leading-tight">
+                  {selectedCert.title}
+                </DialogTitle>
+                <DialogDescription asChild>
+                  <div className="flex flex-col gap-0.5 pt-1.5">
+                    <span className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+                      <Building2 size={12} />
+                      {selectedCert.issuer}
                     </span>
-                  )}
-                </div>
-              </DialogDescription>
-            </DialogHeader>
-
-            <div className="flex flex-col md:flex-row gap-6 pt-4">
-              {/* Imagem do certificado */}
-              <div className="md:w-2/5 flex-shrink-0">
-                <div className="aspect-square rounded-lg bg-gray-100 dark:bg-slate-800 flex items-center justify-center p-3 border border-slate-200 dark:border-slate-700">
-                  <img
-                    src={selectedCert.image}
-                    alt={selectedCert.title}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <div className="mt-3 flex items-center gap-2">
-                  <Badge className="bg-green-500 hover:bg-green-600 text-white text-xs">
-                    {selectedCert.type}
-                  </Badge>
-                  <span
-                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${
-                      selectedCert.status === "Certificado"
-                        ? "border-green-600 text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-950/50 dark:border-green-500"
-                        : selectedCert.status === "Próximo Objetivo"
-                          ? "border-blue-600 text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 dark:border-blue-500"
-                          : "border-slate-400 dark:border-slate-500 text-slate-900 dark:text-slate-100 bg-slate-100 dark:bg-slate-700"
-                    }`}
-                  >
-                    {selectedCert.status}
-                  </span>
-                </div>
-              </div>
-
-              {/* Informações */}
-              <div className="md:w-3/5 flex flex-col">
-                {selectedCert.examCode && (
-                  <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">
-                    Código do exame: <span className="font-medium text-slate-700 dark:text-slate-300">{selectedCert.examCode}</span>
-                  </p>
-                )}
-
-                {selectedCert.statusMessage && (
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 italic border-l-2 border-slate-300 dark:border-slate-600 pl-3">
-                    {selectedCert.statusMessage}
-                  </p>
-                )}
-
-                <div className="mt-1">
-                  <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2">
-                    Sobre
-                  </h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                    {selectedCert.description}
-                  </p>
-                </div>
-
-                {selectedCert.credentialUrl && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="mt-6 w-fit"
-                    asChild
-                  >
-                    <a
-                      href={selectedCert.credentialUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2"
-                    >
-                      Ver Certificado
-                      <ExternalLink size={14} />
-                    </a>
-                  </Button>
-                )}
-              </div>
+                    {selectedCert.date && (
+                      <span className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+                        <Calendar size={12} />
+                        {selectedCert.date}
+                      </span>
+                    )}
+                  </div>
+                </DialogDescription>
+              </DialogHeader>
             </div>
+
+            {/* Badges */}
+            <div className="flex items-center gap-2 pt-3 pb-2">
+              <Badge className="bg-green-500 hover:bg-green-600 text-white text-[10px] px-2 py-0">
+                {selectedCert.type}
+              </Badge>
+              <span
+                className={`inline-flex items-center px-2 py-0 rounded-full text-[10px] font-medium border ${
+                  selectedCert.status === "Certificado"
+                    ? "border-green-600 text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-950/50 dark:border-green-500"
+                    : selectedCert.status === "Próximo Objetivo"
+                      ? "border-blue-600 text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 dark:border-blue-500"
+                      : "border-slate-400 dark:border-slate-500 text-slate-900 dark:text-slate-100 bg-slate-100 dark:bg-slate-700"
+                }`}
+              >
+                {selectedCert.status}
+              </span>
+              {selectedCert.examCode && (
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 ml-auto">
+                  {selectedCert.examCode}
+                </span>
+              )}
+            </div>
+
+            {/* Separador */}
+            <div className="h-px bg-slate-200 dark:bg-slate-700" />
+
+            {/* Status message se existir */}
+            {selectedCert.statusMessage && (
+              <p className="text-xs text-slate-600 dark:text-slate-400 italic border-l-2 border-slate-300 dark:border-slate-600 pl-2 mt-3">
+                {selectedCert.statusMessage}
+              </p>
+            )}
+
+            {/* Descrição */}
+            <div className="pt-3">
+              <h4 className="text-xs font-semibold text-slate-800 dark:text-slate-200 mb-1.5">
+                Sobre
+              </h4>
+              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                {selectedCert.description}
+              </p>
+            </div>
+
+            {/* Botão Ver Certificado */}
+            {selectedCert.credentialUrl && (
+              <Button
+                variant="outline"
+                size="sm"
+                className="mt-4 w-full text-xs h-8"
+                asChild
+              >
+                <a
+                  href={selectedCert.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2"
+                >
+                  Ver Certificado
+                  <ExternalLink size={12} />
+                </a>
+              </Button>
+            )}
           </DialogContent>
         )}
       </Dialog>
