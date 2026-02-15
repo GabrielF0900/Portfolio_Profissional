@@ -5,11 +5,19 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ExternalLink } from "lucide-react";
-import { certifications } from "../../constants/certifications";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { ExternalLink, Info, Calendar, Building2 } from "lucide-react";
+import { certifications, type Certification } from "../../constants/certifications";
 
 export default function CertificationsSection() {
   const [activeTab, setActiveTab] = useState("Certificação");
+  const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
 
   const filteredCertifications = certifications
     .filter((cert) => {
@@ -178,6 +186,18 @@ export default function CertificationsSection() {
                           </a>
                         </Button>
                       )}
+
+                      {cert.description && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="mt-2 w-full text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+                          onClick={() => setSelectedCert(cert)}
+                        >
+                          <Info size={14} className="mr-2" />
+                          Mais Informações
+                        </Button>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -186,6 +206,110 @@ export default function CertificationsSection() {
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Modal de Mais Informações */}
+      <Dialog
+        open={!!selectedCert}
+        onOpenChange={(open) => {
+          if (!open) setSelectedCert(null);
+        }}
+      >
+        {selectedCert && (
+          <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="text-xl font-bold pr-8">
+                {selectedCert.title}
+              </DialogTitle>
+              <DialogDescription asChild>
+                <div className="flex flex-col gap-1 pt-1">
+                  <span className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                    <Building2 size={14} />
+                    {selectedCert.issuer}
+                  </span>
+                  {selectedCert.date && (
+                    <span className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                      <Calendar size={14} />
+                      {selectedCert.date}
+                    </span>
+                  )}
+                </div>
+              </DialogDescription>
+            </DialogHeader>
+
+            <div className="flex flex-col md:flex-row gap-6 pt-4">
+              {/* Imagem do certificado */}
+              <div className="md:w-2/5 flex-shrink-0">
+                <div className="aspect-square rounded-lg bg-gray-100 dark:bg-slate-800 flex items-center justify-center p-3 border border-slate-200 dark:border-slate-700">
+                  <img
+                    src={selectedCert.image}
+                    alt={selectedCert.title}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="mt-3 flex items-center gap-2">
+                  <Badge className="bg-green-500 hover:bg-green-600 text-white text-xs">
+                    {selectedCert.type}
+                  </Badge>
+                  <span
+                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${
+                      selectedCert.status === "Certificado"
+                        ? "border-green-600 text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-950/50 dark:border-green-500"
+                        : selectedCert.status === "Próximo Objetivo"
+                          ? "border-blue-600 text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 dark:border-blue-500"
+                          : "border-slate-400 dark:border-slate-500 text-slate-900 dark:text-slate-100 bg-slate-100 dark:bg-slate-700"
+                    }`}
+                  >
+                    {selectedCert.status}
+                  </span>
+                </div>
+              </div>
+
+              {/* Informações */}
+              <div className="md:w-3/5 flex flex-col">
+                {selectedCert.examCode && (
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">
+                    Código do exame: <span className="font-medium text-slate-700 dark:text-slate-300">{selectedCert.examCode}</span>
+                  </p>
+                )}
+
+                {selectedCert.statusMessage && (
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 italic border-l-2 border-slate-300 dark:border-slate-600 pl-3">
+                    {selectedCert.statusMessage}
+                  </p>
+                )}
+
+                <div className="mt-1">
+                  <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2">
+                    Sobre
+                  </h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {selectedCert.description}
+                  </p>
+                </div>
+
+                {selectedCert.credentialUrl && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="mt-6 w-fit"
+                    asChild
+                  >
+                    <a
+                      href={selectedCert.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      Ver Certificado
+                      <ExternalLink size={14} />
+                    </a>
+                  </Button>
+                )}
+              </div>
+            </div>
+          </DialogContent>
+        )}
+      </Dialog>
     </section>
   );
 }
