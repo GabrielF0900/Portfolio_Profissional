@@ -9,6 +9,7 @@ export interface Certification {
   date?: string;
   credentialUrl?: string;
   statusMessage?: string;
+  description?: string;
 }
 
 export const certifications: Certification[] = [
@@ -33,6 +34,8 @@ export const certifications: Certification[] = [
     date: "Emitido em 15/02/2026",
     credentialUrl:
       "https://www.credly.com/badges/fcbb935d-5dda-44e1-a782-9cb5ce32bd0f",
+    description:
+      "A AWS Re/Start foi um curso preparatório que fiz na Escola da Nuvem com 270 horas de conteúdo sobre fundamentos em nuvem, Linux, infraestrutura cloud, arquitetura cloud e etc.",
   },
   {
     id: 5,

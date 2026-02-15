@@ -7,9 +7,27 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ExternalLink } from "lucide-react";
 import { certifications } from "../../constants/certifications";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog";
 
 export default function CertificationsSection() {
   const [activeTab, setActiveTab] = useState("Certificação");
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedCert, setSelectedCert] = useState<
+    (typeof certifications)[number] | null
+  >(null);
+
+  const openDetails = (cert: (typeof certifications)[number]) => {
+    setSelectedCert(cert);
+    setIsOpen(true);
+  };
 
   const filteredCertifications = certifications
     .filter((cert) => {
@@ -185,6 +203,63 @@ export default function CertificationsSection() {
             </div>
           </TabsContent>
         </Tabs>
+
+        {/* Modal de detalhes */}
+        <Dialog
+          open={isOpen}
+          onOpenChange={(open) => {
+            setIsOpen(open);
+            if (!open) setSelectedCert(null);
+          }}
+        >
+          <DialogContent className="w-11/12 sm:max-w-md sm:w-96 max-h-[80vh] overflow-auto rounded-lg">
+            <DialogHeader>
+              <div className="flex items-start gap-4 w-full">
+                <DialogTitle className="flex-1">
+                  {selectedCert?.title}
+                </DialogTitle>
+                {selectedCert?.image && (
+                  <img
+                    src={selectedCert.image}
+                    alt={selectedCert.title}
+                    className="w-28 h-20 object-contain rounded-md ml-auto"
+                  />
+                )}
+              </div>
+              <DialogDescription>
+                {selectedCert?.issuer}{" "}
+                {selectedCert?.date && <span>• {selectedCert.date}</span>}
+              </DialogDescription>
+            </DialogHeader>
+
+            <div className="mt-4 text-sm text-slate-700 dark:text-slate-300">
+              {selectedCert?.description ??
+                (selectedCert?.id === 16
+                  ? "A AWS Re/Start foi um curso preparatório que fiz na Escola da Nuvem com 270 horas de conteúdo sobre fundamentos em nuvem, Linux, infraestrutura cloud, arquitetura cloud e etc."
+                  : "Descrição não disponível para este certificado.")}
+            </div>
+
+            <DialogFooter className="mt-6 flex items-center justify-end gap-2">
+              {selectedCert?.credentialUrl && (
+                <Button variant="outline" asChild>
+                  <a
+                    href={selectedCert.credentialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    Ver Certificado
+                    <ExternalLink size={14} />
+                  </a>
+                </Button>
+              )}
+
+              <DialogClose asChild>
+                <Button>Fechar</Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
