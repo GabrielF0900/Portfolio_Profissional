@@ -215,11 +215,11 @@ export default function CertificationsSection() {
         }}
       >
         {selectedCert && (
-          <DialogContent className="max-w-2xl p-6 gap-0">
-            <div className="flex gap-6">
+          <DialogContent className="max-w-lg p-5 gap-0">
+            <div className="flex gap-4">
               {/* Coluna Esquerda: Imagem */}
               <div className="flex-shrink-0">
-                <div className="w-32 h-32 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center p-3">
+                <div className="w-24 h-24 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center p-2">
                   <img
                     src={selectedCert.image}
                     alt={selectedCert.title}
@@ -232,7 +232,7 @@ export default function CertificationsSection() {
               <div className="flex-1 flex flex-col min-w-0">
                 {/* Badge Tipo */}
                 <Badge
-                  className={`w-fit mb-3 text-sm font-semibold px-3 py-1 ${
+                  className={`w-fit mb-2 text-xs font-semibold px-2.5 py-0.5 ${
                     selectedCert.type === "Certificação"
                       ? "bg-purple-600 hover:bg-purple-700 text-white"
                       : "bg-green-600 hover:bg-green-700 text-white"
@@ -242,13 +242,13 @@ export default function CertificationsSection() {
                 </Badge>
 
                 {/* Título */}
-                <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 leading-tight">
+                <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-2 leading-tight">
                   {selectedCert.title}
                 </h2>
 
                 {/* Status */}
                 <span
-                  className={`inline-flex items-center w-fit px-3 py-1 rounded-full text-sm font-medium border mb-4 ${
+                  className={`inline-flex items-center w-fit px-2.5 py-0.5 rounded-full text-xs font-medium border mb-3 ${
                     selectedCert.status === "Certificado"
                       ? "border-green-600 text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-950/50 dark:border-green-500"
                       : selectedCert.status === "Próximo Objetivo"
@@ -258,84 +258,84 @@ export default function CertificationsSection() {
                 >
                   {selectedCert.status}
                 </span>
-
-                {/* Divisor */}
-                <div className="h-px bg-slate-200 dark:bg-slate-700 mb-4" />
-
-                {/* Info: Emissor, Data, Código */}
-                <div className="space-y-3 mb-4">
-                  <div>
-                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
-                      Emissor
-                    </p>
-                    <p className="text-sm text-slate-900 dark:text-white font-medium">
-                      {selectedCert.issuer}
-                    </p>
-                  </div>
-
-                  {selectedCert.date && (
-                    <div>
-                      <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
-                        Data de Emissão
-                      </p>
-                      <p className="text-sm text-slate-900 dark:text-white font-medium">
-                        {selectedCert.date}
-                      </p>
-                    </div>
-                  )}
-
-                  {selectedCert.examCode && (
-                    <div>
-                      <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
-                        Código do Exame
-                      </p>
-                      <p className="text-sm text-slate-900 dark:text-white font-mono font-bold">
-                        {selectedCert.examCode}
-                      </p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Status Message */}
-                {selectedCert.statusMessage && (
-                  <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-950/30 border-l-2 border-blue-500 rounded-r">
-                    <p className="text-xs text-blue-700 dark:text-blue-300">
-                      {selectedCert.statusMessage}
-                    </p>
-                  </div>
-                )}
-
-                {/* Descrição */}
-                <div className="mb-4">
-                  <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-2">
-                    Sobre
-                  </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                    {selectedCert.description}
-                  </p>
-                </div>
-
-                {/* Botão Ver Certificado */}
-                {selectedCert.credentialUrl && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full mt-auto"
-                    asChild
-                  >
-                    <a
-                      href={selectedCert.credentialUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2"
-                    >
-                      Ver Certificado
-                      <ExternalLink size={14} />
-                    </a>
-                  </Button>
-                )}
               </div>
             </div>
+
+            {/* Divisor */}
+            <div className="h-px bg-slate-200 dark:bg-slate-700 my-3" />
+
+            {/* Info: Emissor, Data, Código */}
+            <div className="space-y-2 mb-3">
+              <div>
+                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-0.5">
+                  Emissor
+                </p>
+                <p className="text-sm text-slate-900 dark:text-white font-medium">
+                  {selectedCert.issuer}
+                </p>
+              </div>
+
+              {selectedCert.date && (
+                <div>
+                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-0.5">
+                    Data de Emissão
+                  </p>
+                  <p className="text-sm text-slate-900 dark:text-white font-medium">
+                    {selectedCert.date}
+                  </p>
+                </div>
+              )}
+
+              {selectedCert.examCode && (
+                <div>
+                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-0.5">
+                    Código do Exame
+                  </p>
+                  <p className="text-sm text-slate-900 dark:text-white font-mono font-bold">
+                    {selectedCert.examCode}
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Status Message */}
+            {selectedCert.statusMessage && (
+              <div className="mb-3 p-2 bg-blue-50 dark:bg-blue-950/30 border-l-2 border-blue-500 rounded-r">
+                <p className="text-xs text-blue-700 dark:text-blue-300">
+                  {selectedCert.statusMessage}
+                </p>
+              </div>
+            )}
+
+            {/* Descrição */}
+            <div className="mb-3">
+              <h3 className="text-xs font-semibold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-1">
+                Sobre
+              </h3>
+              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                {selectedCert.description}
+              </p>
+            </div>
+
+            {/* Botão Ver Certificado */}
+            {selectedCert.credentialUrl && (
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full"
+                asChild
+              >
+                <a
+                  href={selectedCert.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2"
+                >
+                  Ver Certificado
+                  <ExternalLink size={14} />
+                </a>
+              </Button>
+            )}
           </DialogContent>
         )}
       </Dialog>
