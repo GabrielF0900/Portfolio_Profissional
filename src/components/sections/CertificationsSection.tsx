@@ -215,25 +215,41 @@ export default function CertificationsSection() {
         }}
       >
         {selectedCert && (
-          <DialogContent className="max-w-lg p-6 gap-0">
-            {/* Grid 2 colunas: Imagem à esquerda, conteúdo à direita */}
-            <div className="grid grid-cols-3 gap-5">
-              {/* Imagem - coluna esquerda */}
-              <div className="col-span-1 flex flex-col items-start">
-                <div className="w-full aspect-square rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center p-2">
-                  <img
-                    src={selectedCert.image}
-                    alt={selectedCert.title}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                {/* Badges na imagem */}
-                <div className="flex flex-col gap-1.5 w-full mt-3">
-                  <Badge className="bg-green-500 hover:bg-green-600 text-white text-xs px-2 py-1 w-fit">
+          <DialogContent className="max-w-2xl p-0 gap-0 overflow-hidden">
+            <div className="flex">
+              {/* Coluna Esquerda: Imagem */}
+              <div className="w-2/5 bg-slate-50 dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 flex items-center justify-center p-6">
+                <img
+                  src={selectedCert.image}
+                  alt={selectedCert.title}
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+
+              {/* Coluna Direita: Conteúdo */}
+              <div className="w-3/5 flex flex-col p-6">
+                {/* Badge Tipo */}
+                <div className="mb-4">
+                  <Badge
+                    className={`text-white text-xs font-semibold px-3 py-1 ${
+                      selectedCert.type === "Certificação"
+                        ? "bg-purple-600 hover:bg-purple-700"
+                        : "bg-green-600 hover:bg-green-700"
+                    }`}
+                  >
                     {selectedCert.type}
                   </Badge>
+                </div>
+
+                {/* Título */}
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">
+                  {selectedCert.title}
+                </h2>
+
+                {/* Status */}
+                <div className="mb-4">
                   <span
-                    className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border w-fit ${
+                    className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border ${
                       selectedCert.status === "Certificado"
                         ? "border-green-600 text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-950/50 dark:border-green-500"
                         : selectedCert.status === "Próximo Objetivo"
@@ -244,88 +260,84 @@ export default function CertificationsSection() {
                     {selectedCert.status}
                   </span>
                 </div>
-              </div>
 
-              {/* Conteúdo - coluna direita */}
-              <div className="col-span-2 flex flex-col">
-                {/* Título */}
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-tight mb-3">
-                  {selectedCert.title}
-                </h3>
+                {/* Divisor */}
+                <div className="h-px bg-slate-200 dark:bg-slate-700 mb-4" />
 
-                {/* Info: Emissor e Data */}
-                <div className="space-y-1.5 mb-3 pb-3 border-b border-slate-200 dark:border-slate-700">
-                  <div className="flex items-start gap-2">
-                    <Building2 size={14} className="text-slate-500 dark:text-slate-400 flex-shrink-0 mt-0.5" />
+                {/* Info: Emissor, Data, Código */}
+                <div className="space-y-3 mb-4">
+                  <div>
+                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
+                      Emissor
+                    </p>
+                    <p className="text-sm text-slate-900 dark:text-white font-medium">
+                      {selectedCert.issuer}
+                    </p>
+                  </div>
+
+                  {selectedCert.date && (
                     <div>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">Emissor</p>
-                      <p className="text-sm font-medium text-slate-900 dark:text-white">
-                        {selectedCert.issuer}
+                      <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
+                        Data de Emissão
+                      </p>
+                      <p className="text-sm text-slate-900 dark:text-white font-medium">
+                        {selectedCert.date}
                       </p>
                     </div>
-                  </div>
-                  {selectedCert.date && (
-                    <div className="flex items-start gap-2">
-                      <Calendar size={14} className="text-slate-500 dark:text-slate-400 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-xs text-slate-500 dark:text-slate-400">Data de Emissão</p>
-                        <p className="text-sm font-medium text-slate-900 dark:text-white">
-                          {selectedCert.date}
-                        </p>
-                      </div>
-                    </div>
                   )}
+
                   {selectedCert.examCode && (
-                    <div className="flex items-start gap-2">
-                      <Info size={14} className="text-slate-500 dark:text-slate-400 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-xs text-slate-500 dark:text-slate-400">Código do Exame</p>
-                        <p className="text-sm font-mono font-semibold text-slate-900 dark:text-white">
-                          {selectedCert.examCode}
-                        </p>
-                      </div>
+                    <div>
+                      <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
+                        Código do Exame
+                      </p>
+                      <p className="text-sm text-slate-900 dark:text-white font-mono font-bold">
+                        {selectedCert.examCode}
+                      </p>
                     </div>
                   )}
                 </div>
 
                 {/* Status Message */}
                 {selectedCert.statusMessage && (
-                  <p className="text-xs text-slate-600 dark:text-slate-400 italic border-l-2 border-blue-400 dark:border-blue-500 pl-2.5 mb-3 py-1.5 bg-blue-50 dark:bg-blue-950/20 rounded-r">
-                    {selectedCert.statusMessage}
-                  </p>
+                  <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-950/30 border-l-3 border-blue-500 rounded-r">
+                    <p className="text-xs text-blue-700 dark:text-blue-300">
+                      {selectedCert.statusMessage}
+                    </p>
+                  </div>
                 )}
 
                 {/* Descrição */}
-                <div>
-                  <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5">
+                <div className="flex-1 flex flex-col mb-4">
+                  <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-2">
                     Sobre
-                  </h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-4">
+                  </h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                     {selectedCert.description}
                   </p>
                 </div>
+
+                {/* Botão Ver Certificado */}
+                {selectedCert.credentialUrl && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full"
+                    asChild
+                  >
+                    <a
+                      href={selectedCert.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2"
+                    >
+                      Ver Certificado
+                      <ExternalLink size={14} />
+                    </a>
+                  </Button>
+                )}
               </div>
             </div>
-
-            {/* Botão Ver Certificado - em baixo na largura total */}
-            {selectedCert.credentialUrl && (
-              <Button
-                variant="outline"
-                size="sm"
-                className="mt-5 w-full"
-                asChild
-              >
-                <a
-                  href={selectedCert.credentialUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2"
-                >
-                  Ver Certificado
-                  <ExternalLink size={14} />
-                </a>
-              </Button>
-            )}
           </DialogContent>
         )}
       </Dialog>
