@@ -17,11 +17,26 @@ export default function CertificationsSection() {
       return cert.type === activeTab;
     })
     .sort((a, b) => {
-      // Quando for "all", Certificações vêm primeiro
+      // Forçar AWS re/Start (id:16) em primeiro lugar quando necessário
+      const isAReStart = a.id === 16;
+      const isBReStart = b.id === 16;
+
       if (activeTab === "all") {
+        // re/Start sempre em primeiro lugar no filtro 'Todos'
+        if (isAReStart && !isBReStart) return -1;
+        if (isBReStart && !isAReStart) return 1;
+
+        // Em seguida, manter comportamento existente: Certificações primeiro
         if (a.type === "Certificação" && b.type !== "Certificação") return -1;
         if (a.type !== "Certificação" && b.type === "Certificação") return 1;
       }
+
+      if (activeTab === "Certificado") {
+        // re/Start em primeiro lugar no filtro 'Certificados'
+        if (isAReStart && !isBReStart) return -1;
+        if (isBReStart && !isAReStart) return 1;
+      }
+
       return 0;
     });
 

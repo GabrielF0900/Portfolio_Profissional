@@ -24,6 +24,17 @@ export const certifications: Certification[] = [
       "https://www.scrumstudy.com/certification/verify?type=SFC&number=1055958",
   },
   {
+    id: 16,
+    title: "AWS re/Start Graduate",
+    issuer: "Amazon Web Services",
+    type: "Certificado",
+    status: "Certificado",
+    image: "/certificados/awsrestartgraduate.png",
+    date: "Emitido em 15/02/2026",
+    credentialUrl:
+      "https://www.credly.com/badges/fcbb935d-5dda-44e1-a782-9cb5ce32bd0f",
+  },
+  {
     id: 5,
     title: "Bootcamp Docker Fundamentals",
     issuer: "DIO",
@@ -163,8 +174,7 @@ export const certifications: Certification[] = [
     status: "Estudando",
     image: "/certification/practitioner.png",
     examCode: "CLF-C02",
-    statusMessage:
-      "Candidato em fase final de estudos (Voucher previsto para Fev/2026)",
+    statusMessage: "Voucher previsto para 24/02 e efetuação do exame dia 26/02",
   },
   {
     id: 2,
