@@ -325,7 +325,7 @@ export const projects: PortfolioData = {
         "Interface amigável e responsiva",
         "Gerenciamento de usuários com autenticação JWT",
       ],
-      featured: true,
+      featured: false,
       links: {
         github: "https://github.com/GabrielF0900/ChatPRO",
         case_study: "#",
@@ -498,7 +498,7 @@ export const projects: PortfolioData = {
       id: 17,
       title: "MindTrack",
       description:
-        "Plataforma colaborativa para apoio ao bem‑estar mental de estudantes — registro de reflexões, acompanhamento de humor e dashboards analíticos.",
+        "Plataforma colaborativa para apoio ao bem‑estar mental de estudantes — registro de reflexões, acompanhamento de humor e dashboards analíticos. Permite entradas diárias privadas, acompanhamento longitudinal de estados emocionais, criação de rotinas de autocuidado e exportação de relatórios para profissionais (com consentimento). Focado em promover autoconsciência, detecção precoce de sinais de risco e fornecer métricas acionáveis para intervenções educativas e clínicas.",
       technologies: [
         "React",
         "Vite",
@@ -514,9 +514,9 @@ export const projects: PortfolioData = {
       endDate: "2025-11",
       image: "/images/mindtrack.jpeg",
       team: {
-        size: 6,
+        size: 4,
         role: "Plataforma",
-        description: "Equipe colaborativa: Sistemas de Informação + Psicologia",
+        description: "Equipe de 4 desenvolvedores",
       },
       client: "Projeto Colaborativo",
       highlights: [

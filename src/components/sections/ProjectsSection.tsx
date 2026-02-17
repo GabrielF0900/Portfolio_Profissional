@@ -64,8 +64,18 @@ export default function ProjectsSection() {
             <TabsContent value="featured">
               <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {[
-                  ...getFeaturedProjects(projects.personal),
-                  ...getFeaturedProjects(projects.collaborative),
+                  ...getFeaturedProjects(projects.personal).sort((a, b) => {
+                    const aDate = a.endDate ?? a.startDate ?? "";
+                    const bDate = b.endDate ?? b.startDate ?? "";
+                    return bDate.localeCompare(aDate);
+                  }),
+                  ...getFeaturedProjects(projects.collaborative).sort(
+                    (a, b) => {
+                      const aDate = a.endDate ?? a.startDate ?? "";
+                      const bDate = b.endDate ?? b.startDate ?? "";
+                      return bDate.localeCompare(aDate);
+                    },
+                  ),
                 ].map((project: Project) => (
                   <Card
                     key={project.id}
@@ -427,157 +437,166 @@ export default function ProjectsSection() {
 
             <TabsContent value="collaborative">
               <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
-                {projects.collaborative.map((project: Project) => (
-                  <Card
-                    key={project.id}
-                    className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
-                  >
-                    <div className="aspect-video overflow-hidden relative cursor-pointer group">
-                      {project.links.demo || project.links.github ? (
-                        <a
-                          href={project.links.demo || project.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block w-full h-full"
-                        >
+                {[...projects.collaborative]
+                  .sort((a, b) => {
+                    // non-featured first, featured last
+                    if (a.featured !== b.featured) return a.featured ? 1 : -1;
+                    const aDate = a.endDate ?? a.startDate ?? "";
+                    const bDate = b.endDate ?? b.startDate ?? "";
+                    // dentro de cada grupo, ordenar por data (mais recente primeiro)
+                    return bDate.localeCompare(aDate);
+                  })
+                  .map((project: Project) => (
+                    <Card
+                      key={project.id}
+                      className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
+                    >
+                      <div className="aspect-video overflow-hidden relative cursor-pointer group">
+                        {project.links.demo || project.links.github ? (
+                          <a
+                            href={project.links.demo || project.links.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block w-full h-full"
+                          >
+                            <img
+                              src={project.image || "/placeholder.svg"}
+                              alt={project.title}
+                              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                            />
+                          </a>
+                        ) : (
                           <img
                             src={project.image || "/placeholder.svg"}
                             alt={project.title}
                             className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                           />
-                        </a>
-                      ) : (
-                        <img
-                          src={project.image || "/placeholder.svg"}
-                          alt={project.title}
-                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                        />
-                      )}
-                    </div>
-                    <CardHeader>
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <div className="flex gap-2 mb-2">
-                            <Badge variant="secondary">
-                              {project.category}
-                            </Badge>
-                            {project.team && (
-                              <Badge variant="outline" className="text-xs">
-                                {project.team.role}
-                              </Badge>
-                            )}
-                          </div>
-                          <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                            {project.title}
-                          </CardTitle>
-                          <p className="text-sm text-muted-foreground mt-1">
-                            {project.client} • {formatDate(project.startDate)} -{" "}
-                            {formatDate(project.endDate)}
-                          </p>
-                          {project.team && (
-                            <p className="text-sm text-muted-foreground">
-                              {project.team.description}
-                            </p>
-                          )}
-                        </div>
-                        <div className="flex gap-1">
-                          {project.links.demo && (
-                            <Button variant="ghost" size="sm" asChild>
-                              <a
-                                href={project.links.demo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                title="Ver Demo"
-                              >
-                                <ExternalLink className="w-4 h-4" />
-                              </a>
-                            </Button>
-                          )}
-                          {project.links.case_study && (
-                            <Button variant="ghost" size="sm" asChild>
-                              <a
-                                href={project.links.case_study}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                title="Case Study"
-                              >
-                                <Code className="w-4 h-4" />
-                              </a>
-                            </Button>
-                          )}
-                        </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription className="mb-4 text-base">
-                        {project.description}
-                      </CardDescription>
-
-                      {project.highlights && (
-                        <div className="mb-4">
-                          <h4 className="text-sm font-semibold mb-2">
-                            Resultados alcançados:
-                          </h4>
-                          <ul className="text-xs text-muted-foreground space-y-1">
-                            {project.highlights.map(
-                              (highlight: string, index: number) => (
-                                <li
-                                  key={index}
-                                  className="flex items-start gap-2"
-                                >
-                                  <div className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                                  <span>{highlight}</span>
-                                </li>
-                              ),
-                            )}
-                          </ul>
-                        </div>
-                      )}
-
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies
-                          .slice(0, 5)
-                          .map((tech: string) => (
-                            <Badge
-                              key={tech}
-                              variant="outline"
-                              className="text-xs"
-                            >
-                              {tech}
-                            </Badge>
-                          ))}
-                        {project.technologies.length > 5 && (
-                          <Popover>
-                            <PopoverTrigger>
-                              <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors cursor-pointer hover:bg-accent border-input bg-background">
-                                +{project.technologies.length - 5}
-                              </span>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-auto p-3">
-                              <div className="flex flex-wrap gap-2">
-                                {project.technologies
-                                  .slice(5)
-                                  .map((tech: string) => (
-                                    <Badge
-                                      key={tech}
-                                      variant="outline"
-                                      className="text-xs"
-                                    >
-                                      {tech}
-                                    </Badge>
-                                  ))}
-                              </div>
-                            </PopoverContent>
-                          </Popover>
                         )}
                       </div>
+                      <CardHeader>
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <div className="flex gap-2 mb-2">
+                              <Badge variant="secondary">
+                                {project.category}
+                              </Badge>
+                              {project.team && (
+                                <Badge variant="outline" className="text-xs">
+                                  {project.team.role}
+                                </Badge>
+                              )}
+                            </div>
+                            <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                              {project.title}
+                            </CardTitle>
+                            <p className="text-sm text-muted-foreground mt-1">
+                              {project.client} • {formatDate(project.startDate)}{" "}
+                              - {formatDate(project.endDate)}
+                            </p>
+                            {project.team && (
+                              <p className="text-sm text-muted-foreground">
+                                {project.team.description}
+                              </p>
+                            )}
+                          </div>
+                          <div className="flex gap-1">
+                            {project.links.demo && (
+                              <Button variant="ghost" size="sm" asChild>
+                                <a
+                                  href={project.links.demo}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  title="Ver Demo"
+                                >
+                                  <ExternalLink className="w-4 h-4" />
+                                </a>
+                              </Button>
+                            )}
+                            {project.links.case_study && (
+                              <Button variant="ghost" size="sm" asChild>
+                                <a
+                                  href={project.links.case_study}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  title="Case Study"
+                                >
+                                  <Code className="w-4 h-4" />
+                                </a>
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <CardDescription className="mb-4 text-base">
+                          {project.description}
+                        </CardDescription>
 
-                      <Badge className={getStatusColor(project.status)}>
-                        {project.status}
-                      </Badge>
-                    </CardContent>
-                  </Card>
-                ))}
+                        {project.highlights && (
+                          <div className="mb-4">
+                            <h4 className="text-sm font-semibold mb-2">
+                              Resultados alcançados:
+                            </h4>
+                            <ul className="text-xs text-muted-foreground space-y-1">
+                              {project.highlights.map(
+                                (highlight: string, index: number) => (
+                                  <li
+                                    key={index}
+                                    className="flex items-start gap-2"
+                                  >
+                                    <div className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                                    <span>{highlight}</span>
+                                  </li>
+                                ),
+                              )}
+                            </ul>
+                          </div>
+                        )}
+
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.technologies
+                            .slice(0, 5)
+                            .map((tech: string) => (
+                              <Badge
+                                key={tech}
+                                variant="outline"
+                                className="text-xs"
+                              >
+                                {tech}
+                              </Badge>
+                            ))}
+                          {project.technologies.length > 5 && (
+                            <Popover>
+                              <PopoverTrigger>
+                                <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors cursor-pointer hover:bg-accent border-input bg-background">
+                                  +{project.technologies.length - 5}
+                                </span>
+                              </PopoverTrigger>
+                              <PopoverContent className="w-auto p-3">
+                                <div className="flex flex-wrap gap-2">
+                                  {project.technologies
+                                    .slice(5)
+                                    .map((tech: string) => (
+                                      <Badge
+                                        key={tech}
+                                        variant="outline"
+                                        className="text-xs"
+                                      >
+                                        {tech}
+                                      </Badge>
+                                    ))}
+                                </div>
+                              </PopoverContent>
+                            </Popover>
+                          )}
+                        </div>
+
+                        <Badge className={getStatusColor(project.status)}>
+                          {project.status}
+                        </Badge>
+                      </CardContent>
+                    </Card>
+                  ))}
               </div>
             </TabsContent>
           </Tabs>
