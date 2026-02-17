@@ -494,5 +494,41 @@ export const projects: PortfolioData = {
         case_study: null,
       },
     },
+    {
+      id: 17,
+      title: "MindTrack",
+      description:
+        "Plataforma colaborativa para apoio ao bem‑estar mental de estudantes — registro de reflexões, acompanhamento de humor e dashboards analíticos.",
+      technologies: [
+        "React",
+        "Vite",
+        "TypeScript",
+        "Tailwind CSS",
+        "NestJS",
+        "Prisma",
+        "PostgreSQL",
+      ],
+      status: "Concluído",
+      category: "Full Stack",
+      startDate: "2025-10",
+      endDate: "2025-11",
+      image: "/images/mindtrack.jpeg",
+      team: {
+        size: 6,
+        role: "Plataforma",
+        description: "Equipe colaborativa: Sistemas de Informação + Psicologia",
+      },
+      client: "Projeto Colaborativo",
+      highlights: [
+        "Autenticação segura e estrutura backend (NestJS + Prisma + PostgreSQL)",
+        "Registro de reflexões e acompanhamento de humor",
+        "Dashboards e exportação de relatórios (em desenvolvimento)",
+      ],
+      featured: true,
+      links: {
+        github: "https://github.com/Neukox/MindTrack",
+        case_study: null,
+      },
+    },
   ],
 };
