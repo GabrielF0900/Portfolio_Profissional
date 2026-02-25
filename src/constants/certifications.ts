@@ -174,20 +174,21 @@ export const certifications: Certification[] = [
     title: "AWS Certified Cloud Practitioner",
     issuer: "Amazon Web Services",
     type: "Certificação",
-    status: "Estudando",
+    status: "Certificado",
     image: "/certification/practitioner.png",
     examCode: "CLF-C02",
-    statusMessage: "Voucher previsto para 24/02 e efetuação do exame dia 26/02",
+    date: "Emitido em 25/02/2026",
+    credentialUrl:
+      "https://www.credly.com/badges/a4842bb2-97c2-45e4-a2ed-0e7131a67bfc",
   },
   {
     id: 2,
     title: "AWS Certified Solutions Architect - Associate",
     issuer: "Amazon Web Services",
     type: "Certificação",
-    status: "Próximo Objetivo",
+    status: "Estudando",
     image: "/certification/archtecht-associate.jpg",
     examCode: "SAA-C03",
-    statusMessage:
-      "Planejado para iniciar após a conclusão da AWS Cloud Practitioner",
+    statusMessage: "Estudos iniciados em 25/02/2026.",
   },
 ];
