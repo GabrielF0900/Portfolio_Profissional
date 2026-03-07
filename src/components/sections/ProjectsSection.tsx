@@ -104,7 +104,11 @@ export default function ProjectsSection() {
                         </div>
                       ) : project.links.demo || project.links.github ? (
                         <a
-                          href={project.links.demo || project.links.github}
+                          href={
+                            project.links.demo ||
+                            project.links.github ||
+                            undefined
+                          }
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block w-full h-full"
@@ -301,7 +305,11 @@ export default function ProjectsSection() {
                         </div>
                       ) : project.links.demo || project.links.github ? (
                         <a
-                          href={project.links.demo || project.links.github}
+                          href={
+                            project.links.demo ||
+                            project.links.github ||
+                            undefined
+                          }
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block w-full h-full"
@@ -454,7 +462,11 @@ export default function ProjectsSection() {
                       <div className="aspect-video overflow-hidden relative cursor-pointer group">
                         {project.links.demo || project.links.github ? (
                           <a
-                            href={project.links.demo || project.links.github}
+                            href={
+                              project.links.demo ||
+                              project.links.github ||
+                              undefined
+                            }
                             target="_blank"
                             rel="noopener noreferrer"
                             className="block w-full h-full"
@@ -521,6 +533,18 @@ export default function ProjectsSection() {
                                   title="Case Study"
                                 >
                                   <Code className="w-4 h-4" />
+                                </a>
+                              </Button>
+                            )}
+                            {project.links.github && (
+                              <Button variant="ghost" size="sm" asChild>
+                                <a
+                                  href={project.links.github}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  title="Ver Código"
+                                >
+                                  <Github className="w-5 h-5" />
                                 </a>
                               </Button>
                             )}
