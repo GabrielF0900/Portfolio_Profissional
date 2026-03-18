@@ -422,6 +422,56 @@ export const projects: PortfolioData = {
   ],
   collaborative: [
     {
+      id: 18,
+      title: "CityShield - Segurança Integrada Inteligente",
+      description:
+        "Plataforma de segurança inteligente para cidades que converge segurança física (reconhecimento facial com Rekognition) e cibernética (GuardDuty + WAF) em uma única 'central na nuvem'. Arquitetura Event-Driven 100% serverless na AWS com resposta automática em tempo real para incidentes críticos. Integra câmeras via Kinesis Video Streams, detecta ameaças com machine learning e bloqueia IPs hostis automaticamente. Desenvolvido como TCC do AWS Re/Start + IA da Escola da Nuvem.",
+      technologies: [
+        "Amazon Web Services (AWS)",
+        "Kinesis Video Streams",
+        "Amazon Rekognition",
+        "AWS Lambda",
+        "Amazon SNS",
+        "Amazon GuardDuty",
+        "Amazon EventBridge",
+        "AWS WAF",
+        "Amazon DynamoDB",
+        "Amazon S3",
+        "VPC Flow Logs",
+        "CloudTrail",
+        "Event-Driven Architecture",
+        "Machine Learning",
+      ],
+      status: "Concluído",
+      category: "Cloud Architecture",
+      startDate: "2025-11",
+      endDate: "2026-03",
+      image: "/TCC_Escola_Da_Nuvem/CityShieldArquitetura.jpeg",
+      team: {
+        size: 5,
+        description: "Equipe de 5 desenvolvedores",
+      },
+      client: "Trabalho de Conclusão de Curso",
+      highlights: [
+        "Arquitetura Event-Driven 100% Serverless na AWS",
+        "Integração de segurança física (reconhecimento facial) e cibernética em único sistema",
+        "Detecção inteligente de ameaças usando machine learning (Rekognition + GuardDuty)",
+        "Respostas automáticas em tempo real para incidentes críticos",
+        "Escalabilidade infinita para processar milhares de câmeras e requisições simultâneas",
+        "Armazenamento de evidências com conformidade legal no S3",
+        "Convergência de dados em DynamoDB para painel de controle centralizado",
+        "Projeto desenvolvido após 5 meses de estudo no AWS Re/Start + IA",
+      ],
+      featured: true,
+      links: {
+        github:
+          "https://github.com/GabrielF0900/CityShield-TCC-Escola-da-Nuvem-",
+        case_study: null,
+        presentation:
+          "/TCC_Escola_Da_Nuvem/CityShield_apresentação power point.pptx",
+      },
+    },
+    {
       id: 10,
       title: "Sistema de Gerenciamento de TCC",
       description:
