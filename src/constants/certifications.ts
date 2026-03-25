@@ -186,9 +186,11 @@ export const certifications: Certification[] = [
     title: "AWS Certified Solutions Architect - Associate",
     issuer: "Amazon Web Services",
     type: "Certificação",
-    status: "Estudando",
-    image: "/certification/archtecht-associate.jpg",
+    status: "Certificado",
+    image: "/certification/aws-architect-associate.png",
     examCode: "SAA-C03",
-    statusMessage: "Estudos iniciados em 25/02/2026.",
+    date: "Emitido em 25/03/2026",
+    credentialUrl:
+      "https://www.credly.com/badges/5b451a38-a517-4e50-bf57-edd91f7fd821",
   },
 ];

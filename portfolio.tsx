@@ -929,7 +929,7 @@ export default function Portfolio() {
                             <ul className="text-xs text-muted-foreground space-y-1">
                               {project.highlights
                                 .slice(0, 2)
-                                .map((highlight, index) => (
+                                .map((highlight: string, index: number) => (
                                   <li
                                     key={index}
                                     className="flex items-start gap-2"
@@ -943,15 +943,17 @@ export default function Portfolio() {
                         )}
 
                         <div className="flex flex-wrap gap-2 mb-4">
-                          {project.technologies.slice(0, 3).map((tech) => (
-                            <Badge
-                              key={tech}
-                              variant="outline"
-                              className="text-xs"
-                            >
-                              {tech}
-                            </Badge>
-                          ))}
+                          {project.technologies
+                            .slice(0, 3)
+                            .map((tech: string) => (
+                              <Badge
+                                key={tech}
+                                variant="outline"
+                                className="text-xs"
+                              >
+                                {tech}
+                              </Badge>
+                            ))}
                           {project.technologies.length > 3 && (
                             <Badge variant="outline" className="text-xs">
                               +{project.technologies.length - 3}

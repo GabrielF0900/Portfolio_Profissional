@@ -191,7 +191,9 @@ export default function CertificationsSection() {
                             rel="noopener noreferrer"
                             className="flex items-center justify-center gap-2"
                           >
-                            Ver Certificado
+                            {cert.type === "Certificação"
+                              ? "Ver Certificação"
+                              : "Ver Certificado"}
                             <ExternalLink size={14} />
                           </a>
                         </Button>
@@ -248,7 +250,9 @@ export default function CertificationsSection() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"
                   >
-                    Ver Certificado
+                    {selectedCert?.type === "Certificação"
+                      ? "Ver Certificação"
+                      : "Ver Certificado"}
                     <ExternalLink size={14} />
                   </a>
                 </Button>

@@ -23,13 +23,13 @@ import { toast } from "sonner";
 export default function HeroSection() {
   const scrollToSection = useScrollToSection();
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
   const emailClickedRef = useRef(false);
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText("falcaocruz.tech@gmail.com");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleCopyEmail = (email: string) => {
+    navigator.clipboard.writeText(email);
+    setCopiedEmail(email);
+    setTimeout(() => setCopiedEmail(null), 2000);
   };
 
   const handleOpenGmail = () => {
@@ -112,24 +112,51 @@ export default function HeroSection() {
                   <p className="text-sm text-muted-foreground">
                     Envie um email para:
                   </p>
-                  <div className="flex items-center gap-2 bg-muted px-4 py-2 rounded-lg">
-                    <span className="font-medium">
-                      falcaocruz.tech@gmail.com
-                    </span>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={handleCopyEmail}
-                      className="h-8 w-8 p-0"
-                    >
-                      {copied ? (
-                        <Check className="w-4 h-4 text-green-500" />
-                      ) : (
-                        <Copy className="w-4 h-4" />
-                      )}
-                    </Button>
+                  <div className="flex flex-col gap-3 w-full">
+                    <div className="flex items-center gap-2 bg-muted px-4 py-2 rounded-lg">
+                      <span className="font-medium text-sm">
+                        falcaocruz.tech@gmail.com
+                      </span>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() =>
+                          handleCopyEmail("falcaocruz.tech@gmail.com")
+                        }
+                        className="h-8 w-8 p-0 ml-auto"
+                      >
+                        {copiedEmail === "falcaocruz.tech@gmail.com" ? (
+                          <Check className="w-4 h-4 text-green-500" />
+                        ) : (
+                          <Copy className="w-4 h-4" />
+                        )}
+                      </Button>
+                    </div>
+                    <div className="flex items-center gap-2 bg-muted px-4 py-2 rounded-lg">
+                      <span className="font-medium text-sm">
+                        Gabrielcfonline0900@gmail.com
+                      </span>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() =>
+                          handleCopyEmail("Gabrielcfonline0900@gmail.com")
+                        }
+                        className="h-8 w-8 p-0 ml-auto"
+                      >
+                        {copiedEmail === "Gabrielcfonline0900@gmail.com" ? (
+                          <Check className="w-4 h-4 text-green-500" />
+                        ) : (
+                          <Copy className="w-4 h-4" />
+                        )}
+                      </Button>
+                    </div>
                   </div>
-                  <Button asChild className="mt-2" onClick={handleOpenGmail}>
+                  <Button
+                    asChild
+                    className="mt-2 w-full"
+                    onClick={handleOpenGmail}
+                  >
                     <a
                       href="https://mail.google.com/mail/?view=cm&fs=1&to=falcaocruz.tech@gmail.com"
                       target="_blank"
