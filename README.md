@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Portfolio Banner](/public/images/Banner_README.png)
+![Portfolio Banner](/public/Banner_README/Banner_README.jpg)
 
 **Desenvolvedor Full Stack | Criando experiências digitais excepcionais**
 
