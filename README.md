@@ -75,7 +75,7 @@ Portfólio completo de projetos categorizado em abas:
 - **LoginFull** — Sistema full stack de autenticação com React, Node.js e PostgreSQL | [GitHub](https://github.com/GabrielF0900/LoginFull)
 
 **Projetos Colaborativos**
-- **ConectaTEA** — Plataforma web para conectar profissionais de saúde e responsáveis para acompanhar desenvolvimento de crianças com TEA | [GitHub](https://github.com/GabrielF0900/ConectaTEA)
+- **ConectaTEA** — Plataforma web para conectar profissionais de saúde e responsáveis para acompanhar desenvolvimento de crianças com TEA (cerca de 50% completo) | [GitHub](https://github.com/GabrielF0900/ConectaTEA)
 - **Sistema de Gerenciamento de TCC** — Plataforma para criação e gerenciamento de Trabalhos de Conclusão de Curso | [GitHub](https://github.com/GabrielF0900/Sistema_De_Gerenciamento_De_TCC)
 - **CityShield - TCC Escola da Nuvem** — Apresentação de TCC do curso AWS Re/Start + IA | [GitHub](https://github.com/GabrielF0900/CityShield-TCC-Escola-da-Nuvem-)
 
