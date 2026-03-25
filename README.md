@@ -79,7 +79,7 @@ Portfólio completo de projetos categorizado em abas:
 - **Sistema de Gerenciamento de TCC** — Plataforma para criação e gerenciamento de Trabalhos de Conclusão de Curso | [GitHub](https://github.com/GabrielF0900/Sistema_De_Gerenciamento_De_TCC)
 - **CityShield - TCC Escola da Nuvem** — Apresentação de TCC do curso AWS Re/Start + IA | [GitHub](https://github.com/GabrielF0900/CityShield-TCC-Escola-da-Nuvem-)
 
-### 🛠️ **Seção Tecnologias**
+### 🛠️ **Seção Tecnologias Usadas Neste Portfólio**
 Stack completo utilizado:
 
 **Frontend:**
