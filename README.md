@@ -2,11 +2,11 @@
 
 <div align="center">
 
-![Portfolio Banner](https://via.placeholder.com/800x200/1a1a1a/ffffff?text=Portfolio+Gabriel+Falc%C3%A3o)
+![Portfolio Banner](/public/images/Banner_README.png)
 
 **Desenvolvedor Full Stack | Criando experiências digitais excepcionais**
 
-[🌐 Ver Portfolio](https://portfolio-profissional-omega.vercel.app/) · [📧 Contato](mailto:gabriel@example.com) · [💼 LinkedIn](https://www.linkedin.com/in/gabrielfalcaodev/)
+[🌐 Ver Portfolio](https://www.gabrielfalcaodacruz.tech/) · [📧 Contato](mailto:falcaocruz.tech@gmail.com) · [💼 LinkedIn](https://www.linkedin.com/in/gabrielfalcaodev/) · [🐙 GitHub](https://github.com/GabrielF0900)
 
 ---
 
@@ -53,12 +53,10 @@ Informações pessoais e profissionais:
 ### 💼 **Seção Experiência Profissional**
 Histórico profissional detalhado:
 
-**Fundador e Programador Full Stack @ Neukox** (2022 - Presente)
-- 2+ anos liderando desenvolvimento técnico
+**Fundador e Programador Full Stack @ Neukox** (2025 - Presente)
 - Responsável por arquitetura de software
 - Desenvolvimento de aplicações web modernas (React, Next.js, TypeScript)
 - Implementação de sistemas escaláveis com APIs RESTful
-- Experiência com AWS e infraestrutura em nuvem
 - Principais responsabilidades e conquistas documentadas
 
 ### 🚀 **Seção Projetos**
@@ -69,16 +67,17 @@ Portfólio completo de projetos categorizado em abas:
 - Mix de infraestrutura cloud e full stack
 
 **Projetos Pessoais**
-- **AWS-Nexus: IaC Blueprint** — Infrastructure as Code com CloudFormation, VPC, EC2, CloudWatch, SNS
-- **CloudFront - NewEdge** — Distribuição global com S3 e CloudFront
-- **AWS Serverless Order Orchestrator** — Orquestração com Step Functions, Lambda, DynamoDB
-- **E-commerce Platform** — Full stack com Next.js, Prisma, PostgreSQL, Stripe
-- **Task Management App** — Colaborativo com Socket.io e tempo real
-- **API REST Financeira** — API com JWT, Swagger, testes
+- **AWS-Nexus: IaC Blueprint** — Infrastructure as Code com CloudFormation, VPC, EC2, CloudWatch, SNS | [GitHub](https://github.com/GabrielF0900/AWS-Nexus-IaC-Blueprint)
+- **CloudFront - NewEdge** — Distribuição global com S3 e CloudFront com Origin Access Control | [GitHub](https://github.com/GabrielF0900/CloudFront-NewEdge)
+- **AWS Serverless Order Orchestrator** — Orquestração com Step Functions, Lambda, DynamoDB e SNS | [GitHub](https://github.com/GabrielF0900/AWS-serverless-order-orchestrator)
+- **Tarefix** — App de gerenciamento de tarefas com React, TypeScript, PostgreSQL e Docker | [GitHub](https://github.com/GabrielF0900/Tarefix)
+- **NodeAuth_API** — API robusta de autenticação com JWT, bcrypt, RBAC e Prisma | [GitHub](https://github.com/GabrielF0900/NodeAuth_API)
+- **LoginFull** — Sistema full stack de autenticação com React, Node.js e PostgreSQL | [GitHub](https://github.com/GabrielF0900/LoginFull)
 
 **Projetos Colaborativos**
-- Trabalhos em equipe e projetos open-source
-- Contribuições e parcerias profissionais
+- **ConectaTEA** — Plataforma web para conectar profissionais de saúde e responsáveis para acompanhar desenvolvimento de crianças com TEA | [GitHub](https://github.com/GabrielF0900/ConectaTEA)
+- **Sistema de Gerenciamento de TCC** — Plataforma para criação e gerenciamento de Trabalhos de Conclusão de Curso | [GitHub](https://github.com/GabrielF0900/Sistema_De_Gerenciamento_De_TCC)
+- **CityShield - TCC Escola da Nuvem** — Apresentação de TCC do curso AWS Re/Start + IA | [GitHub](https://github.com/GabrielF0900/CityShield-TCC-Escola-da-Nuvem-)
 
 ### 🛠️ **Seção Tecnologias**
 Stack completo utilizado:
@@ -154,13 +153,13 @@ Formulário de contato para:
 ☁️  GitHub           - Version control
 ```
 
-Para explorar todos os projetos, certificações e mais informações detalhadas, acesse o **portfólio online completo** em: https://portfolio-profissional-omega.vercel.app/
+Para explorar todos os projetos, certificações e mais informações detalhadas, acesse o **portfólio online completo** em: https://www.gabrielfalcaodacruz.tech/
 
 ---
 
 ## 👨‍💻 Sobre o Desenvolvedor
 
-Meu nome é **Gabriel Falcão da Cruz**, sou um **Desenvolvedor Full Stack** com mais de 3 anos de experiência em desenvolvimento web e especialização em:
+Meu nome é **Gabriel Falcão da Cruz**, sou um **Desenvolvedor Full Stack** que trabalha em projetos colaborativos, acadêmicos e pessoais, com especialização em:
 
 - ✨ Desenvolvimento Full Stack moderno (React, Next.js, Node.js)
 - ☁️ Arquitetura e infraestrutura cloud (AWS)
@@ -179,10 +178,10 @@ Meu nome é **Gabriel Falcão da Cruz**, sou um **Desenvolvedor Full Stack** com
 
 ## 🔗 Links de Contato
 
-- 📧 **Email**: gabriel@example.com
+- 📧 **Email**: falcaocruz.tech@gmail.com
 - 💼 **LinkedIn**: https://www.linkedin.com/in/gabrielfalcaodev/
 - 🐙 **GitHub**: https://github.com/GabrielF0900
-- 🌐 **Portfólio Online**: https://portfolio-profissional-omega.vercel.app/
+- 🌐 **Portfólio Online**: https://www.gabrielfalcaodacruz.tech/
 
 ---
 
@@ -192,7 +191,7 @@ Meu nome é **Gabriel Falcão da Cruz**, sou um **Desenvolvedor Full Stack** com
 
 [![LinkedIn](https://img.shields.io/badge/-LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gabrielfalcaodev/)
 [![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/GabrielF0900)
-[![Gmail](https://img.shields.io/badge/-Gmail-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:gabriel@example.com)
+[![Gmail](https://img.shields.io/badge/-Gmail-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:falcaocruz.tech@gmail.com)
 
 ---
 
