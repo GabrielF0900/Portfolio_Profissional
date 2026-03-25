@@ -86,10 +86,9 @@ Stack completo utilizado:
 - React, TypeScript, Tailwind CSS
 
 **Backend:**
-- Node.js, Express, Prisma ORM, PostgreSQL, JWT
+- Node.js, Express, Prisma ORM, PostgreSQL
 
-**Cloud & DevOps:**
-- AWS (EC2, S3, Lambda, Step Functions, CloudFront, CloudFormation)
+**DevOps:**
 - Docker, Git & GitHub
 
 **Ferramentas:**
@@ -142,12 +141,10 @@ Formulário de contato para:
 🔧 PostgreSQL        - Relational database
 ```
 
-### Cloud & DevOps
+### DevOps
 ```
-☁️  AWS              - Cloud infrastructure
-☁️  CloudFormation   - Infrastructure as Code
-☁️  Docker           - Containerização
-☁️  GitHub           - Version control
+🔧 Docker            - Containerização
+🔧 GitHub            - Version control
 ```
 
 Para explorar todos os projetos, certificações e mais informações detalhadas, acesse o **portfólio online completo** em: https://www.gabrielfalcaodacruz.tech/
