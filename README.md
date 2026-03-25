@@ -83,7 +83,7 @@ Portfólio completo de projetos categorizado em abas:
 Stack completo utilizado:
 
 **Frontend:**
-- Next.js 15+, React, TypeScript, Tailwind CSS, Radix UI, Lucide Icons
+- React, TypeScript, Tailwind CSS
 
 **Backend:**
 - Node.js, Express, Prisma ORM, PostgreSQL, JWT
@@ -93,12 +93,12 @@ Stack completo utilizado:
 - Docker, Git & GitHub
 
 **Ferramentas:**
-- VS Code, Jest, Swagger, Socket.io
+- VS Code
 
 ### 🎯 **Seção Skills**
 Competências agrupadas por categoria:
-- **Languages:** JavaScript, TypeScript, Python, Java, SQL
-- **Frontend:** React, Next.js, Tailwind CSS, Design Responsivo
+- **Languages:** JavaScript, TypeScript
+- **Frontend:** React, TypeScript, Tailwind CSS, Design Responsivo
 - **Backend:** Node.js, Express, REST APIs, Databases
 - **Cloud:** AWS Services, Infrastructure as Code, Serverless
 - **DevOps:** Docker, Git, CI/CD
@@ -129,12 +129,9 @@ Formulário de contato para:
 
 ### Frontend
 ```
-✨ Next.js 15.2.4    - Framework React com SSR/SSG
-✨ TypeScript         - Type-safe JavaScript
 ✨ React 19           - UI Components
+✨ TypeScript         - Type-safe JavaScript
 ✨ Tailwind CSS       - Utility-first styling
-✨ Radix UI          - Unstyled accessible components
-✨ Lucide Icons      - Beautiful icon library
 ```
 
 ### Backend & Database
@@ -161,9 +158,9 @@ Para explorar todos os projetos, certificações e mais informações detalhadas
 
 Meu nome é **Gabriel Falcão da Cruz**, sou um **Desenvolvedor Full Stack** que trabalha em projetos colaborativos, acadêmicos e pessoais, com especialização em:
 
-- ✨ Desenvolvimento Full Stack moderno (React, Next.js, Node.js)
+- ✨ Desenvolvimento Full Stack moderno (React, Node.js)
 - ☁️ Arquitetura e infraestrutura cloud (AWS)
-- 🏗️ Infrastructure as Code (CloudFormation, Terraform)
+- 🏗️ Infrastructure as Code (CloudFormation)
 - 🔒 Segurança e boas práticas de desenvolvimento
 - 📊 APIs RESTful e microsserviços
 - 🚀 Performance e otimizações web
