@@ -14,16 +14,13 @@ export default function AboutSection() {
                 Olá, sou Gabriel Falcão.
               </p>
               <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
-                Sou Desenvolvedor Full Stack Júnior e estudante de Sistemas de
-                Informação (5º semestre), atualmente em transição estratégica
-                para Cloud Architecture.
-              </p>
-
-              <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
-                Atualmente, estou me especializando em Cloud Computing através
-                da Escola da Nuvem, onde aprofundo meus conhecimentos em
-                arquiteturas escaláveis, seguras e resilientes utilizando
-                serviços AWS.
+                Cloud-Native Developer & AWS Certified Solutions Architect –
+                Associate focado em projetar e implementar arquiteturas
+                resilientes, seguras e de alta disponibilidade. Integro o
+                desenvolvimento Full Stack moderno com Managed Services da AWS
+                para criar soluções Event-driven e escaláveis, garantindo
+                continuidade de negócio e otimização de custos através das
+                melhores práticas do Well-Architected Framework.
               </p>
 
               <h3 className="text-xl font-semibold mb-4 mt-8">
@@ -33,12 +30,14 @@ export default function AboutSection() {
               <div className="space-y-4 mb-8">
                 <div>
                   <h4 className="font-semibold text-base mb-2">
-                    Foco em Nuvem
+                    Arquitetura AWS Certificada
                   </h4>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    Preparando-me para a certificação AWS Solutions Architect –
-                    Associate, com foco em arquiteturas escaláveis, seguras e
-                    desacopladas.
+                    Detentor das certificações AWS Certified Solutions Architect
+                    – Associate (SAA-C03) e Cloud Practitioner (CLF-C02). Possuo
+                    embasamento técnico para projetar soluções utilizando
+                    serviços gerenciados, garantindo alta disponibilidade e
+                    otimização de custos.
                   </p>
                 </div>
 
@@ -48,24 +47,27 @@ export default function AboutSection() {
                   </h4>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                     Como autista diagnosticado, utilizo meu hiperfoco analítico
-                    e atenção rigorosa aos detalhes para garantir a integridade
-                    de sistemas complexos e otimização de processos em nuvem.
+                    e rigor técnico para garantir a integridade de sistemas
+                    complexos. Minha atenção aos detalhes é um diferencial
+                    direto na revisão de processos e na segurança de ambientes
+                    em nuvem.
                   </p>
                 </div>
 
                 <div>
                   <h4 className="font-semibold text-base mb-2">Cultura Ágil</h4>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    Certificado em Scrum Fundamentals (SFC™), aplicando
-                    agilidade e organização em projetos de alto nível.
+                    Certificado em Scrum Fundamentals (SFC™), aplico princípios
+                    de agilidade e organização para que a entrega técnica esteja
+                    sempre alinhada aos objetivos do negócio.
                   </p>
                 </div>
               </div>
 
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                Meu objetivo não é apenas escrever código, mas projetar
-                infraestruturas sólidas e resilientes que sustentem o
-                crescimento do negócio.
+                Objetivo: Contribuir em projetos que exijam infraestruturas
+                sólidas, escaláveis e seguras, focando na continuidade do
+                negócio e na excelência técnica.
               </p>
 
               <div className="flex items-center gap-2 text-muted-foreground mt-8">

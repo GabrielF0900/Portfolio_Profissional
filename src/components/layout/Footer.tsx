@@ -39,7 +39,8 @@ export default function Footer() {
                 Gabriel Falcão da Cruz
               </h3>
               <p className="text-sm text-slate-700 dark:text-slate-300 font-bold">
-                Full Stack & Cloud Practitioner
+                Cloud-Native Developer | AWS Certified Solutions Architect –
+                Associate
               </p>
             </div>
             <div className="flex gap-4">

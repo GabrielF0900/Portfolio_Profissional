@@ -193,4 +193,16 @@ export const certifications: Certification[] = [
     credentialUrl:
       "https://www.credly.com/badges/5b451a38-a517-4e50-bf57-edd91f7fd821",
   },
+  {
+    id: 17,
+    title: "AWS re/Start e Inteligência Artificial",
+    issuer: "Escola da Nuvem",
+    type: "Certificado",
+    status: "Em Breve",
+    image: "/certificados/escola-da-nuvem-aws-ia.svg",
+    date: "Emitido em breve",
+    credentialUrl: "#",
+    description:
+      "Pela conclusão, com êxito, do Programa AWS re/Start e Inteligência Artificial da Escola da Nuvem, com participação em aulas técnicas ao vivo, desenvolvimento de habilidades comportamentais e acompanhamento de mentoria técnica. Carga horária total de 363 horas. Credencial: #2881677000052d3115",
+  },
 ];

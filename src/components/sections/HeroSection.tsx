@@ -74,10 +74,13 @@ export default function HeroSection() {
               <span className="block text-primary">da Cruz</span>
             </h1>
             <p className="text-base md:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Full Stack Developer focado em projetar arquiteturas acessíveis,
-              seguras e performáticas. Unindo o desenvolvimento Full Stack
-              moderno com o poder da computação em nuvem AWS para garantir a
-              continuidade de negócio e a eficiência de sistemas escaláveis.
+              Cloud-Native Developer & AWS Certified Solutions Architect –
+              Associate focado em projetar e implementar arquiteturas
+              resilientes, seguras e de alta disponibilidade. Integro o
+              desenvolvimento Full Stack moderno com Managed Services da AWS
+              para criar soluções Event-driven e escaláveis, garantindo
+              continuidade de negócio e otimização de custos através das
+              melhores práticas do Well-Architected Framework.
             </p>
           </div>
 
