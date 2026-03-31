@@ -24,6 +24,15 @@ export default function CertificationsSection() {
     (typeof certifications)[number] | null
   >(null);
 
+  const handleDownloadPdf = (pdfUrl: string, title: string) => {
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = `${title}.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const openDetails = (cert: (typeof certifications)[number]) => {
     setSelectedCert(cert);
     setIsOpen(true);
@@ -114,7 +123,21 @@ export default function CertificationsSection() {
                   <CardContent className="p-0 flex-1 flex flex-col">
                     {/* Container da Imagem */}
                     <div className="aspect-square bg-gray-100 dark:bg-slate-800 flex items-center justify-center p-2">
-                      {cert.credentialUrl ? (
+                      {cert.pdfUrl ? (
+                        <button
+                          onClick={() =>
+                            handleDownloadPdf(cert.pdfUrl!, cert.title)
+                          }
+                          className="w-full h-full flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+                          title="Clique para baixar o PDF"
+                        >
+                          <img
+                            src={cert.image}
+                            alt={cert.title}
+                            className="w-full h-full object-contain"
+                          />
+                        </button>
+                      ) : cert.credentialUrl && cert.credentialUrl !== "#" ? (
                         <a
                           href={cert.credentialUrl}
                           target="_blank"
@@ -178,7 +201,22 @@ export default function CertificationsSection() {
                         </p>
                       )}
 
-                      {cert.credentialUrl && (
+                      {cert.pdfUrl && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="mt-4 w-full flex items-center justify-center gap-2"
+                          onClick={() =>
+                            handleDownloadPdf(cert.pdfUrl!, cert.title)
+                          }
+                        >
+                          {cert.type === "Certificação"
+                            ? "Ver Certificação"
+                            : "Ver Certificado"}
+                          <ExternalLink size={14} />
+                        </Button>
+                      )}
+                      {cert.credentialUrl && cert.credentialUrl !== "#" && (
                         <Button
                           variant="outline"
                           size="sm"
@@ -242,21 +280,35 @@ export default function CertificationsSection() {
             </div>
 
             <DialogFooter className="mt-6 flex items-center justify-end gap-2">
-              {selectedCert?.credentialUrl && (
-                <Button variant="outline" asChild>
-                  <a
-                    href={selectedCert.credentialUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2"
-                  >
-                    {selectedCert?.type === "Certificação"
-                      ? "Ver Certificação"
-                      : "Ver Certificado"}
-                    <ExternalLink size={14} />
-                  </a>
+              {selectedCert?.pdfUrl && (
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    handleDownloadPdf(selectedCert.pdfUrl!, selectedCert.title);
+                    setIsOpen(false);
+                  }}
+                >
+                  {selectedCert?.type === "Certificação"
+                    ? "Baixar Certificação"
+                    : "Baixar Certificado"}
                 </Button>
               )}
+              {selectedCert?.credentialUrl &&
+                selectedCert.credentialUrl !== "#" && (
+                  <Button variant="outline" asChild>
+                    <a
+                      href={selectedCert.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      {selectedCert?.type === "Certificação"
+                        ? "Ver Certificação"
+                        : "Ver Certificado"}
+                      <ExternalLink size={14} />
+                    </a>
+                  </Button>
+                )}
 
               <DialogClose asChild>
                 <Button>Fechar</Button>

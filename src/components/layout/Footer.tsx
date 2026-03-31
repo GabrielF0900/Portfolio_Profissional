@@ -68,7 +68,7 @@ export default function Footer() {
           </div>
           <div className="border-t border-slate-200 dark:border-slate-700 mt-8 pt-8 text-center">
             <p className="text-sm text-slate-700 dark:text-slate-300 font-bold">
-              © 2025 Gabriel Falcão da Cruz. Todos os direitos reservados.
+              © 2026 Gabriel Falcão da Cruz. Todos os direitos reservados.
             </p>
           </div>
         </div>

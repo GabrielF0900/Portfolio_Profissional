@@ -74,13 +74,12 @@ export default function HeroSection() {
               <span className="block text-primary">da Cruz</span>
             </h1>
             <p className="text-base md:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Cloud-Native Developer & AWS Certified Solutions Architect –
-              Associate focado em projetar e implementar arquiteturas
-              resilientes, seguras e de alta disponibilidade. Integro o
-              desenvolvimento Full Stack moderno com Managed Services da AWS
-              para criar soluções Event-driven e escaláveis, garantindo
-              continuidade de negócio e otimização de custos através das
-              melhores práticas do Well-Architected Framework.
+              Cloud-Native Developer | AWS Certified Solutions Architect
+              (SAA-C03). Atuo na criação de aplicações escaláveis e de alta
+              disponibilidade na nuvem AWS. Unindo desenvolvimento moderno e
+              serviços gerenciados, foco na implementação de arquiteturas
+              resilientes e eficientes, sempre orientado pelas melhores práticas
+              de segurança e custo.
             </p>
           </div>
 

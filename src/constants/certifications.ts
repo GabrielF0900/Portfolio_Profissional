@@ -8,6 +8,7 @@ export interface Certification {
   examCode?: string;
   date?: string;
   credentialUrl?: string;
+  pdfUrl?: string;
   statusMessage?: string;
   description?: string;
 }
@@ -195,14 +196,16 @@ export const certifications: Certification[] = [
   },
   {
     id: 17,
-    title: "AWS re/Start e Inteligência Artificial",
+    title: "AWS re/Start, Inteligência Artificial e No Code",
     issuer: "Escola da Nuvem",
     type: "Certificado",
-    status: "Em Breve",
-    image: "/certificados/escola-da-nuvem-aws-ia.svg",
-    date: "Emitido em breve",
+    status: "Certificado",
+    image: "/certificados/Certificado-AWS-Re-Start-IA-NoCode.jpeg",
+    date: "Emitido em 13/03/2026",
     credentialUrl: "#",
+    pdfUrl:
+      "/certificados/Certificado-AWS-Re-Start-2-IA-No-Code-C11-2025-R2-BRSAO224-e-BRSAO225.pdf",
     description:
-      "Pela conclusão, com êxito, do Programa AWS re/Start e Inteligência Artificial da Escola da Nuvem, com participação em aulas técnicas ao vivo, desenvolvimento de habilidades comportamentais e acompanhamento de mentoria técnica. Carga horária total de 363 horas. Credencial: #2881677000052d3115",
+      "Pela conclusão, com êxito, do Programa AWS re/Start, Inteligência Artificial e No Code da Escola da Nuvem, com participação em aulas técnicas ao vivo, desenvolvimento de habilidades comportamentais e acompanhamento de mentoria técnica. Carga horária total de 363 horas. Credencial: #2881677000052d3115",
   },
 ];
