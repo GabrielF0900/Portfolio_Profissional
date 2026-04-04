@@ -36,7 +36,7 @@ export const certifications: Certification[] = [
     credentialUrl:
       "https://www.credly.com/badges/fcbb935d-5dda-44e1-a782-9cb5ce32bd0f",
     description:
-      "A AWS Re/Start foi um curso preparatório que fiz na Escola da Nuvem com 270 horas de conteúdo sobre fundamentos em nuvem, Linux, infraestrutura cloud, arquitetura cloud e etc.",
+      "Curso preparatório com 270 horas sobre fundamentos em nuvem, Linux e arquitetura cloud.",
   },
   {
     id: 5,
@@ -218,6 +218,6 @@ export const certifications: Certification[] = [
     pdfUrl:
       "/certificados/Certificado-AWS-Re-Start-2-IA-No-Code-C11-2025-R2-BRSAO224-e-BRSAO225.pdf",
     description:
-      "Pela conclusão, com êxito, do Programa AWS re/Start, Inteligência Artificial e No Code da Escola da Nuvem, com participação em aulas técnicas ao vivo, desenvolvimento de habilidades comportamentais e acompanhamento de mentoria técnica. Carga horária total de 363 horas. Credencial: #2881677000052d3115",
+      "Programa de 363 horas sobre AWS, IA e No Code com mentoria técnica.",
   },
 ];
