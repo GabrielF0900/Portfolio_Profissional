@@ -195,6 +195,18 @@ export const certifications: Certification[] = [
       "https://www.credly.com/badges/5b451a38-a517-4e50-bf57-edd91f7fd821",
   },
   {
+    id: 18,
+    title: "AWS Certified Solutions Architect - Professional",
+    issuer: "Amazon Web Services",
+    type: "Certificação",
+    status: "Estudando",
+    image: "/certification/aws-architect-professional-teste.png",
+    examCode: "SAP-C02",
+    statusMessage: "Estudos iniciados em 25/03/2026",
+    description:
+      "Exame previsto para daqui há 1 ou 2 anos. O usuário pretende se aprofundar antes.",
+  },
+  {
     id: 17,
     title: "AWS re/Start, Inteligência Artificial e No Code",
     issuer: "Escola da Nuvem",

@@ -181,6 +181,12 @@ export default function CertificationsSection() {
                         </p>
                       )}
 
+                      {cert.description && (
+                        <p className="text-xs text-slate-600 dark:text-slate-400 mb-3">
+                          {cert.description}
+                        </p>
+                      )}
+
                       <div className="mt-auto pt-3">
                         <span
                           className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${

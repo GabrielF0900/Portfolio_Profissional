@@ -2,11 +2,11 @@
 // Atualizada automaticamente antes de cada push
 
 export const LAST_UPDATE = {
-  dia: 1,
+  dia: 4,
   mes: "abril",
   ano: 2026,
-  hora: 20,
-  minuto: 49,
+  hora: 10,
+  minuto: 11,
 };
 
 export function getLastUpdateFormatted(): string {
