@@ -74,12 +74,12 @@ export default function HeroSection() {
               <span className="block text-primary">da Cruz</span>
             </h1>
             <p className="text-base md:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Cloud-Native Developer | AWS Certified Solutions Architect
-              (SAA-C03). Atuo na criação de aplicações escaláveis e de alta
-              disponibilidade na nuvem AWS. Unindo desenvolvimento moderno e
-              serviços gerenciados, foco na implementação de arquiteturas
-              resilientes e eficientes, sempre orientado pelas melhores práticas
-              de segurança e custo.
+              Full Stack Developer | AWS Certified Solutions Architect
+              (SAA-C03). Atuo no desenvolvimento de aplicações web focadas em
+              automação e eficiência operacional. Unindo stacks modernas e
+              nuvem, foco na digitalização de processos manuais e criação de
+              fluxos inteligentes, sempre orientado por escalabilidade e
+              inovação técnica.
             </p>
           </div>
 

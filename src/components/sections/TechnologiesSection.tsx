@@ -60,14 +60,14 @@ export default function TechnologiesSection() {
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Code className="w-6 h-6 text-purple-600" />
+                <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Zap className="w-6 h-6 text-orange-600" />
                 </div>
-                <CardTitle className="text-lg">Ferramentas</CardTitle>
+                <CardTitle className="text-lg">Infraestrutura</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2 justify-center">
-                  {technologies.tools.map((tech: string) => (
+                  {technologies.infrastructure.map((tech: string) => (
                     <Badge key={tech} variant="secondary" className="text-xs">
                       {tech}
                     </Badge>
@@ -78,14 +78,14 @@ export default function TechnologiesSection() {
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Zap className="w-6 h-6 text-orange-600" />
+                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Code className="w-6 h-6 text-purple-600" />
                 </div>
-                <CardTitle className="text-lg">Infraestrutura</CardTitle>
+                <CardTitle className="text-lg">Ferramentas</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2 justify-center">
-                  {technologies.infrastructure.map((tech: string) => (
+                  {technologies.tools.map((tech: string) => (
                     <Badge key={tech} variant="secondary" className="text-xs">
                       {tech}
                     </Badge>

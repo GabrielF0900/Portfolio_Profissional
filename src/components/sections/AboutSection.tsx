@@ -14,13 +14,13 @@ export default function AboutSection() {
                 Olá, sou Gabriel Falcão.
               </p>
               <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
-                Cloud-Native Developer & AWS Certified Solutions Architect –
-                Associate focado em projetar e implementar arquiteturas
-                resilientes, seguras e de alta disponibilidade. Integro o
-                desenvolvimento Full Stack moderno com Managed Services da AWS
-                para criar soluções Event-driven e escaláveis, garantindo
-                continuidade de negócio e otimização de custos através das
-                melhores práticas do Well-Architected Framework.
+                Desenvolvedor Full Stack & Arquiteto AWS SAA-C03 focado em
+                transformar processos manuais de engenharia em fluxos digitais
+                eficientes. Integro o desenvolvimento moderno em Node.js e React
+                com serviços gerenciados da AWS para criar automações
+                escaláveis, garantindo que o software impulsione a produtividade
+                operacional e a excelência técnica através de arquiteturas
+                Cloud-Native.
               </p>
 
               <h3 className="text-xl font-semibold mb-4 mt-8">
@@ -30,14 +30,15 @@ export default function AboutSection() {
               <div className="space-y-4 mb-8">
                 <div>
                   <h4 className="font-semibold text-base mb-2">
-                    Arquitetura AWS Certificada
+                    Desenvolvedor Web com Visão Cloud
                   </h4>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    Detentor das certificações AWS Certified Solutions Architect
-                    – Associate (SAA-C03) e Cloud Practitioner (CLF-C02). Possuo
-                    embasamento técnico para projetar soluções utilizando
-                    serviços gerenciados, garantindo alta disponibilidade e
-                    otimização de custos.
+                    Certificado AWS Solutions Architect – Associate (SAA-C03) e
+                    Cloud Practitioner (CLF-C02). Utilizo meu embasamento
+                    técnico em infraestrutura para garantir que aplicações Full
+                    Stack sejam robustas, seguras e de baixo custo, aplicando as
+                    melhores práticas de serviços gerenciados desde a primeira
+                    linha de código.
                   </p>
                 </div>
 
@@ -55,19 +56,23 @@ export default function AboutSection() {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-base mb-2">Cultura Ágil</h4>
+                  <h4 className="font-semibold text-base mb-2">
+                    Cultura Ágil e Documentação
+                  </h4>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                     Certificado em Scrum Fundamentals (SFC™), aplico princípios
-                    de agilidade e organização para que a entrega técnica esteja
-                    sempre alinhada aos objetivos do negócio.
+                    de agilidade e gestão via Kanban para garantir entregas
+                    organizadas e alinhadas aos objetivos do negócio. Valorizo a
+                    documentação clara e a eficiência operacional para facilitar
+                    a manutenção e a escalabilidade das soluções.
                   </p>
                 </div>
               </div>
 
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                Objetivo: Contribuir em projetos que exijam infraestruturas
-                sólidas, escaláveis e seguras, focando na continuidade do
-                negócio e na excelência técnica.
+                <strong>Objetivo:</strong> Contribuir no desenvolvimento de
+                ferramentas que automatizem processos, otimizem fluxos de
+                trabalho e garantam a excelência na transformação digital.
               </p>
 
               <div className="flex items-center gap-2 text-muted-foreground mt-8">
