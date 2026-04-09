@@ -49,7 +49,7 @@ export default function TechnologiesSection() {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2 justify-center">
-                  {technologies.backend.slice(0, 6).map((tech: string) => (
+                  {technologies.backend.map((tech: string) => (
                     <Badge key={tech} variant="secondary" className="text-xs">
                       {tech}
                     </Badge>
