@@ -18,7 +18,6 @@ export const technologies: Technologies = {
     "JWT",
     "TypeScript",
     "Python",
-    "Testando",
   ],
   tools: [
     "Git",
