@@ -17,6 +17,7 @@ export const technologies: Technologies = {
     "PostgreSQL",
     "JWT",
     "TypeScript",
+    "Python",
   ],
   tools: [
     "Git",
@@ -28,5 +29,5 @@ export const technologies: Technologies = {
     "Insomnia",
     "Beekeeper",
   ],
-  infrastructure: ["AWS", "Docker"],
+  infrastructure: ["AWS", "Docker", "Python"],
 };
