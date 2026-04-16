@@ -1,5 +1,16 @@
 # Portfolio Profissional - Gabriel Falcão da Cruz
 
+## TL;DR (Resumo Executivo)
+
+| | |
+|---|---|
+| **O que é** | Portfolio interativo do Full Stack \| AWS SAA-C03 — Vitrine moderna de projetos cloud-native e arquitetura serverless |
+| **Problema Resolvido** | Apresentar profissionalmente a jornada de desenvolvedor full stack focado em automações cloud, escalabilidade e soluções serverless |
+| **Stack & AWS** | Next.js • React • TypeScript • Tailwind CSS • Vercel |
+| **Resultado Prático** | Interface otimizada para performance (SEO-friendly), responsiva em todos os dispositivos e com tema dinâmico claro/escuro automático |
+
+---
+
 <div align="center">
 
 ![Portfolio Banner](/public/Banner_README/Banner_README.jpg)
