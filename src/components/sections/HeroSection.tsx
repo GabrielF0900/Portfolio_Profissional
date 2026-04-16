@@ -16,6 +16,7 @@ import {
   Zap,
   Copy,
   Check,
+  Download,
 } from "lucide-react";
 import { useScrollToSection } from "../../hooks/useScroll";
 import { toast } from "sonner";
@@ -39,6 +40,13 @@ export default function HeroSection() {
       description: "Você será redirecionado para compor seu email.",
       duration: 3000,
     });
+  };
+
+  const handleDownloadCV = () => {
+    const link = document.createElement("a");
+    link.href = "/CV_GabrielFalcaoDaCruz.pdf";
+    link.download = "CV_GabrielFalcaoDaCruz.pdf";
+    link.click();
   };
 
   useEffect(() => {
@@ -100,6 +108,15 @@ export default function HeroSection() {
             >
               <Mail className="w-5 h-5 mr-2" />
               Entrar em Contato
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="text-lg px-8 bg-transparent hover:bg-primary hover:text-primary-foreground transition-colors"
+              onClick={handleDownloadCV}
+            >
+              <Download className="w-5 h-5 mr-2" />
+              Baixar CV
             </Button>
 
             <Dialog open={isContactOpen} onOpenChange={setIsContactOpen}>
