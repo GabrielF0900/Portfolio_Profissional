@@ -211,6 +211,60 @@ export const projects: {
         case_study: null,
       },
     },
+    {
+      id: 8,
+      title: "Sistema de Gerenciamento de TCC",
+      description:
+        "Plataforma completa para gerenciamento de Trabalhos de Conclusão de Curso, permitindo coordenação entre alunos, orientadores e banca examinadora.",
+      technologies: ["JavaScript", "Node.js", "Express", "MongoDB", "React"],
+      status: "Concluído",
+      category: "Full Stack",
+      startDate: null,
+      endDate: null,
+      image: "/images/project-placeholder-8.png",
+      team: {
+        role: "Developer",
+        description: "Projeto colaborativo",
+      },
+      highlights: [
+        "Gerenciamento centralizado de TCCs",
+        "Acompanhamento de prazos e entregas",
+        "Comunicação integrada entre participantes",
+      ],
+      featured: true,
+      links: {
+        demo: null,
+        github: "https://github.com/Neukox/Sistema_De_Gerenciamento_De_TCC",
+        case_study: null,
+      },
+    },
+    {
+      id: 9,
+      title: "Sistema de Gerenciamento de Chamados",
+      description:
+        "Sistema robusto para gerenciamento de chamados (help desk), com rastreamento de tickets, priorização e relatórios de desempenho.",
+      technologies: ["JavaScript", "Node.js", "Express", "MongoDB", "React"],
+      status: "Concluído",
+      category: "Full Stack",
+      startDate: null,
+      endDate: null,
+      image: "/images/project-placeholder-9.png",
+      team: {
+        role: "Developer",
+        description: "Projeto colaborativo",
+      },
+      highlights: [
+        "Sistema de tickets com priorização",
+        "Atribuição automática de chamados",
+        "Dashboard com relatórios em tempo real",
+      ],
+      featured: true,
+      links: {
+        demo: null,
+        github: "https://github.com/Neukox/Sistema_De_Gerenciamento_De_Chamados",
+        case_study: null,
+      },
+    },
   ],
 }
 
