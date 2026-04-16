@@ -1,45 +1,45 @@
 // Este arquivo contém os dados do portfólio, que são puramente JavaScript/TypeScript
 
 interface Project {
-  id: number
-  title: string
-  description: string
-  technologies: string[]
-  status: string
-  category: string
-  startDate: string | null
-  endDate: string | null
-  image?: string
-  highlights?: string[]
-  featured?: boolean
+  id: number;
+  title: string;
+  description: string;
+  technologies: string[];
+  status: string;
+  category: string;
+  startDate: string | null;
+  endDate: string | null;
+  image?: string;
+  highlights?: string[];
+  featured?: boolean;
   links: {
-    demo?: string | null
-    github?: string | null
-    case_study?: string | null
-  }
-  client?: string
+    demo?: string | null;
+    github?: string | null;
+    case_study?: string | null;
+  };
+  client?: string;
   team?: {
-    role: string
-    description: string
-    size?: number
-  }
+    role: string;
+    description: string;
+    size?: number;
+  };
 }
 
 interface Technologies {
-  frontend: string[]
-  backend: string[]
-  tools: string[]
-  infrastructure: string[]
+  frontend: string[];
+  backend: string[];
+  tools: string[];
+  infrastructure: string[];
 }
 
 interface NavigationItem {
-  id: string
-  label: string
+  id: string;
+  label: string;
 }
 
 export const projects: {
-  personal: Project[]
-  collaborative: Project[]
+  personal: Project[];
+  collaborative: Project[];
 } = {
   personal: [
     {
@@ -47,7 +47,14 @@ export const projects: {
       title: "E-commerce Platform",
       description:
         "Plataforma completa de e-commerce com painel administrativo, sistema de pagamentos integrado, gestão de estoque em tempo real e analytics avançados.",
-      technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Stripe", "Tailwind CSS"],
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL",
+        "Stripe",
+        "Tailwind CSS",
+      ],
       status: "Em desenvolvimento",
       category: "Full Stack",
       startDate: "2024-01",
@@ -70,7 +77,14 @@ export const projects: {
       title: "Task Management App",
       description:
         "Aplicativo de gerenciamento de tarefas com funcionalidades de colaboração em tempo real, notificações push e integração com calendários.",
-      technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Express", "JWT"],
+      technologies: [
+        "React",
+        "Node.js",
+        "Socket.io",
+        "MongoDB",
+        "Express",
+        "JWT",
+      ],
       status: "Concluído",
       category: "Full Stack",
       startDate: "2023-08",
@@ -93,13 +107,24 @@ export const projects: {
       title: "API REST Financeira",
       description:
         "API robusta para gestão financeira pessoal com autenticação JWT, documentação completa e testes automatizados.",
-      technologies: ["Node.js", "Express", "PostgreSQL", "Swagger", "Jest", "Docker"],
+      technologies: [
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Swagger",
+        "Jest",
+        "Docker",
+      ],
       status: "Concluído",
       category: "Backend",
       startDate: "2023-05",
       endDate: "2023-07",
       image: "/images/project-placeholder-3.png",
-      highlights: ["Documentação completa com Swagger", "Cobertura de testes de 95%", "Deploy automatizado com Docker"],
+      highlights: [
+        "Documentação completa com Swagger",
+        "Cobertura de testes de 95%",
+        "Deploy automatizado com Docker",
+      ],
       featured: false,
       links: {
         demo: null,
@@ -118,7 +143,11 @@ export const projects: {
       startDate: "2023-03",
       endDate: "2023-04",
       image: "/images/project-placeholder-4.png",
-      highlights: ["Score 100 no Google PageSpeed", "Blog integrado com MDX", "Design responsivo e acessível"],
+      highlights: [
+        "Score 100 no Google PageSpeed",
+        "Blog integrado com MDX",
+        "Design responsivo e acessível",
+      ],
       featured: false,
       links: {
         demo: "#",
@@ -145,7 +174,11 @@ export const projects: {
         description: "Equipe de 5 desenvolvedores",
       },
       client: "Hospital Regional",
-      highlights: ["Gestão de 10.000+ pacientes", "Conformidade com LGPD", "Sistema de backup automatizado"],
+      highlights: [
+        "Gestão de 10.000+ pacientes",
+        "Conformidade com LGPD",
+        "Sistema de backup automatizado",
+      ],
       featured: true,
       links: {
         demo: null,
@@ -158,7 +191,14 @@ export const projects: {
       title: "Plataforma de Educação Online",
       description:
         "LMS completo com sistema de videoaulas, exercícios interativos, acompanhamento de progresso e certificações digitais.",
-      technologies: ["React", "Express.js", "PostgreSQL", "AWS", "FFmpeg", "WebRTC"],
+      technologies: [
+        "React",
+        "Express.js",
+        "PostgreSQL",
+        "AWS",
+        "FFmpeg",
+        "WebRTC",
+      ],
       status: "Concluído",
       category: "Full Stack",
       startDate: "2022-06",
@@ -187,7 +227,14 @@ export const projects: {
       title: "App de Delivery",
       description:
         "Aplicativo mobile e web para delivery de comida com rastreamento em tempo real, sistema de pagamentos e avaliações.",
-      technologies: ["React Native", "React", "Node.js", "MongoDB", "Socket.io", "Google Maps API"],
+      technologies: [
+        "React Native",
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Socket.io",
+        "Google Maps API",
+      ],
       status: "Concluído",
       category: "Mobile/Web",
       startDate: "2022-03",
@@ -261,19 +308,48 @@ export const projects: {
       featured: true,
       links: {
         demo: null,
-        github: "https://github.com/Neukox/Sistema_De_Gerenciamento_De_Chamados",
+        github:
+          "https://github.com/Neukox/Sistema_De_Gerenciamento_De_Chamados",
         case_study: null,
       },
     },
   ],
-}
+};
 
 export const technologies: Technologies = {
-  frontend: ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Sass"],
-  backend: ["Node.js", "Express.js", "Laravel", "PHP", "Python", "Django", "PostgreSQL", "MySQL", "MongoDB"],
+  frontend: [
+    "React",
+    "Next.js",
+    "Vue.js",
+    "TypeScript",
+    "JavaScript",
+    "HTML5",
+    "CSS3",
+    "Tailwind CSS",
+    "Sass",
+  ],
+  backend: [
+    "Node.js",
+    "Express.js",
+    "Laravel",
+    "PHP",
+    "Python",
+    "Django",
+    "PostgreSQL",
+    "MySQL",
+    "MongoDB",
+  ],
   tools: ["Git", "GitHub", "VS Code", "Figma", "Postman", "Jest", "Cypress"],
-  infrastructure: ["Docker", "AWS", "Vercel", "Netlify", "Linux", "Nginx", "CI/CD"],
-}
+  infrastructure: [
+    "Docker",
+    "AWS",
+    "Vercel",
+    "Netlify",
+    "Linux",
+    "Nginx",
+    "CI/CD",
+  ],
+};
 
 export const softSkills: string[] = [
   "Comunicação eficaz",
@@ -284,7 +360,7 @@ export const softSkills: string[] = [
   "Liderança técnica",
   "Gestão de tempo",
   "Aprendizado contínuo",
-]
+];
 
 export const navigationItems: NavigationItem[] = [
   { id: "inicio", label: "Início" },
@@ -293,4 +369,4 @@ export const navigationItems: NavigationItem[] = [
   { id: "projetos", label: "Projetos" },
   { id: "tecnologias", label: "Tecnologias" },
   { id: "skills", label: "Skills" },
-]
+];
