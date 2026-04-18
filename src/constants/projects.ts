@@ -3,6 +3,52 @@ import { Project, PortfolioData } from "../types";
 export const projects: PortfolioData = {
   personal: [
     {
+      id: 20,
+      title: "Nebula-Archive",
+      description:
+        "Orquestrador de mídia serverless desenvolvido com NestJS que resolve o gargalo de uploads pesados através de Presigned URLs e processamento assíncrono orientado a eventos. Implementa arquitetura Cloud-Native 100% serverless na AWS com Lambda, DynamoDB, S3 e EventBridge, seguindo os padrões SAA-C03 do AWS Well-Architected Framework. Combina escalabilidade infinita, segurança em profundidade (IAM roles, privilégio mínimo) e otimização de custos com observabilidade completa via CloudWatch. Projeto que demonstra como construir aplicações production-ready com engenharia cloud moderna.",
+      technologies: [
+        "NestJS",
+        "TypeScript",
+        "Amazon Web Services (AWS)",
+        "AWS S3",
+        "AWS DynamoDB",
+        "AWS Lambda",
+        "AWS CloudWatch",
+        "Presigned URLs",
+        "Event-Driven Architecture",
+        "Microservices",
+        "Serverless Computing",
+        "pnpm",
+      ],
+      status: "Em desenvolvimento",
+      category: "Cloud Architecture",
+      startDate: "2026-04",
+      endDate: null,
+      image: "/imagensCloud/nebula-archive-em-breve.png",
+      team: {
+        size: 1,
+        description: "Desenvolvedor individual",
+        role: "Cloud Native",
+      },
+      highlights: [
+        "Arquitetura Cloud-Native com padrões Serverless/Microservices na AWS",
+        "Processamento assíncrono orientado a eventos",
+        "Presigned URLs para uploads eficientes sem gargalo no servidor",
+        "DynamoDB para armazenamento escalável de metadados",
+        "S3 para armazenamento seguro de mídia",
+        "Escalabilidade infinita com serverless computing",
+        "Padrões SAA-C03 do AWS Well-Architected Framework",
+        "Observabilidade via Amazon CloudWatch e logs estruturados",
+        "Segurança com IAM Roles e princípio de privilégio mínimo",
+      ],
+      featured: false,
+      links: {
+        github: "https://github.com/GabrielF0900/Nebula-Archive",
+        case_study: null,
+      },
+    },
+    {
       id: 16,
       title: "AWS-Nexus: IaC Blueprint",
       description:
@@ -422,6 +468,51 @@ export const projects: PortfolioData = {
   ],
   collaborative: [
     {
+      id: 19,
+      title: "Nebula-Archive",
+      description:
+        "Um orquestrador de mídia serverless projetado para demonstrar padrões avançados de arquitetura na nuvem AWS. O projeto resolve o gargalo de uploads pesados em servidores de aplicação utilizando Presigned URLs e processamento assíncrono orientado a eventos. Implementa padrões Cloud-Native com arquitetura de microservices/serverless, seguindo os pilares do AWS Well-Architected Framework (SAA-C03) com foco em resiliência, performance, segurança e otimização de custos.",
+      technologies: [
+        "NestJS",
+        "TypeScript",
+        "Amazon Web Services (AWS)",
+        "AWS S3",
+        "AWS DynamoDB",
+        "AWS Lambda",
+        "AWS CloudWatch",
+        "Presigned URLs",
+        "Event-Driven Architecture",
+        "Microservices",
+        "pnpm",
+      ],
+      status: "Em desenvolvimento",
+      category: "Cloud Architecture",
+      startDate: "2026-04",
+      endDate: null,
+      image: "/imagensCloud/nebula-archive-em-breve.png",
+      team: {
+        size: 1,
+        description: "Desenvolvedor individual",
+        role: "Cloud Native",
+      },
+      highlights: [
+        "Arquitetura Cloud-Native com padrões Serverless/Microservices na AWS",
+        "Processamento assíncrono orientado a eventos",
+        "Presigned URLs para uploads eficientes sem gargalo no servidor",
+        "DynamoDB para armazenamento escalável de metadados",
+        "S3 para armazenamento seguro de mídia",
+        "Escalabilidade infinita com serverless computing",
+        "Padrões SAA-C03 do AWS Well-Architected Framework",
+        "Observabilidade via Amazon CloudWatch e logs estruturados",
+        "Segurança com IAM Roles e princípio de privilégio mínimo",
+      ],
+      featured: true,
+      links: {
+        github: "https://github.com/GabrielF0900/Nebula-Archive",
+        case_study: null,
+      },
+    },
+    {
       id: 18,
       title: "CityShield - Segurança Integrada Inteligente",
       description:
@@ -450,6 +541,7 @@ export const projects: PortfolioData = {
       team: {
         size: 5,
         description: "Equipe de 5 desenvolvedores",
+        role: "Cloud Architecture",
       },
       client: "Trabalho de Conclusão de Curso",
       highlights: [

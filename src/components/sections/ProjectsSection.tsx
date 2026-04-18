@@ -338,9 +338,16 @@ export default function ProjectsSection() {
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div>
-                          <Badge variant="secondary" className="mb-2">
-                            {project.category}
-                          </Badge>
+                          <div className="flex gap-2 mb-2">
+                            <Badge variant="secondary" className="text-xs">
+                              {project.category}
+                            </Badge>
+                            {project.team && project.team.role && (
+                              <Badge variant="outline" className="text-xs">
+                                {project.team.role}
+                              </Badge>
+                            )}
+                          </div>
                           <CardTitle className="text-xl group-hover:text-primary transition-colors">
                             {project.title}
                           </CardTitle>
