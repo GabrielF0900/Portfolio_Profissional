@@ -47,10 +47,10 @@ export default function ExperienceSection() {
                     </div>
                     <div className="flex flex-col md:items-end">
                       <Badge variant="secondary" className="w-fit">
-                        2025 - Presente
+                        Abril 2025 – Abril 2026
                       </Badge>
                       <span className="text-sm text-muted-foreground mt-1">
-                        7 meses
+                        1 ano
                       </span>
                     </div>
                   </div>
@@ -62,6 +62,28 @@ export default function ExperienceSection() {
                     arquitetura de software e desenvolvimento de soluções
                     inovadoras.
                   </CardDescription>
+
+                  <div className="bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-4">
+                    <p className="text-sm text-blue-900 dark:text-blue-100">
+                      <span className="font-semibold">
+                        Status de Expansão (Abril 2026):
+                      </span>{" "}
+                      Estamos escalando o ecossistema Neukox e buscamos
+                      desenvolvedores voluntários que desejam consolidar
+                      conhecimentos em TypeScript, Python e infraestrutura AWS.
+                      Uma oportunidade estratégica para aplicar práticas de
+                      Serverless, IaC e desenvolvimento Cloud-Native em projetos
+                      de impacto real.{" "}
+                      <a
+                        href="https://www.linkedin.com/in/gabrielfalcaodev/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold hover:underline"
+                      >
+                        Entre em contato!
+                      </a>
+                    </p>
+                  </div>
 
                   <div className="space-y-4">
                     <div>
@@ -167,6 +189,15 @@ export default function ExperienceSection() {
                       </Badge>
                       <Badge variant="outline" className="text-xs">
                         Docker
+                      </Badge>
+                      <Badge variant="outline" className="text-xs">
+                        JWT
+                      </Badge>
+                      <Badge variant="outline" className="text-xs">
+                        AWS
+                      </Badge>
+                      <Badge variant="outline" className="text-xs">
+                        ORM Prisma
                       </Badge>
                     </div>
                   </div>
