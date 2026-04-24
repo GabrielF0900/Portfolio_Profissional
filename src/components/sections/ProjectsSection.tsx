@@ -163,7 +163,7 @@ export default function ProjectsSection() {
                               {formatDate(project.endDate)}
                             </p>
                           </div>
-                          <div className="flex gap-1">
+                          <div className="flex flex-col gap-1">
                             {project.links.demo && (
                               <Button variant="ghost" size="sm" asChild>
                                 <a
@@ -185,6 +185,18 @@ export default function ProjectsSection() {
                                   title="Ver Código"
                                 >
                                   <Github className="w-5 h-5" />
+                                </a>
+                              </Button>
+                            )}
+                            {project.links.video && (
+                              <Button variant="ghost" size="sm" asChild>
+                                <a
+                                  href={project.links.video}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  title="Vídeo do sistema"
+                                >
+                                  📺
                                 </a>
                               </Button>
                             )}
@@ -356,7 +368,7 @@ export default function ProjectsSection() {
                             {formatDate(project.endDate)}
                           </p>
                         </div>
-                        <div className="flex gap-1">
+                        <div className="flex flex-col gap-1">
                           {project.links.demo && (
                             <Button variant="ghost" size="sm" asChild>
                               <a
@@ -378,6 +390,18 @@ export default function ProjectsSection() {
                                 title="Ver Código"
                               >
                                 <Github className="w-5 h-5" />
+                              </a>
+                            </Button>
+                          )}
+                          {project.links.video && (
+                            <Button variant="ghost" size="sm" asChild>
+                              <a
+                                href={project.links.video}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title="Vídeo do sistema"
+                              >
+                                📺
                               </a>
                             </Button>
                           )}
@@ -536,7 +560,7 @@ export default function ProjectsSection() {
                               </p>
                             )}
                           </div>
-                          <div className="flex gap-1">
+                          <div className="flex flex-col gap-1">
                             {project.links.demo && (
                               <Button variant="ghost" size="sm" asChild>
                                 <a
@@ -570,6 +594,18 @@ export default function ProjectsSection() {
                                   title="Ver Código"
                                 >
                                   <Github className="w-5 h-5" />
+                                </a>
+                              </Button>
+                            )}
+                            {project.links.video && (
+                              <Button variant="ghost" size="sm" asChild>
+                                <a
+                                  href={project.links.video}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  title="Vídeo do sistema"
+                                >
+                                  📺
                                 </a>
                               </Button>
                             )}

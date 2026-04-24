@@ -14,6 +14,7 @@ export interface Project {
   links: {
     demo?: string | null;
     github?: string | null;
+    video?: string | null;
     case_study?: string | null;
     presentation?: string | null;
   };
