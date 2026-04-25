@@ -15,7 +15,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { ExternalLink, Github, Code, Download } from "lucide-react";
+import { ExternalLink, Github, Code, Download, Youtube } from "lucide-react";
 import { projects } from "../../constants/projects";
 import {
   formatDate,
@@ -196,7 +196,7 @@ export default function ProjectsSection() {
                                   rel="noopener noreferrer"
                                   title="Vídeo do sistema"
                                 >
-                                  📺
+                                  <Youtube className="h-4 w-4 text-[#FF0000] transition-colors hover:text-[#CC0000]" />
                                 </a>
                               </Button>
                             )}
@@ -401,7 +401,9 @@ export default function ProjectsSection() {
                                 rel="noopener noreferrer"
                                 title="Vídeo do sistema"
                               >
-                                📺
+                                <Youtube
+                              className="h-4 w-4 text-[#FF0000] transition-colors hover:text-[#CC0000]"
+                              />
                               </a>
                             </Button>
                           )}
@@ -605,7 +607,7 @@ export default function ProjectsSection() {
                                   rel="noopener noreferrer"
                                   title="Vídeo do sistema"
                                 >
-                                  📺
+                                  <Youtube className="h-4 w-4 text-[#FF0000] transition-colors hover:text-[#CC0000]" />
                                 </a>
                               </Button>
                             )}
