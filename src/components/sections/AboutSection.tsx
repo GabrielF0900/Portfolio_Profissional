@@ -14,7 +14,7 @@ export default function AboutSection() {
                 Olá, sou Gabriel Falcão.
               </p>
               <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
-                Desenvolvedor Full Stack & Arquiteto AWS SAA-C03 focado em
+                Desenvolvedor Full Stack & Arquiteto AWS (SAA-C03) focado em
                 transformar processos manuais de engenharia em fluxos digitais
                 eficientes. Integro o desenvolvimento moderno em Node.js e React
                 com serviços gerenciados da AWS para criar automações
@@ -24,21 +24,20 @@ export default function AboutSection() {
               </p>
 
               <h3 className="text-xl font-semibold mb-4 mt-8">
-                Meu Diferencial Técnico:
+                Meu Diferencial Técnico
               </h3>
 
               <div className="space-y-4 mb-8">
                 <div>
                   <h4 className="font-semibold text-base mb-2">
-                    Desenvolvedor Web com Visão Cloud
+                    Visão Cloud-First
                   </h4>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                     Certificado AWS Solutions Architect – Associate (SAA-C03) e
-                    Cloud Practitioner (CLF-C02). Utilizo meu embasamento
-                    técnico em infraestrutura para garantir que aplicações Full
-                    Stack sejam robustas, seguras e de baixo custo, aplicando as
-                    melhores práticas de serviços gerenciados desde a primeira
-                    linha de código.
+                    Cloud Practitioner (CLF-C02). Utilizo meu embasamento em
+                    infraestrutura para garantir que aplicações Full Stack sejam
+                    robustas, seguras e de baixo custo, aplicando as melhores
+                    práticas desde a primeira linha de código.
                   </p>
                 </div>
 
@@ -47,11 +46,11 @@ export default function AboutSection() {
                     Neurodiversidade como Ativo
                   </h4>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    Como autista diagnosticado, utilizo meu hiperfoco analítico
-                    e rigor técnico para garantir a integridade de sistemas
-                    complexos. Minha atenção aos detalhes é um diferencial
-                    direto na revisão de processos e na segurança de ambientes
-                    em nuvem.
+                    Como autista diagnosticado, direciono meu hiperfoco
+                    analítico e rigor técnico para garantir a integridade de
+                    sistemas complexos. Minha atenção aos detalhes é um
+                    diferencial direto na revisão de código e na segurança de
+                    ambientes em nuvem.
                   </p>
                 </div>
 
@@ -61,18 +60,20 @@ export default function AboutSection() {
                   </h4>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                     Certificado em Scrum Fundamentals (SFC™), aplico princípios
-                    de agilidade e gestão via Kanban para garantir entregas
-                    organizadas e alinhadas aos objetivos do negócio. Valorizo a
-                    documentação clara e a eficiência operacional para facilitar
-                    a manutenção e a escalabilidade das soluções.
+                    de agilidade via Kanban para garantir entregas organizadas.
+                    Valorizo a documentação clara e a eficiência operacional
+                    para facilitar a manutenção e a escalabilidade das soluções.
                   </p>
                 </div>
               </div>
 
+              <h3 className="text-xl font-semibold mb-4 mt-8">
+                Objetivo Profissional
+              </h3>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                <strong>Objetivo:</strong> Contribuir no desenvolvimento de
-                ferramentas que automatizem processos, otimizem fluxos de
-                trabalho e garantam a excelência na transformação digital.
+                Contribuir no desenvolvimento de ferramentas que automatizem
+                processos, otimizem fluxos de trabalho e garantam a excelência
+                técnica na transformação digital.
               </p>
 
               <div className="flex items-center gap-2 text-muted-foreground mt-8">
