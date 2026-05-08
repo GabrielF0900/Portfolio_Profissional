@@ -3,6 +3,40 @@ import { Project, PortfolioData } from "../types";
 export const projects: PortfolioData = {
   personal: [
     {
+      id: 21,
+      title: "banking-core-java",
+      description:
+        "🏦 Sistema bancário modular desenvolvido com os fundamentos do Java 21 (LTS) e focado em padrões de arquitetura de alta escala. O objetivo principal foi consolidar conhecimentos em Orientação a Objetos e Encapsulamento Estrito, simulando o core de uma aplicação financeira resiliente. Este repositório é parte da trilha de especialização para o nível Junior Java Developer, integrando conceitos de desenvolvimento backend com infraestrutura Cloud-Native. O projeto segue uma Arquitetura em Camadas (Layered Architecture), garantindo separação de responsabilidades com Model (Conta, Usuario), Service (lógica de negócio), Repository (persistência em memória) e Main (Controller). Implementa encapsulamento estrito, prevenção de NPE, lógica de negócio defensiva e compatibilidade total com AWS Lambda e Amazon ECS (Docker).",
+      technologies: [
+        "Java 21",
+        "Amazon Corretto",
+        "Git",
+        "Orientação a Objetos",
+        "Encapsulamento",
+        "Layered Architecture",
+      ],
+      status: "Concluído",
+      category: "Backend",
+      startDate: "2026-04",
+      endDate: "2026-04",
+      image: "/images/banking-core-java.jpeg",
+      highlights: [
+        "Arquitetura em Camadas com separação de responsabilidades",
+        "Encapsulamento Estrito com modificadores de acesso private",
+        "Prevenção de NullPointerException (NPE)",
+        "Lógica de negócio defensiva com validações",
+        "Java 21 (LTS) com recursos modernos",
+        "Amazon Corretto para performance em ambientes produtivos",
+        "Compatibilidade com AWS Lambda e Amazon ECS",
+        "Preparado para migração para Spring Boot",
+      ],
+      featured: false,
+      links: {
+        github: "https://github.com/GabrielF0900/banking-core-java",
+        case_study: null,
+      },
+    },
+    {
       id: 20,
       title: "Nebula-Archive",
       description:
@@ -27,8 +61,8 @@ export const projects: PortfolioData = {
         "Docker Compose",
         "React",
         "Vite",
-        "Tailwind CSS"
-],
+        "Tailwind CSS",
+      ],
       status: "Concluído",
       category: "Cloud Architecture",
       startDate: "2026-04",
