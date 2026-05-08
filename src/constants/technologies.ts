@@ -17,7 +17,7 @@ export const technologies: Technologies = {
     "PostgreSQL",
     "JWT",
     "TypeScript",
-    "Python",
+    "Java"
   ],
   tools: [
     "Git",
