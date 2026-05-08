@@ -78,17 +78,19 @@ Portfólio completo de projetos categorizado em abas:
 - Mix de infraestrutura cloud e full stack
 
 **Projetos Pessoais**
+- **banking-core-java** — Sistema bancário modular com Java 21 (LTS), arquitetura em camadas e padrões de alta escala | [GitHub](https://github.com/GabrielF0900/banking-core-java)
+- **Nebula-Archive** — Orquestrador de mídia serverless com NestJS, AWS Lambda, S3 e DynamoDB | [GitHub](https://github.com/GabrielF0900/Nebula-Archive)
 - **AWS-Nexus: IaC Blueprint** — Infrastructure as Code com CloudFormation, VPC, EC2, CloudWatch, SNS | [GitHub](https://github.com/GabrielF0900/AWS-Nexus-IaC-Blueprint)
 - **CloudFront - NewEdge** — Distribuição global com S3 e CloudFront com Origin Access Control | [GitHub](https://github.com/GabrielF0900/CloudFront-NewEdge)
-- **AWS Serverless Order Orchestrator** — Orquestração com Step Functions, Lambda, DynamoDB e SNS | [GitHub](https://github.com/GabrielF0900/AWS-serverless-order-orchestrator)
+- **AWS S3 Auto Remediator** — Sistema automatizado de remediação com Lambda e EventBridge | [GitHub](https://github.com/GabrielF0900/aws-s3-auto-remediator)
+- **Conexão Backend Database** — Infraestrutura robusta com VPC, EC2, RDS e S3 | [GitHub](https://github.com/GabrielF0900/Projeto-02-A-Conexao-o-Backend-Database)
 - **Tarefix** — App de gerenciamento de tarefas com React, TypeScript, PostgreSQL e Docker | [GitHub](https://github.com/GabrielF0900/Tarefix)
-- **NodeAuth_API** — API robusta de autenticação com JWT, bcrypt, RBAC e Prisma | [GitHub](https://github.com/GabrielF0900/NodeAuth_API)
-- **LoginFull** — Sistema full stack de autenticação com React, Node.js e PostgreSQL | [GitHub](https://github.com/GabrielF0900/LoginFull)
 
 **Projetos Colaborativos**
-- **ConectaTEA** — Plataforma web para conectar profissionais de saúde e responsáveis para acompanhar desenvolvimento de crianças com TEA (cerca de 50% completo) | [GitHub](https://github.com/GabrielF0900/ConectaTEA)
-- **Sistema de Gerenciamento de TCC** — Plataforma para criação e gerenciamento de Trabalhos de Conclusão de Curso | [GitHub](https://github.com/GabrielF0900/Sistema_De_Gerenciamento_De_TCC)
-- **CityShield - TCC Escola da Nuvem** — Apresentação de TCC do curso AWS Re/Start + IA | [GitHub](https://github.com/GabrielF0900/CityShield-TCC-Escola-da-Nuvem-)
+- **CityShield - TCC Escola da Nuvem** — Plataforma de segurança inteligente Event-Driven serverless com Rekognition, GuardDuty e análise de ameaças | [GitHub](https://github.com/GabrielF0900/CityShield-TCC-Escola-da-Nuvem-)
+- **Sistema de Gerenciamento de TCC** — Plataforma para criação e gerenciamento de Trabalhos de Conclusão de Curso com dashboard administrativo | [GitHub](https://github.com/Neukox/Sistema_De_Gerenciamento_De_TCC)
+- **Sistema de Gerenciamento de Chamados** — Plataforma com criptografia de ponta a ponta e chat em tempo real via WebSocket | [GitHub](https://github.com/Neukox/Sistema_De_Gerenciamento_De_Chamados)
+- **MindTrack** — Plataforma colaborativa para apoio ao bem-estar mental com registro de reflexões e dashboards analíticos | [GitHub](https://github.com/Neukox/MindTrack)
 
 ### 🛠️ **Seção Tecnologias Usadas Neste Portfólio**
 Stack completo utilizado:
@@ -125,13 +127,6 @@ Qualificações profissionais obtidas:
 - E mais...
 
 Cada certificação inclui data de emissão e link para comprovação.
-
-### 📧 **Seção Contato**
-Formulário de contato para:
-- Propostas de projetos
-- Oportunidades profissionais
-- Parcerias e colaborações
-- Dúvidas e sugestões
 
 ---
 
@@ -202,6 +197,6 @@ Meu nome é **Gabriel Falcão da Cruz**, sou um **Desenvolvedor Full Stack** que
 
 **Desenvolvido com ❤️ por Gabriel Falcão da Cruz**
 
-*Última atualização: 25 de março de 2026*
+*Última atualização: 8 de maio de 2026*
 
 </div>
