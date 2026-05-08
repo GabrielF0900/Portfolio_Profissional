@@ -422,6 +422,36 @@ export const projects: PortfolioData = {
       },
     },
     {
+      id: 3,
+      title: "Tarefix - Sistema de Gerenciamento de Tarefas",
+      description:
+        "E um sistema de gerenciamento de tarefas que visa facilitar a organização e o acompanhamento de atividades.",
+      technologies: [
+        "Tailwind CSS",
+        "React",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL",
+        "Node.js",
+        "Express",
+      ],
+      status: "Concluído",
+      category: "Full Stack",
+      startDate: "2025-07",
+      endDate: "2025-07",
+      image: "/tarefix.jpg",
+      highlights: [
+        "Criação de tarefas com prazos e prioridades.",
+        "Atualização e exclusão de tarefas.",
+        "Interface intuitiva e responsiva.",
+      ],
+      featured: false,
+      links: {
+        github: "https://github.com/GabrielF0900/Tarefix",
+        case_study: null,
+      },
+    },
+    {
       id: 1,
       title: "LoginFull",
       description:
@@ -477,36 +507,6 @@ export const projects: PortfolioData = {
       links: {
         github: "https://github.com/GabrielF0900/NodeAuth_API",
         case_study: "#",
-      },
-    },
-    {
-      id: 3,
-      title: "Tarefix - Sistema de Gerenciamento de Tarefas",
-      description:
-        "E um sistema de gerenciamento de tarefas que visa facilitar a organização e o acompanhamento de atividades.",
-      technologies: [
-        "Tailwind CSS",
-        "React",
-        "TypeScript",
-        "Prisma",
-        "PostgreSQL",
-        "Node.js",
-        "Express",
-      ],
-      status: "Concluído",
-      category: "Full Stack",
-      startDate: "2025-07",
-      endDate: "2025-07",
-      image: "/tarefix.jpg",
-      highlights: [
-        "Criação de tarefas com prazos e prioridades.",
-        "Atualização e exclusão de tarefas.",
-        "Interface intuitiva e responsiva.",
-      ],
-      featured: false,
-      links: {
-        github: "https://github.com/GabrielF0900/Tarefix",
-        case_study: null,
       },
     },
   ],
