@@ -33,12 +33,32 @@ const careerUpdates: CareerUpdate[] = [
     timestamp: "07 MAY",
     icon: "gear",
   },
+  {
+    id: "04",
+    category: "STUDY",
+    content: "Estudando arquiteturas event-driven.",
+    timestamp: "05 MAY",
+    icon: "lightning",
+  },
+  {
+    id: "05",
+    category: "PROJECT",
+    content: "Deploy automatizado com Terraform.",
+    timestamp: "03 MAY",
+    icon: "gear",
+  },
 ];
 
 const iconMap = {
   folder: Folder,
   lightning: Zap,
   gear: Settings,
+};
+
+const categoryColors: Record<string, string> = {
+  CAREER: "text-sky-500",
+  STUDY: "text-sky-500",
+  PROJECT: "text-sky-500",
 };
 
 export default function CareerPulse() {
@@ -58,7 +78,7 @@ export default function CareerPulse() {
 
   const getVisibleUpdates = () => {
     const updates = [];
-    for (let i = 0; i < Math.min(3, careerUpdates.length); i++) {
+    for (let i = 0; i < Math.min(2, careerUpdates.length); i++) {
       const index = (currentIndex + i) % careerUpdates.length;
       updates.push({ ...careerUpdates[index], stackIndex: i });
     }
@@ -66,91 +86,79 @@ export default function CareerPulse() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
-      {/* Glassmorphism Card */}
-      <div className="relative w-80 rounded-xl bg-slate-900/80 backdrop-blur-xl border border-transparent p-4 shadow-2xl">
-        {/* Gradient Border Effect */}
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-sky-400 via-sky-500 to-emerald-500 opacity-50 -z-10 blur-[1px]" />
-        <div className="absolute inset-[1px] rounded-xl bg-slate-900/95 -z-10" />
-
+    <div className="fixed bottom-8 right-8 z-50">
+      {/* Minimal White Card */}
+      <div className="w-72 rounded-lg bg-white border border-gray-200 shadow-md p-4">
         {/* Header */}
-        <div className="flex items-center gap-2 mb-4">
-          {/* Pulsing Live Indicator */}
-          <div className="relative">
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-            <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping opacity-75" />
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            {/* Pulsing Live Indicator - Soft Green */}
+            <div className="relative">
+              <div className="w-2 h-2 rounded-full bg-emerald-300" />
+              <div className="absolute inset-0 w-2 h-2 rounded-full bg-emerald-300 animate-ping opacity-50" />
+            </div>
+            <span className="font-mono text-[10px] text-gray-500 tracking-wider uppercase">
+              Career Pulse
+            </span>
           </div>
-          <span className="font-mono text-xs text-white tracking-wider">
-            [ CAREER PULSE ]
-          </span>
+          <span className="font-mono text-[10px] text-gray-400">LIVE</span>
         </div>
 
-        {/* Stacked Cards Container */}
-        <div className="relative h-36 mb-3">
-          {getVisibleUpdates()
-            .reverse()
-            .map((update, reverseIndex) => {
-              const stackIndex = 2 - reverseIndex;
-              const IconComponent = iconMap[update.icon];
+        {/* Messages Container */}
+        <div className="space-y-3 mb-4">
+          {getVisibleUpdates().map((update) => {
+            const IconComponent = iconMap[update.icon];
 
-              return (
-                <div
-                  key={`${update.id}-${stackIndex}`}
-                  className="absolute w-full transition-all duration-300 ease-out"
-                  style={{
-                    top: `${stackIndex * 8}px`,
-                    zIndex: 3 - stackIndex,
-                    opacity: 1 - stackIndex * 0.15,
-                    transform: `scale(${1 - stackIndex * 0.03})`,
-                  }}
-                >
-                  <div className="bg-slate-800/90 rounded-lg p-3 border border-slate-700/50">
-                    {/* Category & Timestamp */}
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-[10px] text-sky-400 tracking-wider">
-                        {update.category}
-                      </span>
-                      <span className="font-mono text-[10px] text-sky-400">
-                        {update.timestamp}
-                      </span>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex items-start gap-2">
-                      <IconComponent className="w-4 h-4 text-sky-400 flex-shrink-0 mt-0.5" />
-                      <p className="text-white text-sm leading-relaxed font-sans">
-                        {update.content}
-                      </p>
-                    </div>
-                  </div>
+            return (
+              <div
+                key={`${update.id}-${update.stackIndex}`}
+                className="border-b border-gray-100 pb-3 last:border-b-0 last:pb-0"
+              >
+                {/* Category & Timestamp */}
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className={`font-mono text-[10px] tracking-wider ${categoryColors[update.category]}`}>
+                    {update.category}
+                  </span>
+                  <span className="font-mono text-[10px] text-gray-400">
+                    {update.timestamp}
+                  </span>
                 </div>
-              );
-            })}
+
+                {/* Content */}
+                <div className="flex items-start gap-2">
+                  <IconComponent className="w-3.5 h-3.5 text-gray-400 flex-shrink-0 mt-0.5" />
+                  <p className="text-gray-600 text-xs leading-relaxed font-sans">
+                    {update.content}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* Navigation */}
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex items-center justify-center gap-2 pt-2 border-t border-gray-100">
           {/* Up Arrow */}
           <button
             onClick={handlePrev}
-            className="p-1 text-sky-400 hover:text-sky-300 transition-colors"
-            aria-label="Previous update"
+            className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
+            aria-label="Atualização anterior"
           >
-            <ChevronUp className="w-4 h-4" />
+            <ChevronUp className="w-3.5 h-3.5" />
           </button>
 
           {/* Pagination Dots */}
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1">
             {careerUpdates.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${
                   index === currentIndex
-                    ? "bg-sky-400 w-3"
-                    : "bg-slate-600 hover:bg-slate-500"
+                    ? "bg-gray-600 w-2.5"
+                    : "bg-gray-300 hover:bg-gray-400"
                 }`}
-                aria-label={`Go to update ${index + 1}`}
+                aria-label={`Ir para atualização ${index + 1}`}
               />
             ))}
           </div>
@@ -158,10 +166,10 @@ export default function CareerPulse() {
           {/* Down Arrow */}
           <button
             onClick={handleNext}
-            className="p-1 text-sky-400 hover:text-sky-300 transition-colors"
-            aria-label="Next update"
+            className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
+            aria-label="Próxima atualização"
           >
-            <ChevronDown className="w-4 h-4" />
+            <ChevronDown className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>

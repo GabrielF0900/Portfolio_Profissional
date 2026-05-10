@@ -13,21 +13,21 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Iury Souza | Cloud Engineering",
-  description: "Building resilient cloud systems with a full stack approach. AWS Professional, Cloud Architect, SRE.",
+  title: "Gabriel Falcão da Cruz | Full Stack Developer",
+  description: "Full Stack Developer | AWS Certified Solutions Architect. Desenvolvimento de aplicações web focadas em automação e eficiência operacional.",
   icons: {
     icon: "/favicon-gabriel.svg",
     shortcut: "/favicon-gabriel.svg",
   },
   openGraph: {
-    title: "Iury Souza | Cloud Engineering",
-    description: "Building resilient cloud systems with a full stack approach.",
+    title: "Gabriel Falcão da Cruz | Full Stack Developer",
+    description: "Full Stack Developer | AWS Certified Solutions Architect. Desenvolvimento de aplicações web focadas em automação e eficiência operacional.",
     type: "website",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0F172A",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -36,8 +36,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${firaCode.variable} bg-slate-950`}>
-      <body className="font-sans antialiased bg-slate-950 text-white">
+    <html lang="pt-BR" className={`${inter.variable} ${firaCode.variable} bg-white`}>
+      <body className="font-sans antialiased bg-white text-gray-900">
         {children}
       </body>
     </html>
