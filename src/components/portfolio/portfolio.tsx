@@ -17,7 +17,6 @@ import SkillsSection from "../sections/SkillsSection";
 import CTASection from "../sections/CTASection";
 
 // Widgets & Global Components
-import LastUpdateWidget from "../LastUpdateWidget";
 import Notifications from "../notifications/Notifications";
 import ScrollToTop from "../ScrollToTop";
 
@@ -50,13 +49,6 @@ export default function Portfolio() {
       </div>
 
       {/* --- CAMADA DE OVERLAY (WIDGETS FLUTUANTES) FORA DO DIV RELATIVE --- */}
-
-      {/* LastUpdateWidget - Posicionado no Canto Superior Esquerdo */}
-      <div
-        style={{ position: "fixed", top: "650px", left: "10px", zIndex: 50 }}
-      >
-        <LastUpdateWidget />
-      </div>
 
       {/* Notifications (Journal) - Posicionado no Canto Superior Direito */}
       <div

@@ -25,11 +25,15 @@ export default function Notifications() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMinimized, setIsMinimized] = useState(false); // Estado para minimizar
 
-  // Lógica do v0 para pegar os itens visíveis
+  // Lógica para pegar 2 itens por página sem repetição
   const getVisibleUpdates = () => {
     const updates = [];
-    for (let i = 0; i < Math.min(3, notificationsData.length); i++) {
-      const index = (currentIndex + i) % notificationsData.length;
+    for (
+      let i = 0;
+      i < Math.min(2, notificationsData.length - currentIndex);
+      i++
+    ) {
+      const index = currentIndex + i;
       updates.push({ ...notificationsData[index], stackIndex: i });
     }
     return updates;
@@ -37,17 +41,17 @@ export default function Notifications() {
 
   const visibleUpdates = getVisibleUpdates();
 
-  // Funções para as setas de navegação
+  // Funções para as setas de navegação - pula de 2 em 2 (por página)
   const handlePrev = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? notificationsData.length - 1 : prev - 1,
-    );
+    setCurrentIndex((prev) => Math.max(0, prev - 2));
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) =>
-      prev === notificationsData.length - 1 ? 0 : prev + 1,
-    );
+    setCurrentIndex((prev) => {
+      const nextIndex = prev + 2;
+      // Garante que não ultrapasse o total, mas permite parar no último par ou item único
+      return nextIndex >= notificationsData.length ? prev : nextIndex;
+    });
   };
 
   return (
@@ -121,7 +125,7 @@ export default function Notifications() {
         <div className="w-full animate-in fade-in slide-in-from-top-2 duration-500">
           {/* Messages Container */}
           <div className="px-4 py-3 space-y-4 min-h-[160px]">
-            {visibleUpdates.slice(0, 2).map((update, idx) => {
+            {visibleUpdates.map((update, idx) => {
               const IconComponent = iconMap[update.icon] || Folder;
 
               return (
@@ -176,23 +180,25 @@ export default function Notifications() {
             </button>
 
             <div className="flex items-center gap-1.5">
-              {notificationsData.map((_, index) => (
+              {Array.from({
+                length: Math.ceil(notificationsData.length / 2),
+              }).map((_, pageIndex) => (
                 <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
+                  key={pageIndex}
+                  onClick={() => setCurrentIndex(pageIndex * 2)}
                   className="transition-all duration-300 ease-out"
                   style={{
-                    width: index === currentIndex ? "8px" : "5px",
-                    height: index === currentIndex ? "8px" : "5px",
+                    width: pageIndex * 2 === currentIndex ? "8px" : "5px",
+                    height: pageIndex * 2 === currentIndex ? "8px" : "5px",
                     borderRadius: "50%",
                     backgroundColor:
-                      index === currentIndex ? "#38BDF8" : "#d1d5db",
+                      pageIndex * 2 === currentIndex ? "#38BDF8" : "#d1d5db",
                     boxShadow:
-                      index === currentIndex
+                      pageIndex * 2 === currentIndex
                         ? "0 0 6px 1px rgba(56, 189, 248, 0.3)"
                         : "none",
                   }}
-                  aria-label={`Ir para atualização ${index + 1}`}
+                  aria-label={`Ir para página ${pageIndex + 1}`}
                 />
               ))}
             </div>

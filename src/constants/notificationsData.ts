@@ -15,29 +15,23 @@ export const notificationsData: NotificationEntry[] = [
   {
     id: '1',
     category: 'CARREIRA',
-    date: '09 MAI',
-    content: 'Integração iniciada na SEFAZ-BA (Estágio).',
+    date: '24 ABR',
+    content: 'Convocado para estagiar na SEFAZ - BA.',
     icon: 'folder',
   },
   {
     id: '2',
     category: 'ESTUDO',
-    date: '08 MAI',
-    content: 'Aprofundando em Arquitetura Serverless (AWS SAP-C02).',
+    date: '24 ABR',
+    content: 'Estudando Estrutura de Dados em Java',
     icon: 'lightning',
   },
   {
     id: '3',
     category: 'PROJETO',
-    date: '07 MAI',
-    content: 'Implementando CI/CD no Nebula-Archive (Go/AWS).',
+    date: '11 MAI',
+    content: 'Desenvolvendo o Resilient-Audit Batch: Auditoria e busca de transações.',
     icon: 'gear',
-  },
-  {
-    id: '4',
-    category: 'SISTEMA',
-    date: '06 MAI',
-    content: 'Lançamento da nova feature do Journal Engineering.',
-    icon: 'lightning',
   }
+  
 ];
