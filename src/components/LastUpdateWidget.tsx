@@ -1,27 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Clock, ChevronLeft, ChevronRight } from "lucide-react";
-import { getLastUpdateFormatted } from "../constants";
+import { getLastUpdateFormatted } from "../constants/lastUpdate";
 
 export default function LastUpdateWidget() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false); // Estado para minimizar
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+  const [isMinimized, setIsMinimized] = useState(false);
 
   const lastUpdateText = getLastUpdateFormatted();
 
   return (
     <div
-      className={`relative transform transition-all duration-700 ease-in-out ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      }`}
+      className={`relative transform transition-all duration-700 ease-in-out opacity-100 translate-y-0`}
     >
       <div className="relative group flex items-center">
-        
         {/* Botão de Minimizar/Maximizar */}
         <button
           onClick={() => setIsMinimized(!isMinimized)}
@@ -41,18 +33,23 @@ export default function LastUpdateWidget() {
         )}
 
         {/* Card principal */}
-        <div 
+        <div
           className={`relative bg-white dark:bg-slate-900 rounded-2xl shadow-lg dark:shadow-2xl border border-slate-200 dark:border-slate-700 transition-all duration-500 ease-in-out overflow-hidden ${
-            isMinimized ? "w-14 h-14 p-0 flex items-center justify-center" : "px-5 py-4 w-auto"
+            isMinimized
+              ? "w-14 h-14 p-0 flex items-center justify-center"
+              : "px-5 py-4 w-auto"
           }`}
         >
           {/* Conteúdo */}
-          <div className={`flex items-center gap-3 ${isMinimized ? "justify-center" : ""}`}>
-            
+          <div
+            className={`flex items-center gap-3 ${isMinimized ? "justify-center" : ""}`}
+          >
             {/* Ícone com animação */}
             <div className="relative flex-shrink-0">
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
-              <Clock className={`relative w-5 h-5 text-blue-600 dark:text-blue-400 transition-all duration-300 ${!isMinimized ? "animate-pulse group-hover:animate-spin" : ""}`} />
+              <Clock
+                className={`relative w-5 h-5 text-blue-600 dark:text-blue-400 transition-all duration-300 ${!isMinimized ? "animate-pulse group-hover:animate-spin" : ""}`}
+              />
             </div>
 
             {/* Texto (Desaparece ao minimizar) */}
@@ -69,7 +66,9 @@ export default function LastUpdateWidget() {
           </div>
 
           {/* Indicador de status (Ponto Verde) */}
-          <div className={`absolute ${isMinimized ? "bottom-3 right-3" : "top-2 right-2"}`}>
+          <div
+            className={`absolute ${isMinimized ? "bottom-3 right-3" : "top-2 right-2"}`}
+          >
             <span className="relative inline-flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>

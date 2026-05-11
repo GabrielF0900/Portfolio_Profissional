@@ -28,36 +28,45 @@ export default function Portfolio() {
   const activeSection = useActiveSection();
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 overflow-x-hidden">
-      <Navigation activeSection={activeSection} />
+    <>
+      <div className="relative min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 overflow-x-hidden">
+        {/* 1. Navegação fixa no topo */}
+        <Navigation activeSection={activeSection} />
 
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <ExperienceSection />
-        <CertificationsSection />
-        <ProjectsSection />
-        <TechnologiesSection />
-        <SkillsSection />
-        <CTASection />
-      </main>
+        {/* 2. Conteúdo Principal */}
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <ExperienceSection />
+          <CertificationsSection />
+          <ProjectsSection />
+          <TechnologiesSection />
+          <SkillsSection />
+          <CTASection />
+        </main>
 
-      <Footer />
+        {/* 3. Rodapé */}
+        <Footer />
+      </div>
 
-      {/* --- CAMADA DE OVERLAY (WIDGETS FLUTUANTES) --- */}
+      {/* --- CAMADA DE OVERLAY (WIDGETS FLUTUANTES) FORA DO DIV RELATIVE --- */}
 
-      {/* 1. Notificações (Journal) - Canto Superior Direito, abaixo do Menu */}
-      <div className="fixed top-24 right-6 z-[9999]">
+      {/* LastUpdateWidget - Posicionado no Canto Superior Esquerdo */}
+      <div
+        style={{ position: "fixed", top: "650px", left: "10px", zIndex: 50 }}
+      >
+        <LastUpdateWidget />
+      </div>
+
+      {/* Notifications (Journal) - Posicionado no Canto Superior Direito */}
+      <div
+        style={{ position: "fixed", top: "80px", right: "20px", zIndex: 50 }}
+      >
         <Notifications />
       </div>
 
-      {/* 2. LastUpdateWidget - Canto Superior Esquerdo */}
-      <div className="fixed bottom-6 left-6 z-40 opacity-90 hover:opacity-100 transition-opacity duration-300 block">
-      <LastUpdateWidget />
-      </div>
-
-      {/* 3. ScrollToTop - Canto Inferior Direito (Padrão) */}
+      {/* ScrollToTop - Canto Inferior Direito */}
       <ScrollToTop />
-    </div>
+    </>
   );
 }

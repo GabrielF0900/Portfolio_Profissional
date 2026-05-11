@@ -1,116 +1,181 @@
 "use client";
 
 import React, { useState } from "react";
-import { Folder, Zap, Settings, ArrowLeft, ArrowRight } from "lucide-react";
+import { Folder, Zap, Settings, ArrowLeft, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 import {
   notificationsData,
   type IconType,
-  type NotificationEntry,
 } from "../../constants/notificationsData";
 
+const iconMap = {
+  folder: Folder,
+  lightning: Zap,
+  gear: Settings,
+};
+
 export default function Notifications() {
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 3;
-  const totalPages = Math.ceil(notificationsData.length / itemsPerPage);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMinimized, setIsMinimized] = useState(false); // Estado para minimizar
 
-  // Lógica de Paginação
-  const handleNextPage = () => {
-    setCurrentPage((prev) => (prev + 1) % totalPages);
-  };
-
-  const handlePrevPage = () => {
-    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
-  };
-
-  // Fatiando o array para mostrar apenas os itens da página atual
-  const currentItems = notificationsData.slice(
-    currentPage * itemsPerPage,
-    (currentPage + 1) * itemsPerPage,
-  );
-
-  // Renderizador dinâmico de ícones
-  const renderIcon = (iconType: IconType) => {
-    const iconProps = { className: "w-5 h-5 text-gray-500 stroke-[1.5]" };
-    switch (iconType) {
-      case "folder":
-        return <Folder {...iconProps} />;
-      case "lightning":
-        return <Zap {...iconProps} />;
-      case "gear":
-        return <Settings {...iconProps} />;
-      default:
-        return <Folder {...iconProps} />;
+  // Lógica do v0 para pegar os itens visíveis
+  const getVisibleUpdates = () => {
+    const updates = [];
+    for (let i = 0; i < Math.min(3, notificationsData.length); i++) {
+      const index = (currentIndex + i) % notificationsData.length;
+      updates.push({ ...notificationsData[index], stackIndex: i });
     }
+    return updates;
+  };
+
+  const visibleUpdates = getVisibleUpdates();
+
+  // Funções para as setas de navegação
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? notificationsData.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === notificationsData.length - 1 ? 0 : prev + 1));
   };
 
   return (
-    <div className="w-full max-w-md bg-white/95 backdrop-blur-xl rounded-2xl p-7 shadow-[0_8px_40px_rgb(0,0,0,0.06)] border border-gray-100 font-sans">
+    <div 
+      className="relative w-72 rounded-xl transition-all duration-300"
+      style={{
+        background: "rgba(255, 255, 255, 0.8)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        border: "1px solid rgba(255, 255, 255, 0.9)",
+        boxShadow: `
+          0 4px 6px -1px rgba(148, 163, 184, 0.1),
+          0 8px 15px -3px rgba(148, 163, 184, 0.1),
+          0 20px 25px -5px rgba(56, 189, 248, 0.05),
+          0 25px 50px -12px rgba(148, 163, 184, 0.15)
+        `,
+      }}
+    >
       {/* Header */}
-      <div className="flex items-center gap-3 mb-8">
-        <div className="relative flex items-center justify-center">
-          <div className="w-2.5 h-2.5 bg-emerald-400 rounded-full z-10"></div>
-          <div className="absolute w-4 h-4 bg-emerald-400/40 rounded-full animate-ping"></div>
+      <div className="flex items-center justify-between px-4 pt-4 pb-3">
+        <div className="flex items-center gap-2">
+          {/* Soft Pulsing Emerald Dot */}
+          <div className="relative">
+            <div 
+              className="w-2 h-2 rounded-full"
+              style={{ backgroundColor: "#34d399" }}
+            />
+            <div 
+              className="absolute inset-0 w-2 h-2 rounded-full animate-pulse"
+              style={{ 
+                backgroundColor: "#34d399",
+                opacity: 0.4,
+                animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+              }}
+            />
+          </div>
+          <span 
+            className="font-mono text-[11px] tracking-[0.2em] text-slate-500"
+            style={{ fontWeight: 500 }}
+          >
+            [ Journal Engineering ]
+          </span>
         </div>
-        <h2 className="font-mono text-[13px] tracking-[0.15em] text-gray-600 font-medium">
-          [ ÚLTIMAS ATUALIZAÇÕES ]
-        </h2>
+
+        {/* Seta estratégica para minimizar */}
+        <button 
+          onClick={() => setIsMinimized(!isMinimized)}
+          className="text-slate-400 hover:text-slate-600 transition-colors ml-2"
+          aria-label={isMinimized ? "Expandir" : "Minimizar"}
+        >
+          {isMinimized ? <ChevronDown size={16} strokeWidth={2} /> : <ChevronUp size={16} strokeWidth={2} />}
+        </button>
       </div>
 
-      {/* Lista de Atualizações */}
-      <div className="flex flex-col gap-6 min-h-[280px]">
-        {currentItems.map((item) => (
-          <div key={item.id} className="flex flex-col gap-2">
-            <div className="flex justify-between items-center w-full">
-              <span className="font-mono text-xs tracking-wider text-gray-500">
-                {item.category}
-              </span>
-              <span className="font-mono text-xs text-gray-400">
-                {item.date}
-              </span>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="mt-0.5">{renderIcon(item.icon)}</div>
-              <p className="text-[15px] leading-relaxed text-gray-800">
-                {item.content}
-              </p>
-            </div>
+      {/* Container de Mensagens e Navegação - Oculto quando minimizado */}
+      {!isMinimized && (
+        <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+          {/* Messages Container */}
+          <div className="px-4 py-3 space-y-4">
+            {visibleUpdates.slice(0, 2).map((update, idx) => {
+              const IconComponent = iconMap[update.icon] || Folder;
+              const isSecondary = idx === 1;
+
+              return (
+                <div
+                  key={`${update.id}-${update.stackIndex}`}
+                  className={`transition-opacity duration-300 ${
+                    isSecondary ? "opacity-50" : "opacity-100"
+                  }`}
+                >
+                  {/* Category & Timestamp */}
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span 
+                      className="font-mono text-[10px] tracking-wider font-semibold uppercase"
+                      style={{ color: "#475569" }}
+                    >
+                      {update.category}
+                    </span>
+                    <span className="font-mono text-[10px] text-slate-400">
+                      {update.date}
+                    </span>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex items-start gap-2.5">
+                    <IconComponent 
+                      className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" 
+                      style={{ color: "#94a3b8" }}
+                      strokeWidth={1.5} 
+                    />
+                    <p 
+                      className="text-[13px] leading-relaxed font-sans"
+                      style={{ color: "#334155" }}
+                    >
+                      {update.content}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        ))}
-      </div>
 
-      {/* Footer / Controles de Navegação */}
-      {totalPages > 1 && (
-        <div className="flex items-center justify-between mt-6 pt-2">
-          <button
-            onClick={handlePrevPage}
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors text-gray-600"
-            aria-label="Página anterior"
-          >
-            <ArrowLeft className="w-5 h-5 stroke-[1.5]" />
-          </button>
+          {/* Navigation - Setas nas pontas e Dots no meio */}
+          <div className="flex items-center justify-between px-4 py-4">
+            <button 
+              onClick={handlePrev}
+              className="text-slate-800 hover:text-slate-500 transition-colors"
+              aria-label="Notificação Anterior"
+            >
+              <ArrowLeft size={18} strokeWidth={1.5} />
+            </button>
 
-          <div className="flex items-center gap-2">
-            {Array.from({ length: totalPages }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentPage(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  currentPage === index
-                    ? "bg-sky-400 shadow-[0_0_8px_rgba(56,189,248,0.6)] w-2.5 h-2.5"
-                    : "bg-gray-200 hover:bg-gray-300"
-                }`}
-                aria-label={`Ir para a página ${index + 1}`}
-              />
-            ))}
+            <div className="flex items-center gap-2">
+              {notificationsData.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className="transition-all duration-300 ease-out"
+                  style={{
+                    width: index === currentIndex ? "10px" : "6px",
+                    height: index === currentIndex ? "10px" : "6px",
+                    borderRadius: "50%",
+                    backgroundColor: index === currentIndex ? "#38BDF8" : "#e2e8f0",
+                    boxShadow: index === currentIndex 
+                      ? "0 0 8px 2px rgba(56, 189, 248, 0.3)" 
+                      : "none",
+                  }}
+                  aria-label={`Ir para atualização ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <button 
+              onClick={handleNext}
+              className="text-slate-800 hover:text-slate-500 transition-colors"
+              aria-label="Próxima Notificação"
+            >
+              <ArrowRight size={18} strokeWidth={1.5} />
+            </button>
           </div>
-
-          <button
-            onClick={handleNextPage}
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors text-gray-600"
-            aria-label="Próxima página"
-          >
-            <ArrowRight className="w-5 h-5 stroke-[1.5]" />
-          </button>
         </div>
       )}
     </div>
