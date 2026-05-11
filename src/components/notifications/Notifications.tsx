@@ -1,7 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { Folder, Zap, Settings, ArrowLeft, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
+import {
+  Folder,
+  Zap,
+  Settings,
+  ArrowLeft,
+  ArrowRight,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import {
   notificationsData,
   type IconType,
@@ -31,104 +39,122 @@ export default function Notifications() {
 
   // Funções para as setas de navegação
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? notificationsData.length - 1 : prev - 1));
+    setCurrentIndex((prev) =>
+      prev === 0 ? notificationsData.length - 1 : prev - 1,
+    );
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === notificationsData.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) =>
+      prev === notificationsData.length - 1 ? 0 : prev + 1,
+    );
   };
 
   return (
-    <div 
-      className="relative w-72 rounded-xl transition-all duration-300"
+    <div
+      className="relative transition-all duration-500 ease-in-out"
       style={{
-        background: "rgba(255, 255, 255, 0.8)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        border: "1px solid rgba(255, 255, 255, 0.9)",
-        boxShadow: `
+        background: isMinimized ? "transparent" : "rgba(255, 255, 255, 0.8)",
+        backdropFilter: isMinimized ? "none" : "blur(12px)",
+        WebkitBackdropFilter: isMinimized ? "none" : "blur(12px)",
+        border: isMinimized ? "none" : "1px solid rgba(255, 255, 255, 0.9)",
+        borderRadius: isMinimized ? "0" : "12px",
+        boxShadow: isMinimized
+          ? "none"
+          : `
           0 4px 6px -1px rgba(148, 163, 184, 0.1),
           0 8px 15px -3px rgba(148, 163, 184, 0.1),
           0 20px 25px -5px rgba(56, 189, 248, 0.05),
           0 25px 50px -12px rgba(148, 163, 184, 0.15)
         `,
+        width: isMinimized ? "auto" : "288px",
+        height: "auto",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       {/* Header */}
-      <div className="flex items-center justify-between px-4 pt-4 pb-3">
-        <div className="flex items-center gap-2">
-          {/* Soft Pulsing Emerald Dot */}
-          <div className="relative">
-            <div 
-              className="w-2 h-2 rounded-full"
-              style={{ backgroundColor: "#34d399" }}
-            />
-            <div 
-              className="absolute inset-0 w-2 h-2 rounded-full animate-pulse"
-              style={{ 
-                backgroundColor: "#34d399",
-                opacity: 0.4,
-                animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"
-              }}
-            />
+      <div className="w-full flex items-center justify-between px-4 pt-4 pb-3 transition-all duration-500">
+        {!isMinimized && (
+          <div className="flex items-center gap-2 animate-in fade-in duration-300">
+            {/* Soft Pulsing Emerald Dot */}
+            <div className="relative">
+              <div
+                className="w-2 h-2 rounded-full"
+                style={{ backgroundColor: "#34d399" }}
+              />
+              <div
+                className="absolute inset-0 w-2 h-2 rounded-full animate-pulse"
+                style={{
+                  backgroundColor: "#34d399",
+                  opacity: 0.4,
+                  animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                }}
+              />
+            </div>
+            <span
+              className="font-mono text-[11px] tracking-[0.2em] whitespace-nowrap"
+              style={{ fontWeight: 500, color: "#000000" }}
+            >
+              [ Journal ]
+            </span>
           </div>
-          <span 
-            className="font-mono text-[11px] tracking-[0.2em] text-slate-500"
-            style={{ fontWeight: 500 }}
-          >
-            [ Journal Engineering ]
-          </span>
-        </div>
+        )}
 
-        {/* Seta estratégica para minimizar */}
-        <button 
+        {/* Seta para minimizar/expandir */}
+        <button
           onClick={() => setIsMinimized(!isMinimized)}
-          className="text-slate-400 hover:text-slate-600 transition-colors ml-2"
+          className="transition-all duration-500 transform hover:scale-110 active:scale-95"
+          style={{ color: "#000000", background: "none", border: "none" }}
           aria-label={isMinimized ? "Expandir" : "Minimizar"}
         >
-          {isMinimized ? <ChevronDown size={16} strokeWidth={2} /> : <ChevronUp size={16} strokeWidth={2} />}
+          {isMinimized ? (
+            <ChevronDown size={24} strokeWidth={2} />
+          ) : (
+            <ChevronUp size={20} strokeWidth={2} />
+          )}
         </button>
       </div>
 
       {/* Container de Mensagens e Navegação - Oculto quando minimizado */}
       {!isMinimized && (
-        <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+        <div className="w-full animate-in fade-in slide-in-from-top-2 duration-500">
           {/* Messages Container */}
-          <div className="px-4 py-3 space-y-4">
+          <div className="px-4 py-3 space-y-4 min-h-[160px]">
             {visibleUpdates.slice(0, 2).map((update, idx) => {
               const IconComponent = iconMap[update.icon] || Folder;
-              const isSecondary = idx === 1;
 
               return (
                 <div
                   key={`${update.id}-${update.stackIndex}`}
-                  className={`transition-opacity duration-300 ${
-                    isSecondary ? "opacity-50" : "opacity-100"
-                  }`}
+                  className="transition-opacity duration-300"
                 >
                   {/* Category & Timestamp */}
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span 
+                  <div className="flex items-center justify-between mb-2">
+                    <span
                       className="font-mono text-[10px] tracking-wider font-semibold uppercase"
-                      style={{ color: "#475569" }}
+                      style={{ color: "#000000" }}
                     >
                       {update.category}
                     </span>
-                    <span className="font-mono text-[10px] text-slate-400">
+                    <span
+                      className="font-mono text-[10px]"
+                      style={{ color: "#000000" }}
+                    >
                       {update.date}
                     </span>
                   </div>
 
                   {/* Content */}
-                  <div className="flex items-start gap-2.5">
-                    <IconComponent 
-                      className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" 
-                      style={{ color: "#94a3b8" }}
-                      strokeWidth={1.5} 
+                  <div className="flex gap-2.5">
+                    <IconComponent
+                      className="w-4 h-4 flex-shrink-0 mt-0.5"
+                      style={{ color: "#000000" }}
+                      strokeWidth={1.5}
                     />
-                    <p 
-                      className="text-[13px] leading-relaxed font-sans"
-                      style={{ color: "#334155" }}
+                    <p
+                      className="text-[12px] leading-relaxed font-sans flex-1"
+                      style={{ color: "#000000", wordBreak: "break-word" }}
                     >
                       {update.content}
                     </p>
@@ -139,41 +165,45 @@ export default function Notifications() {
           </div>
 
           {/* Navigation - Setas nas pontas e Dots no meio */}
-          <div className="flex items-center justify-between px-4 py-4">
-            <button 
+          <div className="w-full flex items-center justify-between px-4 py-4 border-t border-gray-200">
+            <button
               onClick={handlePrev}
-              className="text-slate-800 hover:text-slate-500 transition-colors"
+              className="transition-all duration-300 transform hover:scale-110 active:scale-95 p-1"
+              style={{ color: "#000000" }}
               aria-label="Notificação Anterior"
             >
-              <ArrowLeft size={18} strokeWidth={1.5} />
+              <ArrowLeft size={16} strokeWidth={1.5} />
             </button>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
               {notificationsData.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className="transition-all duration-300 ease-out"
                   style={{
-                    width: index === currentIndex ? "10px" : "6px",
-                    height: index === currentIndex ? "10px" : "6px",
+                    width: index === currentIndex ? "8px" : "5px",
+                    height: index === currentIndex ? "8px" : "5px",
                     borderRadius: "50%",
-                    backgroundColor: index === currentIndex ? "#38BDF8" : "#e2e8f0",
-                    boxShadow: index === currentIndex 
-                      ? "0 0 8px 2px rgba(56, 189, 248, 0.3)" 
-                      : "none",
+                    backgroundColor:
+                      index === currentIndex ? "#38BDF8" : "#d1d5db",
+                    boxShadow:
+                      index === currentIndex
+                        ? "0 0 6px 1px rgba(56, 189, 248, 0.3)"
+                        : "none",
                   }}
                   aria-label={`Ir para atualização ${index + 1}`}
                 />
               ))}
             </div>
 
-            <button 
+            <button
               onClick={handleNext}
-              className="text-slate-800 hover:text-slate-500 transition-colors"
+              className="transition-all duration-300 transform hover:scale-110 active:scale-95 p-1"
+              style={{ color: "#000000" }}
               aria-label="Próxima Notificação"
             >
-              <ArrowRight size={18} strokeWidth={1.5} />
+              <ArrowRight size={16} strokeWidth={1.5} />
             </button>
           </div>
         </div>
