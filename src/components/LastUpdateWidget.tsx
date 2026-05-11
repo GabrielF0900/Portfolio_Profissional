@@ -6,82 +6,61 @@ import { getLastUpdateFormatted } from "../constants/lastUpdate";
 
 export default function LastUpdateWidget() {
   const [isMinimized, setIsMinimized] = useState(false);
-
   const lastUpdateText = getLastUpdateFormatted();
 
   return (
-    <div
-      className={`relative transform transition-all duration-700 ease-in-out opacity-100 translate-y-0`}
-    >
-      <div className="relative group flex items-center">
-        {/* Botão de Minimizar/Maximizar */}
+    <div className="relative w-fit">
+      <div className="relative flex items-center h-14">
+        {/* 1. SETA TRANSPARENTE - Sem fundo, sem borda, z-index máximo */}
         <button
           onClick={() => setIsMinimized(!isMinimized)}
-          className="absolute -right-3 top-1/2 -translate-y-1/2 z-50 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full p-0.5 shadow-md hover:scale-110 transition-transform text-slate-500 hover:text-blue-500"
-          title={isMinimized ? "Expandir" : "Minimizar"}
+          className="absolute -right-6 top-1/2 -translate-y-1/2 z-[100] transition-all duration-300 text-black flex items-center justify-center hover:scale-125 bg-transparent outline-none"
         >
           {isMinimized ? (
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight size={22} strokeWidth={3} />
           ) : (
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft size={22} strokeWidth={3} />
           )}
         </button>
 
-        {/* Efeito de brilho (só aparece se não estiver minimizado) */}
-        {!isMinimized && (
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
-        )}
-
-        {/* Card principal */}
+        {/* 2. CARD QUE ENCOLHE */}
         <div
-          className={`relative bg-white dark:bg-slate-900 rounded-2xl shadow-lg dark:shadow-2xl border border-slate-200 dark:border-slate-700 transition-all duration-500 ease-in-out overflow-hidden ${
+          className={`relative bg-white shadow-lg border border-slate-200 transition-all duration-500 ease-in-out overflow-hidden ${
             isMinimized
-              ? "w-14 h-14 p-0 flex items-center justify-center"
-              : "px-5 py-4 w-auto"
+              ? "w-14 h-14 rounded-full flex items-center justify-center"
+              : "rounded-2xl px-5 py-3 w-[85vw] max-w-[280px] sm:w-auto min-w-[220px]"
           }`}
         >
-          {/* Conteúdo */}
-          <div
-            className={`flex items-center gap-3 ${isMinimized ? "justify-center" : ""}`}
-          >
-            {/* Ícone com animação */}
-            <div className="relative flex-shrink-0">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
-              <Clock
-                className={`relative w-5 h-5 text-blue-600 dark:text-blue-400 transition-all duration-300 ${!isMinimized ? "animate-pulse group-hover:animate-spin" : ""}`}
-              />
-            </div>
-
-            {/* Texto (Desaparece ao minimizar) */}
-            {!isMinimized && (
-              <div className="flex flex-col gap-0.5 whitespace-nowrap animate-in fade-in duration-500">
-                <p className="text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wide">
+          {!isMinimized && (
+            <div className="flex items-center gap-3 animate-in fade-in duration-500 pr-6">
+              <Clock className="w-5 h-5 text-blue-600 animate-pulse" />
+              <div className="flex flex-col whitespace-nowrap">
+                <p className="text-[10px] font-black text-black uppercase tracking-tight">
                   Última Atualização
                 </p>
-                <p className="text-sm font-bold text-slate-900 dark:text-white">
+                <p className="text-xs sm:text-sm font-bold text-black opacity-90">
                   {lastUpdateText}
                 </p>
               </div>
-            )}
-          </div>
+            </div>
+          )}
 
-          {/* Indicador de status (Ponto Verde) */}
-          <div
-            className={`absolute ${isMinimized ? "bottom-3 right-3" : "top-2 right-2"}`}
-          >
-            <span className="relative inline-flex h-2 w-2">
+          <div className="absolute top-2 right-2">
+            <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
           </div>
         </div>
 
-        {/* Tooltip (Só aparece quando minimizado para o usuário saber o que é o ícone) */}
+        {/* 3. TEXTO POSICIONADO COM VALOR FIXO (Para não encavalar na seta) */}
         {isMinimized && (
-          <div className="absolute left-full ml-4 px-3 py-2 bg-slate-900 dark:bg-slate-800 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-lg">
+          <span
+            className="text-sm font-black text-black whitespace-nowrap animate-in fade-in slide-in-from-left-4 duration-300 ml-12"
+            style={{ marginLeft: "20px" }}
+          >
             Ver última atualização
-            <div className="absolute right-full top-1/2 -translate-y-1/2 border-8 border-transparent border-r-slate-900 dark:border-r-slate-800"></div>
-          </div>
+          </span>
         )}
       </div>
     </div>
