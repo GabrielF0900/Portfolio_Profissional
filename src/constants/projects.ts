@@ -332,8 +332,7 @@ export const projects: PortfolioData = {
     {
       id: 8,
       title: "Aws Resilient Order Process",
-      description:
-        "Pipeline de processamento de pedidos assíncrona que implementa desacoplamento completo via fila SQS, garantindo zero perda de dados sob picos de carga. Arquitetura: Order Producer (Lambda com Function URL como "pseudo-API") envia para SQS, que desperta Order Processor para consumir e persiste em S3. O design elegante utiliza EventBridge como gatilho automático sem depender de IAM bloqueado. Validado com Postman: requisições são recebidas, enfileiradas, processadas e armazenadas em segundos. Implementa o padrão Event-Driven Architecture, garantindo escalabilidade automática e resiliência: se o processador cair, mensagens aguardam seguras na fila até a recuperação. Modelo de custo: praticamente zero em ociosidade, pagando apenas pelo processamento real.",
+      description: `Pipeline de processamento de pedidos assíncrona que implementa desacoplamento completo via fila SQS, garantindo zero perda de dados sob picos de carga. Arquitetura: Order Producer (Lambda com Function URL como "pseudo-API") envia para SQS, que desperta Order Processor para consumir e persiste em S3. O design elegante utiliza EventBridge como gatilho automático sem depender de IAM bloqueado. Validado com Postman: requisições são recebidas, enfileiradas, processadas e armazenadas em segundos. Implementa o padrão Event-Driven Architecture, garantindo escalabilidade automática e resiliência: se o processador cair, mensagens aguardam seguras na fila até a recuperação. Modelo de custo: praticamente zero em ociosidade, pagando apenas pelo processamento real.`,
       technologies: [
         "AWS",
         "Lambda",
