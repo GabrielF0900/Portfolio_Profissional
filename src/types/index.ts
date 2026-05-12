@@ -24,6 +24,10 @@ export interface Project {
     description: string;
     size?: number;
   };
+  metrics?: {
+    label: string;
+    value: string;
+  }[];
 }
 
 export interface Technologies {

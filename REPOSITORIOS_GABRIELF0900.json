@@ -1,0 +1,407 @@
+{
+  "usuario": "GabrielF0900",
+  "data_coleta": "2026-05-12",
+  "total_repositorios": 42,
+  "distribuicao": {
+    "pessoais": 18,
+    "academicos": 15,
+    "colaborativos": 9
+  },
+  "resumo_tecnologias": {
+    "linguagens_principais": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "Java",
+      "HTML",
+      "CSS",
+      "Shell",
+      "HCL",
+      "Go"
+    ],
+    "frameworks_backend": [
+      "Node.js",
+      "Express",
+      "NestJS",
+      "Spring",
+      "Django",
+      "Flask"
+    ],
+    "frameworks_frontend": [
+      "React",
+      "Next.js",
+      "Vue.js",
+      "Angular",
+      "Tailwind CSS"
+    ],
+    "cloud_services": [
+      "AWS EC2",
+      "AWS Lambda",
+      "AWS S3",
+      "AWS RDS",
+      "AWS DynamoDB",
+      "AWS CloudFormation",
+      "AWS Step Functions",
+      "AWS API Gateway",
+      "Terraform",
+      "CloudFront"
+    ],
+    "databases": [
+      "PostgreSQL",
+      "MongoDB",
+      "MySQL",
+      "DynamoDB"
+    ],
+    "ferramentas_devops": [
+      "Docker",
+      "Kubernetes",
+      "Git",
+      "GitHub Actions",
+      "CI/CD"
+    ]
+  },
+  "repositorios": {
+    "pessoais": [
+      {
+        "nome": "Portfolio_Profissional",
+        "descricao": "Portfólio profissional desenvolvido com Next.js e showcasing de projetos e habilidades",
+        "url": "https://github.com/GabrielF0900/Portfolio_Profissional",
+        "linguagens": ["TypeScript"],
+        "tecnologias": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Shadcn UI"],
+        "topicos": ["portfolio", "nextjs", "react"]
+      },
+      {
+        "nome": "Meu_Novo_Portfolio",
+        "descricao": "Portfolio desenvolvido com tecnologias modernas",
+        "url": "https://github.com/GabrielF0900/Meu_Novo_Portfolio",
+        "linguagens": ["TypeScript"],
+        "tecnologias": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+        "topicos": ["portfolio", "nextjs"]
+      },
+      {
+        "nome": "Meu_portfolio",
+        "descricao": "Portfólio pessoal desenvolvido com tecnologias web clássicas",
+        "url": "https://github.com/GabrielF0900/Meu_portfolio",
+        "linguagens": ["JavaScript"],
+        "tecnologias": ["HTML", "CSS", "JavaScript"],
+        "topicos": ["portfolio", "web"]
+      },
+      {
+        "nome": "LoginFull",
+        "descricao": "Primeiro projeto FULL STACK completo com autenticação e banco de dados",
+        "url": "https://github.com/GabrielF0900/LoginFull",
+        "linguagens": ["TypeScript"],
+        "tecnologias": ["Node.js", "Express", "MongoDB", "JWT", "Bcrypt"],
+        "topicos": ["authentication", "nodejs", "mongodb", "fullstack"]
+      },
+      {
+        "nome": "Login_NestJS",
+        "descricao": "Mini projeto de autenticação com NestJS",
+        "url": "https://github.com/GabrielF0900/Login_NestJS",
+        "linguagens": ["TypeScript"],
+        "tecnologias": ["NestJS", "TypeScript", "JWT", "PostgreSQL"],
+        "topicos": ["nestjs", "authentication"]
+      },
+      {
+        "nome": "NodeAuth_API",
+        "descricao": "API de autenticação com Node.js",
+        "url": "https://github.com/GabrielF0900/NodeAuth_API",
+        "linguagens": ["JavaScript"],
+        "tecnologias": ["Node.js", "Express", "JWT", "MySQL"],
+        "topicos": ["nodejs", "authentication", "api"]
+      },
+      {
+        "nome": "ChatPRO",
+        "descricao": "Mini projeto de Chat em tempo real com WebSocket",
+        "url": "https://github.com/GabrielF0900/ChatPRO",
+        "linguagens": ["TypeScript"],
+        "tecnologias": ["Node.js", "Socket.io", "React", "MongoDB", "Express"],
+        "topicos": ["chat", "websocket", "realtime"]
+      },
+      {
+        "nome": "Tarefix",
+        "descricao": "Aplicação de gerenciamento de tarefas",
+        "url": "https://github.com/GabrielF0900/Tarefix",
+        "linguagens": ["JavaScript"],
+        "tecnologias": ["React", "JavaScript"],
+        "topicos": ["todo-app", "react"]
+      },
+      {
+        "nome": "Lista_de_Compras",
+        "descricao": "Aplicação de lista de compras com manipulação de DOM",
+        "url": "https://github.com/GabrielF0900/Lista_de_Compras",
+        "linguagens": ["JavaScript"],
+        "tecnologias": ["HTML", "CSS", "JavaScript"],
+        "topicos": ["todo-app", "web"]
+      },
+      {
+        "nome": "banking-core-java",
+        "descricao": "Sistema bancário modular em Java com Arquitetura Limpa",
+        "url": "https://github.com/GabrielF0900/banking-core-java",
+        "linguagens": ["Java"],
+        "tecnologias": ["Java", "Spring", "Hibernate", "Maven", "JUnit"],
+        "topicos": ["java", "banking", "enterprise"]
+      },
+      {
+        "nome": "extracao-slides-pdf",
+        "descricao": "Ferramenta de automação em Python para extração de slides de PDFs",
+        "url": "https://github.com/GabrielF0900/extracao-slides-pdf",
+        "linguagens": ["Python"],
+        "tecnologias": ["Python", "PDF Processing", "Automation"],
+        "topicos": ["python", "pdf", "automation"]
+      },
+      {
+        "nome": "AWS-Nexus-IaC-Blueprint",
+        "descricao": "Infraestrutura como Código com Terraform e CloudFormation",
+        "url": "https://github.com/GabrielF0900/AWS-Nexus-IaC-Blueprint",
+        "linguagens": ["HCL"],
+        "tecnologias": ["AWS", "Terraform", "CloudFormation", "Infrastructure as Code"],
+        "topicos": ["aws", "terraform", "iac"]
+      },
+      {
+        "nome": "aws-proactive-monitoring",
+        "descricao": "Pipeline de monitoramento proativo na AWS com CloudWatch",
+        "url": "https://github.com/GabrielF0900/aws-proactive-monitoring",
+        "linguagens": ["Python"],
+        "tecnologias": ["AWS", "CloudWatch", "Lambda", "SNS"],
+        "topicos": ["aws", "monitoring", "cloudwatch"]
+      },
+      {
+        "nome": "aws-resilient-order-processor",
+        "descricao": "Fluxo desacoplado de processamento de pedidos com SQS",
+        "url": "https://github.com/GabrielF0900/aws-resilient-order-processor",
+        "linguagens": ["Python"],
+        "tecnologias": ["AWS", "SQS", "Lambda", "S3"],
+        "topicos": ["aws", "serverless", "sqs"]
+      },
+      {
+        "nome": "aws-s3-auto-remediator",
+        "descricao": "Automação de segurança em AWS S3 com correção automática",
+        "url": "https://github.com/GabrielF0900/aws-s3-auto-remediator",
+        "linguagens": ["Python"],
+        "tecnologias": ["AWS", "S3", "Lambda", "EventBridge"],
+        "topicos": ["aws", "s3", "security", "automation"]
+      },
+      {
+        "nome": "AWS-serverless-order-orchestrator",
+        "descricao": "Arquitetura serverless para orquestração de pedidos",
+        "url": "https://github.com/GabrielF0900/AWS-serverless-order-orchestrator",
+        "linguagens": ["Python"],
+        "tecnologias": ["AWS", "Lambda", "Step Functions", "DynamoDB"],
+        "topicos": ["aws", "serverless", "orchestration"]
+      },
+      {
+        "nome": "aws-serverless-product-catalog",
+        "descricao": "API CRUD serverless para catálogo de produtos",
+        "url": "https://github.com/GabrielF0900/aws-serverless-product-catalog",
+        "linguagens": ["Python"],
+        "tecnologias": ["AWS", "Lambda", "API Gateway", "DynamoDB"],
+        "topicos": ["aws", "serverless", "api", "crud"]
+      },
+      {
+        "nome": "Nebula-Archive",
+        "descricao": "Orquestrador de armazenamento em nuvem",
+        "url": "https://github.com/GabrielF0900/Nebula-Archive",
+        "linguagens": ["Python"],
+        "tecnologias": ["Python", "AWS S3", "Cloud Storage"],
+        "topicos": ["cloud", "storage", "aws"]
+      }
+    ],
+    "academicos": [
+      {
+        "nome": "CityShield-TCC-Escola-da-Nuvem",
+        "descricao": "TCC (Trabalho de Conclusão de Curso) - Projeto de segurança com IoT e AWS",
+        "url": "https://github.com/GabrielF0900/CityShield-TCC-Escola-da-Nuvem-",
+        "linguagens": ["Python"],
+        "tecnologias": ["AWS", "Docker", "Terraform", "IoT", "Segurança"],
+        "topicos": ["tcc", "aws", "school-project", "cityshield"]
+      },
+      {
+        "nome": "aws-high-availability-scaling-architecture",
+        "descricao": "Documentação e implementação de arquitetura de alta disponibilidade em AWS",
+        "url": "https://github.com/GabrielF0900/aws-high-availability-scaling-architecture",
+        "linguagens": ["Python"],
+        "tecnologias": ["AWS", "EC2", "Auto Scaling", "RDS", "CloudFormation"],
+        "topicos": ["aws", "high-availability", "scaling", "infrastructure"]
+      },
+      {
+        "nome": "Projeto-02-A-Conexao-o-Backend-Database",
+        "descricao": "Arquitetura AWS: Implementação de Backend com Database",
+        "url": "https://github.com/GabrielF0900/Projeto-02-A-Conexao-o-Backend-Database",
+        "linguagens": ["Python"],
+        "tecnologias": ["AWS", "RDS", "Lambda", "API Gateway", "DynamoDB"],
+        "topicos": ["aws", "backend", "database", "academic"]
+      },
+      {
+        "nome": "Game_Designer",
+        "descricao": "Trabalho acadêmico: site completo com tema de designer de jogos",
+        "url": "https://github.com/GabrielF0900/Game_Designer",
+        "linguagens": ["HTML"],
+        "tecnologias": ["HTML", "CSS", "JavaScript"],
+        "topicos": ["academic", "game-design", "web"]
+      },
+      {
+        "nome": "CloudFront-NewEdge",
+        "descricao": "Documentação de implementação de CloudFront com EdgeLocations",
+        "url": "https://github.com/GabrielF0900/CloudFront-NewEdge",
+        "linguagens": [],
+        "tecnologias": ["AWS", "CloudFront", "CDN"],
+        "topicos": ["aws", "cloudfront", "cdn", "academic"]
+      },
+      {
+        "nome": "ec2-security-landing-page",
+        "descricao": "Provisionamento de infraestrutura EC2 com landing page de segurança",
+        "url": "https://github.com/GabrielF0900/ec2-security-landing-page",
+        "linguagens": ["HTML"],
+        "tecnologias": ["AWS", "EC2", "Security Groups", "Apache"],
+        "topicos": ["aws", "ec2", "security", "academic"]
+      },
+      {
+        "nome": "Lemux",
+        "descricao": "Projeto para aprendizado de Linux, HTML, CSS e JavaScript",
+        "url": "https://github.com/GabrielF0900/Lemux",
+        "linguagens": ["Shell"],
+        "tecnologias": ["Linux", "Bash", "Shell Script"],
+        "topicos": ["linux", "bash", "learning", "academic"]
+      },
+      {
+        "nome": "Agencia_de_Viagens",
+        "descricao": "Site de agência de viagens com design no Figma",
+        "url": "https://github.com/GabrielF0900/Agencia_de_Viagens",
+        "linguagens": ["HTML"],
+        "tecnologias": ["HTML", "CSS", "JavaScript", "Figma"],
+        "topicos": ["ecommerce", "web", "academic"]
+      },
+      {
+        "nome": "Site_Pets_Shop",
+        "descricao": "Site e-commerce de produtos para pets",
+        "url": "https://github.com/GabrielF0900/Site_Pets_Shop",
+        "linguagens": ["JavaScript"],
+        "tecnologias": ["HTML", "CSS", "JavaScript"],
+        "topicos": ["ecommerce", "pets", "academic"]
+      },
+      {
+        "nome": "Site_de_Cupcakes",
+        "descricao": "Site e-commerce para venda de cupcakes",
+        "url": "https://github.com/GabrielF0900/Site_de_Cupcakes",
+        "linguagens": ["JavaScript"],
+        "tecnologias": ["HTML", "CSS", "JavaScript"],
+        "topicos": ["ecommerce", "web", "academic"]
+      },
+      {
+        "nome": "Site_de_Joias",
+        "descricao": "Site e-commerce de joias",
+        "url": "https://github.com/GabrielF0900/Site_de_Joias",
+        "linguagens": ["JavaScript"],
+        "tecnologias": ["HTML", "CSS", "JavaScript"],
+        "topicos": ["ecommerce", "web", "academic"]
+      },
+      {
+        "nome": "Site_de_telescopio",
+        "descricao": "Site e-commerce de telescópios",
+        "url": "https://github.com/GabrielF0900/Site_de_telescopio",
+        "linguagens": ["JavaScript"],
+        "tecnologias": ["HTML", "CSS", "JavaScript"],
+        "topicos": ["ecommerce", "web", "academic"]
+      },
+      {
+        "nome": "Site_De_Tenis",
+        "descricao": "Site e-commerce de tênis (em desenvolvimento)",
+        "url": "https://github.com/GabrielF0900/Site_De_Tenis",
+        "linguagens": ["JavaScript"],
+        "tecnologias": ["HTML", "CSS", "JavaScript"],
+        "topicos": ["ecommerce", "web", "academic"]
+      },
+      {
+        "nome": "Tela_de_login",
+        "descricao": "Tela de login com propósito didático",
+        "url": "https://github.com/GabrielF0900/Tela_de_login",
+        "linguagens": ["HTML"],
+        "tecnologias": ["HTML", "CSS", "JavaScript"],
+        "topicos": ["login", "web", "academic"]
+      },
+      {
+        "nome": "Madre_Fitness",
+        "descricao": "Site com foco em fitness e academia",
+        "url": "https://github.com/GabrielF0900/Madre_Fitness",
+        "linguagens": ["JavaScript"],
+        "tecnologias": ["React", "Tailwind CSS", "JavaScript"],
+        "topicos": ["fitness", "react", "web", "academic"]
+      }
+    ],
+    "colaborativos": [
+      {
+        "nome": "ConectaTEA",
+        "descricao": "Plataforma web conectando profissionais de saúde para acompanhamento de crianças com TEA",
+        "url": "https://github.com/GabrielF0900/ConectaTEA",
+        "linguagens": ["TypeScript"],
+        "tecnologias": ["React", "TypeScript", "Node.js", "PostgreSQL", "Next.js"],
+        "topicos": ["social-network", "inclusivity", "accessibility", "healthcare"]
+      },
+      {
+        "nome": "Validacao_ConectaTEA",
+        "descricao": "Landing page de validação do projeto ConectaTEA",
+        "url": "https://github.com/GabrielF0900/Validacao_ConectaTEA",
+        "linguagens": ["TypeScript"],
+        "tecnologias": ["React", "TypeScript", "Tailwind CSS"],
+        "topicos": ["validation", "landing-page", "collaborative"]
+      },
+      {
+        "nome": "Portfolio_Da_Fernanda",
+        "descricao": "Portfólio profissional colaborativo",
+        "url": "https://github.com/GabrielF0900/Portfolio_Da_Fernanda",
+        "linguagens": ["TypeScript"],
+        "tecnologias": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+        "topicos": ["portfolio", "nextjs", "collaborative"]
+      },
+      {
+        "nome": "Atividade-Docker-Daniele-2026",
+        "descricao": "Atividade colaborativa de Docker",
+        "url": "https://github.com/GabrielF0900/Atividade-Docker-Daniele-2026",
+        "linguagens": ["Docker"],
+        "tecnologias": ["Docker", "Containerization"],
+        "topicos": ["docker", "activity", "collaborative"]
+      },
+      {
+        "nome": "Projeto_FalconTech",
+        "descricao": "Projeto de apresentação de empresa tech com soluções inovadoras",
+        "url": "https://github.com/GabrielF0900/Projeto_FalconTech",
+        "linguagens": ["JavaScript"],
+        "tecnologias": ["React", "JavaScript", "Tailwind CSS"],
+        "topicos": ["company-site", "react", "collaborative"]
+      },
+      {
+        "nome": "resilient-audit-batch",
+        "descricao": "Motor de processamento de lotes para auditoria com resiliência",
+        "url": "https://github.com/GabrielF0900/resilient-audit-batch",
+        "linguagens": ["Python"],
+        "tecnologias": ["Python", "AWS Batch", "Lambda", "SQS"],
+        "topicos": ["aws", "batch-processing", "audit", "collaborative"]
+      },
+      {
+        "nome": "ci-demo",
+        "descricao": "Demonstração de Pipeline CI/CD",
+        "url": "https://github.com/GabrielF0900/ci-demo",
+        "linguagens": [],
+        "tecnologias": ["CI/CD", "GitHub Actions", "Docker"],
+        "topicos": ["ci-cd", "github-actions", "pipeline", "collaborative"]
+      },
+      {
+        "nome": "GabrielF0900",
+        "descricao": "Repositório de perfil do GitHub",
+        "url": "https://github.com/GabrielF0900/GabrielF0900",
+        "linguagens": ["Markdown"],
+        "tecnologias": [],
+        "topicos": ["profile", "readme"]
+      },
+      {
+        "nome": "1Projeto",
+        "descricao": "Projeto colaborativo inicial",
+        "url": "https://github.com/GabrielF0900/1Projeto",
+        "linguagens": [],
+        "tecnologias": [],
+        "topicos": ["starter", "collaborative"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+Nome,Tipo,URL,Linguagem Principal,Tecnologias,Descrição
+Portfolio_Profissional,Pessoal,https://github.com/GabrielF0900/Portfolio_Profissional,TypeScript,"Next.js, React, TypeScript, Tailwind CSS, Shadcn UI",Portfólio profissional desenvolvido com Next.js e showcasing de projetos
+Meu_Novo_Portfolio,Pessoal,https://github.com/GabrielF0900/Meu_Novo_Portfolio,TypeScript,"Next.js, React, TypeScript, Tailwind CSS",Portfolio desenvolvido com tecnologias modernas
+Meu_portfolio,Pessoal,https://github.com/GabrielF0900/Meu_portfolio,JavaScript,"HTML, CSS, JavaScript",Portfólio pessoal desenvolvido com tecnologias web clássicas
+LoginFull,Pessoal,https://github.com/GabrielF0900/LoginFull,TypeScript,"Node.js, Express, MongoDB, JWT, Bcrypt",Primeiro projeto FULL STACK completo com autenticação
+Login_NestJS,Pessoal,https://github.com/GabrielF0900/Login_NestJS,TypeScript,"NestJS, TypeScript, JWT, PostgreSQL",Mini projeto de autenticação com NestJS
+NodeAuth_API,Pessoal,https://github.com/GabrielF0900/NodeAuth_API,JavaScript,"Node.js, Express, JWT, MySQL",API de autenticação com Node.js
+ChatPRO,Pessoal,https://github.com/GabrielF0900/ChatPRO,TypeScript,"Node.js, Socket.io, React, MongoDB, Express",Mini projeto de Chat em tempo real com WebSocket
+Tarefix,Pessoal,https://github.com/GabrielF0900/Tarefix,JavaScript,"React, JavaScript",Aplicação de gerenciamento de tarefas
+Lista_de_Compras,Pessoal,https://github.com/GabrielF0900/Lista_de_Compras,JavaScript,"HTML, CSS, JavaScript",Aplicação de lista de compras com manipulação de DOM
+banking-core-java,Pessoal,https://github.com/GabrielF0900/banking-core-java,Java,"Java, Spring, Hibernate, Maven, JUnit",Sistema bancário modular em Java com Arquitetura Limpa
+extracao-slides-pdf,Pessoal,https://github.com/GabrielF0900/extracao-slides-pdf,Python,"Python, PDF Processing, Automation",Ferramenta de automação em Python para extração de slides de PDFs
+AWS-Nexus-IaC-Blueprint,Pessoal,https://github.com/GabrielF0900/AWS-Nexus-IaC-Blueprint,HCL,"AWS, Terraform, CloudFormation, Infrastructure as Code",Infraestrutura como Código com Terraform e CloudFormation
+aws-proactive-monitoring,Pessoal,https://github.com/GabrielF0900/aws-proactive-monitoring,Python,"AWS, CloudWatch, Lambda, SNS",Pipeline de monitoramento proativo na AWS com CloudWatch
+aws-resilient-order-processor,Pessoal,https://github.com/GabrielF0900/aws-resilient-order-processor,Python,"AWS, SQS, Lambda, S3",Fluxo desacoplado de processamento de pedidos com SQS
+aws-s3-auto-remediator,Pessoal,https://github.com/GabrielF0900/aws-s3-auto-remediator,Python,"AWS, S3, Lambda, EventBridge",Automação de segurança em AWS S3 com correção automática
+AWS-serverless-order-orchestrator,Pessoal,https://github.com/GabrielF0900/AWS-serverless-order-orchestrator,Python,"AWS, Lambda, Step Functions, DynamoDB",Arquitetura serverless para orquestração de pedidos
+aws-serverless-product-catalog,Pessoal,https://github.com/GabrielF0900/aws-serverless-product-catalog,Python,"AWS, Lambda, API Gateway, DynamoDB",API CRUD serverless para catálogo de produtos
+Nebula-Archive,Pessoal,https://github.com/GabrielF0900/Nebula-Archive,Python,"Python, AWS S3, Cloud Storage",Orquestrador de armazenamento em nuvem
+Madre_Fitness,Pessoal,https://github.com/GabrielF0900/Madre_Fitness,JavaScript,"React, Tailwind CSS, JavaScript",Site com foco em fitness e academia
+CityShield-TCC-Escola-da-Nuvem,Acadêmico,https://github.com/GabrielF0900/CityShield-TCC-Escola-da-Nuvem-,Python,"AWS, Docker, Terraform, IoT, Segurança",TCC (Trabalho de Conclusão de Curso) - Projeto de segurança com IoT
+aws-high-availability-scaling-architecture,Acadêmico,https://github.com/GabrielF0900/aws-high-availability-scaling-architecture,Python,"AWS, EC2, Auto Scaling, RDS, CloudFormation",Documentação e implementação de arquitetura de alta disponibilidade em AWS
+Projeto-02-A-Conexao-o-Backend-Database,Acadêmico,https://github.com/GabrielF0900/Projeto-02-A-Conexao-o-Backend-Database,Python,"AWS, RDS, Lambda, API Gateway, DynamoDB",Arquitetura AWS: Implementação de Backend com Database
+Game_Designer,Acadêmico,https://github.com/GabrielF0900/Game_Designer,HTML,"HTML, CSS, JavaScript",Trabalho acadêmico: site completo com tema de designer de jogos
+CloudFront-NewEdge,Acadêmico,https://github.com/GabrielF0900/CloudFront-NewEdge,,"AWS, CloudFront, CDN",Documentação de implementação de CloudFront com EdgeLocations
+ec2-security-landing-page,Acadêmico,https://github.com/GabrielF0900/ec2-security-landing-page,HTML,"AWS, EC2, Security Groups, Apache",Provisionamento de infraestrutura EC2 com landing page de segurança
+Lemux,Acadêmico,https://github.com/GabrielF0900/Lemux,Shell,"Linux, Bash, Shell Script",Projeto para aprendizado de Linux, HTML, CSS e JavaScript
+Agencia_de_Viagens,Acadêmico,https://github.com/GabrielF0900/Agencia_de_Viagens,HTML,"HTML, CSS, JavaScript, Figma",Site de agência de viagens com design no Figma
+Site_Pets_Shop,Acadêmico,https://github.com/GabrielF0900/Site_Pets_Shop,JavaScript,"HTML, CSS, JavaScript",Site e-commerce de produtos para pets
+Site_de_Cupcakes,Acadêmico,https://github.com/GabrielF0900/Site_de_Cupcakes,JavaScript,"HTML, CSS, JavaScript",Site e-commerce para venda de cupcakes
+Site_de_Joias,Acadêmico,https://github.com/GabrielF0900/Site_de_Joias,JavaScript,"HTML, CSS, JavaScript",Site e-commerce de joias
+Site_de_telescopio,Acadêmico,https://github.com/GabrielF0900/Site_de_telescopio,JavaScript,"HTML, CSS, JavaScript",Site e-commerce de telescópios
+Site_De_Tenis,Acadêmico,https://github.com/GabrielF0900/Site_De_Tenis,JavaScript,"HTML, CSS, JavaScript",Site e-commerce de tênis (em desenvolvimento)
+Tela_de_login,Acadêmico,https://github.com/GabrielF0900/Tela_de_login,HTML,"HTML, CSS, JavaScript",Tela de login com propósito didático
+ConectaTEA,Colaborativo,https://github.com/GabrielF0900/ConectaTEA,TypeScript,"React, TypeScript, Node.js, PostgreSQL, Next.js",Plataforma web conectando profissionais de saúde para acompanhamento de crianças com TEA
+Validacao_ConectaTEA,Colaborativo,https://github.com/GabrielF0900/Validacao_ConectaTEA,TypeScript,"React, TypeScript, Tailwind CSS",Landing page de validação do projeto ConectaTEA
+Portfolio_Da_Fernanda,Colaborativo,https://github.com/GabrielF0900/Portfolio_Da_Fernanda,TypeScript,"Next.js, React, TypeScript, Tailwind CSS",Portfólio profissional colaborativo
+Atividade-Docker-Daniele-2026,Colaborativo,https://github.com/GabrielF0900/Atividade-Docker-Daniele-2026,,"Docker, Containerization",Atividade colaborativa de Docker
+Projeto_FalconTech,Colaborativo,https://github.com/GabrielF0900/Projeto_FalconTech,JavaScript,"React, JavaScript, Tailwind CSS",Projeto de apresentação de empresa tech com soluções inovadoras
+resilient-audit-batch,Colaborativo,https://github.com/GabrielF0900/resilient-audit-batch,Python,"Python, AWS Batch, Lambda, SQS",Motor de processamento de lotes para auditoria com resiliência
+ci-demo,Colaborativo,https://github.com/GabrielF0900/ci-demo,,"CI/CD, GitHub Actions, Docker",Demonstração de Pipeline CI/CD
+GabrielF0900,Colaborativo,https://github.com/GabrielF0900/GabrielF0900,Markdown,"",Repositório de perfil do GitHub
+1Projeto,Colaborativo,https://github.com/GabrielF0900/1Projeto,,"",Projeto colaborativo inicial

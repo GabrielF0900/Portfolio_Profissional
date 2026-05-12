@@ -1,0 +1,199 @@
+{
+  "repositorios": [
+    {
+      "nome_repo": "Nebula-Archive",
+      "titulo_projeto": "Nebula Archive - Cloud Storage",
+      "descricao": "Solução robusta de backup e arquivo em nuvem com interface moderna. Sistema completo para gerenciamento seguro de arquivos na nuvem com upload, download, versionamento e gerenciamento de permissões. Interface responsiva e intuitiva com suporte a múltiplos formatos de arquivo.",
+      "tecnologias": ["Node.js", "Express.js", "PostgreSQL", "AWS S3", "React", "Docker"],
+      "features": [
+        "Upload e download seguro de arquivos",
+        "Versionamento de arquivo",
+        "Gerenciamento de permissões",
+        "Interface moderna e responsiva",
+        "Armazenamento escalável em AWS S3",
+        "Backup automatizado"
+      ],
+      "url": "https://github.com/GabrielF0900/Nebula-Archive"
+    },
+    {
+      "nome_repo": "AWS-Nexus-IaC-Blueprint",
+      "titulo_projeto": "AWS Nexus - Infrastructure as Code",
+      "descricao": "Framework completo de Infrastructure as Code para AWS utilizando Terraform. Blueprints prontos para implantar arquiteturas cloud complexas na AWS com versionamento, documentação e boas práticas. Inclui templates reutilizáveis para VPC, EC2, RDS, S3 e serviços serverless.",
+      "tecnologias": ["Terraform", "AWS", "CloudFormation", "Python", "Bash", "Docker"],
+      "features": [
+        "Blueprints reutilizáveis para AWS",
+        "Suporte completo a VPC, EC2, RDS, S3",
+        "Boas práticas de segurança",
+        "Documentação abrangente",
+        "Automação de infraestrutura",
+        "Versionamento de estado"
+      ],
+      "url": "https://github.com/GabrielF0900/AWS-Nexus-IaC-Blueprint"
+    },
+    {
+      "nome_repo": "CloudFront-NewEdge",
+      "titulo_projeto": "CloudFront NewEdge - CDN Performance",
+      "descricao": "Otimização de performance e distribuição de conteúdo usando AWS CloudFront. Sistema de CDN avançado com cache inteligente, compressão de conteúdo e otimização de latência. Integração com Lambda@Edge para processamento de requisições na edge.",
+      "tecnologias": ["AWS CloudFront", "Lambda@Edge", "Node.js", "AWS S3", "JavaScript"],
+      "features": [
+        "Distribuição global de conteúdo",
+        "Cache inteligente e otimizado",
+        "Lambda@Edge para processamento edge",
+        "Compressão automática de conteúdo",
+        "Redução significativa de latência",
+        "Suporte a HTTPS/HTTP2"
+      ],
+      "url": "https://github.com/GabrielF0900/CloudFront-NewEdge"
+    },
+    {
+      "nome_repo": "AWS-serverless-order-orchestrator",
+      "titulo_projeto": "AWS Serverless Order Orchestrator",
+      "descricao": "Orquestrador de pedidos serverless completamente automatizado na AWS. Sistema inteligente que gerencia o fluxo completo de pedidos desde criação até entrega, com Step Functions para orquestração, SQS para fila de mensagens e integração com múltiplos serviços.",
+      "tecnologias": ["AWS Step Functions", "AWS Lambda", "SQS", "SNS", "DynamoDB", "Node.js"],
+      "features": [
+        "Orquestração automática de pedidos",
+        "Step Functions para fluxo de trabalho",
+        "Processamento em fila com SQS",
+        "Notificações em tempo real com SNS",
+        "Escalabilidade automática",
+        "Monitoramento com CloudWatch"
+      ],
+      "url": "https://github.com/GabrielF0900/AWS-serverless-order-orchestrator"
+    },
+    {
+      "nome_repo": "aws-s3-auto-remediator",
+      "titulo_projeto": "AWS S3 Auto Remediator",
+      "descricao": "Ferramenta de segurança automatizada para remediar configurações incorretas em buckets S3. Scanner que identifica vulnerabilidades de segurança em S3 e aplica correções automaticamente. Implementa políticas de segurança, controle de acesso e criptografia.",
+      "tecnologias": ["AWS Lambda", "S3", "CloudWatch", "Python", "Boto3"],
+      "features": [
+        "Detecção automática de vulnerabilidades S3",
+        "Remediação automática de permissões",
+        "Aplicação de políticas de segurança",
+        "Versionamento e MFA delete",
+        "Criptografia automática",
+        "Auditoria e logging detalhado"
+      ],
+      "url": "https://github.com/GabrielF0900/aws-s3-auto-remediator"
+    },
+    {
+      "nome_repo": "aws-proactive-monitoring",
+      "titulo_projeto": "AWS Proactive Monitoring",
+      "descricao": "Sistema proativo de monitoramento e alertas para infraestrutura AWS. Monitora recursos em tempo real com CloudWatch, detecta anomalias e gera alertas automáticos. Integração com SNS para notificações e automação de respostas.",
+      "tecnologias": ["AWS CloudWatch", "SNS", "Lambda", "Python", "EventBridge"],
+      "features": [
+        "Monitoramento proativo de recursos",
+        "Detecção de anomalias em tempo real",
+        "Alertas automáticos via SNS",
+        "Dashboards customizáveis",
+        "Integração com ServiceNow",
+        "Automação de remediação"
+      ],
+      "url": "https://github.com/GabrielF0900/aws-proactive-monitoring"
+    },
+    {
+      "nome_repo": "ec2-security-landing-page",
+      "titulo_projeto": "EC2 Security Landing Page",
+      "descricao": "Landing page educacional sobre segurança em EC2 com documentação interativa. Página informativa sobre boas práticas de segurança em instâncias EC2, com guias de hardening, configuração de security groups e IAM policies.",
+      "tecnologias": ["HTML5", "CSS3", "JavaScript", "AWS EC2"],
+      "features": [
+        "Guias de hardening de EC2",
+        "Documentação de security groups",
+        "Melhores práticas de IAM",
+        "Exemplos de configuração",
+        "Checklist de segurança",
+        "Recursos de aprendizado"
+      ],
+      "url": "https://github.com/GabrielF0900/ec2-security-landing-page"
+    },
+    {
+      "nome_repo": "Projeto-02-A-Conexao-o-Backend-Database",
+      "titulo_projeto": "Conexão Backend-Database",
+      "descricao": "Projeto educacional demonstrando integração entre backend e banco de dados. Implementa padrões de conexão, query building, migration management e ORM. Exemplo prático de comunicação eficiente entre Node.js/Express e PostgreSQL.",
+      "tecnologias": ["Node.js", "Express", "PostgreSQL", "Prisma ORM", "JavaScript"],
+      "features": [
+        "Padrão de conexão otimizado",
+        "Migrations de banco de dados",
+        "CRUD completo com Prisma",
+        "Validação de dados",
+        "Tratamento de erros",
+        "Connection pooling"
+      ],
+      "url": "https://github.com/GabrielF0900/Projeto-02-A-Conexao-o-Backend-Database"
+    },
+    {
+      "nome_repo": "aws-serverless-product-catalog",
+      "titulo_projeto": "AWS Serverless Product Catalog",
+      "descricao": "Catálogo de produtos serverless com API REST completa. Solução escalável de catálogo com Lambda, DynamoDB e API Gateway. Suporta operações de busca, filtros, paginação e integrações com serviços externos.",
+      "tecnologias": ["AWS Lambda", "API Gateway", "DynamoDB", "Node.js", "TypeScript"],
+      "features": [
+        "API REST serverless escalável",
+        "Operações CRUD de produtos",
+        "Busca e filtros avançados",
+        "Paginação de resultados",
+        "Cache com ElastiCache",
+        "Autenticação com JWT"
+      ],
+      "url": "https://github.com/GabrielF0900/aws-serverless-product-catalog"
+    },
+    {
+      "nome_repo": "MindTrack",
+      "titulo_projeto": "MindTrack - Rastreamento de Bem-estar",
+      "descricao": "Aplicação de rastreamento de saúde mental e bem-estar pessoal. Permite registrar humor, atividades, meditação e acompanhar trends de saúde mental. Dashboard com visualizações de progresso e insights baseados em IA.",
+      "tecnologias": ["React", "Node.js", "PostgreSQL", "Chart.js", "TypeScript"],
+      "features": [
+        "Rastreamento de humor diário",
+        "Registro de atividades e exercícios",
+        "Sessões de meditação guiadas",
+        "Análise de trends e padrões",
+        "Dashboard com gráficos",
+        "Recomendações personalizadas"
+      ],
+      "url": "https://github.com/Neukox/MindTrack"
+    },
+    {
+      "nome_repo": "ChatPRO",
+      "titulo_projeto": "ChatPRO - Chat em Tempo Real",
+      "descricao": "Aplicação de chat em tempo real com suporte a múltiplos usuários e salas. Sistema completo de mensageria com WebSockets, autenticação, histórico de mensagens e notificações push. Interface moderna com suporte a emojis, anexos e menções.",
+      "tecnologias": ["React", "Node.js", "Socket.io", "PostgreSQL", "Redis"],
+      "features": [
+        "Chat em tempo real com WebSockets",
+        "Salas e canais privados",
+        "Autenticação segura",
+        "Histórico de mensagens",
+        "Notificações push",
+        "Emojis e anexos de arquivo"
+      ],
+      "url": "https://github.com/GabrielF0900/ChatPRO"
+    },
+    {
+      "nome_repo": "LoginFull",
+      "titulo_projeto": "LoginFull - Sistema de Autenticação",
+      "descricao": "Sistema completo de autenticação e autorização com suporte a múltiplos fluxos. Implementa JWT, OAuth 2.0, 2FA, recuperação de senha e gerenciamento de sessão. Pronto para produção com segurança em primeiro lugar.",
+      "tecnologias": ["Node.js", "Express", "PostgreSQL", "JWT", "bcrypt", "TypeScript"],
+      "features": [
+        "Autenticação JWT e OAuth 2.0",
+        "Autenticação de dois fatores (2FA)",
+        "Recuperação de senha segura",
+        "Gerenciamento de sessão",
+        "Rate limiting",
+        "Auditoria de login"
+      ],
+      "url": "https://github.com/GabrielF0900/LoginFull"
+    },
+    {
+      "nome_repo": "NodeAuth_API",
+      "titulo_projeto": "NodeAuth API",
+      "descricao": "API robusta de autenticação construída em Node.js. Serviço dedicado de autenticação para uso em múltiplas aplicações. Suporta diferentes estratégias de autenticação, tokens, permissões e integração com bancos de dados.",
+      "tecnologias": ["Node.js", "Express", "PostgreSQL", "JWT", "Passport.js"],
+      "features": [
+        "API REST de autenticação",
+        "Estratégias múltiplas (Local, OAuth, SAML)",
+        "Gerenciamento de tokens",
+        "Refresh tokens",
+        "Permissões e roles",
+        "Auditoria de eventos"
+      ],
+      "url": "https://github.com/GabrielF0900/NodeAuth_API"
+    }
+  ]
+}

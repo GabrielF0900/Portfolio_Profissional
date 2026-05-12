@@ -1,0 +1,446 @@
+﻿{
+    "usuario": "GabrielF0900",
+    "data_coleta": "2026-05-12",
+    "total_repositorios": 42,
+    "distribuicao_tipos": {
+        "pessoais": 18,
+        "academicos": 15,
+        "colaborativos": 9
+    },
+    "resumo_tecnologias": {
+        "linguagens": ["Python", "TypeScript", "JavaScript", "Java", "HTML", "CSS", "Shell", "HCL", "Go"],
+        "frameworks": ["React", "Next.js", "NestJS", "Express", "Spring", "Django"],
+        "cloud": ["AWS", "Lambda", "EC2", "S3", "RDS", "DynamoDB", "CloudFormation", "Terraform"],
+        "databases": ["PostgreSQL", "MongoDB", "MySQL", "DynamoDB"],
+        "ferramentas": ["Docker", "Kubernetes", "Git", "GitHub Actions", "CI/CD"]
+    },
+    "repositorios_por_tipo": {
+    "repositorios":  [
+                         {
+                             "tecnologias":  [
+                                                 "TypeScript",
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "ConectaTEA ├® uma plataforma web que conecta profissionais de sa├║de e respons├íveis para acompanhar o desenvolvimento de crian├ºas com TEA, permitindo registrar sess├Áes, definir metas, monitorar progresso e melhorar a comunica├º├úo no processo terap├¬utico.",
+                             "linguagens_principais":  [
+                                                           "TypeScript"
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "ConectaTEA",
+                             "url":  "https://github.com/GabrielF0900/ConectaTEA"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Provisionamento de infraestrutura EC2 e Security Groups via Console AWS, com configura├º├úo de servidor Apache e deploy via terminal Linux (SSH).",
+                             "linguagens_principais":  [
+
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "ec2-security-landing-page",
+                             "url":  "https://github.com/GabrielF0900/ec2-security-landing-page"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Este reposit├│rio documenta a implementa├º├úo do projeto NovaEdge, uma infraestrutura de ponta na AWS para a distribui├º├úo global de conte├║do est├ítico com foco em seguran├ºa de origem e baixa lat├¬ncia.",
+                             "linguagens_principais":  [
+
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "CloudFront-NewEdge",
+                             "url":  "https://github.com/GabrielF0900/CloudFront-NewEdge"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Sem descrição",
+                             "linguagens_principais":  [
+
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "ci-demo",
+                             "url":  "https://github.com/GabrielF0900/ci-demo"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Apresenta├º├úo de TCC (Trabalho de Conclus├úo de Curso) do curso AWS Re/Start + IA ministrada pela Escola da Nuvem",
+                             "linguagens_principais":  [
+
+                                                       ],
+                             "tipo":  "acadêmico",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "CityShield-TCC-Escola-da-Nuvem-",
+                             "url":  "https://github.com/GabrielF0900/CityShield-TCC-Escola-da-Nuvem-"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Python",
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Ferramenta de automa├º├úo em Python para extra├º├úo de slides de aulas online e convers├úo autom├ítica para PDF, com recorte inteligente de interface.",
+                             "linguagens_principais":  [
+                                                           "Python"
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "extracao-slides-pdf",
+                             "url":  "https://github.com/GabrielF0900/extracao-slides-pdf"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "CSS",
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Uma lista de compras desenvolvido por mim utilizando fun├ºoes, manipula├º├úo de DOM, eventos que sao elementos do JavaScript.",
+                             "linguagens_principais":  [
+                                                           "CSS"
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "Lista_de_Compras",
+                             "url":  "https://github.com/GabrielF0900/Lista_de_Compras"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "TypeScript",
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Apresento com muito orgulho meu primeiro projeto totalmente FULL STACK! Deu trabalho mas est├í funcional e ├® um grande avan├ºo nos meus conhecimentos e estudos de domingo a domingo com intuito de me tornar um Programador Full Stack completo! No READ ME ter├í mais informa├º├Áes.",
+                             "linguagens_principais":  [
+                                                           "TypeScript"
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "LoginFull",
+                             "url":  "https://github.com/GabrielF0900/LoginFull"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Projeto pessoal para autodesenvolvimento em html, css e js.",
+                             "linguagens_principais":  [
+
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "Lemux",
+                             "url":  "https://github.com/GabrielF0900/Lemux"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Sem descrição",
+                             "linguagens_principais":  [
+
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "GabrielF0900",
+                             "url":  "https://github.com/GabrielF0900/GabrielF0900"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Trabalho acad├¬mico de um site completo.",
+                             "linguagens_principais":  [
+
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "Game_Designer",
+                             "url":  "https://github.com/GabrielF0900/Game_Designer"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "TypeScript",
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Um mini projeto de Chat em tempo real usando Websocket b├ísico com intuito de melhorar meus conhecimentos em websocket.",
+                             "linguagens_principais":  [
+                                                           "TypeScript"
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "ChatPRO",
+                             "url":  "https://github.com/GabrielF0900/ChatPRO"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Este reposit├│rio cont├®m a documenta├º├úo t├®cnica e o passo a passo da implementa├º├úo de uma infraestrutura em nuvem na AWS, focada em Alta Disponibilidade, Escalabilidade Autom├ítica e Seguran├ºa.",
+                             "linguagens_principais":  [
+
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "aws-high-availability-scaling-architecture",
+                             "url":  "https://github.com/GabrielF0900/aws-high-availability-scaling-architecture"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "AWS-Nexus - IaC Blueprint: Infraestrutura automatizada e resiliente na AWS utilizando CloudFormation. Inclui VPC segura, monitoramento proativo com CloudWatch/SNS e acesso via SSM Session Manager sob o Well-Architected Framework.",
+                             "linguagens_principais":  [
+
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "AWS-Nexus-IaC-Blueprint",
+                             "url":  "https://github.com/GabrielF0900/AWS-Nexus-IaC-Blueprint"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "HTML",
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Atividade de daniele",
+                             "linguagens_principais":  [
+                                                           "HTML"
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "Atividade-Docker-Daniele-2026",
+                             "url":  "https://github.com/GabrielF0900/Atividade-Docker-Daniele-2026"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "CSS",
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Sem descrição",
+                             "linguagens_principais":  [
+                                                           "CSS"
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "1Projeto",
+                             "url":  "https://github.com/GabrielF0900/1Projeto"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "HTML",
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Site de ag├¬ncia de viagens desenvolvido por mim criando layout com FIGMA.",
+                             "linguagens_principais":  [
+                                                           "HTML"
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "Agencia_de_Viagens",
+                             "url":  "https://github.com/GabrielF0900/Agencia_de_Viagens"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Pipeline de monitoramento proativo de integridade na AWS. Alertas de desempenho de inst├óncias EC2 via CloudWatch Alarms e notifica├º├Áes de e-mail por SNS em uma VPC personalizada.",
+                             "linguagens_principais":  [
+
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "aws-proactive-monitoring",
+                             "url":  "https://github.com/GabrielF0900/aws-proactive-monitoring"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "API CRUD para cat├ílogo de produtos desenvolvida com arquitetura Serverless na AWS, utilizando Node.js, Lambda, DynamoDB e monitoramento via CloudWatch.",
+                             "linguagens_principais":  [
+
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "aws-serverless-product-catalog",
+                             "url":  "https://github.com/GabrielF0900/aws-serverless-product-catalog"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Java",
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Implementa├º├úo de um sistema banc├írio modular focado nos fundamentos de Java e Arquitetura Limpa. O projeto explora a separa├º├úo de responsabilidades entre camadas (Model/Service), encapsulamento de dados, construtores e l├│gica de transa├º├Áes financeiras",
+                             "linguagens_principais":  [
+                                                           "Java"
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "banking-core-java",
+                             "url":  "https://github.com/GabrielF0900/banking-core-java"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "AWS Order Orchestrator: Arquitetura Serverless de ponta a ponta utilizando AWS Step Functions, Lambda, DynamoDB e SNS. Projeto focado em orquestra├º├úo de microservi├ºos, desacoplamento e seguran├ºa (SSE), desenvolvido como parte da prepara├º├úo para as certifica├º├Áes CLF-C02 e SAA-C03.",
+                             "linguagens_principais":  [
+
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "AWS-serverless-order-orchestrator",
+                             "url":  "https://github.com/GabrielF0900/AWS-serverless-order-orchestrator"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Implementa├º├úo de um fluxo desacoplado utilizando AWS Lambda, Amazon SQS e Amazon S3. O projeto demonstra como aumentar a resili├¬ncia de sistemas distribu├¡dos atrav├®s do uso de filas (buffer), garantindo que picos de carga ou processamentos \"pesados\" n├úo afetem a experi├¬ncia do usu├írio.",
+                             "linguagens_principais":  [
+
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "aws-resilient-order-processor",
+                             "url":  "https://github.com/GabrielF0900/aws-resilient-order-processor"
+                         },
+                         {
+                             "tecnologias":  [
+                                                 "Go",
+                                                 "REST",
+                                                 "Git",
+                                                 "GitHub"
+                                             ],
+                             "descricao":  "Automa├º├úo de seguran├ºa em AWS para remedia├º├úo em tempo real (Auto-Healing) de buckets S3 expostos publicamente utilizando EventBridge e Lambda",
+                             "linguagens_principais":  [
+
+                                                       ],
+                             "tipo":  "pessoal",
+                             "topics":  [
+
+                                        ],
+                             "nome":  "aws-s3-auto-remediator",
+                             "url":  "https://github.com/GabrielF0900/aws-s3-auto-remediator"
+                         }
+                     ],
+    "data_coleta":  "2026-05-12 08:59:08",
+    "total_repositorios":  23,
+    "usuario":  "GabrielF0900"
+}

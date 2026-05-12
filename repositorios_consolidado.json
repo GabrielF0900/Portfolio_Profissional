@@ -1,0 +1,530 @@
+{
+  "repositorios": [
+    {
+      "id": 1,
+      "nome_repo": "Nebula Archive",
+      "url": "https://github.com/GabrielF0900/Nebula-Archive",
+      "organizacao": "GabrielF0900",
+      "readme_preview": "Infraestrutura Enterprise Cloud-Native para armazenamento de arquivos estáticos com Presigned URLs, Multi-AZ, isolamento de rede completo, CloudFront global distribution e proteção em múltiplas camadas",
+      "tecnologias": [
+        "AWS",
+        "VPC",
+        "EC2",
+        "RDS PostgreSQL",
+        "S3",
+        "CloudFront",
+        "ALB",
+        "WAF",
+        "NestJS",
+        "React",
+        "Prisma",
+        "Docker"
+      ],
+      "descricao_resumida": "Plataforma cloud-native de armazenamento de arquivos com segurança enterprise, escalabilidade automática e distribuição global via CloudFront",
+      "features_principais": [
+        "Presigned URLs para upload seguro (5 min expiry)",
+        "Multi-AZ com alta disponibilidade",
+        "WAF e Shield para proteção contra DDoS",
+        "SSE-S3 para criptografia em repouso",
+        "CloudFront com 600+ edge locations",
+        "Arquitetura enterprise pronta para produção",
+        "Teste de resiliência com ataque controlado"
+      ],
+      "readme_completo": "# 🌌 Nebula Archive - Infraestrutura Enterprise Cloud-Native para Armazenamento\n\n## 📊 TL;DR\n- **O que é**: Plataforma cloud-native de armazenamento e gerenciamento de arquivos estáticos sem provisioning manual de buckets\n- **Tecnologia**: AWS (VPC Multi-AZ, EC2, RDS PostgreSQL, S3, CloudFront, ALB, WAF, Shield) + NestJS + React + Prisma ORM\n- **Escalabilidade**: Arquitetura designed para Multi-AZ, Auto Scaling ready, CloudFront global distribution\n- **Custo**: AWS Free Tier + credenciais ($200)\n\n## 🔑 O Algoritmo Central: Presigned URLs\n1. Usuário registra e faz login\n2. Quando faz upload, backend gera Presigned URL para S3\n3. Essa URL é temporária (expira em 5 minutos)\n4. Mesmo que a URL vaze, ela se auto-destrói\n5. Se alguém modificar, o S3 detecta e bloqueia\n6. Força bruta é completamente inviável\n\n## 🏗️ Arquitetura\n- **VPC Isolada**: 10.0.0.0/16 com Multi-AZ\n- **Subredes Públicas/Privadas**: 2 AZs para alta disponibilidade\n- **EC2 Backend**: NestJS rodando em sub-rede privada\n- **RDS PostgreSQL**: Banco isolado com access via Security Group\n- **S3 Buckets**: 3 buckets (media, storage, frontend) com bloqueio de acesso público\n- **CloudFront**: Distribuição global com 600+ edge locations\n- **ALB**: Orquestração de tráfego HTTP/HTTPS\n- **WAF + Shield**: Proteção contra injeção SQL e DDoS\n\n## 💰 Análise de Custos\n- **Custo Estimado**: ~USD 101K/ano em produção (100 câmeras, 200M frames/mês)\n- **Economia**: ~80% vs infraestrutura on-premises (~USD 520K/ano)\n- **Free Tier**: EC2 t3.micro + RDS t4g.micro + primeiros 5GB S3\n\n## 📈 Métricas\n- 500+ câmeras integradas\n- ~200M frames/month processados\n- Resposta automática em segundos\n- Latência mínima worldwide com CloudFront"
+    },
+    {
+      "id": 2,
+      "nome_repo": "CityShield",
+      "url": "https://github.com/GabrielF0900/CityShield-TCC-Escola-da-Nuvem-",
+      "organizacao": "GabrielF0900",
+      "readme_preview": "Plataforma serverless que converge segurança física (CCTV) e cibernética em central inteligente unificada para Smart Cities com análise em tempo real de ameaças",
+      "tecnologias": [
+        "Node.js",
+        "AWS Kinesis",
+        "Rekognition",
+        "AWS Lambda",
+        "GuardDuty",
+        "WAF",
+        "EventBridge",
+        "DynamoDB",
+        "SNS"
+      ],
+      "descricao_resumida": "TCC - Plataforma serverless que integra segurança física e cibernética com análise de IA para cidades inteligentes",
+      "features_principais": [
+        "Detecção facial com Amazon Rekognition",
+        "Análise de ameaças cibernéticas com GuardDuty",
+        "Processamento em tempo real com Lambda",
+        "Notificações automáticas via SNS",
+        "Armazenamento de incidentes em DynamoDB",
+        "Bloqueio automático de IPs hostis com WAF",
+        "Integração de 500+ câmeras",
+        "Relatório com ~80% economia vs on-premises"
+      ],
+      "readme_completo": "# CityShield: Segurança Integrada Inteligente para Cidades Inteligentes\n\n## 🎯 TL;DR\n- **O que é**: Plataforma serverless que converge segurança física (CCTV) e cibernética em central unificada\n- **Problema**: Integração de 500+ câmeras com análise em tempo real (~200M frames/mês) com resposta automática\n- **Stack**: Node.js · Amazon Kinesis · Rekognition · AWS Lambda · GuardDuty · WAF · EventBridge · DynamoDB\n- **Resultado**: ~80% redução de custos (USD 101K/ano vs USD 520K/ano On-Premises)\n\n## 👥 Equipe Técnica (Grupo 6)\n- Gabriel Falcão da Cruz (Arquiteto)\n- Fernanda Ferreira de Oliveira (Líder Técnica)\n- Marcos Gomes de Lima (Desenvolvedor)\n- Ana Paula da Silva Siqueira (Desenvolvedora)\n- Joao Vitor Pontes (Desenvolvedor)\n\n## 🏗️ Arquitetura\n### Fluxo 1: Segurança Física\n1. **Fonte**: Câmeras distribuídas capturando vídeo\n2. **Ingestão**: Amazon Kinesis Video Streams (500 câmeras × 1 Mbps)\n3. **IA Visual**: Amazon Rekognition (detecção facial, análise de padrões)\n4. **Comparação**: Coleção Rekognition com banco de procurados\n5. **Orquestração**: AWS Lambda estruturando incidentes\n6. **Notificação**: SNS alertando comandante/SAMU\n\n### Fluxo 2: Segurança Cibernética\n1. **Fonte**: Infraestrutura digital da cidade (servidores, IoT, portais)\n2. **Monitoramento**: Amazon GuardDuty analisando logs\n3. **Captura**: EventBridge capturando alertas de alto risco\n4. **Resposta**: Lambda executando bloqueios automáticos\n5. **Mitigation**: AWS WAF bloqueando IPs hostis instantaneamente\n\n### Consolidação\n- **DynamoDB**: Registro centralizado de incidentes\n- **S3**: Armazenamento forense (vídeos e logs)\n\n## 💰 Análise de Custos\n### Estimativa Mensal (500 câmeras)\n| Serviço | Uso | Custo |\n|---------|-----|-------|\n| Kinesis Video | 500 câmeras | USD 3.500 |\n| Rekognition | 200M frames | USD 1.800 |\n| Lambda | 50M invocações | USD 400 |\n| SNS | 1M mensagens | USD 50 |\n| GuardDuty | Análise contínua | USD 2.000 |\n| DynamoDB | 10GB/mês | USD 300 |\n| **TOTAL** | | **USD 8.482/mês** |\n\n### Comparação\n- **CityShield**: USD 101.784/ano\n- **On-Premises**: USD 520.000+/ano\n- **Economia**: ~80%\n\n## 🎓 Contexto\n- **Programa**: AWS Re/Start + IA\n- **Instituição**: Escola da Nuvem\n- **Tipo**: Trabalho de Conclusão de Curso (TCC)"
+    },
+    {
+      "id": 3,
+      "nome_repo": "AWS-Nexus-IaC-Blueprint",
+      "url": "https://github.com/GabrielF0900/AWS-Nexus-IaC-Blueprint",
+      "organizacao": "GabrielF0900",
+      "readme_preview": "Orquestrador de infraestrutura cloud via Infrastructure as Code (IaC) com CloudFormation, automatizando provisionamento de ambientes de rede com 100% paridade entre Dev/Staging/Prod",
+      "tecnologias": [
+        "AWS CloudFormation",
+        "VPC",
+        "IAM Roles",
+        "Security Groups",
+        "EC2",
+        "CloudWatch",
+        "SNS",
+        "AWS Systems Manager",
+        "YAML"
+      ],
+      "descricao_resumida": "Blueprint de IaC com CloudFormation para automação de infraestrutura cloud com 100% paridade entre ambientes",
+      "features_principais": [
+        "CloudFormation template YAML",
+        "VPC com subnets públicas/privadas",
+        "EC2 com SSM Session Manager (sem SSH)",
+        "CloudWatch com alarmes de CPU",
+        "SNS para notificações de alerta",
+        "IAM com princípio de menor privilégio",
+        "Teste de estresse validando alarmes",
+        "Eliminação de erros manuais"
+      ],
+      "readme_completo": "# 🚀 AWS-Nexus: IaC Blueprint\n\n## 📋 TL;DR\n- **O que é**: Orquestrador de infraestrutura cloud via Infrastructure as Code, automatizando provisioning de ambientes de rede\n- **Problema**: Elimina erros manuais, garante 100% paridade entre ambientes (Dev, Staging, Prod)\n- **Stack**: CloudFormation · VPC/Subnets · IAM Roles · Security Groups · CloudWatch · SNS · SSM\n- **Resultado**: 100% paridade entre ambientes · Segurança reforçada (sem SSH) · Monitoramento proativo\n\n## 🏗️ Arquitetura Geral\n- **VPC**: 10.0.0.0/16\n- **Public Subnet**: 10.0.1.0/24 para componentes expostos\n- **Internet Gateway**: Conectividade com a internet\n- **Security Group**: Regras de firewall para HTTP e SSH\n- **EC2 Instance**: t2.micro rodando Apache Web Server\n- **CloudWatch**: Monitoramento de CPUUtilization\n- **SNS**: Notificações de alarmes via email\n\n## 🚨 Desafios Encontrados\n1. **Primeiro Erro**: IAM Role criada de zero foi bloqueada (privilégio mínimo)\n   - **Solução**: Usar LabInstanceProfile pré-criado\n\n2. **Segundo Erro**: Sintaxe YAML incorreta no CloudFormation\n   - **Solução**: Corrigir Type: AWS::EC2::SubnetRouteTableAssociation\n   - **Solução**: Usar SSM Parameters para AMI dinâmico\n\n3. **Terceiro Erro**: Porta SSH bloqueada por segurança\n   - **Solução**: Usar AWS Systems Manager SSM Session Manager\n   - **Benefício**: Acesso seguro sem gerenciar chaves SSH\n\n## 📊 Teste de Estresse\n- CPU atingiu ~90%\n- CloudWatch detectou e disparou alarme após 7 minutos\n- Email foi enviado com sucesso pelo SNS\n- Pipeline completo validado: CloudWatch → SNS → Email\n\n## 💡 Principais Aprendizados\n1. CloudFormation reduz erros e permite versionamento\n2. Privilégio mínimo é essencial\n3. SSM Session Manager é mais seguro que SSH\n4. CloudWatch + SNS = monitoramento proativo\n5. IAM Roles pré-configuradas são excelentes strategies"
+    },
+    {
+      "id": 4,
+      "nome_repo": "CloudFront-NewEdge",
+      "url": "https://github.com/GabrielF0900/CloudFront-NewEdge",
+      "organizacao": "GabrielF0900",
+      "readme_preview": "Orquestrador serverless de distribuição global de conteúdo estático com 600+ edge locations, reduzindo latência para usuários globais e mantendo segurança e custo próximo a zero",
+      "tecnologias": [
+        "Amazon S3",
+        "CloudFront",
+        "Origin Access Control (OAC)",
+        "HTTPS",
+        "Cache Strategy",
+        "CloudWatch"
+      ],
+      "descricao_resumida": "Arquitetura moderna de distribuição global com S3 e CloudFront, garantindo latência baixa para usuários em qualquer lugar do mundo",
+      "features_principais": [
+        "600+ edge locations para latência mínima",
+        "OAC para segurança de borda",
+        "S3 privado com acesso via CloudFront",
+        "Cache strategy otimizado",
+        "WAF e Shield para proteção",
+        "HTTPS criptografado por padrão",
+        "Custo próximo a zero (Free Tier)",
+        "50% redução em latência global"
+      ],
+      "readme_completo": "# 🚀 NovaEdge - Distribuição Global de Conteúdo Estático com AWS\n\n## 📋 TL;DR\n- **O que é**: Orquestrador serverless de distribuição global com 600+ edge locations\n- **Problema**: Reduzir latência para usuários globais mantendo segurança e custo operacional próximo a zero\n- **Stack**: S3 · CloudFront · Origin Access Control (OAC) · HTTPS · Segurança de Borda\n- **Resultado**: 50% redução em latência global com escalabilidade automática e modelo pay-per-use\n\n## 💡 O que são Edge Locations?\nPontos físicos espalhados estrategicamente pelo mundo (São Paulo, Rússia, Austrália, Singapura, etc.):\n- Levam conteúdo o mais próximo possível do cliente final\n- Velocidade absurda com cache distribuído\n- CloudFront entrega instantaneamente se estiver em cache\n- Se não estiver: CloudFront pega no S3 (Brasil) e armazena em cache\n\n## 📐 Arquitetura\n- **Amazon S3**: Armazenamento estático seguro e replicado\n- **CloudFront**: Distribuição via 600+ edge locations\n- **OAC**: Segurança de borda sem exposição do S3\n- **HTTPS**: Criptografia e conformidade com segurança\n\n## 🚨 Desafios\n1. **Primeiro Erro**: WAF habilitado automaticamente (recurso pago)\n   - **Solução**: Usar modelo \"Pay As You Go\" em vez do \"Gratuito\"\n\n2. **Problema com index.html**: CloudFront não sabia qual arquivo servir\n   - **Solução**: Especificar index.html como Default Root Object\n\n3. **Cache não atualizando**: Arquivo antigo sendo servido\n   - **Solução**: Cache Invalidation com `/*`\n\n## 💸 Análise de Custos\n- **CloudFront**: 1 TB transferência gratuita/mês + 10M requisições gratuitas\n- **S3**: 5 GB gratuito nos primeiros 12 meses\n- **Para portfolio**: Custo = USD 0,00 🎉\n- **Escalabilidade**: Pague apenas pelo que usar\n\n## 🎯 Por Que É Estratégico?\n- ✅ Custo-eficiente para qualquer tamanho de negócio\n- ✅ Escalável (padaria do bairro até startup unicórnio)\n- ✅ Performance global (latência baixa em qualquer lugar)\n- ✅ Sem exposição do S3 (OAC = segurança)\n- ✅ Mostra conhecimento de arquitetura moderna"
+    },
+    {
+      "id": 5,
+      "nome_repo": "AWS-serverless-order-orchestrator",
+      "url": "https://github.com/GabrielF0900/AWS-serverless-order-orchestrator",
+      "organizacao": "GabrielF0900",
+      "readme_preview": "Orquestrador de pedidos serverless com validação de estoque, processamento de pagamento e notificações automáticas via SNS",
+      "tecnologias": [
+        "Node.js",
+        "AWS Step Functions",
+        "Lambda",
+        "DynamoDB",
+        "SNS",
+        "CloudWatch",
+        "IAM"
+      ],
+      "descricao_resumida": "Arquitetura serverless completa para processamento de pedidos com Step Functions, Lambda e DynamoDB",
+      "features_principais": [
+        "Validação de estoque com Lambda",
+        "Processamento de pagamento",
+        "Notificação de clientes via SNS",
+        "Orquestração de fluxo com Step Functions",
+        "Armazenamento em DynamoDB",
+        "CloudWatch para monitoramento",
+        "Custo zero em ociosidade",
+        "Escalabilidade automática"
+      ],
+      "readme_completo": "# 📦 AWS Serverless Order Orchestrator\n\n## 🚀 TL;DR\n- **O que é**: Orquestrador de pedidos serverless com validação de estoque e processamento de pagamento\n- **Problema**: Escalabilidade automática de processamento sem custo de infraestrutura ociosa\n- **Stack**: Node.js · AWS Step Functions · Lambda · DynamoDB · SNS · CloudWatch · IAM\n- **Resultado**: Custo zero em ociosidade e escalabilidade automática com pay-per-use\n\n## 🏗️ Arquitetura\nFluxo completo:\n1. Requisição de compra entra no sistema\n2. **StockValidator**: Verifica se item está em estoque\n3. **PaymentProcessor**: Processa o pagamento\n4. **Choice**: Decisão lógica (sucesso ou falha)\n5. **Resultado**: SNS notifica cliente com email bonitão (sucesso) ou mensagem menos feliz (falha)\n6. **Persistência**: DynamoDB armazena pedido se bem-sucedido\n\n## 💰 Análise de Custos\nPara cenário de portfólio/aprendizado:\n| Serviço | Custo/mês |\n|---------|----------|\n| Lambda | Grátis (1M invocações) |\n| DynamoDB | Grátis (25GB + 25 unidades) |\n| SNS | Praticamente Grátis (1k emails grátis) |\n| Step Functions | Grátis (4k transições/mês) |\n| **TOTAL** | **USD 0,00** |\n\n## 🚨 Desafios\n1. **Privilégio Mínimo Absoluto**: Não consegui criar Step Functions\n   - **Tentativa 1**: LabRole no Step Functions - Bloqueado\n   - **Tentativa 2**: CloudShell - Bloqueado\n   - **Lição**: Privilégio mínimo é ABSOLUTO, não passageiro\n\n## 🎯 Status Final\n- ✅ Conceitos de Privilégio Mínimo entendidos\n- ✅ DynamoDB configurado\n- ✅ SNS com criptografia ativada\n- ✅ Funções Lambda criadas (StockValidator, PaymentProcessor)\n- ✅ Step Functions projetado (com limitações)\n- 🚧 Limitações de permissão documentadas\n\n## 💡 Lições Aprendidas\n1. Privilégio Mínimo é Lei (não sugestão)\n2. Contornos criativos são necessários em ambientes restritivos\n3. Documentação salva o dia\n4. AWS é complexo (cada serviço tem suas permissões)\n5. Segurança não é negociável"
+    },
+    {
+      "id": 6,
+      "nome_repo": "aws-s3-auto-remediator",
+      "url": "https://github.com/GabrielF0900/aws-s3-auto-remediator",
+      "organizacao": "GabrielF0900",
+      "readme_preview": "Orquestrador serverless de remediação automática de segurança para buckets S3, bloqueando acesso público em tempo real",
+      "tecnologias": [
+        "Node.js",
+        "Lambda",
+        "EventBridge",
+        "CloudTrail",
+        "S3",
+        "IAM",
+        "Python/JavaScript"
+      ],
+      "descricao_resumida": "Sistema automático que detecta e bloqueia buckets S3 criados com acesso público em tempo real",
+      "features_principal":["Detecção automática de buckets públicos",
+        "Bloqueio de acesso público em segundos",
+        "Monitoramento via EventBridge + CloudTrail",
+        "Lambda executora com lógica de remediação",
+        "Contorno criativo de restrições de IAM",
+        "Redução de tempo: horas para segundos"
+      ],
+      "readme_completo": "# 🚀 AWS S3 Auto Remediator - A Jornada de Um Guerreiro da Nuvem\n\n## 📋 TL;DR\n- **O que é**: Orquestrador serverless de remediação automática para buckets S3\n- **Problema**: Buckets S3 criados com acesso público, eliminando risco de exposição de dados\n- **Stack**: Node.js · Lambda · EventBridge · CloudTrail · S3 · IAM\n- **Resultado**: Detecção e bloqueio de acesso público em tempo real (segundos vs horas)\n\n## 📖 A Jornada\n### Desafios\n1. **Restrição de IAM**: Não podia criar IAM Role do zero\n   - **Solução**: Usou LabRole pré-criada\n\n2. **EventBridge tentava criar Role automaticamente**\n   - **Solução**: Moveu EventBridge para dentro da Lambda\n\n3. **Interface visual confusa**\n   - **Solução**: Usou editor JSON da interface antiga\n\n4. **Bloqueio não funcionava na primeira vez**\n   - **Solução**: Testou manualmente e confirmou a correção\n\n## 🏗️ Arquitetura\n1. **CloudTrail**: Monitora chamadas de API S3\n2. **EventBridge**: Detecta CreateBucket\n3. **Lambda**: Executa lógica de remediação\n4. **S3**: Ativa bloqueio de acesso público\n\n## 🧪 Teste Final\n1. Criou bucket intencionalmente inseguro (acesso público)\n2. Lambda detectou e bloqueou em segundos\n3. Confirmado com teste manual: Proteção = Ativada ✅\n\n## 💡 O que Aprendeu\n1. Restrições são oportunidades para inovação\n2. Pesquisa é seu melhor amigo\n3. Testes manuais revelam verdades que logs ocultam\n4. Automação funciona... mas às vezes precisa de empurrãozinho"
+    },
+    {
+      "id": 7,
+      "nome_repo": "aws-proactive-monitoring",
+      "url": "https://github.com/GabrielF0900/aws-proactive-monitoring",
+      "organizacao": "GabrielF0900",
+      "readme_preview": "Arquitetura de monitoramento proativo para detectar anomalias em instâncias EC2 antes de causar downtime com CloudWatch + SNS",
+      "tecnologias": [
+        "AWS CloudWatch",
+        "SNS",
+        "EC2",
+        "VPC",
+        "IAM",
+        "Internet Gateway",
+        "Security Groups"
+      ],
+      "descricao_resumida": "Laboratório prático de monitoramento proativo com alarmes CloudWatch e notificações via email",
+      "features_principais": [
+        "Monitoramento 24/7 de CPU",
+        "Alarmes automáticos quando CPU > 80%",
+        "Notificações por email via SNS",
+        "VPC com sub-rede pública",
+        "Security Group configurado para acesso seguro",
+        "CloudWatch Live Tail em tempo real",
+        "Teste de estresse validando alarmes",
+        "Custo ~USD 7,69/mês (ou USD 0,00 no Free Tier)"
+      ],
+      "readme_completo": "# ☁️ AWS Proactive Monitoring - Laboratório Escola da Nuvem\n\n## 📊 TL;DR\n- **O que é**: Arquitetura de monitoramento proativo para EC2\n- **Problema**: Falta de visibilidade em tempo real e alertas automáticos para picos de CPU/memória\n- **Stack**: CloudWatch + SNS + EC2 + VPC (IAM, Internet Gateway)\n- **Resultado**: Monitoramento 24/7 com notificações automáticas por e-mail (~USD 7,69/mês ou USD 0,00 no Free Tier)\n\n## 🏗️ Arquitetura Geral\n- **VPC**: 10.0.0.0/16 com sub-rede pública única\n- **EC2**: t3.micro (elegível para Free Tier)\n- **Security Groups**: SSH restrito ao IP pessoal, HTTP aberto\n- **CloudWatch**: Monitoramento de CPUUtilization\n- **SNS**: Notificações por email quando CPU > 80%\n\n## 💵 Análise de Custos\n| Serviço | Custo |\n|---------|-------|\n| EC2 t3.micro | USD 7,59/mês (ou GRÁTIS no Free Tier) |\n| CloudWatch Alarme | USD 0,10/mês |\n| SNS E-mail | USD 0,00 (primeiras 1k/mês grátis) |\n| **TOTAL** | **USD 7,69/mês** |\n\n### Por que é inteligente?\n1. **Sem NAT Gateway**: Economia de ~USD 32/mês\n2. **Single AZ**: Simplicidade (aceitável para dev)\n3. **t3.micro**: Potência suficiente + Free Tier\n4. **CloudWatch + SNS**: Monitoramento quase gratuito\n\n## 📋 Passo a Passo\n1. ✅ VPC com sub-rede pública\n2. ✅ EC2 t3.micro com Amazon Linux\n3. ✅ Security Group com SSH restrito + HTTP aberto\n4. ✅ SNS tópico para notificações\n5. ✅ CloudWatch alarme para CPU > 80%\n6. ✅ Teste de estresse validando pipeline\n\n## 🔥 Teste de Estresse\n- Executou script que aumentou CPU para ~90%\n- CloudWatch detectou após ~7 minutos\n- SNS enviou email de alerta\n- Pipeline completo: EC2 → CloudWatch → SNS → Email ✅\n\n## ⚠️ Limitações (Esperadas para lab)\n- Single AZ (em produção: Multi-AZ)\n- Sem sub-rede privada (em produção: Bastion Host)\n- Sem backup automatizado\n- Sem Auto Scaling\n\n## 🎯 Veredicto Final\n> \"É uma arquitetura econômica? SIM.\n> É uma arquitetura eficiente? SIM.\n> É uma arquitetura de produção? NÃO.\n> É uma arquitetura perfeita pra aprender Cloud? COM CERTEZA!\""
+    },
+    {
+      "id": 8,
+      "nome_repo": "ec2-security-landing-page",
+      "url": "https://github.com/GabrielF0900/ec2-security-landing-page",
+      "organizacao": "GabrielF0900",
+      "readme_preview": "Orquestrador de infraestrutura cloud com provisionamento seguro e automatizado de servidor web EC2 com User Data scripts",
+      "tecnologias": [
+        "AWS EC2",
+        "AWS CLI",
+        "Amazon Linux 2023",
+        "Apache HTTP Server",
+        "SSH",
+        "Security Groups",
+        "IAM",
+        "Linux"
+      ],
+      "descricao_resumida": "Provisionamento seguro e automatizado de servidor web na AWS com uso de Security Groups e User Data",
+      "features_principais": [
+        "Automação 100% do provisionamento",
+        "Security Groups configurados corretamente",
+        "SSH restrito ao IP pessoal",
+        "HTTP aberto para acesso público",
+        "User Data para instalação automática de Apache",
+        "Key Pair para acesso administrativo seguro",
+        "Escalabilidade imediata",
+        "Zero downtime em deploys"
+      ],
+      "readme_completo": "# EC2 Security Landing Page\n\n## 📋 TL;DR\n- **O que é**: Orquestrador de infraestrutura cloud com provisionamento seguro de servidor web\n- **Problema**: Eliminar configuração manual de servidores, garantir segurança de rede\n- **Stack**: AWS EC2 · Security Groups · IAM · Linux · Apache · User Data · CloudFormation\n- **Resultado**: 100% de automação no provisionamento, acesso seguro isolado por IP, escalabilidade imediata\n\n## 🏗️ Arquitetura\n- **AMI**: Amazon Linux 2023 (seguro, leve, otimizado)\n- **Tipo**: t2.micro (elegível para Free Tier)\n- **Security Group**:\n  - Port 22 (SSH): Restrito apenas ao IP pessoal\n  - Port 80 (HTTP): Aberto para 0.0.0.0/0 (mundo inteiro)\n- **User Data**: Script que instala e inicia Apache automaticamente\n- **Key Pair**: Acesso administrativo criptografado\n\n## 📋 Etapas\n1. ✅ Setup AWS CLI\n2. ✅ Provisionamento da EC2\n3. ✅ Segurança (Key Pair + Security Groups)\n4. ✅ Automação (User Data)\n5. ✅ Lançamento e Validação\n6. ✅ Deploy da Landing Page via Nano editor\n\n## 🔐 Segurança\n- SSH (Port 22): Apenas MEU IP tem permissão\n- HTTP (Port 80): Aberto para qualquer lugar\n- Key Pair: Autenticação criptográfica\n- User Data: Provisionamento automatizado\n\n## 📝 User Data Script\n```bash\n#!/bin/bash\nyum update -y\nyum install -y httpd\nsystemctl start httpd\nsystemctl enable httpd\necho \"<h1>Sucesso! Meu Web Server está online!</h1>\" > /var/www/html/index.html\n```\n\n## 📊 Resultado Final\n- ✅ Site rodando publicamente na AWS\n- ✅ Landing Page \"MinhaCloud\" online\n- ✅ CSS carregado corretamente\n- ✅ Escalabilidade comprovada"
+    },
+    {
+      "id": 9,
+      "nome_repo": "Projeto-02-A-Conexao-o-Backend-Database",
+      "url": "https://github.com/GabrielF0900/Projeto-02-A-Conexao-o-Backend-Database",
+      "organizacao": "GabrielF0900",
+      "readme_preview": "Infraestrutura cloud Production-ready com isolamento total entre camadas usando VPC, EC2, RDS e S3 com princípio Zero Trust",
+      "tecnologias": [
+        "Node.js",
+        "AWS EC2",
+        "AWS RDS PostgreSQL",
+        "Amazon S3",
+        "AWS IAM",
+        "AWS VPC",
+        "Security Groups",
+        "Git Bash",
+        "TypeScript"
+      ],
+      "descricao_resumida": "Laboratório prático de arquitetura cloud segura com isolamento de camadas e implementação de princípio Zero Trust",
+      "features_principais": [
+        "VPC com subnets públicas e privadas",
+        "EC2 em subrede pública (Application Layer)",
+        "RDS PostgreSQL em subrede privada (Data Layer)",
+        "S3 para armazenamento de dados (fora da VPC)",
+        "Security Groups configurados com privilégio mínimo",
+        "IAM Role para acesso seguro",
+        "Zero exposição de dados críticos",
+        "100% conformidade com boas práticas"
+      ],
+      "readme_completo": "# ☁️ AWS Secure Infrastructure Lab: EC2, RDS, S3 & IAM Integration\n\n## 📋 TL;DR\n- **O que é**: Infraestrutura cloud Production-ready com isolamento total\n- **Problema**: Implementar arquitetura segura com Zero Trust e privilégio mínimo\n- **Stack**: Node.js · EC2 · RDS PostgreSQL · S3 · IAM · VPC · Security Groups\n- **Resultado**: Zero exposição de dados, 100% conformidade, arquitetura escalável\n\n## 📐 Arquitetura\n### VPC Segmentada\n- **Sub-redes Públicas**: Recursos acessíveis (Application Layer - EC2)\n- **Sub-redes Privadas**: Recursos protegidos (Data Layer - RDS)\n- **Internet Gateway**: Conectividade interna e externa\n\n### Componentes\n1. **EC2**: Instância em subrede pública rodando Node.js\n2. **RDS PostgreSQL**: Banco em subrede privada (acesso apenas da EC2)\n3. **S3 Bucket**: Armazenamento escalável fora da VPC\n4. **Security Groups**: Firewalls virtuais com regras estritas\n5. **IAM Role**: Permissões granulares para EC2\n\n## 🛡️ Security Groups\n### Web Security Group (EC2)\n- HTTP (80): 0.0.0.0/0 (qualquer lugar)\n- SSH (22): Apenas MEU IP pessoal\n\n### Database Security Group (RDS)\n- PostgreSQL (5432): Apenas EC2 Security Group\n- Resultado: RDS totalmente isolado da internet\n\n## 🔌 Etapas\n1. ✅ Criação da VPC (10.0.0.0/16)\n2. ✅ Sub-redes públicas/privadas\n3. ✅ Internet Gateway\n4. ✅ Security Groups (Web + Database)\n5. ✅ EC2 em subrede pública\n6. ✅ RDS em subrede privada\n7. ✅ S3 Bucket para storage\n8. ✅ IAM Role para EC2\n9. ✅ Acesso SSH e validação de conectividade\n10. ✅ Teste CRUD (CREATE, INSERT, SELECT)\n\n## 📝 Teste de Conectividade\n- ✅ Resolução de DNS (VPC)\n- ✅ Permissão de Firewall (Security Group)\n- ✅ Autenticação (Usuário/Senha)\n- ✅ Operações CRUD funcionando\n\n## 🏆 Conceitos Aprendidos\n- ✅ Networking: VPCs e Subnets seguras\n- ✅ Compute: Gerenciamento de EC2 em subrede privada\n- ✅ Security: Firewalls (SGs) e gestão de identidades (IAM)\n- ✅ Database: Integração com RDS relacional\n- ✅ Storage: Uso de S3 para dados não estruturados"
+    },
+    {
+      "id": 10,
+      "nome_repo": "aws-serverless-product-catalog",
+      "url": "https://github.com/GabrielF0900/aws-serverless-product-catalog",
+      "organizacao": "GabrielF0900",
+      "readme_preview": "Catálogo de Produtos Serverless com orquestração automática via Lambda e DynamoDB, com custo operacional próximo a zero",
+      "tecnologias": [
+        "Node.js",
+        "AWS Lambda",
+        "DynamoDB",
+        "CloudWatch",
+        "AWS SDK"
+      ],
+      "descricao_resumida": "API serverless funcional para gerenciamento de produtos com DynamoDB e CloudWatch monitoramento",
+      "features_principais": [
+        "Tabela DynamoDB para produtos",
+        "Lambda com lógica de CRUD",
+        "JSON de teste para validação",
+        "CloudWatch Live Tail em tempo real",
+        "Contorno criativo de restrições de permissão",
+        "Integração DynamoDB validada",
+        "Custo zero em ociosidade"
+      ],
+      "readme_completo": "# 🚀 Projeto 03: Diário de Bordo - Construindo uma API Serverless\n\n## 📋 TL;DR\n- **O que é**: Catálogo de Produtos Serverless com orquestração automática\n- **Problema**: Escalabilidade sob demanda sem gerenciar servidores\n- **Stack**: Node.js · AWS Lambda · DynamoDB · CloudWatch\n- **Resultado**: Custo operacional próximo a zero (pay-per-use) e escalabilidade automática\n\n## 🏢 Ambiente\n- AWS Sandbox da Escola da Nuvem\n- Restrições severas de permissão\n- Foco em criatividade e adaptação\n\n## 📐 Arquitetura\n1. **DynamoDB**: Tabela \"Produtos\" com storage NoSQL\n2. **Lambda**: Função executora de lógica CRUD\n3. **CloudWatch**: Monitoramento e logs em tempo real\n4. **JSON de Teste**: Simulação de API via payloads\n\n## 🚨 Desafios\n1. **API Gateway bloqueado**: Impossível criar API público\n   - **Solução**: Usar JSON de teste do Lambda\n\n2. **Criação manual de Role bloqueada**\n   - **Solução**: Usar LabRole pré-criada\n\n## ✅ Implementação\n1. ✅ Tabela DynamoDB criada (Produtos)\n2. ✅ Função Lambda deployada\n3. ✅ Código com operações POST (criar) e GET (listar)\n4. ✅ Teste POST: Produto criado → Apareceu em DynamoDB\n5. ✅ CloudWatch Live Tail: Logs em tempo real\n\n## 🎓 Lições\n1. Roles pré-configuradas são amigas\n2. JSON de teste é caneta mágica\n3. CloudWatch Live Tail muda tudo\n4. Sandbox ≠ Mundo Real (prepare-se para restrições)\n5. Resiliência é arquitetura\n\n## 🏆 Conclusão\nAPI serverless 100% funcional, monitorada, escalável e sem um servidor para gerenciar! 🚀"
+    },
+    {
+      "id": 11,
+      "nome_repo": "MindTrack",
+      "url": "https://github.com/Neukox/MindTrack",
+      "organizacao": "Neukox",
+      "readme_preview": "Plataforma web de acompanhamento de bem-estar emocional e reflexão psicológica para estudantes com dashboard inteligente e relatórios personalizados",
+      "tecnologias": [
+        "Node.js",
+        "NestJS",
+        "React 18",
+        "TypeScript",
+        "PostgreSQL",
+        "Prisma ORM",
+        "bcrypt",
+        "JWT",
+        "Docker"
+      ],
+      "descricao_resumida": "Sistema de bem-estar emocional para estudantes com registro seguro de reflexões e análise de padrões comportamentais",
+      "features_principais": [
+        "Autenticação com JWT",
+        "Registro de reflexões diárias",
+        "Acompanhamento de humor (escala 1-10)",
+        "Dashboard responsivo com gráficos",
+        "Relatórios em PDF personalizáveis",
+        "Análise de padrões comportamentais",
+        "Senhas criptografadas com bcrypt",
+        "Suporte a 500+ usuários simultâneos"
+      ],
+      "readme_completo": "# 🧠 MindTrack\n\n## 📌 TL;DR\n- **O que é**: Plataforma web de bem-estar emocional e reflexão psicológica\n- **Problema**: Elimina registros manuais dispersos, consolida em um único lugar\n- **Stack**: Node.js · NestJS · React · TypeScript · PostgreSQL · Prisma\n- **Resultado**: Redução de 80% no tempo de tabulação, latência API < 200ms, 500+ usuários simultâneos\n\n## 📊 Métricas de Desempenho\n| Métrica | Valor | Status |\n|---------|-------|--------|\n| Latência de API | < 200ms | ✅ Excelente |\n| Usuários Simultâneos | 500+ | ✅ Escalável |\n| Disponibilidade | 99.8% | ✅ Alta |\n| Redução de Tempo | 80% | ✅ Otimizado |\n| Cobertura de Testes | 85% | ✅ Confiável |\n| Tempo de Build | 2.5s | ✅ Ágil |\n\n## 🚀 Tecnologias\n### Backend\n- **NestJS**: Framework Node.js robusto\n- **Prisma ORM**: Gerenciamento moderno\n- **PostgreSQL**: Banco confiável\n- **bcrypt**: Criptografia de senhas (12 rounds)\n- **JWT**: Autenticação stateless\n- **Docker**: Containerização\n\n### Frontend\n- **React 18**: UI moderna com hooks\n- **TypeScript**: Tipagem estática\n- **Vite**: Build ultrarrápido\n- **Tailwind CSS**: Estilização responsiva\n- **Docker**: Containerização com nginx\n\n## ✨ Funcionalidades\n### 🔐 Autenticação\n- Registro com validação de email\n- Login com JWT\n- Reset de senha via email\n- Senhas criptografadas (bcrypt 12 rounds)\n- Proteção contra brute force\n\n### 📝 Reflexões\n- Registro diário com timestamp\n- Categorização por temas\n- Edição e exclusão seguras\n- Histórico completo\n- Busca e filtros avançados\n\n### 😄 Acompanhamento de Humor\n- Escala 1-10 com contexto\n- Padrões por período\n- Alertas para mudanças\n\n### 📊 Dashboard\n- Visualização em tempo real\n- Gráficos de tendência\n- Relatórios mensais\n- Exportação PDF\n- Estatísticas agregadas\n\n## 🎓 Contexto Acadêmico\nProjeto colaborativo entre cursos de Psicologia e Sistemas de Informação"
+    },
+    {
+      "id": 12,
+      "nome_repo": "Sistema_De_Gerenciamento_De_TCC",
+      "url": "https://github.com/Neukox/Sistema_De_Gerenciamento_De_TCC",
+      "organizacao": "Neukox",
+      "readme_preview": "Plataforma modular de gerenciamento de Trabalhos de Conclusão de Curso com arquitetura containerizada para instituições de ensino",
+      "tecnologias": [
+        "Node.js",
+        "React",
+        "PostgreSQL",
+        "Docker",
+        "Prisma",
+        "TailwindCSS",
+        "TypeScript"
+      ],
+      "descricao_resumida": "Sistema completo para gerenciamento de TCCs com suporte a múltiplos usuários (alunos, orientadores, bancas)",
+      "features_principais": [
+        "Submissão de tema e projeto",
+        "Acompanhamento de etapas",
+        "Gerenciamento de orientadores",
+        "Avaliação de banca",
+        "Sistema de notas integrado",
+        "Histórico de versões",
+        "100% paridade entre ambientes",
+        "Redução de 40% no tempo de gestão"
+      ],
+      "readme_completo": "# 🎓 Sistema de Gerenciamento de TCC\n\n## 📌 TL;DR\n- **O que é**: Plataforma modular de gerenciamento de TCCs com arquitetura containerizada\n- **Problema**: Centraliza e otimiza o processo de acompanhamento e avaliação\n- **Stack**: Node.js · React · PostgreSQL · Docker · Prisma · TailwindCSS\n- **Resultado**: 100% paridade entre ambientes, redução de 40% no tempo de gestão\n\n## 🚀 Tecnologias\n### Backend\n- **TypeScript**: Tipagem estática\n- **Node.js**: Runtime JavaScript\n- **Prisma**: ORM moderno\n- **Docker**: Isolamento de ambientes\n- **JWT + bcrypt**: Segurança\n\n### Frontend\n- **React**: Biblioteca reativa\n- **Vite**: Build tool rápido\n- **TailwindCSS**: Estilização\n- **ESLint**: Qualidade de código\n- **Docker**: Container com nginx\n\n## 📂 Estrutura\n```\nSistema_De_Gerenciamento_De_TCC/\n├── backend/\n│   ├── prisma/ (migrations)\n│   ├── src/ (API)\n│   └── Dockerfile\n├── frontend/\n│   ├── src/ (React)\n│   └── Dockerfile\n└── docker-compose.yml\n```\n\n## ✨ Funcionalidades\n- Submissão de tema e projeto\n- Acompanhamento de etapas\n- Gerenciamento de orientadores\n- Avaliação de banca\n- Sistema de notas\n- Histórico de versões\n- Dashboard com estatísticas\n\n## 🐳 Como Executar\n```bash\ndocker-compose up\n```"
+    },
+    {
+      "id": 13,
+      "nome_repo": "Sistema_De_Gerenciamento_De_Chamados",
+      "url": "https://github.com/Neukox/Sistema_De_Gerenciamento_De_Chamados",
+      "organizacao": "Neukox",
+      "readme_preview": "Plataforma full-stack de gerenciamento de chamados técnicos com chat em tempo real via WebSockets e integração de email",
+      "tecnologias": [
+        "React 19",
+        "TypeScript",
+        "TailwindCSS",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Prisma",
+        "WebSocket",
+        "JWT",
+        "Bcrypt"
+      ],
+      "descricao_resumida": "Sistema completo de suporte técnico com chat em tempo real, gestão de chamados e notificações por email",
+      "features_principais": [
+        "Chat em tempo real via WebSocket",
+        "Autenticação com JWT + Bcrypt",
+        "Criação e rastreamento de chamados",
+        "Filtros por status, prioridade, data",
+        "Notificações por email",
+        "Criptografia End-to-End para mensagens",
+        "Dashboard com estatísticas",
+        "+30% agilidade no atendimento"
+      ],
+      "readme_completo": "# Sistema de Gerenciamento de Chamados\n\n## 🎯 TL;DR\n- **O que é**: Plataforma full-stack de gerenciamento de chamados técnicos\n- **Problema**: Otimização do atendimento técnico, reduzindo tempo de resposta\n- **Stack**: React · Node.js · Express · PostgreSQL · Prisma · WebSocket · JWT\n- **Resultado**: +30% agilidade · 10+ endpoints RESTful · Chat tempo real · Arquitetura modular\n\n## 🛠️ Stack Tecnológica\n### Frontend\n- React 19 com TypeScript\n- Vite para build rápido\n- TailwindCSS para estilo\n- React Router para navegação\n- Axios para HTTP\n\n### Backend\n- Node.js com Express\n- Prisma para ORM\n- PostgreSQL para DB\n- WebSocket para chat real-time\n- JWT + bcrypt para segurança\n- Nodemailer para emails\n\n## ✨ Funcionalidades\n### Autenticação\n- Registro e login\n- Recuperação de senha\n- JWT stateless\n- Controle de roles (Admin/User)\n- Middlewares de autenticação\n\n### Gestão de Chamados\n- Criar, editar, deletar, visualizar\n- Atribuição de prioridades\n- Rastreamento de status\n- Sistema de respostas\n- Filtros avançados\n\n### Chat em Tempo Real\n- WebSocket bidirecional\n- Mensagens privadas\n- Histórico persistido\n- Indicador online/offline\n- E2EE para privacidade\n\n### Notificações\n- Email de novo chamado\n- Email de resposta\n- Recuperação de senha\n- Múltiplos provedores SMTP\n\n## 📊 Métricas\n| Métrica | Valor | Status |\n|---------|-------|--------|\n| Agilidade | +30% | ✅ |\n| Endpoints | 10+ | ✅ |\n| WebSocket | <100ms | ✅ |\n| Uptime | 99.9% | ✅ |\n| Módulos | 8 | ✅ |\n\n## 🔒 Segurança\n- Senhas com bcrypt (12 rounds)\n- JWT com expiração\n- CORS configurado\n- SQL injection prevenido\n- Rate limiting recomendado\n- Estrutura LGPD ready"
+    },
+    {
+      "id": 14,
+      "nome_repo": "ChatPRO",
+      "url": "https://github.com/GabrielF0900/ChatPRO",
+      "organizacao": "GabrielF0900",
+      "readme_preview": "Aplicação de chat colaborativo em tempo real com autenticação JWT, interface responsiva e arquitetura escalável",
+      "tecnologias": [
+        "React 18",
+        "TypeScript",
+        "Vite",
+        "React Router Dom",
+        "TailwindCSS",
+        "Axios",
+        "Node.js",
+        "Express",
+        "WebSocket",
+        "Prisma ORM",
+        "JWT",
+        "bcrypt"
+      ],
+      "descricao_resumida": "Chat colaborativo full-stack com comunicação em tempo real via WebSocket",
+      "features_principais": [
+        "Comunicação em tempo real (WebSocket)",
+        "Autenticação segura (JWT)",
+        "Multi-usuário simultâneo",
+        "Interface responsiva com Tailwind",
+        "Reconexão automática",
+        "Persistência de dados (Prisma)",
+        "Prevenção de duplicação de mensagens",
+        "Logout seguro"
+      ],
+      "readme_completo": "# 💬 ChatPro - Chat Colaborativo em Tempo Real\n\n## 📖 Descrição\nChatPro é uma aplicação de chat colaborativo em tempo real desenvolvida com tecnologias modernas.\n\n## ✨ Características\n- 🚀 Comunicação em Tempo Real: WebSocket para mensagens instantâneas\n- 🔐 Autenticação Segura: Sistema de login/registro com JWT\n- 👥 Multi-usuário: Suporte para múltiplos usuários simultâneos\n- 📱 Interface Responsiva: Design moderno com Tailwind CSS\n- 🔄 Reconexão Automática: Reconexão em caso de perda de conexão\n- 💾 Persistência: Banco de dados com Prisma ORM\n- 🎨 UI/UX Profissional: Interface intuitiva e moderna\n\n## 🛠️ Tecnologias\n### Frontend\n- React 18\n- TypeScript\n- Vite\n- TailwindCSS\n- Axios\n\n### Backend\n- Node.js\n- Express\n- WebSocket (ws)\n- Prisma ORM\n- JWT\n- bcrypt\n- CORS\n\n## 🌐 API Endpoints\n- `POST /api/register` - Registro de usuário\n- `POST /api/login` - Login de usuário\n- `WS /` - Conexão WebSocket\n\n## 🔧 Variáveis de Ambiente\n```env\nPORT=5000\nDATABASE_URL=\"sua_url_do_banco\"\nJWT_SECRET=\"seu_jwt_secret\"\n```\n\n## 📊 Funcionalidades\n- ✅ Autenticação (login/registro)\n- ✅ Chat em tempo real via WebSocket\n- ✅ Interface responsiva\n- ✅ Gerenciamento de estado\n- ✅ Prevenção de duplicação\n- ✅ Identificação de remetente\n- ✅ Reconexão automática\n- ✅ Validação de formulários\n- ✅ Tratamento de erros\n- ✅ Logout seguro"
+    },
+    {
+      "id": 15,
+      "nome_repo": "Tarefix",
+      "url": "https://github.com/GabrielF0900/Tarefix",
+      "organizacao": "GabrielF0900",
+      "readme_preview": "Sistema full-stack de gerenciamento de tarefas com autenticação por login, operações CRUD e dashboard intuitivo",
+      "tecnologias": [
+        "React 19",
+        "TypeScript",
+        "Vite",
+        "TailwindCSS",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Prisma",
+        "bcrypt",
+        "Docker"
+      ],
+      "descricao_resumida": "Aplicação web para gerenciamento de tarefas pessoais com autenticação segura",
+      "features_principais": [
+        "Cadastro e autenticação de usuários",
+        "CRUD completo de tarefas",
+        "Busca por título/descrição",
+        "Filtros por status e prioridade",
+        "Dashboard com indicadores",
+        "Persistência com PostgreSQL",
+        "Criptografia de senhas",
+        "Interface responsiva"
+      ],
+      "readme_completo": "# Tarefix\n\n## Visão Geral\nO objetivo do sistema é permitir que cada usuário mantenha sua própria lista de tarefas, acompanhando status, prioridade, descrição e data de vencimento.\n\n## Stack Tecnológica\n### Frontend\n- React 19\n- TypeScript\n- Vite\n- TailwindCSS\n- React Router\n- Axios\n- Zod\n- Lucide React\n\n### Backend\n- Node.js\n- Express\n- TypeScript\n- Prisma ORM\n- PostgreSQL\n- bcrypt\n- CORS\n\n### Infraestrutura\n- Docker para frontend, backend e banco\n- Nginx para entrega do frontend\n\n## ✅ Funcionalidades\n- Cadastro de usuário com nome, email e senha\n- Validação de campos obrigatórios\n- Bloqueio de email duplicado\n- Criptografia de senha\n- Login com validação\n- Persistência de sessão (localStorage)\n- Criação de tarefas por usuário\n- Listagem de tarefas\n- Edição (título, descrição, status, prioridade, data)\n- Exclusão de tarefas\n- Busca textual\n- Indicadores de resumo\n- Logout\n\n## 📋 Rotas\n### Frontend\n- `/login` - Autenticação\n- `/register` - Cadastro\n- `/dashboard` - Gerenciamento de tarefas\n\n### Backend\n- `POST /api/auth/register`\n- `POST /api/auth/login`\n- `POST /api/auth/nova-tarefa`\n- `GET /api/auth/tarefas`\n- `PUT /api/auth/tarefas/:id`\n- `DELETE /api/auth/tarefas/:id`\n\n## 📊 Modelo de Dados\n### Usuário\n- id, name, email, password, createdAt, updatedAt\n\n### Tarefa\n- id, title, description, priority (Alta/Media/Baixa), status (Pendente/Em_Andamento/Concluida), date, userId, createdAt, updatedAt\n\n## 🚧 Requisitos Funcionais\n- RF01: Cadastro de usuários\n- RF02: Bloqueio de email duplicado\n- RF03: Login com validação\n- RF04: Mensagens de erro customizadas\n- RF05: Criação de tarefas\n- RF06: Armazenamento de metadados de tarefas\n- RF07: Listagem de tarefas\n- RF08: Edição de tarefas\n- RF09: Exclusão de tarefas\n- RF10: Busca por título/descrição\n- RF11: Painel com indicadores\n- RF12: Logout"
+    },
+    {
+      "id": 16,
+      "nome_repo": "LoginFull",
+      "url": "https://github.com/GabrielF0900/LoginFull",
+      "organizacao": "GabrielF0900",
+      "readme_preview": "Sistema Full Stack completo e funcional com autenticação JWT implementada, controle de acesso por papéis e interface simples",
+      "tecnologias": [
+        "React",
+        "CSS puro",
+        "TypeScript",
+        "Vite",
+        "ESLint",
+        "Node.js",
+        "Express",
+        "JWT",
+        "bcryptjs",
+        "Prisma ORM",
+        "PostgreSQL",
+        "Docker"
+      ],
+      "descricao_resumida": "Primeiro projeto full-stack finalizado com autenticação JWT, RBAC e interface responsiva",
+      "features_principais": [
+        "Registro seguro de usuários",
+        "Autenticação com JWT",
+        "Logout com remoção de token",
+        "Hash seguro com bcrypt",
+        "Controle por papéis (admin/user)",
+        "Backend modularizado",
+        "Middlewares customizados",
+        "Protecção de rotas"
+      ],
+      "readme_completo": "# 🔐 LoginFull\n\n## 🚀 Tecnologias\n### Frontend\n- React\n- CSS puro\n- TypeScript\n- Vite\n- ESLint\n\n### Backend\n- Node.js\n- Express\n- TypeScript\n- JWT (autenticação)\n- bcryptjs (hash seguro)\n- Prisma ORM\n- PostgreSQL\n- Docker\n\n## ✅ Funcionalidades\n- ✅ Registro de usuários\n- ✅ Autenticação com JWT\n- ✅ Logout (remoção do token)\n- ✅ Hash seguro de senhas\n- ✅ Controle de acesso por papel (admin/user)\n- ✅ Backend modularizado com middlewares\n\n## 📁 Estrutura\n```\nMeuProjeto/\n├── Backend/\n│   ├── node_modules/\n│   ├── prisma/\n│   ├── src/\n│   ├── Dockerfile\n│   └── package.json\n├── Frontend/\n│   ├── node_modules/\n│   ├── public/\n│   ├── src/\n│   ├── Dockerfile\n│   └── package.json\n```\n\n## ⚙️ Como Executar\n### Backend\n```bash\ncd Backend\nnpm install\n# Configure .env\nDATABASE_URL=\"postgresql://usuario:senha@localhost:5432/seubanco\"\nJWT_SECRET=\"sua_chave_secreta\"\nnpx prisma migrate dev\nnpm run dev\n```\n\n### Frontend\n```bash\ncd ../Frontend\nnpm install\nnpm run dev\n```\n\n## 🎯 Marcos\nEste é o **primeiro projeto full-stack finalizado**, representando um grande marco nos estudos de desenvolvimento web!"
+    },
+    {
+      "id": 17,
+      "nome_repo": "NodeAuth_API",
+      "url": "https://github.com/GabrielF0900/NodeAuth_API",
+      "organizacao": "GabrielF0900",
+      "readme_preview": "API robusta de autenticação e autorização com JWT, bcrypt para segurança de senhas e RBAC (controle de acesso baseado em papéis)",
+      "tecnologias": [
+        "Node.js",
+        "Express.js",
+        "TypeScript",
+        "JWT",
+        "bcrypt.js",
+        "Prisma ORM",
+        "PostgreSQL",
+        "Docker",
+        "ts-node-dev"
+      ],
+      "descricao_resumida": "Backend robusto de autenticação com JWT, bcrypt e Prisma para gerenciamento de usuários e controle de acesso",
+      "features_principais": [
+        "Registro de usuários com validação",
+        "Login com geração de JWT",
+        "Controle de acesso por papel (RBAC)",
+        "Middlewares customizados",
+        "Hash seguro com bcrypt",
+        "Logout stateless",
+        "Persistência com Prisma",
+        "Containerização com Docker"
+      ],
+      "readme_completo": "# 🔐 NodeAuth_API - Autenticação e Autorização Segura\n\nUma API robusta de autenticação e autorização desenvolvida com Node.js, Express e TypeScript.\n\n## 🌐 Visão Geral\nSistema de autenticação e autorização seguro e escalável com:\n- **JWT**: Gerenciamento stateless de sessões\n- **bcrypt**: Hash seguro de senhas\n- **Prisma ORM + PostgreSQL**: Persistência tipada\n- **RBAC**: Controle granular de acesso por papéis\n- **TypeScript**: Garantia de tipagem forte\n- **Docker**: Ambiente consistente\n\n## ✨ Funcionalidades\n- Registro de usuários\n- Login com geração de JWT\n- Controle de acesso por papel (USER, ADMIN)\n- Middlewares customizados:\n  - Extração de token\n  - Autenticação de token\n  - Autorização por papel\n- Logout simples (Stateless)\n- Persistência com Prisma + PostgreSQL\n- Conteinerização via Docker\n\n## 🛠️ Tecnologias\n- Node.js\n- Express.js\n- TypeScript\n- JWT (jsonwebtoken)\n- bcrypt.js\n- Prisma ORM\n- PostgreSQL\n- Docker\n- ts-node-dev (hot-reloading)\n\n## 🎯 Endpoints\n### Autenticação\n- `POST /login` - Login e geração de JWT\n- `POST /register` - Registro de novo usuário\n- `POST /logout` - Logout\n\n### Rotas Protegidas\n- `GET /rota-protegida` - Qualquer usuário autenticado\n- `GET /rota-protegida-admin-somente` - Apenas ADMIN\n\n## 🚀 Instalação\n```bash\ngit clone https://github.com/GabrielF0900/JWTTESTE.git\ncd JWTTESTE/Backend\nnpm install\n# Configurar .env\nnpx prisma migrate dev --name init_database\nnpm run dev\n```\n\n## 🔒 Segurança\n- Senhas criptografadas com bcrypt\n- JWT com expiração\n- CORS configurado\n- SQL injection prevenido\n- Rate limiting recomendado"
+    }
+  ],
+  "resumo": {
+    "total_repositorios": 17,
+    "organizacoes": ["GabrielF0900", "Neukox"],
+    "repositorios_gabriel": 14,
+    "repositorios_neukox": 3,
+    "tecnologias_principais": [
+      "AWS",
+      "Node.js",
+      "TypeScript",
+      "React",
+      "PostgreSQL",
+      "Docker",
+      "Prisma ORM",
+      "WebSocket",
+      "JWT",
+      "Tailwind CSS"
+    ],
+    "areas_foco": [
+      "Cloud Computing (AWS)",
+      "Full-Stack Development",
+      "Serverless Architecture",
+      "Security & Authentication",
+      "Real-time Applications",
+      "Infrastructure as Code"
+    ]
+  }
+}

@@ -1,0 +1,156 @@
+﻿[
+    {
+        "nome":  "1Projeto",
+        "descricao":  null,
+        "url":  "https://github.com/GabrielF0900/1Projeto",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "Agencia_de_Viagens",
+        "descricao":  "Site de agência de viagens desenvolvido por mim criando layout com FIGMA.",
+        "url":  "https://github.com/GabrielF0900/Agencia_de_Viagens",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "Atividade-Docker-Daniele-2026",
+        "descricao":  "Atividade de daniele",
+        "url":  "https://github.com/GabrielF0900/Atividade-Docker-Daniele-2026",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "aws-high-availability-scaling-architecture",
+        "descricao":  "Este repositório contém a documentação técnica e o passo a passo da implementação de uma infraestrutura em nuvem na AWS, focada em Alta Disponibilidade, Escalabilidade Automática e Segurança.",
+        "url":  "https://github.com/GabrielF0900/aws-high-availability-scaling-architecture",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "AWS-Nexus-IaC-Blueprint",
+        "descricao":  "AWS-Nexus - IaC Blueprint: Infraestrutura automatizada e resiliente na AWS utilizando CloudFormation. Inclui VPC segura, monitoramento proativo com CloudWatch/SNS e acesso via SSM Session Manager sob o Well-Architected Framework.",
+        "url":  "https://github.com/GabrielF0900/AWS-Nexus-IaC-Blueprint",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "aws-proactive-monitoring",
+        "descricao":  "Pipeline de monitoramento proativo de integridade na AWS. Alertas de desempenho de instâncias EC2 via CloudWatch Alarms e notificações de e-mail por SNS em uma VPC personalizada.",
+        "url":  "https://github.com/GabrielF0900/aws-proactive-monitoring",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "aws-resilient-order-processor",
+        "descricao":  "Implementação de um fluxo desacoplado utilizando AWS Lambda, Amazon SQS e Amazon S3. O projeto demonstra como aumentar a resiliência de sistemas distribuídos através do uso de filas (buffer), garantindo que picos de carga ou processamentos \"pesados\" não afetem a experiência do usuário.",
+        "url":  "https://github.com/GabrielF0900/aws-resilient-order-processor",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "aws-s3-auto-remediator",
+        "descricao":  "Automação de segurança em AWS para remediação em tempo real (Auto-Healing) de buckets S3 expostos publicamente utilizando EventBridge e Lambda",
+        "url":  "https://github.com/GabrielF0900/aws-s3-auto-remediator",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "AWS-serverless-order-orchestrator",
+        "descricao":  "AWS Order Orchestrator: Arquitetura Serverless de ponta a ponta utilizando AWS Step Functions, Lambda, DynamoDB e SNS. Projeto focado em orquestração de microserviços, desacoplamento e segurança (SSE), desenvolvido como parte da preparação para as certificações CLF-C02 e SAA-C03.",
+        "url":  "https://github.com/GabrielF0900/AWS-serverless-order-orchestrator",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "aws-serverless-product-catalog",
+        "descricao":  "API CRUD para catálogo de produtos desenvolvida com arquitetura Serverless na AWS, utilizando Node.js, Lambda, DynamoDB e monitoramento via CloudWatch.",
+        "url":  "https://github.com/GabrielF0900/aws-serverless-product-catalog",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "banking-core-java",
+        "descricao":  "Implementação de um sistema bancário modular focado nos fundamentos de Java e Arquitetura Limpa. O projeto explora a separação de responsabilidades entre camadas (Model/Service), encapsulamento de dados, construtores e lógica de transações financeiras",
+        "url":  "https://github.com/GabrielF0900/banking-core-java",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "ChatPRO",
+        "descricao":  "Um mini projeto de Chat em tempo real usando Websocket básico com intuito de melhorar meus conhecimentos em websocket.",
+        "url":  "https://github.com/GabrielF0900/ChatPRO",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "ci-demo",
+        "descricao":  null,
+        "url":  "https://github.com/GabrielF0900/ci-demo",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "CityShield-TCC-Escola-da-Nuvem-",
+        "descricao":  "Apresentação de TCC (Trabalho de Conclusão de Curso) do curso AWS Re/Start + IA ministrada pela Escola da Nuvem",
+        "url":  "https://github.com/GabrielF0900/CityShield-TCC-Escola-da-Nuvem-",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "CloudFront-NewEdge",
+        "descricao":  "Este repositório documenta a implementação do projeto NovaEdge, uma infraestrutura de ponta na AWS para a distribuição global de conteúdo estático com foco em segurança de origem e baixa latência.",
+        "url":  "https://github.com/GabrielF0900/CloudFront-NewEdge",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "ConectaTEA",
+        "descricao":  "ConectaTEA é uma plataforma web que conecta profissionais de saúde e responsáveis para acompanhar o desenvolvimento de crianças com TEA, permitindo registrar sessões, definir metas, monitorar progresso e melhorar a comunicação no processo terapêutico.",
+        "url":  "https://github.com/GabrielF0900/ConectaTEA",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "ec2-security-landing-page",
+        "descricao":  "Provisionamento de infraestrutura EC2 e Security Groups via Console AWS, com configuração de servidor Apache e deploy via terminal Linux (SSH).",
+        "url":  "https://github.com/GabrielF0900/ec2-security-landing-page",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "extracao-slides-pdf",
+        "descricao":  "Ferramenta de automação em Python para extração de slides de aulas online e conversão automática para PDF, com recorte inteligente de interface.",
+        "url":  "https://github.com/GabrielF0900/extracao-slides-pdf",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "GabrielF0900",
+        "descricao":  null,
+        "url":  "https://github.com/GabrielF0900/GabrielF0900",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "Game_Designer",
+        "descricao":  "Trabalho acadêmico de um site completo.",
+        "url":  "https://github.com/GabrielF0900/Game_Designer",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "Lemux",
+        "descricao":  "Projeto pessoal para autodesenvolvimento em html, css e js.",
+        "url":  "https://github.com/GabrielF0900/Lemux",
+        "topics":  "",
+        "readme_preview":  ""
+    },
+    {
+        "nome":  "Lista_de_Compras",
+        "descricao":  "Uma lista de compras desenvolvido por mim utilizando funçoes, manipulação de DOM, eventos que sao elementos do JavaScript.",
+        "url":  "https://github.com/GabrielF0900/Lista_de_Compras",
+        "topics":  "",
+        "readme_preview":  ""
+    }
+]

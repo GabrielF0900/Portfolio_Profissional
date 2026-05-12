@@ -16,6 +16,8 @@ interface Project {
     demo?: string | null;
     github?: string | null;
     case_study?: string | null;
+    video?: string | null;
+    presentation?: string | null;
   };
   client?: string;
   team?: {
@@ -23,6 +25,10 @@ interface Project {
     description: string;
     size?: number;
   };
+  metrics?: {
+    label: string;
+    value: string;
+  }[];
 }
 
 interface Technologies {
@@ -76,14 +82,16 @@ export const projects: {
       id: 2,
       title: "Task Management App",
       description:
-        "Aplicativo de gerenciamento de tarefas com funcionalidades de colaboração em tempo real, notificações push e integração com calendários.",
+        "Tarefix - Sistema full stack de gerenciamento de tarefas com cadastro de usuários, autenticação segura e operações completas (CRUD). Permite que cada usuário mantenha sua própria lista de tarefas, acompanhando status, prioridade, descrição e data de vencimento. Interface voltada para uso em navegador com busca textual, indicadores de resumo no dashboard e validação robusta. Frontend com React 19 e TypeScript, backend em Node.js com Express e Prisma ORM, persistência em PostgreSQL, deployment com Docker e Nginx.",
       technologies: [
-        "React",
+        "React 19",
+        "TypeScript",
         "Node.js",
-        "Socket.io",
-        "MongoDB",
         "Express",
-        "JWT",
+        "Prisma ORM",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "Docker",
       ],
       status: "Concluído",
       category: "Full Stack",
@@ -98,22 +106,20 @@ export const projects: {
       featured: true,
       links: {
         demo: "#",
-        github: "#",
+        github: "https://github.com/GabrielF0900/Tarefix",
         case_study: "#",
       },
     },
-    {
-      id: 3,
       title: "API REST Financeira",
       description:
-        "API robusta para gestão financeira pessoal com autenticação JWT, documentação completa e testes automatizados.",
+        "banking-core-java - Implementação de um sistema bancário modular com Java 21 focado nos fundamentos e Arquitetura Limpa. Explora separação de responsabilidades entre camadas (Model/Service/Repository), encapsulamento estrito de dados com modificadores private, prevenção de NullPointerException e lógica de negócio defensiva. Arquitetura em Layered Architecture com separação clara de camadas, compatível com ambientes cloud-native (AWS Lambda e ECS). Utiliza Amazon Corretto como runtime Java otimizado.",
       technologies: [
-        "Node.js",
-        "Express",
-        "PostgreSQL",
-        "Swagger",
-        "Jest",
-        "Docker",
+        "Java 21",
+        "Amazon Corretto",
+        "Arquitetura Limpa",
+        "Layered Architecture",
+        "Git",
+        "AWS Lambda",
       ],
       status: "Concluído",
       category: "Backend",
@@ -128,7 +134,7 @@ export const projects: {
       featured: false,
       links: {
         demo: null,
-        github: "#",
+        github: "https://github.com/GabrielF0900/banking-core-java",
         case_study: "#",
       },
     },
@@ -136,8 +142,8 @@ export const projects: {
       id: 4,
       title: "Portfolio Website",
       description:
-        "Site pessoal desenvolvido com foco em performance e SEO, incluindo blog integrado e sistema de contato.",
-      technologies: ["Next.js", "TypeScript", "MDX", "Tailwind CSS", "Vercel"],
+        "Portfólio moderno e responsivo que apresenta a jornada como desenvolvedor Full Stack. Vitrine moderna de projetos cloud-native e arquitetura serverless, construído com foco em performance, acessibilidade e experiência do usuário. Interface intuitiva com tema claro/escuro dinâmico, design responsivo para todos os dispositivos, otimizado para performance e SEO. Arquitetura modular e escalável utilizando Next.js, React, TypeScript e Tailwind CSS, deployed no Vercel.",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
       status: "Concluído",
       category: "Frontend",
       startDate: "2023-03",
@@ -151,7 +157,7 @@ export const projects: {
       featured: false,
       links: {
         demo: "#",
-        github: "#",
+        github: "https://github.com/GabrielF0900/Portfolio_Profissional",
         case_study: null,
       },
     },
@@ -190,14 +196,15 @@ export const projects: {
       id: 6,
       title: "Plataforma de Educação Online",
       description:
-        "LMS completo com sistema de videoaulas, exercícios interativos, acompanhamento de progresso e certificações digitais.",
+        "ConectaTEA - Plataforma web completa para acompanhamento de crianças com TEA (Transtorno do Espectro Autista), conectando responsáveis e profissionais especializados. Centraliza e otimiza o acompanhamento de crianças com TEA, permitindo que responsáveis encontrem profissionais qualificados, acompanhem o desenvolvimento e mantenham comunicação contínua com toda a equipe de cuidado. Inclui sistema de autenticação seguro com JWT, rede de profissionais especializados em TEA, gestão de crianças com histórico médico, sistema de conexões entre profissionais e CRUD completo com busca avançada.",
       technologies: [
         "React",
-        "Express.js",
+        "TypeScript",
+        "Vite",
+        "NestJS",
+        "Prisma ORM",
         "PostgreSQL",
-        "AWS",
-        "FFmpeg",
-        "WebRTC",
+        "JWT",
       ],
       status: "Concluído",
       category: "Full Stack",
@@ -209,16 +216,18 @@ export const projects: {
         role: "Full Stack Developer",
         description: "Equipe de 8 desenvolvedores",
       },
-      client: "EduTech Solutions",
+      client: "ConectaTEA",
       highlights: [
-        "5.000+ alunos ativos",
-        "Sistema de videoconferência integrado",
-        "Certificações digitais blockchain",
+        "Sistema de autenticação seguro com JWT",
+        "Rede de profissionais especializados em TEA",
+        "Gestão de crianças com histórico médico",
+        "Sistema de conexões entre profissionais",
+        "CRUD completo com filtros avançados",
       ],
       featured: true,
       links: {
         demo: "#",
-        github: null,
+        github: "https://github.com/GabrielF0900/ConectaTEA",
         case_study: "#",
       },
     },
@@ -262,8 +271,8 @@ export const projects: {
       id: 8,
       title: "Sistema de Gerenciamento de TCC",
       description:
-        "Plataforma completa para gerenciamento de Trabalhos de Conclusão de Curso, permitindo coordenação entre alunos, orientadores e banca examinadora.",
-      technologies: ["JavaScript", "Node.js", "Express", "MongoDB", "React"],
+        "CityShield - Segurança Integrada Inteligente para Cidades Inteligentes. Plataforma serverless que converge segurança física (CCTV) e cibernética em uma central unificada. Integra 500+ câmeras com análise em tempo real de ameaças físicas e cibernéticas (~200M frames/mês) com resposta automática em segundos. Resultado prático: ~80% redução de custos (USD 419K economizados/ano) com modelo 100% pay-per-use. Trabalho de Conclusão de Curso (TCC) do Programa AWS Re/Start + IA da Escola da Nuvem.",
+      technologies: ["Node.js", "Amazon Kinesis", "Rekognition", "AWS Lambda", "GuardDuty", "WAF", "EventBridge", "DynamoDB"],
       status: "Concluído",
       category: "Full Stack",
       startDate: null,
@@ -271,17 +280,25 @@ export const projects: {
       image: "/images/project-placeholder-8.png",
       team: {
         role: "Developer",
-        description: "Projeto colaborativo",
+        description: "Projeto colaborativo - TCC Escola da Nuvem",
       },
+      metrics: [
+        { label: "Redução de Custos", value: "80%" },
+        { label: "Câmeras Integradas", value: "500+" },
+        { label: "Frames/Mês", value: "200M+" },
+        { label: "Economia Anual", value: "USD 419K" },
+      ],
       highlights: [
-        "Gerenciamento centralizado de TCCs",
-        "Acompanhamento de prazos e entregas",
-        "Comunicação integrada entre participantes",
+        "Integração de 500+ câmeras de CCTV",
+        "Análise em tempo real com Rekognition",
+        "Resposta automática em segundos",
+        "Modelo 100% pay-per-use serverless",
+        "80% redução de custos vs On-Premises",
       ],
       featured: true,
       links: {
         demo: null,
-        github: "https://github.com/Neukox/Sistema_De_Gerenciamento_De_TCC",
+        github: "https://github.com/GabrielF0900/CityShield-TCC-Escola-da-Nuvem-",
         case_study: null,
       },
     },
@@ -289,7 +306,7 @@ export const projects: {
       id: 9,
       title: "Sistema de Gerenciamento de Chamados",
       description:
-        "Sistema robusto para gerenciamento de chamados (help desk), com rastreamento de tickets, priorização e relatórios de desempenho.",
+        "Sistema completo de gerenciamento de chamados (help desk) com rastreamento de tickets, priorização inteligente e relatórios detalhados de desempenho. Solução robusta para gestão de suporte técnico que permite atribuição automática de chamados, escalação baseada em prioridade e SLA, histórico completo de comunicações e integração com sistemas externos. Oferece dashboard em tempo real com métricas de atendimento, satisfação do cliente, tempos de resolução e análise de performance da equipe de suporte.",
       technologies: ["JavaScript", "Node.js", "Express", "MongoDB", "React"],
       status: "Concluído",
       category: "Full Stack",
@@ -301,9 +318,12 @@ export const projects: {
         description: "Projeto colaborativo",
       },
       highlights: [
-        "Sistema de tickets com priorização",
-        "Atribuição automática de chamados",
+        "Sistema de tickets com priorização automática",
+        "Atribuição inteligente de chamados",
         "Dashboard com relatórios em tempo real",
+        "Rastreamento de SLA e métricas de desempenho",
+        "Histórico completo de comunicações",
+        "Integração com sistemas externos",
       ],
       featured: true,
       links: {
