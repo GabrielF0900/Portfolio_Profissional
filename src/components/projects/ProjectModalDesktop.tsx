@@ -46,7 +46,12 @@ export default function ProjectModalDesktop({ project, open, onOpenChange, setIm
           </DialogHeader>
         </div>
 
-        <ModalScrollContent project={project} />
+        {/* 🚀 AQUI ESTÁ A ATUALIZAÇÃO: Devolvendo o scroll dinâmico apenas para o Desktop */}
+        <ModalScrollContent 
+          project={project} 
+          className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 min-w-0" 
+        />
+        
         <ModalStatusFooter status={project.status} />
 
       </DialogContent>

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Youtube, Download, Image as ImageIcon } from "lucide-react";
 import { TechnologiesPopover } from "@/components/projects-modal/TechnologiesPopover";
 import { MetricsDisplay } from "@/components/projects-modal/MetricsDisplay";
+import { cn } from "@/lib/utils";
 
 export function ActionButtons({ project, onImageClick, className = "" }: { project: Project; onImageClick: () => void; className?: string; }) {
   return (
@@ -47,9 +48,10 @@ export function ActionButtons({ project, onImageClick, className = "" }: { proje
   );
 }
 
-export function ModalScrollContent({ project }: { project: Project }) {
+// Atualizado: Agora recebe a prop className e usa o cn()
+export function ModalScrollContent({ project, className }: { project: Project; className?: string }) {
   return (
-    <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 min-w-0 w-full p-4 sm:p-5 space-y-4 sm:space-y-5">
+    <div className={cn("w-full p-4 sm:p-5 space-y-4 sm:space-y-5", className)}>
       <div className="min-w-0">
         <h3 className="font-semibold mb-1 text-[11px] sm:text-xs uppercase text-muted-foreground">Sobre</h3>
         <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed break-words">{project.description}</p>
