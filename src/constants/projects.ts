@@ -2,6 +2,37 @@ import { Project, PortfolioData } from "../types";
 
 export const projects: PortfolioData = {
   personal: [
+   {
+  id: 22,
+  title: "Resilient Audit Batch: High-Performance Engineering",
+  description:
+    "Pipeline de processamento em lote de alto desempenho projetado para auditoria de dados financeiros em larga escala. O sistema implementa algoritmos de busca constante O(1) e filtros de idempotência rigorosos, alcançando o marco de 1 milhão de transações auditadas em apenas 0.309s (Throughput de 3.2M/s). Focado em resiliência sistêmica e eficiência de custos para arquiteturas serverless na AWS, eliminando desperdícios de processamento linear O(N).",
+  technologies: [
+    "Java 17+",
+    "Collections Framework",
+    "High-Performance I/O",
+    "Data Integrity",
+    "Git/GitHub",
+  ],
+  status: "Concluído",
+  category: "Backend",
+  startDate: "2026-05",
+  endDate: "2026-05",
+  image: "/images/08-processamento-mais-metricas-final.jpeg", 
+  highlights: [
+    "Processamento de 1.000.000 de registros com integridade total em 0.309 segundos.",
+    "Throughput real de 3.2 milhões de operações por segundo em ambiente JVM.",
+    "Redução drástica de latência de busca de O(N) para O(1) via indexação por Hash.",
+    "Implementação de lógica de Idempotência técnica para expurgo de 'Poison Messages'.",
+    "Persistência física otimizada via BufferedWriter, garantindo durabilidade e I/O eficiente.",
+    "Arquitetura resiliente desenhada para evitar gargalos financeiros em serviços AWS Lambda.",
+  ],
+  featured: true,
+  links: {
+    github: "https://github.com/GabrielF0900/resilient-audit-batch",
+    case_study: null,
+  },
+},
     {
       id: 21,
       title: "banking-core-java",
@@ -509,6 +540,8 @@ export const projects: PortfolioData = {
       },
     },
   ],
+
+  //COLABORATIVO
   collaborative: [
     {
       id: 18,
