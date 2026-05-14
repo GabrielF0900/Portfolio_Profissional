@@ -30,7 +30,7 @@ export const notificationsData: NotificationEntry[] = [
     id: '3',
     category: 'PROJETO',
     date: '11 MAI',
-    content: 'Desenvolvendo o Resilient-Audit Batch: Auditoria e busca de transações.',
+    content: 'Resilient-Audit Batch: Auditoria e busca de transações foi concluido com sucesso! Veja em meus projetos.',
     icon: 'gear',
   }
   
