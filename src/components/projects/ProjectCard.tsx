@@ -10,14 +10,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import { ExternalLink, Github, Youtube } from "lucide-react";
 import { formatDate } from "@/lib/utils";
-import { useState } from "react";
+import { TechnologiesModal } from "@/components/projects-modal/TechnologiesModal";
 
 interface ProjectCardProps {
   project: Project;
@@ -25,8 +20,6 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <Card
       className={`group hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col ${
@@ -178,48 +171,15 @@ export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
           </div>
         )}
 
-        {/* Stack principal com hover */}
+        {/* Stack principal com modal flutuante */}
         <div className="mb-4">
           <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">
             Stack
           </p>
-          <div className="flex flex-wrap gap-1">
-            {project.technologies.slice(0, 5).map((tech) => (
-              <Badge
-                key={tech}
-                variant="outline"
-                className="text-xs bg-slate-100 dark:bg-slate-800"
-              >
-                {tech}
-              </Badge>
-            ))}
-            {project.technologies.length > 5 && (
-              <Popover open={isOpen} onOpenChange={setIsOpen}>
-                <PopoverTrigger asChild>
-                  <Badge
-                    variant="outline"
-                    className="text-xs bg-slate-100 dark:bg-slate-800 cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700"
-                  >
-                    +{project.technologies.length - 5}
-                  </Badge>
-                </PopoverTrigger>
-                <PopoverContent className="w-48 p-3">
-                  <div className="space-y-2">
-                    <p className="text-xs font-semibold mb-2">
-                      Todas as Tecnologias:
-                    </p>
-                    <div className="flex flex-wrap gap-1">
-                      {project.technologies.map((tech) => (
-                        <Badge key={tech} variant="outline" className="text-xs">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </PopoverContent>
-              </Popover>
-            )}
-          </div>
+          <TechnologiesModal
+            technologies={project.technologies}
+            visibleCount={5}
+          />
         </div>
 
         {/* Botão */}

@@ -11,13 +11,14 @@ export const technologies: Technologies = {
   ],
   backend: [
     "Node.js",
-    "Express.js",
     "Nest.js",
     "Prisma",
     "PostgreSQL",
     "JWT",
     "TypeScript",
-    "Java"
+    "Java",
+    "Spring Boot",
+    "Spring Security"
   ],
   tools: [
     "Git",
