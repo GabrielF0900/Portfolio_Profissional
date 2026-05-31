@@ -1,7 +1,7 @@
 
 // src/notifications/notificationsData.ts
 
-export type IconType = 'folder' | 'lightning' | 'gear';
+export type IconType = 'folder' | 'lightning' | 'gear' | 'shield';
 
 export interface NotificationEntry {
   id: string;
@@ -12,26 +12,30 @@ export interface NotificationEntry {
 }
 
 export const notificationsData: NotificationEntry[] = [
+
+
+
   {
-    id: '1',
-    category: 'CARREIRA',
-    date: '24 ABR',
-    content: 'Convocado para estagiar na SEFAZ - BA.',
-    icon: 'folder',
+    id: '2',
+    category: 'PROJETO',
+    date: '18 MAI',
+    content: 'SafeWallet Core: Arquitetura perimetral com Spring Security e autenticação Stateless JWT implementada com sucesso! Veja em meus projetos.',
+    icon: 'shield', // Alterado sutilmente para 'shield' para combinar com segurança, ou mantenha 'gear' se preferir.
   },
   {
     id: '2',
     category: 'ESTUDO',
-    date: '24 ABR',
-    content: 'Estudando Estrutura de Dados em Java',
+    date: '25 MAI',
+    content: 'Estudando Spring Boot',
     icon: 'lightning',
   },
+  
   {
     id: '3',
-    category: 'PROJETO',
-    date: '11 MAI',
-    content: 'Resilient-Audit Batch: Auditoria e busca de transações foi concluido com sucesso! Veja em meus projetos.',
-    icon: 'gear',
+    category: 'CARREIRA',
+    date: '24 ABR',
+    content: 'Convocado para estagiar na SEFAZ - BA.',
+    icon: 'folder',
   }
   
 ];
