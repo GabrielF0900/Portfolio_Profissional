@@ -16,42 +16,62 @@ interface Props {
 export default function ProjectModalDesktop({ project, open, onOpenChange, setImageModalOpen }: Props) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      {/* Container simples, pois não precisamos mais brigar com o mobile */}
-      <DialogContent className="w-full max-w-4xl max-h-[85vh] overflow-hidden p-0 flex flex-col rounded-xl">
+      <DialogContent className="w-full max-w-4xl max-h-[85vh] overflow-hidden p-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xl">
         
-        <div className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-5 shrink-0">
-          <DialogHeader className="mb-0 text-left">
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex-1 min-w-0 space-y-1">
-                <div className="flex gap-1.5 flex-wrap">
-                  <Badge variant="outline" className="text-xs px-2 py-0.5">{project.category}</Badge>
+        {/* Header com padding expandido e margem de segurança à direita (pr-16) para o botão X */}
+        <div className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-6 md:p-8 pr-16 shrink-0">
+          <DialogHeader className="text-left">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              
+              {/* Bloco de Informações do Projeto */}
+              <div className="space-y-3 min-w-0 flex-1">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <Badge 
+                    variant="secondary" 
+                    className="text-xs font-semibold px-2.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100"
+                  >
+                    {project.category}
+                  </Badge>
                   {project.team?.role && (
-                    <Badge variant="outline" className="text-xs px-2 py-0.5">{project.team.role}</Badge>
+                    <Badge 
+                      variant="outline" 
+                      className="text-xs px-2.5 py-0.5 border-slate-300 dark:border-slate-700 text-muted-foreground"
+                    >
+                      {project.team.role}
+                    </Badge>
                   )}
                 </div>
-                <DialogTitle className="text-xl font-bold leading-tight break-words">
-                  {project.title}
-                </DialogTitle>
-                <DialogDescription className="text-sm">
-                  {formatDate(project.startDate)} - {formatDate(project.endDate)}
-                </DialogDescription>
+                
+                <div className="space-y-1.5">
+                  <DialogTitle className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-50 break-words">
+                    {project.title}
+                  </DialogTitle>
+                  <DialogDescription className="text-sm font-medium text-muted-foreground flex items-center gap-1.5">
+                    <span>{formatDate(project.startDate)}</span>
+                    <span className="text-slate-300 dark:text-slate-700">•</span>
+                    <span>{project.endDate ? formatDate(project.endDate) : "Atual"}</span>
+                  </DialogDescription>
+                </div>
               </div>
 
+              {/* Botões de Ação reposicionados em linha horizontal, sem colisões */}
               <ActionButtons
                 project={project}
                 onImageClick={() => setImageModalOpen(true)}
-                className="flex-col items-end gap-1.5 shrink-0"
+                className="flex flex-row items-center gap-2.5 shrink-0 self-start md:self-center bg-slate-50 dark:bg-slate-900/50 p-2 rounded-lg border border-slate-100 dark:border-slate-800/60"
               />
+              
             </div>
           </DialogHeader>
         </div>
 
-        {/* 🚀 AQUI ESTÁ A ATUALIZAÇÃO: Devolvendo o scroll dinâmico apenas para o Desktop */}
+        {/* Conteúdo dinâmico com scroll isolado */}
         <ModalScrollContent 
           project={project} 
           className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 min-w-0" 
         />
         
+        {/* Rodapé de Status */}
         <ModalStatusFooter status={project.status} />
 
       </DialogContent>
