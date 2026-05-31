@@ -2,6 +2,38 @@ import { Project, PortfolioData } from "../types";
 
 export const projects: PortfolioData = {
   personal: [
+    {
+  id: 23,
+  title: "SafeWallet Core: Perimetric Security & Stateless Architecture",
+  description:
+    "Microsserviço de carteira digital de alta criticidade projetado para gerenciamento transacional resiliente. O sistema estabelece uma eclusa perimetral absoluta utilizando Spring Security, criptografia adaptativa com BCrypt e autenticação de tokens totalmente Stateless via JWT (RFC 7519). Desenvolvido com foco nos princípios SOLID e isolamento rigoroso de camadas, eliminando o acoplamento de sessões síncronas na memória RAM e preparando o ecossistema para escalabilidade elástica horizontal.",
+  technologies: [
+    "Java 21",
+    "Spring Boot",
+    "Spring Security",
+    "JWT (Stateless)",
+    "PostgreSQL",
+    "Docker Compose",
+  ],
+  status: "Em andamento",
+  category: "Backend",
+  startDate: "2026-05",
+  endDate: null,
+  image: "/images/FotoRealSafewallet.jpg", 
+  highlights: [
+    "Autenticação de escopo Stateless baseada em assinaturas criptográficas JWT com gerenciamento de expiração (TTL).",
+    "Eclusa centralizada de proteção de rede (`OncePerRequestFilter`) para segregação de rotas públicas e privadas.",
+    "Proteção rigorosa de credenciais em repouso com algoritmo de hashing e salting `BCryptPasswordEncoder`.",
+    "Tratamento global de exceções via `@ControllerAdvice`, blindando a API contra vazamento de metadados internos.",
+    "Ambiente de banco de dados relacional PostgreSQL 15 totalmente containerizado e isolado via Docker Compose.",
+    "Arquitetura desacoplada de padrão bancário, estruturada para deploy elástico em infraestruturas cloud-native.",
+  ],
+  featured: true,
+  links: {
+    github: "https://github.com/GabrielF0900/safewallet-core",
+    case_study: null,
+  },
+},
    {
   id: 22,
   title: "Resilient Audit Batch: High-Performance Engineering",
