@@ -103,7 +103,7 @@ export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
               {project.title}
             </CardTitle>
             <p className="text-xs text-muted-foreground mt-1">
-              {formatDate(project.startDate)}
+              {formatDate(project.startDate)} — {formatDate(project.endDate)}
             </p>
           </div>
           <div className="flex flex-col gap-1">
