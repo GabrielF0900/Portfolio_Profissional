@@ -44,8 +44,8 @@ export default function HeroSection() {
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
-    link.href = "/CV_GabrielFalcaoDaCruz.pdf";
-    link.download = "CV_GabrielFalcaoDaCruz.pdf";
+    link.href = "/CV_GabrielFalcaoDaCruzFullStackJava.pdf";
+    link.download = "CV_GabrielFalcaoDaCruzFullStackJava.pdf";
     link.click();
   };
 
