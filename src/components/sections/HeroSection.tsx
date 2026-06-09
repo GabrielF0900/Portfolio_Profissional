@@ -82,12 +82,12 @@ export default function HeroSection() {
               <span className="block text-primary">da Cruz</span>
             </h1>
             <p className="text-base md:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Full Stack Developer | AWS Certified Solutions Architect
-              (SAA-C03). Atuo no desenvolvimento de aplicações web focadas em
-              automação e eficiência operacional. Unindo stacks modernas e
-              nuvem, foco na digitalização de processos manuais e criação de
-              fluxos inteligentes, sempre orientado por escalabilidade e
-              inovação técnica.
+              Full Stack Developer | AWS Certified Solutions Architect (SAA-C03)
+              Atuo no desenvolvimento de aplicações web aplicando conceitos
+              fundamentais de engenharia de software. Busco alinhar a escrita de
+              código limpo e organizado com as boas práticas da computação em
+              nuvem, com o objetivo de construir soluções estruturadas, seguras
+              e fáceis de manter, orientadas à arquitetura Cloud-Native.
             </p>
           </div>
 
