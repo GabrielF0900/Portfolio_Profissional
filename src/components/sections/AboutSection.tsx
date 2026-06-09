@@ -14,13 +14,13 @@ export default function AboutSection() {
                 Olá, sou Gabriel Falcão.
               </p>
               <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
-                Desenvolvedor Full Stack & Arquiteto AWS (SAA-C03) focado em
-                transformar processos manuais de engenharia em fluxos digitais
-                eficientes. Integro o desenvolvimento moderno em Node.js e React
-                com serviços gerenciados da AWS para criar automações
-                escaláveis, garantindo que o software impulsione a produtividade
-                operacional e a excelência técnica através de arquiteturas
-                Cloud-Native.
+                Olá, sou Gabriel Falcão. Desenvolvedor Full Stack & Arquiteto
+                AWS (SAA-C03) focado em construir soluções de software modernas,
+                seguras e de alto impacto. Integro a agilidade do Node.js e
+                React à robustez do Spring Boot (Java) e serviços gerenciados da
+                AWS para desenvolver aplicações web e sistemas distribuídos
+                escaláveis, garantindo a excelência técnica e a eficiência de
+                negócios através de arquiteturas Cloud-Native.
               </p>
 
               <h3 className="text-xl font-semibold mb-4 mt-8">
