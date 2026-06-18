@@ -2,31 +2,48 @@ import { Project, PortfolioData } from "../types";
 
 export const projects: PortfolioData = {
   personal: [
-    {
-  id: 23,
-  title: "SafeWallet Core: Perimetric Security & Stateless Architecture",
+   {
+  id: 22,
+  title: "SafeWallet Core: Full-Stack Cloud-Native & Perimetric Security",
   description:
-    "Microsserviço de carteira digital de alta criticidade projetado para gerenciamento transacional resiliente. O sistema estabelece uma eclusa perimetral absoluta utilizando Spring Security, criptografia adaptativa com BCrypt e autenticação de tokens totalmente Stateless via JWT (RFC 7519). Desenvolvido com foco nos princípios SOLID e isolamento rigoroso de camadas, eliminando o acoplamento de sessões síncronas na memória RAM e preparando o ecossistema para escalabilidade elástica horizontal.",
+    "Ecossistema completo de carteira digital de alta criticidade composto por uma API REST corporativa e uma interface web reativa. O sistema foi meticulosamente modelado e deployado na infraestrutura da Amazon Web Services (AWS) seguindo as melhores práticas do Well-Architected Framework. A arquitetura estabelece isolamento completo de rede através de uma VPC customizada, distribuição global de conteúdo de baixa latência, resiliência financeira ACID sob transações atômicas e uma eclusa perimetral absoluta via Spring Security com tokens Stateless JWT.",
   technologies: [
     "Java 21",
-    "Spring Boot",
+    "Spring Boot 3.x",
     "Spring Security",
-    "JWT (Stateless)",
-    "PostgreSQL",
-    "Docker Compose",
+    "JWT",
+    "React 19",
+    "Next.js",
+    "Amazon VPC",
+    "Amazon ECS (Fargate)",
+    "Amazon ECR",
+    "Application Load Balancer (ALB)",
+    "Amazon CloudFront",
+    "Amazon S3",
+    "Amazon RDS (PostgreSQL 15)",
+    "AWS IAM",
+    "Amazon CloudWatch"
   ],
   status: "Concluído",
-  category: "Backend",
+  category: "Cloud Architecture",
+  team: {
+        size: 1,
+        description: "Desenvolvedor individual",
+        role: "Cloud Native",
+      },
   startDate: "2026-05",
   endDate: "2026-06",
   image: "/images/19-transferido.jpeg", 
   highlights: [
-    "Autenticação de escopo Stateless baseada em assinaturas criptográficas JWT com gerenciamento de expiração (TTL).",
-    "Eclusa centralizada de proteção de rede (`OncePerRequestFilter`) para segregação de rotas públicas e privadas.",
-    "Proteção rigorosa de credenciais em repouso com algoritmo de hashing e salting `BCryptPasswordEncoder`.",
-    "Tratamento global de exceções via `@ControllerAdvice`, blindando a API contra vazamento de metadados internos.",
-    "Ambiente de banco de dados relacional PostgreSQL 15 totalmente containerizado e isolado via Docker Compose.",
-    "Arquitetura desacoplada de padrão bancário, estruturada para deploy elástico em infraestruturas cloud-native.",
+    "Autenticação Stateless segura via Spring Security e tokens JWT",
+    "Proteção rigorosa de credenciais com BCryptPasswordEncoder",
+    "Blindagem de API e exceções globais usando ControllerAdvice",
+    "Front-end reativo de alta performance com React 19 e Next.js",
+    "Arquitetura Cloud-Native orquestrada no ecossistema da AWS",
+    "Isolamento perimetral de rede com AWS VPC e Subnets Privadas",
+    "Roteamento inteligente e balanceamento de carga com AWS ALB",
+    "Distribuição global de frontend via Amazon CloudFront e S3",
+    "Persistência relacional protegida via Amazon RDS (PostgreSQL)"
   ],
   featured: true,
   links: {
@@ -35,7 +52,7 @@ export const projects: PortfolioData = {
   },
 },
    {
-  id: 22,
+  id: 21,
   title: "Resilient Audit Batch: High-Performance Engineering",
   description:
     "Pipeline de processamento em lote de alto desempenho projetado para auditoria de dados financeiros em larga escala. O sistema implementa algoritmos de busca constante O(1) e filtros de idempotência rigorosos, alcançando o marco de 1 milhão de transações auditadas em apenas 0.309s (Throughput de 3.2M/s). Focado em resiliência sistêmica e eficiência de custos para arquiteturas serverless na AWS, eliminando desperdícios de processamento linear O(N).",
@@ -52,12 +69,15 @@ export const projects: PortfolioData = {
   endDate: "2026-05",
   image: "/images/08-processamento-mais-metricas-final.jpeg", 
   highlights: [
-    "Processamento de 1.000.000 de registros com integridade total em 0.309 segundos.",
-    "Throughput real de 3.2 milhões de operações por segundo em ambiente JVM.",
-    "Redução drástica de latência de busca de O(N) para O(1) via indexação por Hash.",
-    "Implementação de lógica de Idempotência técnica para expurgo de 'Poison Messages'.",
-    "Persistência física otimizada via BufferedWriter, garantindo durabilidade e I/O eficiente.",
-    "Arquitetura resiliente desenhada para evitar gargalos financeiros em serviços AWS Lambda.",
+    "Isolamento perimetral via AWS VPC com Subnets Públicas e Privadas",
+    "Orquestração serverless de containers com Amazon ECS (Fargate)",
+    "Distribuição global de frontend via Amazon CloudFront e S3 (OAC)",
+    "Path-based routing e balanceamento de carga via ALB",
+    "Persistência relacional protegida com Amazon RDS e AWS KMS",
+    "Repositório seguro de imagens Docker via Amazon ECR",
+    "Firewalls de rede em camadas com AWS Security Groups",
+    "Segurança com IAM Roles e princípio de privilégio mínimo",
+    "Observabilidade da API e logs estruturados no Amazon CloudWatch",
   ],
   featured: true,
   links: {
