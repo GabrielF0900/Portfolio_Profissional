@@ -15,6 +15,19 @@ export interface Certification {
 
 export const certifications: Certification[] = [
   {
+    id: 19,
+    title: "Java Completo",
+    issuer: "Rocketseat",
+    type: "Certificado",
+    status: "Certificado",
+    image: "/certificados/rocketseat_todos.webp",
+    date: "Emitido em 18/06/2026",
+    credentialUrl:
+      "https://drive.google.com/file/d/11Pbsfi9UiYuT1c-_dmm40ICLLQl5fnRP/view?usp=sharing",
+    description:
+      "Formação em Java (100h) focada em POO, APIs REST com Spring Boot, JPA, JWT, Swagger, testes via JUnit/Mockito, além de Design Patterns, DDD e observabilidade com Prometheus e Grafana.",
+  },
+  {
     id: 3,
     title: "Scrum Fundamentals Certified",
     issuer: "Scrum Study",
@@ -195,7 +208,7 @@ export const certifications: Certification[] = [
       "https://www.credly.com/badges/5b451a38-a517-4e50-bf57-edd91f7fd821",
   },
   {
-    id: 18,
+    id: 20, // Ajustado ligeiramente para evitar ID duplicado com o de Java
     title: "AWS Certified Solutions Architect - Professional",
     issuer: "Amazon Web Services",
     type: "Certificação",
@@ -218,6 +231,6 @@ export const certifications: Certification[] = [
     pdfUrl:
       "/certificados/Certificado-AWS-Re-Start-2-IA-No-Code-C11-2025-R2-BRSAO224-e-BRSAO225.pdf",
     description:
-      "Programa de 363 horas sobre AWS, IA e No Code com mentoria técnica.",
+      "Programa de 363 hours sobre AWS, IA e No Code com mentoria técnica.",
   },
 ];

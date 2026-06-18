@@ -44,12 +44,19 @@ export default function CertificationsSection() {
       return cert.type === activeTab;
     })
     .sort((a, b) => {
-      // Certificado Escola da Nuvem (id:17) em primeiro lugar
+      // Certificado Java Completo (id:19) em primeiro lugar
+      const isAJavaCompleto = a.id === 19;
+      const isBJavaCompleto = b.id === 19;
+
+      if (isAJavaCompleto && !isBJavaCompleto) return -1;
+      if (isBJavaCompleto && !isAJavaCompleto) return 1;
+
+      // Certificado Escola da Nuvem (id:17) em seguida
       const isAEscolaDaNuvem = a.id === 17;
       const isBEscolaDaNuvem = b.id === 17;
 
       if (activeTab === "all") {
-        // Escola da Nuvem sempre em primeiro lugar no filtro 'Todos'
+        // Escola da Nuvem em segundo lugar no filtro 'Todos'
         if (isAEscolaDaNuvem && !isBEscolaDaNuvem) return -1;
         if (isBEscolaDaNuvem && !isAEscolaDaNuvem) return 1;
 
@@ -59,7 +66,7 @@ export default function CertificationsSection() {
       }
 
       if (activeTab === "Certificado") {
-        // Escola da Nuvem em primeiro lugar no filtro 'Certificados'
+        // Escola da Nuvem em segundo lugar no filtro 'Certificados'
         if (isAEscolaDaNuvem && !isBEscolaDaNuvem) return -1;
         if (isBEscolaDaNuvem && !isAEscolaDaNuvem) return 1;
       }
