@@ -217,7 +217,7 @@ export const projects: PortfolioData = {
         "Teste de estresse validando pipeline de alarmes",
         "Análise de ROI demonstrando redução de custos e erros",
       ],
-      featured: true,
+      featured: false,
       links: {
         github: "https://github.com/GabrielF0900/AWS-Nexus---IaC-Blueprint",
         case_study: null,
@@ -253,7 +253,7 @@ export const projects: PortfolioData = {
         "Escalabilidade automática conforme o crescimento do tráfego",
         "Seleção inteligente do modelo de preço Pay As You Go para máxima economia",
       ],
-      featured: true,
+      featured: false,
       links: {
         github: "https://github.com/GabrielF0900/CloudFront-NewEdge",
         case_study: null,
@@ -289,7 +289,7 @@ export const projects: PortfolioData = {
         "CloudWatch como pilar de Excelência Operacional - monitorar sistemas e melhorar continuamente",
         "Fluxo de trabalho com lógica condicional (Choice State)",
       ],
-      featured: true,
+      featured: false,
       links: {
         github:
           "https://github.com/GabrielF0900/AWS-serverless-order-orchestrator",
@@ -321,7 +321,7 @@ export const projects: PortfolioData = {
         "Detecção e remediação em tempo real",
         "Conformidade de segurança automatizada",
       ],
-      featured: true,
+      featured: false,
       links: {
         github: "https://github.com/GabrielF0900/aws-s3-auto-remediator",
         case_study: null,
@@ -345,7 +345,7 @@ export const projects: PortfolioData = {
         "Security Group configurado para máxima segurança",
         "Arquitetura econômica (custo mínimo ou zero no Free Tier)",
       ],
-      featured: true,
+      featured: false,
       links: {
         github: "https://github.com/GabrielF0900/aws-proactive-monitoring",
         case_study: null,
@@ -368,7 +368,7 @@ export const projects: PortfolioData = {
         "Automação de infraestrutura com User Data",
         "Landing Page estática profissional",
       ],
-      featured: true,
+      featured: false,
       links: {
         github: "https://github.com/GabrielF0900/ec2-security-landing-page",
         case_study: null,
@@ -391,7 +391,7 @@ export const projects: PortfolioData = {
         "Banco de dados relacional RDS",
         "Armazenamento de objetos S3",
       ],
-      featured: true,
+      featured: false,
       links: {
         github:
           "https://github.com/GabrielF0900/Projeto-02-A-Conexao-o-Backend-Database",
@@ -415,7 +415,7 @@ export const projects: PortfolioData = {
         "Lambda para processamento",
         "CRUD completo",
       ],
-      featured: true,
+      featured: false,
       links: {
         github:
           "https://github.com/GabrielF0900/aws-serverless-product-catalog",
@@ -686,7 +686,7 @@ export const projects: PortfolioData = {
         "Dashboard administrativo completo.",
         "Foco no suporte ao aluno e na redução do medo do TCC.",
       ],
-      featured: true,
+      featured: false,
       links: {
         github: "https://github.com/Neukox/Sistema_De_Gerenciamento_De_TCC",
         case_study: null,
@@ -722,7 +722,7 @@ export const projects: PortfolioData = {
         "Chat em tempo real.",
         "Resolução de problemas a distância.",
       ],
-      featured: true,
+      featured: false,
       links: {
         github:
           "https://github.com/Neukox/Sistema_De_Gerenciamento_De_Chamados",
@@ -759,7 +759,7 @@ export const projects: PortfolioData = {
         "Registro de reflexões e acompanhamento de humor",
         "Dashboards e exportação de relatórios (em desenvolvimento)",
       ],
-      featured: true,
+      featured: false,
       links: {
         github: "https://github.com/Neukox/MindTrack",
         case_study: null,
