@@ -35,6 +35,7 @@ export interface Technologies {
   backend: string[];
   tools: string[];
   infrastructure: string[];
+  distributedSystems: string[];
 }
 
 export interface NavigationItem {

@@ -13,29 +13,40 @@ export interface NotificationEntry {
 
 export const notificationsData: NotificationEntry[] = [
 
-
-
   {
-    id: '2',
-    category: 'PROJETO',
-    date: '18 MAI',
-    content: 'SafeWallet Core: Arquitetura perimetral com Spring Security e autenticação Stateless JWT implementada com sucesso! Veja em meus projetos.',
-    icon: 'shield', // Alterado sutilmente para 'shield' para combinar com segurança, ou mantenha 'gear' se preferir.
+    id: '1',
+    category: 'CARREIRA',
+    date: '09 JUL',
+    content: 'Em etapa final no processo seletivo do Serasa Experian.',
+    icon: 'folder',
   },
   {
     id: '2',
-    category: 'ESTUDO',
-    date: '25 MAI',
-    content: 'Estudando Spring Boot',
-    icon: 'lightning',
+    category: 'CARREIRA',
+    date: '09 JUL',
+    content: 'Indo buscar contrato na SEFAZ.',
+    icon: 'folder',
   },
-  
   {
     id: '3',
-    category: 'CARREIRA',
-    date: '24 ABR',
-    content: 'Convocado para estagiar na SEFAZ - BA.',
-    icon: 'folder',
-  }
-  
+    category: 'PROJETO',
+    date: '09 JUL',
+    content: 'Projeto com arquitetura de microsserviços concluído com sucesso.',
+    icon: 'shield',
+  },
+  {
+    id: '4',
+    category: 'ESTUDO',
+    date: '09 JUL',
+    content: 'Estudando Microsserviços',
+    icon: 'lightning',
+  },
+  {
+    id: '5',
+    category: 'ESTUDO',
+    date: '09 JUL',
+    content: 'Iniciando estudos em Kubernetes',
+    icon: 'lightning',
+  },
+
 ];

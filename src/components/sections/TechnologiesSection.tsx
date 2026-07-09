@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code, Palette, Server, Zap } from "lucide-react";
+import { Code, Network, Palette, Server, Zap } from "lucide-react";
 import { technologies } from "../../constants/technologies";
 
 export default function TechnologiesSection() {
@@ -86,6 +86,27 @@ export default function TechnologiesSection() {
               <CardContent>
                 <div className="flex flex-wrap gap-2 justify-center">
                   {technologies.tools.map((tech: string) => (
+                    <Badge key={tech} variant="secondary" className="text-xs">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div
+                  className="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4"
+                  style={{ backgroundColor: '#ccfbf1' }}
+                >
+                  <Network className="w-6 h-6" style={{ color: '#0d9488' }} />
+                </div>
+                <CardTitle className="text-lg">Sistemas Distribuídos</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {technologies.distributedSystems.map((tech: string) => (
                     <Badge key={tech} variant="secondary" className="text-xs">
                       {tech}
                     </Badge>
