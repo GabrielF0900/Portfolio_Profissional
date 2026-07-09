@@ -31,4 +31,10 @@ export const technologies: Technologies = {
     "Beekeeper",
   ],
   infrastructure: ["AWS", "Docker", "Python"],
+  distributedSystems: [
+    "Microsserviços",
+    "Spring Cloud Config",
+    "Netflix Eureka",
+    "OpenFeign",
+  ],
 };
