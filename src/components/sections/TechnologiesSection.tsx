@@ -96,8 +96,11 @@ export default function TechnologiesSection() {
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div className="w-12 h-12 bg-teal-100 dark:bg-teal-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Network className="w-6 h-6 text-teal-600" />
+                <div
+                  className="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4"
+                  style={{ backgroundColor: '#ccfbf1' }}
+                >
+                  <Network className="w-6 h-6" style={{ color: '#0d9488' }} />
                 </div>
                 <CardTitle className="text-lg">Sistemas Distribuídos</CardTitle>
               </CardHeader>
