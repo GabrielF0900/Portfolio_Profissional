@@ -30,7 +30,7 @@ export const technologies: Technologies = {
     "Insomnia",
     "Beekeeper",
   ],
-  infrastructure: ["AWS", "Docker", "Python"],
+  infrastructure: ["AWS", "Docker", "Kubernetes", "Python"],
   distributedSystems: [
     "Microsserviços",
     "Spring Cloud Config",
