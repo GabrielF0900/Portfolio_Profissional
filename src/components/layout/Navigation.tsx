@@ -23,8 +23,8 @@ export default function Navigation({ activeSection }: NavigationProps) {
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
-    link.href = "/CV_GabrielFalcaoDaCruzFullStackJava.pdf";
-    link.download = "CV_GabrielFalcaoDaCruzFullStackJava.pdf";
+    link.href = "/CV_GabrielFalcaoJava.pdf";
+    link.download = "CV_GabrielFalcaoJava.pdf";
     link.click();
   };
 
