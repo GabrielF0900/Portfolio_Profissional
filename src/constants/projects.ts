@@ -3,6 +3,51 @@ import { Project, PortfolioData } from "../types";
 export const projects: PortfolioData = {
   personal: [
     {
+      id: 24,
+      title: "Todo List K8s Lab: Do Microsserviço ao Cluster",
+      description:
+        "Laboratório prático de Kubernetes construído do zero: microsserviço Spring Boot (Todo List) containerizado, publicado no DockerHub e orquestrado em cluster local (kind). O projeto percorre cada objeto K8s em ordem crescente de complexidade — Pod → ReplicaSet → Deployment → Service — documentando erros reais e soluções reais. Demonstra auto-recuperação (self-healing), rolling update sem downtime, configuração Cloud-Native via variáveis de ambiente e service discovery nativo do Kubernetes substituindo o Eureka.",
+      technologies: [
+        "Kubernetes",
+        "Docker",
+        "Spring Boot",
+        "Java",
+        "kind",
+        "kubectl",
+        "DockerHub",
+        "Lens",
+        "PowerShell",
+      ],
+      status: "Concluído",
+      category: "DevOps",
+      team: {
+        size: 1,
+        description: "Desenvolvedor individual",
+        role: "DevOps / Kubernetes",
+      },
+      startDate: "2026-07",
+      endDate: "2026-07",
+      image: "/k8slab.jpeg",
+      highlights: [
+        "Hierarquia completa de objetos K8s: Pod → ReplicaSet → Deployment → Service",
+        "Containerização da API com Dockerfile otimizado via .dockerignore",
+        "Publicação da imagem gabrielfalcao0900/todo-serviceone no DockerHub",
+        "Cluster local criado com kind e Namespace todo-app para isolamento de recursos",
+        "Deployment com 3 réplicas e rolling update gerenciando ReplicaSets internamente",
+        "Self-healing validado: Pod deletado à força recriado automaticamente em segundos",
+        "Service ClusterIP com DNS interno e balanceamento automático de tráfego entre Pods",
+        "Configuração Cloud-Native: Eureka desativado via env vars sem alterar código da aplicação",
+        "API testada via port-forward com POST bem-sucedido (200 OK) e cenário de erro (500) analisado",
+        "Diferenciação prática entre falha de infraestrutura (K8s) e falha de aplicação (Spring Boot)",
+        "Monitoramento visual do cluster com Lens IDE em tempo real",
+      ],
+      featured: true,
+      links: {
+        github: "https://github.com/GabrielF0900/todo-list-k8s-lab",
+        case_study: null,
+      },
+    },
+    {
       id: 23,
       title: "Todo List Spring Cloud Microservices",
       description:

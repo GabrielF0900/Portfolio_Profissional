@@ -180,8 +180,8 @@ export function ModalScrollContent({
 
 export function ModalStatusFooter({ status }: { status: string }) {
   return (
-    <div className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-3 sm:p-5 shrink-0 flex items-center">
-      <Badge className="bg-green-100 dark:bg-green-900/30 text-green-900 dark:text-green-100 border border-green-200 dark:border-green-800 text-[10px] sm:text-xs">
+    <div className="border-t border-border bg-card p-3 sm:p-5 shrink-0 flex items-center">
+      <Badge className="bg-green-500 text-black border-0 text-[10px] sm:text-xs font-semibold px-2.5 py-0.5">
         ✓ {status}
       </Badge>
     </div>
