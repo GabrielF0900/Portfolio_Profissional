@@ -7,7 +7,6 @@ import {
   DialogDescription,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Badge } from "@/components/ui/badge";
 import { formatDate } from "@/lib/utils";
 import {
   ActionButtons,
@@ -23,13 +22,13 @@ const STYLES = {
   dialogContent: `
     fixed inset-0 z-50 w-screen h-[100dvh]
     max-w-none max-h-none p-0 m-0 border-0 rounded-none
-    bg-white dark:bg-slate-950
+    bg-background
     flex flex-col overflow-hidden left-0 top-0
     translate-x-0 translate-y-0
     data-[state=open]:animate-in data-[state=closed]:animate-out
     max-[376px]:h-[92dvh] max-[376px]:mt-auto
     max-[376px]:rounded-t-[20px] max-[376px]:border-t
-    max-[376px]:border-slate-200 dark:max-[376px]:border-slate-800
+    max-[376px]:border-border
   `,
   scrollContainer: `
     flex-1 overflow-y-scroll overflow-x-hidden
@@ -38,7 +37,8 @@ const STYLES = {
     [&::-webkit-scrollbar]:hidden
   `,
   header: `
-    border-b border-slate-200 dark:border-slate-800
+    border-b border-border
+    bg-card
     relative shrink-0 p-4 pt-12
     max-[376px]:p-3 max-[376px]:pt-8
   `,
@@ -62,7 +62,7 @@ const STYLES = {
     max-[376px]:text-[9px]
   `,
   buttonContainer: `
-    pt-2 border-t border-slate-100 dark:border-slate-800
+    pt-2 border-t border-border
   `,
   footer: "shrink-0",
 } as const;
@@ -131,12 +131,6 @@ function ScrollableContent({ children }: { children: React.ReactNode }) {
 
 /**
  * MobileModalHeader
- * Componente com responsabilidade única:
- * - Exibir indicador visual mobile
- * - Mostrar tags (categoria e role)
- * - Título do projeto
- * - Data
- * - Botões de ação
  */
 function MobileModalHeader({
   project,
@@ -154,7 +148,9 @@ function MobileModalHeader({
       <TagContainer project={project} />
 
       {/* Título */}
-      <DialogTitle className={STYLES.title}>{project.title}</DialogTitle>
+      <DialogTitle className={`${STYLES.title} text-card-foreground`}>
+        {project.title}
+      </DialogTitle>
 
       {/* Data */}
       <DialogDescription className={STYLES.description}>
@@ -180,23 +176,25 @@ function MobileModalHeader({
 
 /**
  * MobileIndicator
- * Indicador visual para dispositivos muito pequenos
  */
 function MobileIndicator() {
   return <div className={STYLES.headerIndicator} />;
 }
 
 /**
- * TagContainer
- * Exibe tags de categoria e role do projeto
+ * TagContainer — Selos com visual real de badge: borda, fundo e texto legível em light e dark mode
  */
 function TagContainer({ project }: { project: Project }) {
   return (
     <div className={STYLES.tagContainer}>
-      <Badge variant="outline">{project.category}</Badge>
+      <span className="inline-flex items-center rounded-md border border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 px-2.5 py-0.5 text-xs font-semibold text-slate-800 dark:text-slate-100">
+        {project.category}
+      </span>
 
       {project.team?.role && (
-        <Badge variant="outline">{project.team.role}</Badge>
+        <span className="inline-flex items-center rounded-md border border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 px-2.5 py-0.5 text-xs font-semibold text-slate-800 dark:text-slate-100">
+          {project.team.role}
+        </span>
       )}
     </div>
   );
