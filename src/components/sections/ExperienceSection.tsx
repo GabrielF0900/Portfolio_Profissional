@@ -41,9 +41,8 @@ export default function ExperienceSection() {
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                     <div>
                       <CardTitle className="text-xl text-primary">
-                        Fundador e Programador Full Stack
+                        Fundador e Líder Técnico — Neukox
                       </CardTitle>
-                      <h3 className="text-lg font-semibold mt-1">Neukox</h3>
                     </div>
                     <div className="flex flex-col md:items-end">
                       <Badge variant="secondary" className="w-fit">
@@ -57,10 +56,9 @@ export default function ExperienceSection() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base mb-4">
-                    Como fundador da Neukox, lidero o desenvolvimento técnico e
-                    a visão estratégica da organização. Responsável por toda a
-                    arquitetura de software e desenvolvimento de soluções
-                    inovadoras.
+                    Fundei e liderei tecnicamente a Neukox, definindo arquitetura de software, processos de desenvolvimento e prioridades técnicas da equipe. Apliquei metodologia ágil (Kanban) para gestão de entregas e implementei pipeline de CI/CD com GitHub Actions e Docker, padronizando o processo de deploy. As aplicações da organização foram construídas com React, Node.js, TypeScript, PostgreSQL/Prisma e autenticação JWT — experiência que hoje aplico, com a mesma disciplina arquitetural, ao desenvolvimento em Java, Spring Boot e AWS.
+                    <br /><br />
+                    <strong>Resultados:</strong> +20% de produtividade da equipe após adoção de Kanban &middot; -30% no tempo de provisionamento de ambientes com CI/CD automatizado
                   </CardDescription>
 
                   <div className="bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-4">

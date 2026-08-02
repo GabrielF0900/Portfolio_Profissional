@@ -82,12 +82,7 @@ export default function HeroSection() {
               <span className="block text-primary">da Cruz</span>
             </h1>
             <p className="text-base md:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Full Stack Developer | AWS Certified Solutions Architect (SAA-C03)
-              Atuo no desenvolvimento de aplicações web aplicando conceitos
-              fundamentais de engenharia de software. Busco alinhar a escrita de
-              código limpo e organizado com as boas práticas da computação em
-              nuvem, com o objetivo de construir soluções estruturadas, seguras
-              e fáceis de manter, orientadas à arquitetura Cloud-Native.
+              Desenvolvedor Backend Java, com atuação em Spring Boot, Spring Security e Spring Data JPA, aplicando arquitetura Cloud-Native na AWS. Certificado AWS Solutions Architect – Associate (SAA-C03) e Cloud Practitioner (CLF-C02), utilizo esse embasamento em infraestrutura para desenhar sistemas backend robustos, seguros e escaláveis desde a primeira linha de código. Tenho também experiência prática em Node.js/TypeScript, que utilizo como stack complementar em projetos full-stack.
             </p>
           </div>
 
