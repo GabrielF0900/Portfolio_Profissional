@@ -115,20 +115,20 @@ export default function HeroSection() {
             </Button>
 
             <Dialog open={isContactOpen} onOpenChange={setIsContactOpen}>
-              <DialogContent className="max-w-xs w-80">
+              <DialogContent className="sm:max-w-md w-[95vw] p-6 sm:p-8">
                 <DialogHeader>
-                  <DialogTitle className="text-center">
+                  <DialogTitle className="text-center text-xl">
                     Entre em Contato
                   </DialogTitle>
                 </DialogHeader>
-                <div className="flex flex-col items-center gap-4 py-4">
+                <div className="flex flex-col items-center gap-4 py-2">
                   <Mail className="w-12 h-12 text-primary" />
-                  <p className="text-sm text-muted-foreground">
-                    Envie um email para:
+                  <p className="text-sm text-muted-foreground text-center">
+                    Escolha um dos e-mails abaixo para entrar em contato:
                   </p>
                   <div className="flex flex-col gap-3 w-full">
-                    <div className="flex items-center gap-2 bg-muted px-4 py-2 rounded-lg">
-                      <span className="font-medium text-sm">
+                    <div className="flex items-center justify-between gap-2 bg-muted px-4 py-3 rounded-lg overflow-hidden border">
+                      <span className="font-medium text-sm sm:text-base truncate">
                         falcaocruz.tech@gmail.com
                       </span>
                       <Button
@@ -137,7 +137,7 @@ export default function HeroSection() {
                         onClick={() =>
                           handleCopyEmail("falcaocruz.tech@gmail.com")
                         }
-                        className="h-8 w-8 p-0 ml-auto"
+                        className="h-8 w-8 p-0 flex-shrink-0 hover:bg-slate-200 dark:hover:bg-slate-700"
                       >
                         {copiedEmail === "falcaocruz.tech@gmail.com" ? (
                           <Check className="w-4 h-4 text-green-500" />
@@ -146,8 +146,8 @@ export default function HeroSection() {
                         )}
                       </Button>
                     </div>
-                    <div className="flex items-center gap-2 bg-muted px-4 py-2 rounded-lg">
-                      <span className="font-medium text-sm">
+                    <div className="flex items-center justify-between gap-2 bg-muted px-4 py-3 rounded-lg overflow-hidden border">
+                      <span className="font-medium text-sm sm:text-base truncate">
                         Gabrielcfonline0900@gmail.com
                       </span>
                       <Button
@@ -156,7 +156,7 @@ export default function HeroSection() {
                         onClick={() =>
                           handleCopyEmail("Gabrielcfonline0900@gmail.com")
                         }
-                        className="h-8 w-8 p-0 ml-auto"
+                        className="h-8 w-8 p-0 flex-shrink-0 hover:bg-slate-200 dark:hover:bg-slate-700"
                       >
                         {copiedEmail === "Gabrielcfonline0900@gmail.com" ? (
                           <Check className="w-4 h-4 text-green-500" />
@@ -168,7 +168,7 @@ export default function HeroSection() {
                   </div>
                   <Button
                     asChild
-                    className="mt-2 w-full"
+                    className="mt-4 w-full h-11 text-base font-semibold"
                     onClick={handleOpenGmail}
                   >
                     <a
