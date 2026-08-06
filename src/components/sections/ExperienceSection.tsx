@@ -56,32 +56,10 @@ export default function ExperienceSection() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base mb-4">
-                    Fundei e liderei tecnicamente a Neukox, definindo arquitetura de software, processos de desenvolvimento e prioridades técnicas da equipe. Apliquei metodologia ágil (Kanban) para gestão de entregas e implementei pipeline de CI/CD com GitHub Actions e Docker, padronizando o processo de deploy. As aplicações da organização foram construídas com React, Node.js, TypeScript, PostgreSQL/Prisma e autenticação JWT — experiência que hoje aplico, com a mesma disciplina arquitetural, ao desenvolvimento em Java, Spring Boot e AWS.
+                    Fundei e liderei tecnicamente a Neukox, definindo arquitetura de software, processos de desenvolvimento e prioridades técnicas da equipe. Apliquei metodologia ágil (Kanban) para gestão de entregas e implementei pipeline de CI/CD com GitHub Actions e Docker, padronizando o processo de deploy. A base arquitetural que uso hoje em Java, Spring Boot e AWS — decisões de design, gestão de prioridades técnicas e disciplina de CI/CD — foi consolidada na prática liderando essa equipe.
                     <br /><br />
                     <strong>Resultados:</strong> +20% de produtividade da equipe após adoção de Kanban &middot; -30% no tempo de provisionamento de ambientes com CI/CD automatizado
                   </CardDescription>
-
-                  <div className="bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-4">
-                    <p className="text-sm text-blue-900 dark:text-blue-100">
-                      <span className="font-semibold">
-                        Status de Expansão (Abril 2026):
-                      </span>{" "}
-                      Estamos escalando o ecossistema Neukox e buscamos
-                      desenvolvedores voluntários que desejam consolidar
-                      conhecimentos em TypeScript, Python e infraestrutura AWS.
-                      Uma oportunidade estratégica para aplicar práticas de
-                      Serverless, IaC e desenvolvimento Cloud-Native em projetos
-                      de impacto real.{" "}
-                      <a
-                        href="https://www.linkedin.com/in/gabrielfalcaodev/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-semibold hover:underline"
-                      >
-                        Entre em contato!
-                      </a>
-                    </p>
-                  </div>
 
                   <div className="space-y-4">
                     <div>
@@ -92,38 +70,25 @@ export default function ExperienceSection() {
                         <li className="flex items-start gap-2">
                           <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                           <span>
-                            Fundação e liderança técnica da organização Neukox
+                            Fundação e liderança técnica da organização
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
                           <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                           <span>
-                            Desenvolvimento de aplicações web usando React,
-                            Node.js e TypeScript
+                            Definição de arquitetura e padrões de desenvolvimento
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
                           <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                           <span>
-                            Arquitetura e implementação de sistemas escaláveis e
-                            APIs RESTful
+                            Gestão de equipe e priorização técnica
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
                           <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                           <span>
-                            Gestão de equipe de desenvolvimento e definição de
-                            processos técnicos
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                          <span>Tomada de decisões estratégicas</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                          <span>
-                            Orquestração das atividades de desenvolvimento
+                            Implementação de pipeline CI/CD
                           </span>
                         </li>
                       </ul>
@@ -137,30 +102,19 @@ export default function ExperienceSection() {
                         <li className="flex items-start gap-2">
                           <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                           <span>
-                            Fundação e liderança técnica da organização Neukox
+                            Redução mensurável no tempo de deploy via automação
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
                           <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                           <span>
-                            Foco em desenvolvimento de arquitetura com ênfase em
-                            escalabilidade e performance
+                            Aumento de produtividade da equipe com adoção de metodologia ágil
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
                           <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                           <span>
-                            Liderança de equipe que desenvolveu um sistema com
-                            capacidade de melhorar significativamente as
-                            resoluções de problemas
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <span>
-                            Estabelecimento de cultura de desenvolvimento ágil e
-                            qualidade de código melhorando então a capacidade de
-                            pensamento dos membros
+                            Estabelecimento de cultura de qualidade de código e revisão técnica
                           </span>
                         </li>
                       </ul>

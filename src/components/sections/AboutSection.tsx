@@ -14,13 +14,11 @@ export default function AboutSection() {
                 Olá, sou Gabriel Falcão.
               </p>
               <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
-                Olá, sou Gabriel Falcão. Desenvolvedor Full Stack & Arquiteto
-                AWS (SAA-C03) focado em construir soluções de software modernas,
-                seguras e de alto impacto. Integro a agilidade do Node.js e
-                React à robustez do Spring Boot (Java) e serviços gerenciados da
-                AWS para desenvolver aplicações web e sistemas distribuídos
-                escaláveis, garantindo a excelência técnica e a eficiência de
-                negócios através de arquiteturas Cloud-Native.
+                Desenvolvedor Backend Java | Spring Boot | AWS Solutions Architect Associate (SAA-C03).
+                Construo sistemas backend robustos, seguros e escaláveis com Java 21 e Spring Boot,
+                aplicando meu embasamento em arquitetura AWS desde a primeira linha de código. Tenho
+                também experiência prática em Node.js/TypeScript, usada pontualmente como stack de
+                apoio em projetos anteriores.
               </p>
 
               <h3 className="text-xl font-semibold mb-4 mt-8">
@@ -33,24 +31,21 @@ export default function AboutSection() {
                     Visão Cloud-First
                   </h4>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    Certificado AWS Solutions Architect – Associate (SAA-C03) e
-                    Cloud Practitioner (CLF-C02). Utilizo meu embasamento em
-                    infraestrutura para garantir que aplicações Full Stack sejam
-                    robustas, seguras e de baixo custo, aplicando as melhores
-                    práticas desde a primeira linha de código.
+                    Certificado AWS Solutions Architect – Associate (SAA-C03) e Cloud Practitioner (CLF-C02).
+                    Uso esse embasamento em infraestrutura para garantir que sistemas backend sejam
+                    robustos, seguros e de baixo custo desde o design inicial.
                   </p>
                 </div>
 
                 <div>
                   <h4 className="font-semibold text-base mb-2">
-                    Neurodiversidade como Ativo
+                    Atenção a Detalhe como Vantagem Competitiva
                   </h4>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    Como autista diagnosticado, direciono meu hiperfoco
-                    analítico e rigor técnico para garantir a integridade de
-                    sistemas complexos. Minha atenção aos detalhes é um
-                    diferencial direto na revisão de código e na segurança de
-                    ambientes em nuvem.
+                    Sou autista, e transformo isso em vantagem técnica direta: meu hiperfoco analítico
+                    sustenta rigor na revisão de código, identificação de vulnerabilidades e integridade
+                    de sistemas complexos — onde a maioria perde atenção no detalhe, eu ganho precisão.
+                    Não escondo essa característica; ela é parte de como entrego resultado técnico consistente.
                   </p>
                 </div>
 
@@ -59,10 +54,8 @@ export default function AboutSection() {
                     Cultura Ágil e Documentação
                   </h4>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    Certificado em Scrum Fundamentals (SFC™), aplico princípios
-                    de agilidade via Kanban para garantir entregas organizadas.
-                    Valorizo a documentação clara e a eficiência operacional
-                    para facilitar a manutenção e a escalabilidade das soluções.
+                    Certificado em Scrum Fundamentals (SFC™). Aplico Kanban para organizar entregas e
+                    valorizo documentação clara para facilitar manutenção e escalabilidade.
                   </p>
                 </div>
               </div>
@@ -71,9 +64,8 @@ export default function AboutSection() {
                 Objetivo Profissional
               </h3>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                Contribuir no desenvolvimento de ferramentas que automatizem
-                processos, otimizem fluxos de trabalho e garantam a excelência
-                técnica na transformação digital.
+                Conseguir minha primeira posição como Desenvolvedor Backend Java Júnior, contribuindo
+                com sistemas que automatizem processos e sustentem crescimento técnico de longo prazo.
               </p>
 
               <div className="flex items-center gap-2 text-muted-foreground mt-8">

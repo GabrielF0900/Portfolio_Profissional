@@ -51,11 +51,13 @@ export default function Portfolio() {
       {/* --- CAMADA DE OVERLAY (WIDGETS FLUTUANTES) FORA DO DIV RELATIVE --- */}
 
       {/* Notifications (Journal) - Posicionado no Canto Superior Direito */}
+      {/* 
       <div
         style={{ position: "fixed", top: "80px", right: "20px", zIndex: 50 }}
       >
         <Notifications />
       </div>
+      */}
 
       {/* ScrollToTop - Canto Inferior Direito */}
       <ScrollToTop />
