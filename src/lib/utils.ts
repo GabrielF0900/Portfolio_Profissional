@@ -16,28 +16,60 @@ const hasTechnology = (project: Project, technology: string): boolean =>
     tech.toLowerCase().includes(technology.toLowerCase())
   );
 
-export const getBackendProjects = (projectList: Project[]): Project[] => {
-  return projectList.filter(
-    (project) =>
-      project.category === "Backend" ||
-      hasTechnology(project, "Java") ||
-      hasTechnology(project, "Spring Boot")
-  );
+const hasAnyTechnology = (project: Project, technologies: string[]): boolean =>
+  technologies.some((technology) => hasTechnology(project, technology));
+
+// Filtro de Ecossistema/Linguagem (barra de filtros "Explorar Catálogo")
+export type EcosystemFilter = "all" | "java" | "node";
+
+export const matchesEcosystem = (
+  project: Project,
+  ecosystem: EcosystemFilter
+): boolean => {
+  if (ecosystem === "all") return true;
+  if (ecosystem === "java") {
+    return hasAnyTechnology(project, ["Java", "Spring Boot"]);
+  }
+  return hasAnyTechnology(project, ["Node.js", "TypeScript", "NestJS"]);
 };
 
-export const getCloudProjects = (projectList: Project[]): Project[] => {
-  return projectList.filter((project) =>
-    ["Cloud Architecture", "Infrastructure", "DevOps"].includes(
-      project.category
-    )
-  );
-};
+// Um projeto é considerado "Sistemas Distribuídos" quando usa tecnologias
+// típicas de arquiteturas distribuídas/microsserviços
+export const isDistributedSystemsProject = (project: Project): boolean =>
+  hasAnyTechnology(project, [
+    "Spring Cloud",
+    "Eureka",
+    "OpenFeign",
+    "Kafka",
+    "RabbitMQ",
+    "gRPC",
+  ]) ||
+  project.title.toLowerCase().includes("microservi") ||
+  project.title.toLowerCase().includes("microsserviç");
 
-export const getFullStackProjects = (projectList: Project[]): Project[] => {
-  return projectList.filter(
-    (project) =>
-      project.category === "Full Stack" || hasTechnology(project, "Node.js")
-  );
+// Filtro de Área de Atuação (barra de filtros "Explorar Catálogo")
+export type AreaFilter =
+  | "all"
+  | "backend"
+  | "fullstack"
+  | "cloud"
+  | "distributed";
+
+export const matchesArea = (project: Project, area: AreaFilter): boolean => {
+  switch (area) {
+    case "all":
+      return true;
+    case "backend":
+      return project.category === "Backend";
+    case "fullstack":
+      return project.category === "Full Stack";
+    case "cloud":
+      return ["Cloud Architecture", "Infrastructure", "DevOps"].includes(
+        project.category
+      );
+    case "distributed":
+      return isDistributedSystemsProject(project);
+  }
 };
 
 export const formatDate = (dateString: string | null): string => {
