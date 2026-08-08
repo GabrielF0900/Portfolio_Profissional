@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ExternalLink, Github, Youtube } from "lucide-react";
+import { ExternalLink, Github, Youtube, Users } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { TechnologiesModal } from "@/components/projects-modal/TechnologiesModal";
 
@@ -66,9 +66,9 @@ export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
             className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
           />
         )}
-        <div className="absolute top-3 left-3 flex gap-2">
+        <div className="absolute top-3 left-3 flex flex-wrap gap-2 pr-3">
           {project.featured && (
-            <Badge className="bg-primary/90 text-primary-foreground">
+            <Badge className="bg-slate-900 text-yellow-400 border-none hover:bg-slate-800">
               ⭐ Destaque
             </Badge>
           )}
@@ -76,12 +76,17 @@ export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
             variant="secondary"
             className={
               project.status === "Em Breve"
-                ? "bg-amber-600 text-white"
-                : "bg-blue-600/90 text-white"
+                ? "bg-amber-600 text-white hover:bg-amber-700 border-none"
+                : "bg-blue-600 text-white hover:bg-blue-700 border-none"
             }
           >
             {project.status}
           </Badge>
+          {project.team && (project.team.size ?? 0) > 1 && (
+            <Badge className="bg-purple-600 text-white hover:bg-purple-700 border-none flex items-center gap-1">
+              <Users className="w-3 h-3" /> Trabalho em Equipe
+            </Badge>
+          )}
         </div>
       </div>
 
