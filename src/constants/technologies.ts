@@ -1,40 +1,39 @@
 import { Technologies } from "../types";
 
 export const technologies: Technologies = {
-  frontend: [
-    "React",
-    "Tailwind CSS",
-    "TypeScript",
-    "JavaScript",
-    "HTML5",
-    "CSS3",
-  ],
   backend: [
-    "Node.js",
-    "Nest.js",
-    "Prisma",
-    "PostgreSQL",
-    "JWT",
-    "TypeScript",
     "Java",
     "Spring Boot",
-    "Spring Security"
+    "Spring Security",
+    "PostgreSQL",
+    "JWT",
+  ],
+  infrastructure: ["AWS", "Docker", "Kubernetes", "Python"],
+  distributedSystems: [
+    "Microsserviços",
+    "Netflix Eureka",
+    "OpenFeign",
+    "Spring Cloud Config",
   ],
   tools: [
     "Git",
     "GitHub",
     "VS Code",
-    "Figma",
     "Postman",
-    "Jest",
     "Insomnia",
     "Beekeeper",
+    "Jest",
+    "Figma",
   ],
-  infrastructure: ["AWS", "Docker", "Kubernetes", "Python"],
-  distributedSystems: [
-    "Microsserviços",
-    "Spring Cloud Config",
-    "Netflix Eureka",
-    "OpenFeign",
+  frontend: [
+    "Node.js",
+    "Nest.js",
+    "TypeScript",
+    "Prisma",
+    "React",
+    "Tailwind CSS",
+    "JavaScript",
+    "HTML5",
+    "CSS3",
   ],
 };

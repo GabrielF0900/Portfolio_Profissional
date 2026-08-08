@@ -24,28 +24,10 @@ export default function TechnologiesSection() {
           <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Palette className="w-6 h-6 text-blue-600" />
-                </div>
-                <CardTitle className="text-lg">Frontend</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {technologies.frontend.slice(0, 6).map((tech: string) => (
-                    <Badge key={tech} variant="secondary" className="text-xs">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardHeader>
                 <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <Server className="w-6 h-6 text-green-600" />
                 </div>
-                <CardTitle className="text-lg">Backend</CardTitle>
+                <CardTitle className="text-lg">Backend Java</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2 justify-center">
@@ -63,11 +45,32 @@ export default function TechnologiesSection() {
                 <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <Zap className="w-6 h-6 text-orange-600" />
                 </div>
-                <CardTitle className="text-lg">Infraestrutura</CardTitle>
+                <CardTitle className="text-lg">Cloud & Infraestrutura</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2 justify-center">
                   {technologies.infrastructure.map((tech: string) => (
+                    <Badge key={tech} variant="secondary" className="text-xs">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div
+                  className="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4"
+                  style={{ backgroundColor: '#ccfbf1' }}
+                >
+                  <Network className="w-6 h-6" style={{ color: '#0d9488' }} />
+                </div>
+                <CardTitle className="text-lg">Sistemas Distribuídos</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {technologies.distributedSystems.map((tech: string) => (
                     <Badge key={tech} variant="secondary" className="text-xs">
                       {tech}
                     </Badge>
@@ -96,17 +99,14 @@ export default function TechnologiesSection() {
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4"
-                  style={{ backgroundColor: '#ccfbf1' }}
-                >
-                  <Network className="w-6 h-6" style={{ color: '#0d9488' }} />
+                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Palette className="w-6 h-6 text-blue-600" />
                 </div>
-                <CardTitle className="text-lg">Sistemas Distribuídos</CardTitle>
+                <CardTitle className="text-lg">Frontend & Stack Complementar</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2 justify-center">
-                  {technologies.distributedSystems.map((tech: string) => (
+                  {technologies.frontend.map((tech: string) => (
                     <Badge key={tech} variant="secondary" className="text-xs">
                       {tech}
                     </Badge>
