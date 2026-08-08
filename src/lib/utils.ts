@@ -11,6 +11,35 @@ export const getFeaturedProjects = (projectList: Project[]): Project[] => {
   return projectList.filter((project) => project.featured);
 };
 
+const hasTechnology = (project: Project, technology: string): boolean =>
+  project.technologies.some((tech) =>
+    tech.toLowerCase().includes(technology.toLowerCase())
+  );
+
+export const getBackendProjects = (projectList: Project[]): Project[] => {
+  return projectList.filter(
+    (project) =>
+      project.category === "Backend" ||
+      hasTechnology(project, "Java") ||
+      hasTechnology(project, "Spring Boot")
+  );
+};
+
+export const getCloudProjects = (projectList: Project[]): Project[] => {
+  return projectList.filter((project) =>
+    ["Cloud Architecture", "Infrastructure", "DevOps"].includes(
+      project.category
+    )
+  );
+};
+
+export const getFullStackProjects = (projectList: Project[]): Project[] => {
+  return projectList.filter(
+    (project) =>
+      project.category === "Full Stack" || hasTechnology(project, "Node.js")
+  );
+};
+
 export const formatDate = (dateString: string | null): string => {
   if (!dateString) return "Presente";
   const [year, month] = dateString.split("-");

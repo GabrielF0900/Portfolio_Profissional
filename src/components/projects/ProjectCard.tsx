@@ -10,16 +10,24 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ExternalLink, Github, Youtube } from "lucide-react";
+import { ExternalLink, Github, Users, Youtube } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { TechnologiesModal } from "@/components/projects-modal/TechnologiesModal";
 
 interface ProjectCardProps {
   project: Project;
   onMoreInfo: (project: Project) => void;
+  isCollaborative?: boolean;
 }
 
-export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
+export default function ProjectCard({
+  project,
+  onMoreInfo,
+  isCollaborative,
+}: ProjectCardProps) {
+  const showTeamBadge =
+    isCollaborative || (project.team?.size ?? 0) > 1;
+
   return (
     <Card
       className={`group hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col ${
@@ -66,7 +74,7 @@ export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
             className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
           />
         )}
-        <div className="absolute top-3 left-3 flex gap-2">
+        <div className="absolute top-3 left-3 flex gap-2 flex-wrap">
           {project.featured && (
             <Badge className="bg-primary/90 text-primary-foreground">
               ⭐ Destaque
@@ -82,6 +90,12 @@ export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
           >
             {project.status}
           </Badge>
+          {showTeamBadge && (
+            <Badge className="bg-violet-600/90 text-white gap-1">
+              <Users className="w-3 h-3" />
+              Trabalho em Equipe
+            </Badge>
+          )}
         </div>
       </div>
 

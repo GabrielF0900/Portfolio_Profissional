@@ -3,11 +3,14 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { projects } from "../../constants/projects";
-import { getFeaturedProjects } from "../../lib/utils";
+import {
+  getBackendProjects,
+  getCloudProjects,
+  getFeaturedProjects,
+  getFullStackProjects,
+} from "../../lib/utils";
 import { Project } from "../../types";
-import FeaturedProjects from "../projects/FeaturedProjects";
-import PersonalProjects from "../projects/PersonalProjects";
-import CollaborativeProjects from "../projects/CollaborativeProjects";
+import ProjectGrid from "../projects/ProjectGrid";
 import ProjectModal from "../projects/ProjectModal";
 
 export default function ProjectsSection() {
@@ -19,10 +22,15 @@ export default function ProjectsSection() {
     setModalOpen(true);
   };
 
-  const featuredProjects = [
-    ...getFeaturedProjects(projects.personal),
-    ...getFeaturedProjects(projects.collaborative),
-  ];
+  // Consolida todos os projetos para aplicar filtros puramente técnicos
+  const allProjects = [...projects.personal, ...projects.collaborative];
+  // IDs dos projetos colaborativos, usados para exibir a badge "Trabalho em Equipe"
+  const collaborativeIds = new Set(projects.collaborative.map((p) => p.id));
+
+  const featuredProjects = getFeaturedProjects(allProjects);
+  const backendProjects = getBackendProjects(allProjects);
+  const cloudProjects = getCloudProjects(allProjects);
+  const fullStackProjects = getFullStackProjects(allProjects);
 
   return (
     <section id="projetos" className="py-12 md:py-20">
@@ -33,51 +41,68 @@ export default function ProjectsSection() {
               Meus Projetos
             </h2>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Uma seleção dos meus trabalhos mais recentes, desde projetos
-              pessoais até colaborações em equipe.
+              Uma seleção dos meus trabalhos mais recentes, organizados por
+              área técnica: Backend Java, Cloud/DevOps e Full Stack.
             </p>
           </div>
 
-          <Tabs defaultValue="personal" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 max-w-lg mx-auto mb-12">
+          <Tabs defaultValue="featured" className="w-full">
+            <TabsList className="flex w-full max-w-3xl mx-auto mb-12 overflow-x-auto no-scrollbar justify-start md:justify-center gap-1 h-auto">
               <TabsTrigger
                 value="featured"
-                className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
+                className="text-sm md:text-base whitespace-nowrap text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
               >
                 Em Destaque
               </TabsTrigger>
               <TabsTrigger
-                value="personal"
-                className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
+                value="backend"
+                className="text-sm md:text-base whitespace-nowrap text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
               >
-                Pessoais
+                Backend Java &amp; Distribuídos
               </TabsTrigger>
               <TabsTrigger
-                value="collaborative"
-                className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
+                value="cloud"
+                className="text-sm md:text-base whitespace-nowrap text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
               >
-                Colaborativos
+                Cloud &amp; DevOps
+              </TabsTrigger>
+              <TabsTrigger
+                value="fullstack"
+                className="text-sm md:text-base whitespace-nowrap text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
+              >
+                Full Stack &amp; Node.js
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="featured">
-              <FeaturedProjects
+              <ProjectGrid
                 projects={featuredProjects}
                 onMoreInfo={handleMoreInfo}
+                collaborativeIds={collaborativeIds}
               />
             </TabsContent>
 
-            <TabsContent value="personal">
-              <PersonalProjects
-                projects={projects.personal}
+            <TabsContent value="backend">
+              <ProjectGrid
+                projects={backendProjects}
                 onMoreInfo={handleMoreInfo}
+                collaborativeIds={collaborativeIds}
               />
             </TabsContent>
 
-            <TabsContent value="collaborative">
-              <CollaborativeProjects
-                projects={projects.collaborative}
+            <TabsContent value="cloud">
+              <ProjectGrid
+                projects={cloudProjects}
                 onMoreInfo={handleMoreInfo}
+                collaborativeIds={collaborativeIds}
+              />
+            </TabsContent>
+
+            <TabsContent value="fullstack">
+              <ProjectGrid
+                projects={fullStackProjects}
+                onMoreInfo={handleMoreInfo}
+                collaborativeIds={collaborativeIds}
               />
             </TabsContent>
           </Tabs>
