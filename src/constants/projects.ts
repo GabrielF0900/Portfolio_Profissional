@@ -223,7 +223,7 @@ export const projects: PortfolioData = {
         "Observabilidade via Amazon CloudWatch e logs estruturados",
         "Segurança com IAM Roles e princípio de privilégio mínimo",
       ],
-      featured: true,
+      featured: false,
       links: {
         github: "https://github.com/GabrielF0900/Nebula-Archive",
         video: "https://www.youtube.com/watch?v=2mzU7E_bWJA",
