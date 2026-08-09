@@ -721,6 +721,7 @@ export const projects: PortfolioData = {
       endDate: "2025-08",
       image: "/sistematcc.jpg",
       team: {
+        name: "Neukox",
         size: 4,
         role: "Sistema",
         description: "Equipe de 3 desenvolvedores",
@@ -757,6 +758,7 @@ export const projects: PortfolioData = {
       endDate: "2024-06",
       image: "/chamados.jpeg",
       team: {
+        name: "Neukox",
         size: 6,
         role: "Sistema",
         description: "Equipe de 4 desenvolvedores",
@@ -794,6 +796,7 @@ export const projects: PortfolioData = {
       endDate: "2025-11",
       image: "/images/mindtrack.jpeg",
       team: {
+        name: "Neukox",
         size: 4,
         role: "Plataforma",
         description: "Equipe de 4 desenvolvedores",

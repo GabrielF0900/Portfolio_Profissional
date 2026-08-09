@@ -6,6 +6,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ExternalLink } from "lucide-react";
 
 export default function ExperienceSection() {
   return (
@@ -39,10 +41,16 @@ export default function ExperienceSection() {
               <Card className="flex-1 hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                    <div>
+                    <div className="flex flex-col gap-3 items-start">
                       <CardTitle className="text-xl text-primary">
                         Fundador e Líder Técnico — Neukox
                       </CardTitle>
+                      <Button variant="outline" size="sm" className="h-8" asChild>
+                        <a href="https://github.com/Neukox" target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="w-3.5 h-3.5 mr-2" />
+                          Visitar Organização
+                        </a>
+                      </Button>
                     </div>
                     <div className="flex flex-col md:items-end">
                       <Badge variant="secondary" className="w-fit">

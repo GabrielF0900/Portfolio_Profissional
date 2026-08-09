@@ -57,6 +57,9 @@ export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
               src={project.image || "/placeholder.svg"}
               alt={project.title}
               className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+              onError={(e) => {
+                e.currentTarget.src = "/placeholder.svg";
+              }}
             />
           </a>
         ) : (
@@ -64,6 +67,9 @@ export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
             src={project.image || "/placeholder.svg"}
             alt={project.title}
             className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+            onError={(e) => {
+              e.currentTarget.src = "/placeholder.svg";
+            }}
           />
         )}
         <div className="absolute top-3 left-3 flex flex-wrap gap-2 pr-3">
@@ -83,9 +89,15 @@ export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
             {project.status}
           </Badge>
           {project.team && (project.team.size ?? 0) > 1 && (
-            <Badge className="bg-purple-600 text-white hover:bg-purple-700 border-none flex items-center gap-1">
-              <Users className="w-3 h-3" /> Trabalho em Equipe
-            </Badge>
+            project.team.name === 'Neukox' ? (
+              <Badge className="bg-gradient-to-r from-[#0B1B36] to-[#0A2E5C] text-[#1FB6FF] border border-[#1FB6FF]/30 hover:bg-[#0B1B36] flex items-center gap-1 shadow-[0_0_10px_rgba(31,182,255,0.2)]">
+                <Users className="w-3 h-3" /> Equipe Neukox
+              </Badge>
+            ) : (
+              <Badge className="bg-purple-600 text-white hover:bg-purple-700 border-none flex items-center gap-1">
+                <Users className="w-3 h-3" /> Trabalho em Equipe
+              </Badge>
+            )
           )}
         </div>
       </div>
