@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
+import { event } from "@/lib/gtag";
 
 export default function ExperienceSection() {
   return (
@@ -46,7 +47,12 @@ export default function ExperienceSection() {
                         Fundador e Líder Técnico — Neukox
                       </CardTitle>
                       <Button variant="outline" size="sm" className="h-8" asChild>
-                        <a href="https://github.com/Neukox" target="_blank" rel="noopener noreferrer">
+                        <a 
+                          href="https://github.com/Neukox" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          onClick={() => event('clique_link_externo', { destino: 'organizacao_neukox' })}
+                        >
                           <ExternalLink className="w-3.5 h-3.5 mr-2" />
                           Visitar Organização
                         </a>

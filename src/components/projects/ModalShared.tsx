@@ -13,6 +13,7 @@ import {
 import { TechnologiesModal } from "@/components/projects-modal/TechnologiesModal";
 import { MetricsDisplay } from "@/components/projects-modal/MetricsDisplay";
 import { cn } from "@/lib/utils";
+import { event } from "@/lib/gtag";
 
 export function ActionButtons({
   project,
@@ -67,6 +68,7 @@ export function ActionButtons({
             target="_blank"
             rel="noopener noreferrer"
             title="Ver Código"
+            onClick={() => event('clique_ver_codigo', { projeto: project.title })}
           >
             <Github className="w-4 h-4" />
           </a>

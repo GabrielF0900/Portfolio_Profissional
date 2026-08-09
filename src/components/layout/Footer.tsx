@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Clock } from "lucide-react";
+import { event } from "@/lib/gtag";
 import { getLastUpdateFormatted } from "@/constants/lastUpdate";
 
 export default function Footer() {
@@ -48,6 +49,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/in/gabrielfalcaodev/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => event('clique_link_externo', { destino: 'linkedin' })}
                   className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
                 >
                   <Linkedin className="w-5 h-5" />
@@ -58,6 +60,7 @@ export default function Footer() {
                   href="https://github.com/GabrielF0900"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => event('clique_link_externo', { destino: 'github' })}
                   className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
                 >
                   <Github className="w-5 h-5" />

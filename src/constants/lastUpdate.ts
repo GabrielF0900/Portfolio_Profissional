@@ -5,8 +5,8 @@ export const LAST_UPDATE = {
   dia: 9,
   mes: "agosto",
   ano: 2026,
-  hora: 19,
-  minuto: 51,
+  hora: 20,
+  minuto: 33,
 };
 
 export function getLastUpdateFormatted(): string {
