@@ -21,7 +21,7 @@ export default function ProjectGrid({
   });
 
   return (
-    <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
       {sortedProjects.map((project) => (
         <ProjectCard
           key={project.id}

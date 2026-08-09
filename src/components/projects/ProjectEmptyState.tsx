@@ -17,7 +17,7 @@ export default function ProjectEmptyState({ onClear }: ProjectEmptyStateProps) {
         Nenhum projeto encontrado para essa combinação.
       </p>
       <p className="text-sm text-muted-foreground mb-5">
-        Tente ajustar os filtros de ecossistema ou área de atuação.
+        Tente ajustar os filtros de relevância, ecossistema ou área de atuação.
       </p>
       <Button variant="outline" size="sm" onClick={onClear}>
         Limpar filtros

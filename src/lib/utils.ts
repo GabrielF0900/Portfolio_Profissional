@@ -19,18 +19,19 @@ const hasTechnology = (project: Project, technology: string): boolean =>
 const hasAnyTechnology = (project: Project, technologies: string[]): boolean =>
   technologies.some((technology) => hasTechnology(project, technology));
 
-// Filtro de Ecossistema/Linguagem (barra de filtros "Explorar Catálogo")
-export type EcosystemFilter = "all" | "java" | "node";
+// Filtro de Ecossistema/Linguagem — seleção múltipla (lógica OU dentro do grupo)
+export type EcosystemValue = "java" | "node";
 
 export const matchesEcosystem = (
   project: Project,
-  ecosystem: EcosystemFilter
+  selected: EcosystemValue[]
 ): boolean => {
-  if (ecosystem === "all") return true;
-  if (ecosystem === "java") {
-    return hasAnyTechnology(project, ["Java", "Spring Boot"]);
-  }
-  return hasAnyTechnology(project, ["Node.js", "TypeScript", "NestJS"]);
+  if (selected.length === 0) return true;
+  return selected.some((value) =>
+    value === "java"
+      ? hasAnyTechnology(project, ["Java", "Spring Boot"])
+      : hasAnyTechnology(project, ["Node.js", "TypeScript", "NestJS"])
+  );
 };
 
 // Um projeto é considerado "Sistemas Distribuídos" quando usa tecnologias
@@ -47,18 +48,11 @@ export const isDistributedSystemsProject = (project: Project): boolean =>
   project.title.toLowerCase().includes("microservi") ||
   project.title.toLowerCase().includes("microsserviç");
 
-// Filtro de Área de Atuação (barra de filtros "Explorar Catálogo")
-export type AreaFilter =
-  | "all"
-  | "backend"
-  | "fullstack"
-  | "cloud"
-  | "distributed";
+// Filtro de Área de Atuação — seleção múltipla (lógica OU dentro do grupo)
+export type AreaValue = "backend" | "fullstack" | "cloud" | "distributed";
 
-export const matchesArea = (project: Project, area: AreaFilter): boolean => {
+const matchesSingleArea = (project: Project, area: AreaValue): boolean => {
   switch (area) {
-    case "all":
-      return true;
     case "backend":
       return project.category === "Backend";
     case "fullstack":
@@ -70,6 +64,14 @@ export const matchesArea = (project: Project, area: AreaFilter): boolean => {
     case "distributed":
       return isDistributedSystemsProject(project);
   }
+};
+
+export const matchesArea = (
+  project: Project,
+  selected: AreaValue[]
+): boolean => {
+  if (selected.length === 0) return true;
+  return selected.some((value) => matchesSingleArea(project, value));
 };
 
 export const formatDate = (dateString: string | null): string => {
