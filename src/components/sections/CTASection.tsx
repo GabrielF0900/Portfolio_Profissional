@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Mail, Linkedin, Github, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
+import { event } from "@/lib/gtag";
 
 export default function CTASection() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -23,6 +24,7 @@ export default function CTASection() {
   };
 
   const handleOpenGmail = () => {
+    event('clique_link_externo', { destino: 'contato' });
     emailClickedRef.current = true;
     setIsContactOpen(false);
     toast.info("Abrindo Gmail... ", {
@@ -148,6 +150,7 @@ export default function CTASection() {
                 href="https://www.linkedin.com/in/gabrielfalcaodev/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => event('clique_link_externo', { destino: 'linkedin' })}
               >
                 <Linkedin className="w-5 h-5 mr-2" />
                 LinkedIn
@@ -163,6 +166,7 @@ export default function CTASection() {
                 href="https://github.com/GabrielF0900"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => event('clique_link_externo', { destino: 'github' })}
               >
                 <Github className="w-5 h-5 mr-2" />
                 GitHub

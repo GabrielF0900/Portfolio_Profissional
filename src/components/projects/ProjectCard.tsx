@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ExternalLink, Github, Youtube, Users } from "lucide-react";
+import { event } from "@/lib/gtag";
 import { formatDate } from "@/lib/utils";
 import { TechnologiesModal } from "@/components/projects-modal/TechnologiesModal";
 
@@ -22,19 +23,17 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
   return (
     <Card
-      className={`group hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col ${
-        project.status === "Em Breve"
+      className={`group hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col ${project.status === "Em Breve"
           ? "border-2 border-amber-500 dark:border-amber-400 bg-amber-50 dark:bg-amber-950/20"
           : ""
-      }`}
+        }`}
     >
       {/* Imagem */}
       <div
-        className={`aspect-video overflow-hidden relative cursor-pointer group ${
-          project.status === "Em Breve"
+        className={`aspect-video overflow-hidden relative cursor-pointer group ${project.status === "Em Breve"
             ? "bg-gradient-to-br from-amber-200 to-amber-100 dark:from-amber-900 dark:to-amber-800 flex items-center justify-center"
             : ""
-        }`}
+          }`}
       >
         {project.status === "Em Breve" ? (
           <div className="text-center">
@@ -143,6 +142,10 @@ export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   title="Ver Código"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    event('clique_ver_codigo', { projeto: project.title });
+                  }}
                 >
                   <Github className="w-4 h-4" />
                 </a>

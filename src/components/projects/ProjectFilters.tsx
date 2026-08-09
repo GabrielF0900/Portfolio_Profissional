@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { X, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { event } from "@/lib/gtag";
 
 export type Ecosystem = 'Todos' | 'Java' | 'Node.js/TypeScript';
 export type Area = 'Todas' | 'Backend' | 'Full Stack' | 'Cloud & DevOps' | 'Sistemas Distribuídos';
@@ -42,7 +43,7 @@ export default function ProjectFilters({
   return (
     <div className="md:col-span-1 lg:col-span-1 md:sticky md:top-24 bg-white dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col">
       {/* Mobile Header Toggle */}
-      <button 
+      <button
         onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
         className="w-full md:hidden flex items-center justify-between p-4 font-semibold text-slate-800 dark:text-slate-200"
       >
@@ -51,12 +52,12 @@ export default function ProjectFilters({
       </button>
 
       {/* Accordion content with smooth grid-rows transition */}
-      <div 
+      <div
         className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${isMobileFiltersOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0 md:grid-rows-[1fr] md:opacity-100'}`}
       >
         <div className="overflow-hidden">
           <div className="p-4 md:p-5 pt-0 md:pt-5 flex flex-col gap-5">
-            
+
             {/* Mobile Clear Button Header */}
             {activeFilterCount > 0 && (
               <div className="md:hidden flex justify-between items-center border-t border-slate-100 dark:border-slate-800 pt-4 mb-2">
@@ -74,22 +75,26 @@ export default function ProjectFilters({
               </p>
               <div className="flex flex-wrap gap-2">
                 <button
-                  onClick={() => setFeaturedOnly(false)}
-                  className={`px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-colors ${
-                    !featuredOnly
+                  onClick={() => {
+                    setFeaturedOnly(false);
+                    event('filtro_usado', { categoria: 'Relevância', valor: 'Todos' });
+                  }}
+                  className={`px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-colors ${!featuredOnly
                       ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800'
-                  }`}
+                    }`}
                 >
                   Todos
                 </button>
                 <button
-                  onClick={() => setFeaturedOnly(true)}
-                  className={`px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-colors flex items-center gap-1 ${
-                    featuredOnly
+                  onClick={() => {
+                    setFeaturedOnly(true);
+                    event('filtro_usado', { categoria: 'Relevância', valor: '⭐ Destaques' });
+                  }}
+                  className={`px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-colors flex items-center gap-1 ${featuredOnly
                       ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800'
-                  }`}
+                    }`}
                 >
                   ⭐ Destaques
                 </button>
@@ -107,12 +112,14 @@ export default function ProjectFilters({
                 {ALL_PROJECT_TYPES.map((type) => (
                   <button
                     key={type}
-                    onClick={() => setProjectType(type)}
-                    className={`px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-colors ${
-                      projectType === type
+                    onClick={() => {
+                      setProjectType(type);
+                      event('filtro_usado', { categoria: 'Tipo de Projeto', valor: type });
+                    }}
+                    className={`px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-colors ${projectType === type
                         ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900'
                         : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800'
-                    }`}
+                      }`}
                   >
                     {type}
                   </button>
@@ -131,17 +138,19 @@ export default function ProjectFilters({
                 {displayedEcosystems.map((eco) => (
                   <button
                     key={eco}
-                    onClick={() => setEcosystem(eco)}
-                    className={`px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-colors ${
-                      ecosystem === eco
+                    onClick={() => {
+                      setEcosystem(eco);
+                      event('filtro_usado', { categoria: 'Ecossistema', valor: eco });
+                    }}
+                    className={`px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-colors ${ecosystem === eco
                         ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900'
                         : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800'
-                    }`}
+                      }`}
                   >
                     {eco}
                   </button>
                 ))}
-                    {ALL_ECOSYSTEMS.length > 6 && (
+                {ALL_ECOSYSTEMS.length > 6 && (
                   <button
                     onClick={() => setShowAllEcosystems(!showAllEcosystems)}
                     className="px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
@@ -163,12 +172,14 @@ export default function ProjectFilters({
                 {displayedAreas.map((a) => (
                   <button
                     key={a}
-                    onClick={() => setArea(a)}
-                    className={`px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-colors ${
-                      area === a
+                    onClick={() => {
+                      setArea(a);
+                      event('filtro_usado', { categoria: 'Área de Atuação', valor: a });
+                    }}
+                    className={`px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-colors ${area === a
                         ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900'
                         : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800'
-                    }`}
+                      }`}
                   >
                     {a}
                   </button>
@@ -186,8 +197,8 @@ export default function ProjectFilters({
 
             {/* Desktop Clear Button */}
             {activeFilterCount > 0 && (
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 onClick={clearFilters}
                 className="hidden md:flex text-slate-500 hover:text-slate-900 dark:hover:text-white w-full mt-2"
               >
@@ -197,8 +208,8 @@ export default function ProjectFilters({
             )}
 
             {/* Mobile Apply Button */}
-            <Button 
-              className="md:hidden w-full mt-4" 
+            <Button
+              className="md:hidden w-full mt-4"
               onClick={() => setIsMobileFiltersOpen(false)}
             >
               Aplicar

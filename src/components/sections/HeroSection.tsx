@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { useScrollToSection } from "../../hooks/useScroll";
 import { toast } from "sonner";
+import { event } from "@/lib/gtag";
 
 export default function HeroSection() {
   const scrollToSection = useScrollToSection();
@@ -34,6 +35,7 @@ export default function HeroSection() {
   };
 
   const handleOpenGmail = () => {
+    event('clique_link_externo', { destino: 'contato' });
     emailClickedRef.current = true;
     setIsContactOpen(false);
     toast.info("Abrindo Gmail... ", {
@@ -43,6 +45,7 @@ export default function HeroSection() {
   };
 
   const handleDownloadCV = () => {
+    event('download_cv');
     const link = document.createElement("a");
     link.href = "/CV_GabrielFalcaoJava.pdf";
     link.download = "CV_GabrielFalcaoJava.pdf";
@@ -190,6 +193,7 @@ export default function HeroSection() {
                 href="https://www.linkedin.com/in/gabrielfalcaodev/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => event('clique_link_externo', { destino: 'linkedin' })}
                 className="text-muted-foreground hover:text-primary"
               >
                 <Linkedin className="w-6 h-6" />
@@ -200,6 +204,7 @@ export default function HeroSection() {
                 href="https://github.com/GabrielF0900"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => event('clique_link_externo', { destino: 'github' })}
                 className="text-muted-foreground hover:text-primary"
               >
                 <Github className="w-6 h-6" />

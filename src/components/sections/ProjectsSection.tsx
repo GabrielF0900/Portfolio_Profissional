@@ -8,17 +8,19 @@ import ProjectCard from "../projects/ProjectCard";
 import { X } from "lucide-react";
 import ProjectFilters, { Ecosystem, Area, ProjectType } from "../projects/ProjectFilters";
 import { Button } from "@/components/ui/button";
+import { event } from "@/lib/gtag";
 
 export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
-  
+
   const [ecosystem, setEcosystem] = useState<Ecosystem>('Todos');
   const [area, setArea] = useState<Area>('Todas');
   const [featuredOnly, setFeaturedOnly] = useState(true);
   const [projectType, setProjectType] = useState<ProjectType>('Todos');
 
   const handleMoreInfo = (project: Project) => {
+    event('abrir_modal_projeto', { projeto: project.title });
     setSelectedProject(project);
     setModalOpen(true);
   };
@@ -74,7 +76,7 @@ export default function ProjectsSection() {
 
   const activeFilterCount = useMemo(() => {
     let count = 0;
-    if (!featuredOnly) count++; 
+    if (!featuredOnly) count++;
     if (ecosystem !== 'Todos') count++;
     if (area !== 'Todas') count++;
     if (projectType !== 'Todos') count++;
@@ -131,9 +133,9 @@ export default function ProjectsSection() {
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8 items-start">
-            
+
             {/* Sidebar Filtros - Separado no componente ProjectFilters */}
-            <ProjectFilters 
+            <ProjectFilters
               ecosystem={ecosystem}
               setEcosystem={setEcosystem}
               area={area}
@@ -148,15 +150,15 @@ export default function ProjectsSection() {
 
             {/* Projetos Grid */}
             <div className="md:col-span-3 lg:col-span-4 flex flex-col gap-6">
-              
+
               {/* Grid de Projetos */}
               {filteredProjects.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                   {filteredProjects.map((project) => (
-                    <ProjectCard 
-                      key={project.id} 
-                      project={project} 
-                      onMoreInfo={handleMoreInfo} 
+                    <ProjectCard
+                      key={project.id}
+                      project={project}
+                      onMoreInfo={handleMoreInfo}
                     />
                   ))}
                 </div>
