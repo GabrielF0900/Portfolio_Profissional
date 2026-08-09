@@ -20,6 +20,7 @@ export interface Project {
   };
   client?: string;
   team?: {
+    name?: string;
     role: string;
     description: string;
     size?: number;
