@@ -1,191 +1,160 @@
 import {
-  CloudCog,
+  BarChart3,
+  Cloud,
+  Cpu,
   Database,
   Globe2,
-  Network,
-  Server,
+  HardDrive,
+  Power,
   ShieldCheck,
   Smartphone,
+  TerminalSquare,
 } from "lucide-react";
+import styles from "./HeroSection.module.css";
 
-const nodeBase =
-  "architecture-node relative flex flex-col justify-between overflow-hidden rounded-[var(--radius-card)] border p-4";
+const CLIENT_PATHS = [
+  "M180 270 H226 Q242 270 242 287 V302 H300",
+  "M180 360 H226 Q242 360 242 347 H300",
+  "M180 450 H226 Q242 450 242 410 H300",
+];
 
-function ClientNode() {
+const SERVICE_PATHS = [
+  "M535 326 H582",
+  "M582 326 V159 H608",
+  "M582 326 H608",
+  "M582 326 V493 H608",
+];
+
+const AWS_PATHS = [
+  "M778 159 H852",
+  "M778 326 H852",
+  "M778 493 H852",
+];
+
+function ArchitectureConnections() {
   return (
-    <div
-      data-architecture-node
-      className={`${nodeBase} architecture-client-node md:absolute md:left-[2%] md:top-1/2 md:w-[17%] md:-translate-y-1/2`}
-    >
-      <div className="flex items-center justify-between text-[var(--accent-primary)]">
-        <Globe2 aria-hidden="true" className="h-5 w-5" strokeWidth={1.6} />
-        <Smartphone
-          aria-hidden="true"
-          className="h-4 w-4 text-[var(--text-muted)]"
-          strokeWidth={1.6}
-        />
-      </div>
-      <div>
-        <p className="architecture-node-title">Clientes</p>
-        <p className="architecture-node-copy">Web, mobile e serviços</p>
-      </div>
-    </div>
-  );
-}
-
-function SpringBootNode() {
-  return (
-    <div
-      data-architecture-node
-      className={`${nodeBase} architecture-node-core architecture-spring-node md:absolute md:left-[30%] md:top-1/2 md:min-h-48 md:w-[20%] md:-translate-y-1/2`}
-    >
-      <div className="architecture-core-heading">
-        <span>Core service</span>
-        <span>Java</span>
-      </div>
-      <div className="architecture-core-icon">
-        <Server aria-hidden="true" className="h-7 w-7" strokeWidth={1.4} />
-      </div>
-      <div>
-        <p className="architecture-node-title architecture-core-title">API</p>
-        <p className="architecture-node-copy architecture-core-copy">Spring Boot</p>
-      </div>
-    </div>
-  );
-}
-
-function SecurityNode() {
-  return (
-    <div
-      data-architecture-node
-      className={`${nodeBase} architecture-security-node md:absolute md:left-[61%] md:top-[17%] md:w-[18%]`}
-    >
-      <ShieldCheck
+    <>
+      <svg
+        className={styles.connections}
+        viewBox="0 0 1000 650"
+        preserveAspectRatio="none"
+        fill="none"
         aria-hidden="true"
-        className="h-5 w-5 text-[var(--accent-primary)]"
-        strokeWidth={1.6}
-      />
-      <div>
-        <p className="architecture-node-title">Segurança</p>
-        <p className="architecture-node-copy">Spring Security</p>
-      </div>
-    </div>
-  );
-}
+      >
+        <defs>
+          <linearGradient
+            id="hero-line-gradient"
+            x1="0"
+            y1="0"
+            x2="1"
+            y2="0"
+          >
+            <stop offset="0%" stopColor="rgba(35,115,255,0.23)" />
+            <stop offset="46%" stopColor="rgba(45,126,255,1)" />
+            <stop offset="100%" stopColor="rgba(105,176,255,0.66)" />
+          </linearGradient>
 
-function DatabaseNode() {
-  return (
-    <div
-      data-architecture-node
-      className={`${nodeBase} architecture-database-node md:absolute md:bottom-[17%] md:left-[61%] md:w-[18%]`}
-    >
-      <Database
+          <filter
+            id="hero-line-glow"
+            x="-60%"
+            y="-60%"
+            width="220%"
+            height="220%"
+          >
+            <feGaussianBlur stdDeviation="3.05" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        <g className={styles.connectionGhosts}>
+          {[...CLIENT_PATHS, ...SERVICE_PATHS].map((path) => (
+            <path key={`ghost-${path}`} d={path} />
+          ))}
+        </g>
+
+        <g filter="url(#hero-line-glow)">
+          {[...CLIENT_PATHS, ...SERVICE_PATHS].map((path) => (
+            <path
+              key={path}
+              d={path}
+              pathLength={1}
+              data-architecture-path
+              className={styles.connectionActive}
+            />
+          ))}
+        </g>
+
+        <g className={styles.connectorDots}>
+          <circle data-architecture-signal cx="180" cy="270" r="3.8" />
+          <circle data-architecture-signal cx="180" cy="360" r="3.8" />
+          <circle data-architecture-signal cx="180" cy="450" r="3.8" />
+
+          <circle data-architecture-signal cx="300" cy="302" r="3.8" />
+          <circle data-architecture-signal cx="300" cy="347" r="3.8" />
+          <circle data-architecture-signal cx="300" cy="410" r="3.8" />
+
+          <circle data-architecture-signal cx="608" cy="159" r="3.8" />
+          <circle data-architecture-signal cx="608" cy="326" r="3.8" />
+          <circle data-architecture-signal cx="608" cy="493" r="3.8" />
+        </g>
+      </svg>
+
+      <svg
+        className={styles.awsBridges}
+        viewBox="0 0 1000 650"
+        preserveAspectRatio="none"
+        fill="none"
         aria-hidden="true"
-        className="h-5 w-5 text-[var(--accent-primary)]"
-        strokeWidth={1.6}
-      />
-      <div>
-        <p className="architecture-node-title">Dados</p>
-        <p className="architecture-node-copy">PostgreSQL</p>
-      </div>
-    </div>
-  );
-}
+      >
+        <defs>
+          <linearGradient
+            id="hero-aws-gradient"
+            x1="0"
+            y1="0"
+            x2="1"
+            y2="0"
+          >
+            <stop offset="0%" stopColor="rgba(37,117,255,0.68)" />
+            <stop offset="50%" stopColor="rgba(62,143,255,1)" />
+            <stop offset="100%" stopColor="rgba(132,193,255,0.78)" />
+          </linearGradient>
+        </defs>
 
-function AwsNode() {
-  return (
-    <div
-      data-architecture-node
-      className={`${nodeBase} architecture-node-cloud architecture-aws-node md:absolute md:right-[2%] md:top-1/2 md:min-h-48 md:w-[13%] md:-translate-y-1/2`}
-    >
-      <CloudCog
-        aria-hidden="true"
-        className="h-6 w-6 text-[var(--accent-primary)]"
-        strokeWidth={1.5}
-      />
-      <div>
-        <p className="architecture-node-title">AWS</p>
-        <p className="architecture-node-copy">Infraestrutura cloud</p>
-      </div>
-    </div>
-  );
-}
+        <g>
+          {AWS_PATHS.map((path) => (
+            <path
+              key={`aws-ghost-${path}`}
+              d={path}
+              className={styles.awsBridgeGhost}
+            />
+          ))}
+        </g>
 
-function ConnectionLayer() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="architecture-connections pointer-events-none absolute inset-0 hidden h-full w-full xl:block"
-      viewBox="0 0 1000 690"
-      preserveAspectRatio="none"
-      fill="none"
-    >
-      <defs>
-        <linearGradient id="architecture-line-v2" x1="0" x2="1">
-          <stop offset="0" stopColor="var(--line-muted)" />
-          <stop offset="0.42" stopColor="var(--accent-primary)" />
-          <stop offset="1" stopColor="var(--line-muted)" />
-        </linearGradient>
-        <filter id="architecture-line-glow" x="-30%" y="-30%" width="160%" height="160%">
-          <feGaussianBlur stdDeviation="2.2" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
+        <g>
+          {AWS_PATHS.map((path) => (
+            <path
+              key={path}
+              d={path}
+              pathLength={1}
+              data-architecture-path
+              className={styles.awsBridge}
+            />
+          ))}
+        </g>
 
-      <g className="architecture-path-ghost">
-        <path d="M226 345 H294" />
-        <path d="M546 345 H580 V188 H608" />
-        <path d="M546 345 H580 V502 H608" />
-        <path d="M546 345 H840" />
-        <path d="M806 188 H824 V502 H806" />
-      </g>
-
-      <g filter="url(#architecture-line-glow)">
-        <path data-architecture-path pathLength="1" d="M226 345 H294" className="architecture-path" />
-        <path data-architecture-path pathLength="1" d="M546 345 H580 V188 H608" className="architecture-path" />
-        <path data-architecture-path pathLength="1" d="M546 345 H580 V502 H608" className="architecture-path" />
-        <path data-architecture-path pathLength="1" d="M546 345 H840" className="architecture-path" />
-        <path data-architecture-path pathLength="1" d="M806 188 H824 V502 H806" className="architecture-path architecture-path-secondary" />
-      </g>
-
-      <g className="architecture-junctions">
-        <circle cx="226" cy="345" r="4" />
-        <circle cx="294" cy="345" r="4" />
-        <circle cx="580" cy="345" r="4" />
-        <circle cx="608" cy="188" r="4" />
-        <circle cx="608" cy="502" r="4" />
-        <circle cx="824" cy="345" r="4" />
-        <circle cx="840" cy="345" r="4" />
-      </g>
-    </svg>
-  );
-}
-
-function CompactConnectionLayer() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 hidden h-full w-full md:block xl:hidden"
-      viewBox="0 0 760 570"
-      preserveAspectRatio="none"
-      fill="none"
-    >
-      <defs>
-        <linearGradient id="architecture-line-compact" x1="0" x2="1">
-          <stop offset="0" stopColor="var(--line-muted)" />
-          <stop offset="0.45" stopColor="var(--accent-primary)" />
-          <stop offset="1" stopColor="var(--line-muted)" />
-        </linearGradient>
-      </defs>
-      <path data-architecture-path pathLength="1" d="M146 285 H232" className="architecture-path architecture-path-compact" />
-      <path data-architecture-path pathLength="1" d="M382 285 H424 V157 H468" className="architecture-path architecture-path-compact" />
-      <path data-architecture-path pathLength="1" d="M382 285 H424 V383 H468" className="architecture-path architecture-path-compact" />
-      <path data-architecture-path pathLength="1" d="M596 157 H626 V285 H648" className="architecture-path architecture-path-compact" />
-      <path data-architecture-path pathLength="1" d="M596 383 H626 V285 H648" className="architecture-path architecture-path-compact" />
-    </svg>
+        <g className={styles.connectorDots}>
+          <circle data-architecture-signal cx="778" cy="159" r="4" />
+          <circle data-architecture-signal cx="852" cy="159" r="4" />
+          <circle data-architecture-signal cx="778" cy="326" r="4" />
+          <circle data-architecture-signal cx="852" cy="326" r="4" />
+          <circle data-architecture-signal cx="778" cy="493" r="4" />
+          <circle data-architecture-signal cx="852" cy="493" r="4" />
+        </g>
+      </svg>
+    </>
   );
 }
 
@@ -193,33 +162,155 @@ export default function HeroArchitectureDiagram() {
   return (
     <div
       data-architecture-shell
-      className="hero-architecture relative mx-auto w-full min-w-0 max-w-[860px] overflow-hidden"
-      role="img"
-      aria-label="Arquitetura de referência conectando clientes a uma API Spring Boot, protegida por Spring Security, com PostgreSQL e infraestrutura AWS"
+      className={styles.architecture}
+      role="group"
+      aria-label="Arquitetura backend conectando clientes à API Spring Boot, segurança, PostgreSQL, observabilidade e infraestrutura AWS"
     >
-      <div className="architecture-frame relative min-h-[520px] overflow-hidden rounded-[var(--radius-panel)] border border-[var(--border-subtle)] bg-[var(--surface-panel)] p-5 shadow-[0_36px_100px_rgba(0,32,96,0.18)] sm:p-7 lg:min-h-[570px] xl:min-h-[640px]">
-        <div className="architecture-grid" aria-hidden="true" />
-        <div className="architecture-orbit" aria-hidden="true" />
-        <ConnectionLayer />
-        <CompactConnectionLayer />
+      <span className={styles.architectureLabel}>
+        Architecture / Backend System
+      </span>
 
-        <div className="architecture-node-layer relative z-[1] grid min-h-[470px] grid-cols-1 gap-3 md:block">
-          <ClientNode />
-          <div className="architecture-mobile-link" aria-hidden="true" />
-          <SpringBootNode />
-          <div className="architecture-mobile-link" aria-hidden="true" />
-          <div className="grid gap-3 sm:grid-cols-2 md:contents">
-            <SecurityNode />
-            <DatabaseNode />
+      <div className={styles.sceneContent}>
+        <div className={styles.sceneBackplane} aria-hidden="true" />
+        <div className={styles.sceneFloor} aria-hidden="true" />
+        <div className={styles.sceneGlow} aria-hidden="true" />
+        <span className={styles.sceneSpark} aria-hidden="true" />
+
+        <ArchitectureConnections />
+
+        <section
+          data-architecture-node
+          className={`${styles.node} ${styles.clients}`}
+          aria-label="Clientes: Web, Mobile e API Services"
+        >
+          <div className={styles.nodeHeader}>Clientes</div>
+
+          <div className={styles.clientItem}>
+            <Globe2 aria-hidden="true" />
+            <span>Web</span>
           </div>
-          <div className="architecture-mobile-link" aria-hidden="true" />
-          <AwsNode />
-        </div>
 
-        <div className="architecture-board-caption">
-          <Network aria-hidden="true" className="h-4 w-4" strokeWidth={1.5} />
-          Fluxo de uma aplicação backend moderna
-        </div>
+          <div className={styles.clientItem}>
+            <Smartphone aria-hidden="true" />
+            <span>Mobile</span>
+          </div>
+
+          <div className={styles.clientItem}>
+            <TerminalSquare aria-hidden="true" />
+            <span>API / Services</span>
+          </div>
+        </section>
+
+        <section
+          data-architecture-node
+          className={`${styles.node} ${styles.core}`}
+          aria-label="Core Backend: API Spring Boot"
+        >
+          <div className={styles.coreInner}>
+            <span className={styles.coreEyebrow}>Core Backend</span>
+
+            <div className={styles.coreTitle}>
+              <strong>API</strong>
+              <span>SPRING BOOT</span>
+            </div>
+
+            <div className={styles.coreIcon} aria-hidden="true">
+              <Power />
+            </div>
+
+            <span className={styles.coreFoot}>Java Backend</span>
+          </div>
+        </section>
+
+        <section
+          data-architecture-node
+          className={`${styles.node} ${styles.security}`}
+          aria-label="Segurança com Spring Security"
+        >
+          <ShieldCheck aria-hidden="true" className={styles.serviceIcon} />
+          <span className={styles.serviceLabel}>Segurança</span>
+          <span className={styles.serviceValue}>Spring Security</span>
+        </section>
+
+        <section
+          data-architecture-node
+          className={`${styles.node} ${styles.database}`}
+          aria-label="Banco de dados PostgreSQL"
+        >
+          <Database aria-hidden="true" className={styles.serviceIcon} />
+          <span className={styles.serviceLabel}>Banco de dados</span>
+          <span className={styles.serviceValue}>PostgreSQL</span>
+        </section>
+
+        <section
+          data-architecture-node
+          className={`${styles.node} ${styles.observability}`}
+          aria-label="Observabilidade com logs e métricas"
+        >
+          <BarChart3 aria-hidden="true" className={styles.serviceIcon} />
+          <span className={styles.serviceLabel}>Observabilidade</span>
+          <span className={styles.serviceValue}>Logs &amp; Metrics</span>
+        </section>
+
+        <section
+          data-architecture-node
+          className={`${styles.node} ${styles.aws}`}
+          aria-label="Infraestrutura AWS: EC2 ou ECS, RDS, S3 e CloudWatch"
+        >
+          <div className={styles.awsBrand} aria-label="AWS">
+            <span>aws</span>
+
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 72 18"
+              className={styles.awsSmile}
+            >
+              <path
+                d="M6 4 C22 15, 45 16, 64 5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <path
+                d="M58 4 L65 5 L62 11"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+
+          <div className={styles.awsDivider} />
+
+          <div className={styles.awsService}>
+            <Cpu aria-hidden="true" />
+            <span>EC2 / ECS</span>
+          </div>
+
+          <div className={styles.awsService}>
+            <Database aria-hidden="true" />
+            <span>RDS</span>
+          </div>
+
+          <div className={styles.awsService}>
+            <HardDrive aria-hidden="true" />
+            <span>S3</span>
+          </div>
+
+          <div className={styles.awsService}>
+            <Cloud aria-hidden="true" />
+            <span>CloudWatch</span>
+          </div>
+        </section>
+      </div>
+
+      <div className={styles.architectureCaption} aria-hidden="true">
+        <span>///</span>
+        <strong>Arquitetura Cloud-Native na AWS</strong>
+        <span>///</span>
       </div>
     </div>
   );

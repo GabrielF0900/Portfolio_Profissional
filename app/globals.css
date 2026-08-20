@@ -125,6 +125,9 @@ body {
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+  .theme {
+    --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
+  }
 }
 
 @layer base {
@@ -962,5 +965,48 @@ body {
   .architecture-frame {
     background: var(--surface-base);
     backdrop-filter: none;
+  }
+}
+
+@theme inline {
+  @keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+    }
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
+    }
+  }
+}
+
+@keyframes magic-orbit {
+  0% {
+    transform:
+      rotate(calc(var(--angle) * 1deg))
+      translateY(calc(var(--radius) * 1px))
+      rotate(calc(var(--angle) * -1deg));
+  }
+
+  100% {
+    transform:
+      rotate(calc((var(--angle) * 1deg) + 360deg))
+      translateY(calc(var(--radius) * 1px))
+      rotate(calc((var(--angle) * -1deg) - 360deg));
+  }
+}
+
+.magic-orbit-runtime {
+  animation-name: magic-orbit;
+  animation-duration: calc(var(--duration) * 1s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  transform-origin: center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magic-orbit-runtime {
+    animation-play-state: paused !important;
   }
 }
