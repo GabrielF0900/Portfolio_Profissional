@@ -2,7 +2,6 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
@@ -14,22 +13,22 @@ export function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return <div className="w-9 h-9" />; // Placeholder para evitar hydration mismatch
+    return <div className="h-10 w-10" aria-hidden="true" />;
   }
 
   return (
-    <Button
-      variant="ghost"
-      size="sm"
+    <button
+      type="button"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
+      className="nav-icon-button"
       title={theme === "dark" ? "Modo Claro" : "Modo Escuro"}
+      aria-label={theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro"}
     >
       {theme === "dark" ? (
-        <Sun className="w-5 h-5" />
+        <Sun aria-hidden="true" className="h-4 w-4" strokeWidth={1.75} />
       ) : (
-        <Moon className="w-5 h-5" />
+        <Moon aria-hidden="true" className="h-4 w-4" strokeWidth={1.75} />
       )}
-    </Button>
+    </button>
   );
 }

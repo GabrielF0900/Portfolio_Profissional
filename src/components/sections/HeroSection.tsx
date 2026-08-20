@@ -1,216 +1,179 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  ArrowRight,
-  Github,
-  Linkedin,
-  Mail,
-  Zap,
-  Copy,
-  Check,
-  Download,
-} from "lucide-react";
+import { useRef } from "react";
+import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import { useScrollToSection } from "../../hooks/useScroll";
-import { toast } from "sonner";
 import { event } from "@/lib/gtag";
+import HeroArchitectureDiagram from "./HeroArchitectureDiagram";
+
+gsap.registerPlugin(useGSAP);
 
 export default function HeroSection() {
+  const root = useRef<HTMLElement>(null);
   const scrollToSection = useScrollToSection();
-  const [isContactOpen, setIsContactOpen] = useState(false);
-  const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
-  const emailClickedRef = useRef(false);
-
-  const handleCopyEmail = (email: string) => {
-    navigator.clipboard.writeText(email);
-    setCopiedEmail(email);
-    setTimeout(() => setCopiedEmail(null), 2000);
-  };
-
-  const handleOpenGmail = () => {
-    event('clique_link_externo', { destino: 'contato' });
-    emailClickedRef.current = true;
-    setIsContactOpen(false);
-    toast.info("Abrindo Gmail... ", {
-      description: "Você será redirecionado para compor seu email.",
-      duration: 3000,
-    });
-  };
 
   const handleDownloadCV = () => {
-    event('download_cv');
+    event("download_cv");
     const link = document.createElement("a");
     link.href = "/CV_GabrielFalcaoJava.pdf";
     link.download = "CV_GabrielFalcaoJava.pdf";
     link.click();
   };
 
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible" && emailClickedRef.current) {
-        emailClickedRef.current = false;
-        setTimeout(() => {
-          toast.success("Email enviado para Gabriel Falcão?", {
-            description: "Obrigado pelo contato! Ele te retornará em breve.",
-            duration: 5000,
-          });
-        }, 500);
-      }
-    };
+  useGSAP(
+    () => {
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
 
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () =>
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-  }, []);
+      if (reduceMotion) {
+        gsap.set("[data-hero-reveal], [data-architecture-node]", {
+          clearProps: "all",
+        });
+        gsap.set("[data-architecture-path]", { strokeDashoffset: 0 });
+        return;
+      }
+
+      const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      timeline
+        .from("[data-hero-reveal]", {
+          y: 28,
+          opacity: 0,
+          duration: 0.72,
+          stagger: 0.11,
+        })
+        .from(
+          "[data-architecture-shell]",
+          { scale: 0.94, opacity: 0, duration: 0.8 },
+          0.34,
+        )
+        .from(
+          "[data-architecture-node]",
+          {
+            scale: 0.82,
+            opacity: 0,
+            duration: 0.58,
+            stagger: 0.1,
+          },
+          0.58,
+        )
+        .to(
+          "[data-architecture-path]",
+          {
+            strokeDashoffset: 0,
+            duration: 0.72,
+            stagger: 0.12,
+            ease: "power2.inOut",
+          },
+          0.76,
+        )
+        .from(
+          "[data-architecture-signal]",
+          { scale: 0, opacity: 0, duration: 0.32, stagger: 0.08 },
+          1.14,
+        );
+    },
+    { scope: root },
+  );
 
   return (
-    <section id="inicio" className="relative overflow-hidden pt-16">
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]" />
-      <div className="relative container mx-auto px-4 py-16 md:py-24 lg:py-32">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs md:text-sm font-medium mb-6">
-              <Zap className="w-4 h-4" />
-              Disponível para novos projetos
-            </div>
-            <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-6">
-              Gabriel Falcão
-              <span className="block text-primary">da Cruz</span>
-            </h1>
-            <p className="text-base md:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Desenvolvedor Backend Java, com atuação em Spring Boot, Spring Security e Spring Data JPA, aplicando arquitetura Cloud-Native na AWS. Certificado AWS Solutions Architect – Associate (SAA-C03) e Cloud Practitioner (CLF-C02), utilizo esse embasamento em infraestrutura para desenhar sistemas backend robustos, seguros e escaláveis desde a primeira linha de código. Tenho também experiência prática em Node.js/TypeScript, que utilizo como stack complementar em projetos full-stack.
-            </p>
+    <section
+      ref={root}
+      id="inicio"
+      aria-labelledby="hero-title"
+      className="hero-surface relative flex min-h-[100dvh] items-center overflow-hidden pt-20"
+    >
+      <div className="hero-ambient" aria-hidden="true" />
+
+      <div className="hero-layout relative mx-auto grid w-full max-w-[1600px] items-center gap-14 px-5 py-12 sm:px-8 md:py-16 lg:px-10 xl:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] xl:gap-0 xl:px-14">
+        <div className="hero-copy relative z-[2] max-w-3xl">
+          <p
+            data-hero-reveal
+            className="hero-identity mb-5 text-sm font-semibold text-[var(--text-secondary)] sm:text-base"
+          >
+            Gabriel Falcão da Cruz
+          </p>
+
+          <h1
+            id="hero-title"
+            data-hero-reveal
+            className="hero-title w-full max-w-6xl text-[clamp(3rem,6vw,5.65rem)] font-semibold leading-[0.94] tracking-[-0.055em] text-[var(--text-primary)]"
+          >
+            <span className="hero-title-kicker block">Desenvolvedor</span>
+            <span className="hero-title-primary block">Backend <em>Java.</em></span>
+          </h1>
+
+          <div data-hero-reveal className="hero-specialties" aria-label="Especialidades principais">
+            <span>Spring Boot</span>
+            <span>Sistemas Distribuídos</span>
+            <span>AWS</span>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-4 justify-center mb-12">
-            <Button
-              size="lg"
-              className="text-lg px-8"
+          <p
+            data-hero-reveal
+            className="hero-description mt-7 max-w-[34rem] text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg"
+          >
+            Construo soluções robustas e escaláveis com Spring Boot, segurança,
+            dados e arquitetura cloud-native na AWS.
+          </p>
+
+          <div
+            data-hero-reveal
+            className="hero-actions mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row"
+          >
+            <button
+              type="button"
               onClick={() => scrollToSection("projetos")}
+              className="hero-button hero-button-primary group"
             >
-              Ver Projetos
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-lg px-8 bg-transparent"
-              onClick={() => setIsContactOpen(true)}
-            >
-              <Mail className="w-5 h-5 mr-2" />
-              Entrar em Contato
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-lg px-8 bg-transparent hover:bg-primary hover:text-primary-foreground transition-colors"
+              Ver projetos
+              <ArrowRight
+                aria-hidden="true"
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                strokeWidth={1.75}
+              />
+            </button>
+            <button
+              type="button"
               onClick={handleDownloadCV}
+              className="hero-button hero-button-secondary group"
             >
-              <Download className="w-5 h-5 mr-2" />
               Baixar CV
-            </Button>
-
-            <Dialog open={isContactOpen} onOpenChange={setIsContactOpen}>
-              <DialogContent className="sm:max-w-md w-[95vw] p-6 sm:p-8">
-                <DialogHeader>
-                  <DialogTitle className="text-center text-xl">
-                    Entre em Contato
-                  </DialogTitle>
-                </DialogHeader>
-                <div className="flex flex-col items-center gap-4 py-2">
-                  <Mail className="w-12 h-12 text-primary" />
-                  <p className="text-sm text-muted-foreground text-center">
-                    Escolha um dos e-mails abaixo para entrar em contato:
-                  </p>
-                  <div className="flex flex-col gap-3 w-full">
-                    <div className="flex items-center justify-between gap-2 bg-muted px-4 py-3 rounded-lg overflow-hidden border">
-                      <span className="font-medium text-sm sm:text-base truncate">
-                        falcaocruz.tech@gmail.com
-                      </span>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() =>
-                          handleCopyEmail("falcaocruz.tech@gmail.com")
-                        }
-                        className="h-8 w-8 p-0 flex-shrink-0 hover:bg-slate-200 dark:hover:bg-slate-700"
-                      >
-                        {copiedEmail === "falcaocruz.tech@gmail.com" ? (
-                          <Check className="w-4 h-4 text-green-500" />
-                        ) : (
-                          <Copy className="w-4 h-4" />
-                        )}
-                      </Button>
-                    </div>
-                    <div className="flex items-center justify-between gap-2 bg-muted px-4 py-3 rounded-lg overflow-hidden border">
-                      <span className="font-medium text-sm sm:text-base truncate">
-                        Gabrielcfonline0900@gmail.com
-                      </span>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() =>
-                          handleCopyEmail("Gabrielcfonline0900@gmail.com")
-                        }
-                        className="h-8 w-8 p-0 flex-shrink-0 hover:bg-slate-200 dark:hover:bg-slate-700"
-                      >
-                        {copiedEmail === "Gabrielcfonline0900@gmail.com" ? (
-                          <Check className="w-4 h-4 text-green-500" />
-                        ) : (
-                          <Copy className="w-4 h-4" />
-                        )}
-                      </Button>
-                    </div>
-                  </div>
-                  <Button
-                    asChild
-                    className="mt-4 w-full h-11 text-base font-semibold"
-                    onClick={handleOpenGmail}
-                  >
-                    <a
-                      href="https://mail.google.com/mail/?view=cm&fs=1&to=falcaocruz.tech@gmail.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Abrir no Gmail
-                    </a>
-                  </Button>
-                </div>
-              </DialogContent>
-            </Dialog>
+              <Download
+                aria-hidden="true"
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5"
+                strokeWidth={1.75}
+              />
+            </button>
           </div>
 
-          <div className="flex justify-center gap-6">
-            <Button variant="ghost" size="lg" asChild>
-              <a
-                href="https://www.linkedin.com/in/gabrielfalcaodev/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => event('clique_link_externo', { destino: 'linkedin' })}
-                className="text-muted-foreground hover:text-primary"
-              >
-                <Linkedin className="w-6 h-6" />
-              </a>
-            </Button>
-            <Button variant="ghost" size="lg" asChild>
-              <a
-                href="https://github.com/GabrielF0900"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => event('clique_link_externo', { destino: 'github' })}
-                className="text-muted-foreground hover:text-primary"
-              >
-                <Github className="w-6 h-6" />
-              </a>
-            </Button>
+          <div data-hero-reveal className="hero-socials hidden xl:flex">
+            <a
+              href="https://github.com/GabrielF0900"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => event("clique_link_externo", { destino: "github" })}
+            >
+              <Github aria-hidden="true" />
+              github.com/GabrielF0900
+            </a>
+            <a
+              href="https://www.linkedin.com/in/gabrielfalcaodev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => event("clique_link_externo", { destino: "linkedin" })}
+            >
+              <Linkedin aria-hidden="true" />
+              /in/gabrielfalcaodev
+            </a>
           </div>
+        </div>
+
+        <div className="hero-architecture-stage">
+          <HeroArchitectureDiagram />
         </div>
       </div>
     </section>

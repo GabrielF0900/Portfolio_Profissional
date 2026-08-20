@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from "react";
-
 // Layout Components
 import Navigation from "../layout/Navigation";
 import Footer from "../layout/Footer";
@@ -17,7 +15,6 @@ import SkillsSection from "../sections/SkillsSection";
 import CTASection from "../sections/CTASection";
 
 // Widgets & Global Components
-import Notifications from "../notifications/Notifications";
 import ScrollToTop from "../ScrollToTop";
 
 // Hooks
@@ -28,12 +25,12 @@ export default function Portfolio() {
 
   return (
     <>
-      <div className="relative min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 overflow-x-hidden">
+      <div className="relative min-h-screen overflow-x-hidden bg-[var(--surface-base)]">
         {/* 1. Navegação fixa no topo */}
         <Navigation activeSection={activeSection} />
 
         {/* 2. Conteúdo Principal */}
-        <main>
+        <main className="w-full max-w-full overflow-x-hidden">
           <HeroSection />
           <AboutSection />
           <ExperienceSection />
@@ -47,18 +44,6 @@ export default function Portfolio() {
         {/* 3. Rodapé */}
         <Footer />
       </div>
-
-      {/* --- CAMADA DE OVERLAY (WIDGETS FLUTUANTES) FORA DO DIV RELATIVE --- */}
-
-      {/* Notifications (Journal) - Posicionado no Canto Superior Direito */}
-      {/* 
-      <div
-        style={{ position: "fixed", top: "80px", right: "20px", zIndex: 50 }}
-      >
-        <Notifications />
-      </div>
-      */}
-
       {/* ScrollToTop - Canto Inferior Direito */}
       <ScrollToTop />
     </>
