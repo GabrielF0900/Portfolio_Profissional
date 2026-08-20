@@ -384,6 +384,16 @@ body {
     background: var(--surface-elevated);
     background: color-mix(in srgb, var(--surface-elevated) 84%, transparent);
     box-shadow: inset 0 1px 0 rgba(216, 228, 245, 0.04);
+    isolation: isolate;
+  }
+
+  .architecture-node::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(78, 125, 195, 0.07), transparent 48%);
   }
 
   .architecture-node:hover,
@@ -414,6 +424,16 @@ body {
     background: var(--accent-soft);
   }
 
+  .architecture-core-heading {
+    display: none;
+    justify-content: space-between;
+    color: var(--text-muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
   .architecture-node-title {
     color: var(--text-primary);
     font-size: 0.78rem;
@@ -435,6 +455,51 @@ body {
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
     vector-effect: non-scaling-stroke;
+  }
+
+  .architecture-path-compact {
+    stroke: url(#architecture-line-compact);
+  }
+
+  .architecture-path-ghost path {
+    fill: none;
+    stroke: rgba(72, 114, 174, 0.11);
+    stroke-width: 3.5;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .architecture-path-secondary {
+    opacity: 0.48;
+  }
+
+  .architecture-junctions circle {
+    fill: var(--accent-primary);
+    stroke: rgba(170, 205, 255, 0.7);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .architecture-orbit {
+    display: none;
+    position: absolute;
+    inset: 9% 7%;
+    pointer-events: none;
+    border: 1px solid rgba(75, 113, 168, 0.07);
+    border-radius: 50%;
+    transform: rotate(-7deg);
+  }
+
+  .architecture-board-caption {
+    pointer-events: none;
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    z-index: 2;
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.7rem;
   }
 
   .architecture-signal {
@@ -510,49 +575,68 @@ body {
   }
 
   .dark .hero-layout {
-    min-height: calc(100vh - 5.25rem);
-    padding-top: clamp(3rem, 7vh, 6.5rem);
-    padding-bottom: clamp(3rem, 7vh, 6.5rem);
+    width: min(calc(100% - 4rem), 97.5rem);
+    max-width: 97.5rem;
+    min-height: calc(100svh - 5.25rem);
+    grid-template-columns: minmax(0, 41fr) minmax(0, 55fr);
+    column-gap: 4%;
+    padding: clamp(2.25rem, 5.5vh, 4.5rem) 0;
   }
 
   .dark .hero-copy {
-    padding-right: clamp(1.5rem, 3vw, 4.25rem);
+    width: 100%;
+    max-width: 40rem;
+    padding-right: 0;
   }
 
-  .dark .hero-identity {
-    display: flex;
+  .dark .hero-eyebrow {
     align-items: center;
-    gap: 0.85rem;
-    margin-bottom: clamp(2rem, 4vh, 3.5rem);
-    color: #aeb8c7;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.17em;
+    gap: 0.75rem;
+    margin-bottom: clamp(1.15rem, 2.3vh, 1.75rem);
+    color: #7f8da1;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
   }
 
-  .dark .hero-identity::before {
+  .dark .hero-eyebrow::before {
     content: "";
     width: 2.25rem;
     height: 1px;
-    background: #2f75ed;
-    box-shadow: 0 0 12px rgba(47, 117, 237, 0.7);
+    background: #2f7cff;
+    box-shadow: 0 0 12px rgba(47, 124, 255, 0.55);
+  }
+
+  .dark .hero-name {
+    max-width: 37rem;
+    margin-bottom: clamp(1.15rem, 2.5vh, 1.85rem);
+    color: #f4f7fb;
+    font-size: clamp(2.75rem, 3.55vw, 4.3rem);
+    font-weight: 650;
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .dark .hero-name span {
+    display: block;
+    color: #9aa5b5;
+  }
+
+  .dark .hero-identity {
+    display: none;
   }
 
   .dark .hero-title {
-    max-width: 46rem;
-    font-size: clamp(4.4rem, 5.8vw, 7.15rem);
-    line-height: 0.82;
-    letter-spacing: -0.065em;
+    max-width: 40rem;
+    font-size: clamp(3.5rem, 4.45vw, 5.45rem);
+    line-height: 0.9;
+    letter-spacing: -0.055em;
   }
 
   .dark .hero-title-kicker {
-    margin-left: 0.06em;
-    color: #828d9d;
-    font-size: 0.43em;
-    font-weight: 500;
-    letter-spacing: -0.035em;
-    line-height: 1.4;
+    display: none;
   }
 
   .dark .hero-title-primary {
@@ -570,7 +654,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0;
-    margin-top: clamp(1.75rem, 3.5vh, 2.75rem);
+    margin-top: clamp(1.15rem, 2.4vh, 1.8rem);
     color: #c4cad3;
     font-size: clamp(0.76rem, 0.9vw, 0.9rem);
     letter-spacing: 0.015em;
@@ -588,21 +672,21 @@ body {
   }
 
   .dark .hero-description {
-    max-width: 35rem;
-    margin-top: clamp(1.5rem, 3vh, 2.35rem);
+    max-width: 36rem;
+    margin-top: clamp(1.2rem, 2.4vh, 1.8rem);
     padding-left: 1.25rem;
     border-left: 1px solid rgba(113, 137, 170, 0.24);
     color: #929dac;
-    font-size: clamp(0.88rem, 1vw, 1rem);
-    line-height: 1.75;
+    font-size: clamp(0.94rem, 1vw, 1.06rem);
+    line-height: 1.68;
   }
 
   .dark .hero-actions {
-    margin-top: clamp(1.75rem, 3.5vh, 2.75rem);
+    margin-top: clamp(1.4rem, 2.8vh, 2.1rem);
   }
 
   .dark .hero-button {
-    min-height: 3.6rem;
+    min-height: 3.5rem;
     border-radius: 5px;
     padding-inline: 1.6rem;
     font-size: 0.86rem;
@@ -622,15 +706,17 @@ body {
   .dark .hero-socials {
     align-items: center;
     gap: 1rem;
-    margin-top: clamp(1.75rem, 3.5vh, 2.75rem);
+    margin-top: clamp(1.25rem, 2.5vh, 1.9rem);
   }
 
   .dark .hero-socials a {
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    border-bottom: 1px solid transparent;
-    padding: 0.45rem 0;
+    min-height: 2.75rem;
+    border: 1px solid rgba(125, 155, 190, 0.14);
+    border-radius: 999px;
+    padding: 0.55rem 0.85rem;
     color: #798597;
     font-size: 0.72rem;
     transition: color 180ms ease, border-color 180ms ease;
@@ -638,7 +724,7 @@ body {
 
   .dark .hero-socials a:hover,
   .dark .hero-socials a:focus-visible {
-    border-color: rgba(47, 117, 237, 0.65);
+    border-color: rgba(47, 117, 237, 0.52);
     color: #dbe1e9;
     outline: none;
   }
@@ -651,7 +737,8 @@ body {
   .dark .hero-architecture-stage {
     position: relative;
     z-index: 1;
-    margin-left: clamp(-2rem, -2.5vw, -1rem);
+    width: 100%;
+    margin-left: 0;
   }
 
   .dark .hero-architecture-stage::before {
@@ -676,11 +763,15 @@ body {
   }
 
   .dark .hero-architecture {
+    width: 100%;
     max-width: none;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .dark .architecture-frame {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 1.45 / 1;
     border-color: rgba(113, 138, 174, 0.1);
     border-radius: 2px;
     background:
@@ -689,10 +780,151 @@ body {
     box-shadow: inset 0 0 80px rgba(1, 4, 9, 0.55);
   }
 
+  .dark .architecture-node-layer {
+    min-height: 100%;
+    height: 100%;
+  }
+
+  .dark .architecture-client-node {
+    left: 5%;
+    top: 50%;
+    width: 18%;
+    min-height: 31%;
+    transform: translateY(-50%);
+  }
+
+  .dark .architecture-spring-node {
+    left: 29%;
+    top: 50%;
+    width: 25%;
+    min-height: 44%;
+    padding: clamp(1.1rem, 1.6vw, 1.6rem);
+    transform: translateY(-50%);
+  }
+
+  .dark .architecture-security-node,
+  .dark .architecture-database-node {
+    left: 60%;
+    width: 20%;
+    min-height: 21%;
+    padding: clamp(0.85rem, 1.2vw, 1.2rem);
+  }
+
+  .dark .architecture-security-node {
+    top: 17%;
+  }
+
+  .dark .architecture-database-node {
+    top: auto;
+    bottom: 17%;
+  }
+
+  .dark .architecture-aws-node {
+    right: 3%;
+    top: 50%;
+    width: 14%;
+    min-height: 44%;
+    transform: translateY(-50%);
+  }
+
+  .dark .architecture-node {
+    border-radius: 14px;
+    border-color: rgba(125, 155, 190, 0.19);
+    background: rgba(9, 17, 28, 0.9);
+    box-shadow: inset 0 1px 0 rgba(210, 229, 255, 0.035),
+      0 16px 44px rgba(0, 0, 0, 0.14);
+  }
+
+  .dark .architecture-node-core {
+    border-color: rgba(52, 120, 246, 0.76);
+    background:
+      radial-gradient(circle at 50% 43%, rgba(47, 124, 255, 0.16), transparent 50%),
+      linear-gradient(145deg, rgba(15, 30, 50, 0.98), rgba(8, 16, 27, 0.98));
+    box-shadow: inset 0 0 42px rgba(47, 124, 255, 0.08),
+      0 0 40px rgba(30, 101, 235, 0.11);
+  }
+
+  .dark .architecture-core-icon {
+    width: clamp(3.5rem, 4.4vw, 4.75rem);
+    height: clamp(3.5rem, 4.4vw, 4.75rem);
+    border-radius: 16px;
+    background: rgba(47, 124, 255, 0.11);
+    box-shadow: inset 0 0 22px rgba(47, 124, 255, 0.08);
+  }
+
+  .dark .architecture-core-icon svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .dark .architecture-core-heading {
+    display: flex;
+  }
+
+  .dark .architecture-orbit {
+    display: block;
+  }
+
+  .dark .architecture-core-title {
+    font-size: clamp(1.05rem, 1.35vw, 1.4rem);
+    letter-spacing: -0.025em;
+  }
+
+  .dark .architecture-core-copy {
+    margin-top: 0.35rem;
+    font-size: clamp(0.68rem, 0.78vw, 0.82rem);
+  }
+
+  .dark .architecture-node-title {
+    font-size: clamp(0.72rem, 0.82vw, 0.86rem);
+  }
+
+  .dark .architecture-node-copy {
+    font-size: clamp(0.61rem, 0.7vw, 0.72rem);
+  }
+
+  .dark .architecture-connections {
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .dark .architecture-connections .architecture-path {
+    stroke: url(#architecture-line-v2);
+    stroke-width: 1.25;
+  }
+
+  .dark .architecture-board-caption {
+    display: flex;
+  }
+
   .dark .architecture-grid {
-    opacity: 0.36;
-    background-size: 48px 48px;
-    mask-image: radial-gradient(ellipse at 54% 50%, black 12%, transparent 76%);
+    opacity: 0.3;
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse at 54% 50%, black 18%, transparent 84%);
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .dark .hero-layout {
+    width: min(calc(100% - 4rem), 97.5rem);
+    grid-template-columns: minmax(0, 41fr) minmax(0, 55fr);
+  }
+
+  .dark .hero-name {
+    font-size: clamp(2.6rem, 3.35vw, 3.25rem);
+  }
+
+  .dark .hero-title {
+    font-size: clamp(3.5rem, 4.75vw, 4.25rem);
+  }
+
+  .dark .hero-socials {
+    gap: 0.55rem;
+  }
+
+  .dark .hero-socials a {
+    padding-inline: 0.7rem;
+    font-size: 0.65rem;
   }
 }
 

@@ -92,6 +92,21 @@ export default function HeroSection() {
         <div className="hero-copy relative z-[2] max-w-3xl">
           <p
             data-hero-reveal
+            className="hero-eyebrow hidden dark:xl:flex"
+          >
+            Engenharia de software · Backend
+          </p>
+
+          <p
+            data-hero-reveal
+            className="hero-name hidden dark:xl:block"
+          >
+            Gabriel Falcão
+            <span> da Cruz</span>
+          </p>
+
+          <p
+            data-hero-reveal
             className="hero-identity mb-5 text-sm font-semibold text-[var(--text-secondary)] sm:text-base"
           >
             Gabriel Falcão da Cruz
