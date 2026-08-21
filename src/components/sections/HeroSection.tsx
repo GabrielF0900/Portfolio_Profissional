@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import {
   ArrowRight,
+  Code2,
   Download,
   Github,
   Linkedin,
@@ -68,9 +69,20 @@ export default function HeroSection() {
 
       <div className={styles.container}>
         <div className={styles.copy}>
-          <div data-hero-reveal className={styles.availability}>
-            <Zap aria-hidden="true" />
-            <span>Disponível para novos projetos</span>
+          <div data-hero-reveal className={styles.heroMetaRow}>
+            <div className={styles.sectionMarker}>
+              <span className={styles.sectionMarkerIcon} aria-hidden="true">
+                <Code2 />
+              </span>
+              <span className={styles.sectionMarkerNumber}>01</span>
+              <span className={styles.sectionMarkerSlash} aria-hidden="true">/</span>
+              <span className={styles.sectionMarkerLabel}>INÍCIO</span>
+            </div>
+
+            <div className={styles.availability}>
+              <Zap aria-hidden="true" />
+              <span>Disponível para novos projetos</span>
+            </div>
           </div>
 
           <h1 id="hero-title" className={styles.heading}>

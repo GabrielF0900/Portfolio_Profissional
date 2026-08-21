@@ -1,195 +1,562 @@
-import { Badge } from "@/components/ui/badge";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
+  CalendarDays,
+  Clock3,
+  ExternalLink,
+  GitBranch,
+  Workflow,
+  Layers3,
+  Users,
+  Trophy,
+  Network,
+  ListChecks,
+  Gauge,
+  TrendingUp,
+  ShieldCheck
+} from "lucide-react";
+
 import { event } from "@/lib/gtag";
+import styles from "./ExperienceSection.module.css";
+
+function CodeStageIcon() {
+  return (
+    <svg
+      className={styles.stageSvg}
+      viewBox="0 0 64 64"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <rect
+        className={styles.svgFrame}
+        x="5"
+        y="7"
+        width="54"
+        height="50"
+        rx="11"
+      />
+      <circle
+        className={styles.svgNode}
+        cx="14"
+        cy="15"
+        r="2"
+      />
+      <circle
+        className={styles.svgNodeSoft}
+        cx="21"
+        cy="15"
+        r="2"
+      />
+      <path
+        className={styles.svgSecondary}
+        d="M11 22H53"
+      />
+      <path
+        className={styles.svgPrimary}
+        d="M26 27L18 32L26 37"
+      />
+      <path
+        className={styles.svgPrimary}
+        d="M38 27L46 32L38 37"
+      />
+      <path
+        className={styles.svgSignal}
+        d="M35 24L29 40"
+        pathLength="100"
+      />
+      <path
+        className={styles.svgSecondary}
+        d="M17 47H34"
+      />
+      <circle
+        className={styles.svgNode}
+        cx="47"
+        cy="47"
+        r="2.4"
+      />
+    </svg>
+  );
+}
+
+function BuildStageIcon() {
+  return (
+    <svg
+      className={styles.stageSvg}
+      viewBox="0 0 64 64"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <rect
+        className={styles.svgFrame}
+        x="5"
+        y="7"
+        width="54"
+        height="50"
+        rx="11"
+      />
+      <circle
+        className={styles.svgNode}
+        cx="17"
+        cy="20"
+        r="4"
+      />
+      <circle
+        className={styles.svgNodeSoft}
+        cx="17"
+        cy="44"
+        r="4"
+      />
+      <circle
+        className={styles.svgNode}
+        cx="32"
+        cy="32"
+        r="4"
+      />
+      <path
+        className={styles.svgPrimary}
+        d="M21 20H27C29.7614 20 32 22.2386 32 25V28"
+      />
+      <path
+        className={styles.svgPrimary}
+        d="M21 44H27C29.7614 44 32 41.7614 32 39V36"
+      />
+      <path
+        className={styles.svgSignal}
+        d="M36 32H48"
+        pathLength="100"
+      />
+      <path
+        className={styles.svgPrimary}
+        d="M44 27L49 32L44 37"
+      />
+    </svg>
+  );
+}
+
+function PackageStageIcon() {
+  return (
+    <svg
+      className={styles.stageSvg}
+      viewBox="0 0 64 64"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <rect
+        className={styles.svgFrame}
+        x="5"
+        y="7"
+        width="54"
+        height="50"
+        rx="11"
+      />
+      <path
+        className={styles.svgPrimary}
+        d="M15 28H49V46H15V28Z"
+      />
+      <path
+        className={styles.svgSecondary}
+        d="M15 34H49"
+      />
+      <path
+        className={styles.svgSecondary}
+        d="M25 28V46"
+      />
+      <path
+        className={styles.svgSecondary}
+        d="M39 28V46"
+      />
+      <rect
+        className={styles.svgPrimary}
+        x="19"
+        y="18"
+        width="8"
+        height="7"
+        rx="1"
+      />
+      <rect
+        className={styles.svgPrimary}
+        x="29"
+        y="18"
+        width="8"
+        height="7"
+        rx="1"
+      />
+      <rect
+        className={styles.svgPrimary}
+        x="39"
+        y="18"
+        width="8"
+        height="7"
+        rx="1"
+      />
+      <circle
+        className={styles.svgNode}
+        cx="20"
+        cy="40"
+        r="2"
+      />
+      <path
+        className={styles.svgSignal}
+        d="M28 40H44"
+        pathLength="100"
+      />
+    </svg>
+  );
+}
+
+function DeployStageIcon() {
+  return (
+    <svg
+      className={styles.stageSvg}
+      viewBox="0 0 64 64"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <rect
+        className={styles.svgFrame}
+        x="5"
+        y="7"
+        width="54"
+        height="50"
+        rx="11"
+      />
+      <path
+        className={styles.svgPrimary}
+        d="M17 40C12.5817 40 9 36.4183 9 32C9 27.8941 12.0954 24.5102 16.0802 24.0527C18.0076 19.8598 22.2436 17 27.1333 17C33.0037 17 37.9065 21.1183 39.1134 26.6195C39.7134 26.5088 40.3321 26.451 40.9644 26.451C46.5088 26.451 51 30.9422 51 36.4866C51 38.6038 50.3438 40.5679 49.2243 42.187"
+      />
+      <path
+        className={styles.svgPrimary}
+        d="M30 46V29"
+      />
+      <path
+        className={styles.svgPrimary}
+        d="M23 36L30 29L37 36"
+      />
+      <path
+        className={styles.svgSignal}
+        d="M19 49H45"
+        pathLength="100"
+      />
+      <circle
+        className={styles.svgNode}
+        cx="45"
+        cy="49"
+        r="2.5"
+      />
+    </svg>
+  );
+}
+
+const PIPELINE = [
+  {
+    label: "CODE",
+    name: "Desenvolvimento",
+    detail: "Código",
+    icon: CodeStageIcon,
+  },
+  {
+    label: "BUILD",
+    name: "GitHub Actions",
+    detail: "CI/CD",
+    icon: BuildStageIcon,
+  },
+  {
+    label: "PACKAGE",
+    name: "Docker",
+    detail: "Empacotamento",
+    icon: PackageStageIcon,
+  },
+  {
+    label: "DEPLOY",
+    name: "Deploy",
+    detail: "Processo padronizado",
+    icon: DeployStageIcon,
+  },
+];
+
+const RESPONSIBILITIES = [
+  {
+    text: "Fundação e liderança técnica da organização",
+    icon: Users,
+  },
+  {
+    text: "Definição de arquitetura e padrões de desenvolvimento",
+    icon: Network,
+  },
+  {
+    text: "Gestão de equipe e priorização técnica",
+    icon: ListChecks,
+  },
+  {
+    text: "Implementação de pipeline CI/CD",
+    icon: GitBranch,
+  },
+];
+
+const ACHIEVEMENTS = [
+  {
+    text: "Redução mensurável no tempo de deploy via automação",
+    icon: Gauge,
+  },
+  {
+    text: "Aumento de produtividade da equipe com adoção de metodologia ágil",
+    icon: TrendingUp,
+  },
+  {
+    text: "Estabelecimento de cultura de qualidade de código e revisão técnica",
+    icon: ShieldCheck,
+  },
+];
+
+const STACK = [
+  "TypeScript",
+  "React",
+  "Tailwind CSS",
+  "Node.js",
+  "PostgreSQL",
+  "Express",
+  "Docker",
+  "JWT",
+  "AWS",
+  "ORM Prisma",
+];
 
 export default function ExperienceSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reduceMotion) {
+      setVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="experiencia" className="py-12 md:py-20">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-              Experiência Profissional
-            </h2>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Minha trajetória profissional e contribuições em organizações de
-              destaque.
-            </p>
-          </div>
+    <section
+      ref={sectionRef}
+      id="experiencia"
+      className={`${styles.section} ${visible ? styles.visible : ""}`}
+      aria-labelledby="experience-title"
+    >
+      <div className={styles.backgroundGlow} aria-hidden="true" />
 
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary to-primary/20"></div>
+      <div className={styles.container}>
+        <div className={styles.sectionMarker}>
+          <span
+            className={styles.sectionMarkerIcon}
+            aria-hidden="true"
+          >
+            <Workflow />
+          </span>
 
-            {/* Experience Item */}
-            <div className="relative flex gap-8 pb-12">
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg">
-                  <div className="w-8 h-8 bg-white dark:bg-slate-950 rounded-full flex items-center justify-center">
-                    <div className="w-3 h-3 bg-primary rounded-full"></div>
-                  </div>
-                </div>
-              </div>
+          <span className={styles.sectionMarkerNumber}>
+            03
+          </span>
 
-              <Card className="flex-1 hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                    <div className="flex flex-col gap-3 items-start">
-                      <CardTitle className="text-xl text-primary">
-                        Fundador e Líder Técnico — Neukox
-                      </CardTitle>
-                      <Button variant="outline" size="sm" className="h-8" asChild>
-                        <a 
-                          href="https://github.com/Neukox" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          onClick={() => event('clique_link_externo', { destino: 'organizacao_neukox' })}
-                        >
-                          <ExternalLink className="w-3.5 h-3.5 mr-2" />
-                          Visitar Organização
-                        </a>
-                      </Button>
-                    </div>
-                    <div className="flex flex-col md:items-end">
-                      <Badge variant="secondary" className="w-fit">
-                        Abril 2025 – Abril 2026
-                      </Badge>
-                      <span className="text-sm text-muted-foreground mt-1">
-                        1 ano
-                      </span>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base mb-4">
-                    Fundei e liderei tecnicamente a Neukox, definindo arquitetura de software, processos de desenvolvimento e prioridades técnicas da equipe. Apliquei metodologia ágil (Kanban) para gestão de entregas e implementei pipeline de CI/CD com GitHub Actions e Docker, padronizando o processo de deploy. A base arquitetural que uso hoje em Java, Spring Boot e AWS — decisões de design, gestão de prioridades técnicas e disciplina de CI/CD — foi consolidada na prática liderando essa equipe.
-                    <br /><br />
-                    <strong>Resultados:</strong> +20% de produtividade da equipe após adoção de Kanban &middot; -30% no tempo de provisionamento de ambientes com CI/CD automatizado
-                  </CardDescription>
+          <span
+            className={styles.sectionMarkerSlash}
+            aria-hidden="true"
+          >
+            /
+          </span>
 
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold mb-2">
-                        Principais Responsabilidades:
-                      </h4>
-                      <ul className="space-y-1 text-sm text-muted-foreground">
-                        <li className="flex items-start gap-2">
-                          <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                          <span>
-                            Fundação e liderança técnica da organização
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                          <span>
-                            Definição de arquitetura e padrões de desenvolvimento
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                          <span>
-                            Gestão de equipe e priorização técnica
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                          <span>
-                            Implementação de pipeline CI/CD
-                          </span>
-                        </li>
-                      </ul>
-                    </div>
+          <span className={styles.sectionMarkerLabel}>
+            EXPERIÊNCIA
+          </span>
+        </div>
 
-                    <div>
-                      <h4 className="font-semibold mb-2">
-                        Principais Conquistas:
-                      </h4>
-                      <ul className="space-y-1 text-sm text-muted-foreground">
-                        <li className="flex items-start gap-2">
-                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <span>
-                            Redução mensurável no tempo de deploy via automação
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <span>
-                            Aumento de produtividade da equipe com adoção de metodologia ágil
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <span>
-                            Estabelecimento de cultura de qualidade de código e revisão técnica
-                          </span>
-                        </li>
-                      </ul>
-                    </div>
+        <header className={styles.sectionHeading}>
+          <h2
+            id="experience-title"
+            className={styles.mainTitle}
+          >
+            Experiência
+            <br />
+            profissional.
+          </h2>
 
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      <Badge variant="outline" className="text-xs">
-                        TypeScript
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        React
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        Tailwind CSS
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        Node.js
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        PostgreSQL
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        Express
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        Docker
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        JWT
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        AWS
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        ORM Prisma
-                      </Badge>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+          <p className={styles.sectionLead}>
+            Minha trajetória profissional e contribuições
+            em organizações de destaque.
+          </p>
+
+          <span
+            className={styles.headingAccent}
+            aria-hidden="true"
+          />
+        </header>
+
+        <div className={styles.topGrid}>
+          <div className={styles.presentation}>
+            <h3 className={styles.roleTitle}>
+              <span className={styles.roleLine}>
+                Fundador e Líder Técnico —
+              </span>
+              <span className={styles.roleCompanyRow}>
+                <span className={styles.roleCompany}>Neukox</span>
+                <a
+                  href="https://github.com/Neukox"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.organizationLink}
+                  onClick={() =>
+                    event("clique_link_externo", {
+                      destino: "organizacao_neukox",
+                    })
+                  }
+                >
+                  <span>Visitar organização</span>
+                  <ExternalLink aria-hidden="true" />
+                </a>
+              </span>
+            </h3>
+
+            <div className={styles.period}>
+              <CalendarDays aria-hidden="true" />
+              Abril 2025 – Abril 2026
+              <span className={styles.periodDot}>•</span>
+              <Clock3 aria-hidden="true" />
+              1 ano
             </div>
 
-            {/* Additional Experience Placeholder */}
-            <div className="relative flex gap-8">
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center">
-                  <div className="w-8 h-8 bg-background rounded-full flex items-center justify-center border-2 border-muted-foreground">
-                    <div className="w-3 h-3 bg-muted-foreground rounded-full"></div>
-                  </div>
-                </div>
-              </div>
+            <div className={styles.description}>
+              <p>
+                Fundei e liderei tecnicamente a Neukox, definindo arquitetura de software, processos de desenvolvimento e prioridades técnicas da equipe.
+              </p>
+              <p>
+                Apliquei metodologia ágil (Kanban) para gestão de entregas.
+              </p>
+              <p>
+                Implementei pipeline de CI/CD com GitHub Actions e Docker, padronizando o processo de deploy.
+              </p>
+              <p>
+                A base arquitetural que uso hoje em <strong className={styles.textHighlight}>Java</strong>, <strong className={styles.textHighlight}>Spring Boot</strong> e <strong className={styles.textHighlight}>AWS</strong> — decisões de design, gestão de prioridades técnicas e disciplina de CI/CD — foi consolidada na prática liderando essa equipe.
+              </p>
+            </div>
+          </div>
 
-              <Card className="flex-1 border-dashed">
-                <CardContent className="pt-6">
-                  <div className="text-center text-muted-foreground">
-                    <p className="text-xs mt-1">
-                      Disponível para discussão durante entrevista
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
+          <div className={styles.pipeline}>
+            <div className={styles.pipelineHeader}>
+              <Layers3 aria-hidden="true" />
+              <h4>PIPELINE DE ENTREGA CONTÍNUA</h4>
+            </div>
+
+            <div className={styles.pipelineFlow}>
+              {PIPELINE.map(({ label, name, detail, icon: Icon }, index) => (
+                <div className={styles.pipelineUnit} key={label}>
+                  <article className={styles.pipelineNode}>
+                    <span className={styles.nodeLabel}>{label}</span>
+                    <Icon />
+                    <span className={styles.nodeName}>{name}</span>
+                    <span className={styles.nodeDetail}>{detail}</span>
+                  </article>
+                  {index < PIPELINE.length - 1 && (
+                    <span className={styles.connectionLine} aria-hidden="true" />
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <svg
+              className={styles.pipelineBus}
+              viewBox="0 0 1000 76"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path className={styles.busDrop} d="M125 0 V30" />
+              <path className={styles.busDrop} d="M375 0 V30" />
+              <path className={styles.busDrop} d="M625 0 V30" />
+              <path className={styles.busDrop} d="M875 0 V30" />
+
+              <path className={styles.busBase} d="M42 30 H958" pathLength="100" />
+              <path className={styles.busSignal} d="M42 30 H958" pathLength="100" />
+
+              <circle className={`${styles.busPoint} ${styles.busPoint1}`} cx="125" cy="30" r="5" />
+              <circle className={`${styles.busPoint} ${styles.busPoint2}`} cx="375" cy="30" r="5" />
+              <circle className={`${styles.busPoint} ${styles.busPoint3}`} cx="625" cy="30" r="5" />
+              <circle className={`${styles.busPoint} ${styles.busPoint4}`} cx="875" cy="30" r="5" />
+
+              <path className={styles.busDashed} d="M42 64 H958" />
+            </svg>
+          </div>
+        </div>
+
+        <div className={styles.bottomGrid}>
+          <div className={styles.infoCard}>
+            <div className={styles.cardHeader}>
+              <span className={styles.cardHeaderIcon}>
+                <Users aria-hidden="true" />
+              </span>
+              <h4>Responsabilidades</h4>
+            </div>
+            <ul className={styles.detailList}>
+              {RESPONSIBILITIES.map(({ text, icon: Icon }) => (
+                <li key={text}>
+                  <span className={styles.itemIcon} aria-hidden="true">
+                    <Icon />
+                  </span>
+                  <span>{text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className={styles.infoCard}>
+            <div className={styles.cardHeader}>
+              <span className={styles.cardHeaderIcon}>
+                <Trophy aria-hidden="true" />
+              </span>
+              <h4>Conquistas</h4>
+            </div>
+            <ul className={styles.detailList}>
+              {ACHIEVEMENTS.map(({ text, icon: Icon }) => (
+                <li key={text}>
+                  <span className={`${styles.itemIcon} ${styles.itemIconSuccess}`} aria-hidden="true">
+                    <Icon />
+                  </span>
+                  <span>{text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className={styles.infoCard}>
+            <div className={styles.cardHeader}>
+              <span className={styles.cardHeaderIcon}>
+                <Layers3 aria-hidden="true" />
+              </span>
+              <h4>Stack</h4>
+            </div>
+            <div className={styles.stack}>
+              {STACK.map((technology) => (
+                <span key={technology}>{technology}</span>
+              ))}
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-.hero {
+﻿.hero {
   --hero-bg: #f6f8fc;
   --hero-bg-deep: #e9eef7;
   --hero-text: #0a111c;
@@ -82,12 +82,66 @@
   padding-left: clamp(0rem, 1vw, 1rem);
 }
 
+.heroMetaRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(1.5rem, 2.4vw, 2rem);
+}
+
+.sectionMarker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--hero-blue);
+}
+
+.sectionMarkerIcon {
+  display: grid;
+  width: 1.9rem;
+  height: 1.9rem;
+  place-items: center;
+  margin-right: 0.15rem;
+  border-radius: 0.45rem;
+  color: var(--hero-blue);
+  border: 1px solid color-mix(in srgb, var(--hero-blue) 35%, var(--hero-border));
+  background: color-mix(in srgb, var(--hero-blue) 10%, transparent);
+}
+
+.sectionMarkerIcon svg {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 1.6;
+}
+
+.sectionMarkerNumber {
+  font-weight: 700;
+  color: var(--hero-blue-strong);
+}
+
+.sectionMarkerSlash {
+  opacity: 0.55;
+  color: var(--hero-blue);
+}
+
+.sectionMarkerLabel {
+  font-weight: 600;
+  color: var(--hero-blue);
+}
+
 .availability {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
   min-height: 2.55rem;
-  margin-bottom: clamp(1.25rem, 2.2vh, 2rem);
   padding: 0 1rem;
   border: 1px solid var(--hero-border);
   border-radius: 999px;
@@ -320,7 +374,7 @@
 
 /*
  * A cena inteira recebe UMA perspectiva.
- * Nodes + SVGs + backplane compartilham o mesmo espaço 3D.
+ * Nodes + SVGs + backplane compartilham o mesmo espaÃ§o 3D.
  */
 .sceneContent {
   position: absolute;
@@ -603,7 +657,7 @@
   border-color: rgba(74, 102, 140, 0.08);
 }
 
-/* Um mesmo plano 3D + diferenças de profundidade */
+/* Um mesmo plano 3D + diferenÃ§as de profundidade */
 .clients {
   left: 2.8%;
   top: 26%;
@@ -1172,3 +1226,11 @@
     display: none;
   }
 }
+
+@media (max-width: 640px) {
+  .heroMetaRow {
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
