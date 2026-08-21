@@ -1,30 +1,41 @@
 "use client";
 
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ExternalLink } from "lucide-react";
-import { certifications } from "../../constants/certifications";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-  DialogClose,
-} from "@/components/ui/dialog";
+import { useEffect, useRef, useState } from "react";
+import { BadgeCheck, ExternalLink, Download, CalendarDays, ShieldCheck } from "lucide-react";
+import { certifications, Certification } from "../../constants/certifications";
+import styles from "./CertificationsSection.module.css";
+
+const FEATURED_IDS = new Set([1, 2, 20]);
 
 export default function CertificationsSection() {
-  const [activeTab, setActiveTab] = useState("Certificação");
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedCert, setSelectedCert] = useState<
-    (typeof certifications)[number] | null
-  >(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [filter, setFilter] = useState<"all" | "Certificação" | "Certificado" | "Estudando">("all");
 
-  const handleDownloadPdf = (pdfUrl: string, title: string) => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleDownloadPdf = (e: React.MouseEvent, pdfUrl: string, title: string) => {
+    e.preventDefault();
     const link = document.createElement("a");
     link.href = pdfUrl;
     link.download = `${title}.pdf`;
@@ -33,302 +44,316 @@ export default function CertificationsSection() {
     document.body.removeChild(link);
   };
 
-  const openDetails = (cert: (typeof certifications)[number]) => {
-    setSelectedCert(cert);
-    setIsOpen(true);
-  };
+  const mainFeatured = certifications.find((cert) => cert.id === 2);
+  const secondaryFeatured = [
+    certifications.find((cert) => cert.id === 1),
+    certifications.find((cert) => cert.id === 20),
+  ].filter(Boolean) as Certification[];
 
-  const filteredCertifications = certifications
+  const complementaryCertifications = certifications
     .filter((cert) => {
-      if (activeTab === "all") return true;
-      return cert.type === activeTab;
+      if (filter === "all") return true;
+      if (filter === "Estudando") return cert.status === "Estudando";
+      return cert.type === filter;
     })
     .sort((a, b) => {
-      // Certificado Java Completo (id:19) em primeiro lugar
-      const isAJavaCompleto = a.id === 19;
-      const isBJavaCompleto = b.id === 19;
-
-      if (isAJavaCompleto && !isBJavaCompleto) return -1;
-      if (isBJavaCompleto && !isAJavaCompleto) return 1;
-
-      // Certificado Escola da Nuvem (id:17) em seguida
-      const isAEscolaDaNuvem = a.id === 17;
-      const isBEscolaDaNuvem = b.id === 17;
-
-      if (activeTab === "all") {
-        // Escola da Nuvem em segundo lugar no filtro 'Todos'
-        if (isAEscolaDaNuvem && !isBEscolaDaNuvem) return -1;
-        if (isBEscolaDaNuvem && !isAEscolaDaNuvem) return 1;
-
-        // Em seguida, manter comportamento existente: Certificações primeiro
-        if (a.type === "Certificação" && b.type !== "Certificação") return -1;
-        if (a.type !== "Certificação" && b.type === "Certificação") return 1;
-      }
-
-      if (activeTab === "Certificado") {
-        // Escola da Nuvem em segundo lugar no filtro 'Certificados'
-        if (isAEscolaDaNuvem && !isBEscolaDaNuvem) return -1;
-        if (isBEscolaDaNuvem && !isAEscolaDaNuvem) return 1;
-      }
-
+      // 19 is Java Completo, keep it high
+      if (a.id === 19) return -1;
+      if (b.id === 19) return 1;
+      // 17 is AWS Re/Start
+      if (a.id === 17) return -1;
+      if (b.id === 17) return 1;
       return 0;
     });
 
+  const countAll = certifications.length;
+  const countCertificacoes = certifications.filter((cert) => cert.type === "Certificação").length;
+  const countCertificados = certifications.filter((cert) => cert.type === "Certificado" && cert.status !== "Estudando").length;
+  const countEstudando = certifications.filter((cert) => cert.status === "Estudando").length;
+
+  const awsObtainedCount = [
+    certifications.find((cert) => cert.id === 1),
+    certifications.find((cert) => cert.id === 2),
+  ].filter((cert) => cert?.status === "Certificado").length;
+
+  const clfDateStr = secondaryFeatured[0]?.date;
+  const saaDateStr = mainFeatured?.date;
+  
+  let progressionDays: number | null = null;
+  
+  if (clfDateStr && saaDateStr) {
+    const parseDate = (dateStr: string) => {
+      const match = dateStr.match(/(\d{2})\/(\d{2})\/(\d{4})/);
+      if (match) {
+        return new Date(`${match[2]}/${match[1]}/${match[3]}`);
+      }
+      return null;
+    };
+    
+    const clfDate = parseDate(clfDateStr);
+    const saaDate = parseDate(saaDateStr);
+    
+    if (clfDate && saaDate) {
+      const diffTime = Math.abs(saaDate.getTime() - clfDate.getTime());
+      progressionDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+    }
+  }
+
   return (
-    <section id="certificacoes" className="py-12 md:py-20 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-            Certificações/Certificados
+    <section 
+      id="certificacoes" 
+      className={styles.section} 
+      ref={sectionRef}
+      aria-labelledby="certifications-title"
+    >
+      <div className={styles.background} aria-hidden="true" />
+      
+      <div className={styles.container}>
+        <div className={styles.revealElement} style={{ animationDelay: "100ms" }}>
+          <div className={styles.sectionMarker}>
+            <span className={styles.sectionMarkerIcon} aria-hidden="true">
+              <BadgeCheck />
+            </span>
+            <span className={styles.sectionMarkerNumber}>04</span>
+            <span className={styles.sectionMarkerSlash} aria-hidden="true">/</span>
+            <span className={styles.sectionMarkerLabel}>CERTIFICAÇÕES</span>
+          </div>
+
+          <h2 id="certifications-title" className={styles.heading}>
+            Certificações<br />e credenciais.
           </h2>
-          <p className="text-base md:text-lg text-slate-600 dark:text-slate-300">
-            Minhas qualificações profissionais
+
+          <p className={styles.lead}>
+            Credenciais que validam minha base em arquitetura cloud, backend e engenharia de software.
           </p>
+
+          <div className={styles.headingAccent} aria-hidden="true" />
         </div>
 
-        <Tabs
-          defaultValue="Certificação"
-          value={activeTab}
-          onValueChange={setActiveTab}
-          className="w-full"
-        >
-          <TabsList className="grid w-full grid-cols-3 max-w-lg mx-auto mb-12">
-            <TabsTrigger
-              value="all"
-              className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
-            >
-              Todos
-            </TabsTrigger>
-            <TabsTrigger
-              value="Certificação"
-              className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
-            >
-              Certificações
-            </TabsTrigger>
-            <TabsTrigger
-              value="Certificado"
-              className="text-base text-slate-600 dark:text-slate-300 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white"
-            >
-              Certificados
-            </TabsTrigger>
-          </TabsList>
+        {/* AWS Certification Path Area */}
+        <div className={`${styles.certificationPathPanel} ${styles.revealElement}`} style={{ animationDelay: "200ms" }}>
+          <div className={styles.pathHeader}>
+            <span className={styles.pathTitle}>AWS CERTIFICATION PATH</span>
+            <span className={styles.pathCounter}>{awsObtainedCount} CERTIFICAÇÕES OBTIDAS</span>
+          </div>
 
-          <TabsContent value={activeTab} className="w-full">
-            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-              {filteredCertifications.map((cert) => (
-                <Card
-                  key={cert.id}
-                  className="relative h-full flex flex-col overflow-visible border-slate-200 dark:border-slate-700 transition-all duration-300 hover:shadow-lg"
-                >
-                  {/* Selo */}
-                  <div className="absolute -top-2 -right-2 z-50">
-                    <Badge className="px-2 py-0.5 text-xs font-semibold shadow-md bg-green-500 hover:bg-green-600 text-white">
-                      {cert.type}
-                    </Badge>
+          <div className={styles.pathContent}>
+            {/* Left: Main Featured SAA-C03 */}
+            {mainFeatured && (
+              <div className={styles.featuredCredential}>
+                <div className={styles.fcTopLabel}>CREDENCIAL PRINCIPAL</div>
+
+                <div className={styles.fcLayout}>
+                  <div className={styles.fcBadgeArea}>
+                    <div className={styles.fcAmbientGlow} aria-hidden="true" />
+                    <img src={mainFeatured.image} alt={mainFeatured.title} className={styles.fcImage} />
+                  </div>
+                  
+                  <div className={styles.fcInfoArea}>
+                    <h3 className={styles.fcTitle}>
+                      {mainFeatured.title}
+                    </h3>
+
+                    <div className={styles.fcMetadataGrid}>
+                      <div className={styles.fcMetaBlock}>
+                        <span className={styles.fcMetaLabel}>CÓDIGO DO EXAME</span>
+                        <span className={styles.fcMetaValue}>{mainFeatured.examCode}</span>
+                      </div>
+                      
+                      <div className={styles.fcMetaBlock}>
+                        <span className={styles.fcMetaLabel}>STATUS</span>
+                        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                          <span className={styles.fcStatusDot} aria-hidden="true" />
+                          <span className={styles.fcStatusText}>{mainFeatured.status.toUpperCase()}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {mainFeatured.description && (
+                      <p className={styles.fcDescription}>{mainFeatured.description}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className={styles.fcFooter}>
+                  {mainFeatured.date && (
+                    <>
+                      <div className={styles.fcFooterItem}>
+                        <CalendarDays size={16} className={styles.fcFooterIcon} />
+                        <div className={styles.fcFooterTexts}>
+                          <span className={styles.fcFooterLabel}>DATA</span>
+                          <span className={styles.fcFooterValue}>{mainFeatured.date}</span>
+                        </div>
+                      </div>
+                      <div className={styles.fcFooterDivider} aria-hidden="true" />
+                    </>
+                  )}
+                  
+                  <div className={styles.fcFooterItem}>
+                    <ShieldCheck size={16} className={styles.fcFooterIcon} />
+                    <div className={styles.fcFooterTexts}>
+                      <span className={styles.fcFooterLabel}>EMISSOR</span>
+                      <span className={styles.fcFooterValue}>{mainFeatured.issuer}</span>
+                    </div>
                   </div>
 
-                  <CardContent className="p-0 flex-1 flex flex-col">
-                    {/* Container da Imagem */}
-                    <div className="aspect-square bg-gray-100 dark:bg-slate-800 flex items-center justify-center p-2">
-                      {cert.pdfUrl ? (
-                        <button
-                          onClick={() =>
-                            handleDownloadPdf(cert.pdfUrl!, cert.title)
-                          }
-                          className="w-full h-full flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
-                          title="Clique para baixar o PDF"
-                        >
-                          <img
-                            src={cert.image}
-                            alt={cert.title}
-                            className="w-full h-full object-contain"
-                          />
-                        </button>
-                      ) : cert.credentialUrl && cert.credentialUrl !== "#" ? (
-                        <a
-                          href={cert.credentialUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full h-full flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
-                        >
-                          <img
-                            src={cert.image}
-                            alt={cert.title}
-                            className="w-full h-full object-contain"
-                          />
-                        </a>
-                      ) : (
-                        <img
-                          src={cert.image}
-                          alt={cert.title}
-                          className="w-full h-full object-contain"
-                        />
-                      )}
-                    </div>
-
-                    {/* Conteúdo */}
-                    <div className="p-4 flex flex-col flex-1">
-                      <h3 className="font-semibold text-sm mb-2">
-                        {cert.title}
-                      </h3>
-
-                      <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">
-                        {cert.issuer}
-                      </p>
-
-                      {cert.examCode && (
-                        <p className="text-xs text-gray-500 mb-3">
-                          Código: {cert.examCode}
-                        </p>
-                      )}
-
-                      {cert.statusMessage && (
-                        <p className="text-xs text-slate-600 dark:text-slate-400 mb-3 italic">
-                          {cert.statusMessage}
-                        </p>
-                      )}
-
-                      {cert.description && (
-                        <p className="text-xs text-slate-600 dark:text-slate-400 mb-3">
-                          {cert.description}
-                        </p>
-                      )}
-
-                      <div className="mt-auto pt-3">
-                        <span
-                          className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${
-                            cert.status === "Certificado"
-                              ? "border-green-600 text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-950/50 dark:border-green-500"
-                              : cert.status === "Próximo Objetivo"
-                                ? "border-blue-600 text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 dark:border-blue-500"
-                                : "border-slate-400 dark:border-slate-500 text-slate-900 dark:text-slate-100 bg-slate-100 dark:bg-slate-700"
-                          }`}
-                        >
-                          {cert.status}
-                        </span>
-                      </div>
-
-                      {cert.date && (
-                        <p className="text-xs text-gray-500 mt-2">
-                          {cert.date}
-                        </p>
-                      )}
-
-                      {cert.pdfUrl && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="mt-4 w-full flex items-center justify-center gap-2"
-                          onClick={() =>
-                            handleDownloadPdf(cert.pdfUrl!, cert.title)
-                          }
-                        >
-                          {cert.type === "Certificação"
-                            ? "Ver Certificação"
-                            : "Ver Certificado"}
-                          <ExternalLink size={14} />
-                        </Button>
-                      )}
-                      {cert.credentialUrl && cert.credentialUrl !== "#" && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="mt-4 w-full"
-                          asChild
-                        >
-                          <a
-                            href={cert.credentialUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2"
-                          >
-                            {cert.type === "Certificação"
-                              ? "Ver Certificação"
-                              : "Ver Certificado"}
-                            <ExternalLink size={14} />
-                          </a>
-                        </Button>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
-
-        {/* Modal de detalhes */}
-        <Dialog
-          open={isOpen}
-          onOpenChange={(open) => {
-            setIsOpen(open);
-            if (!open) setSelectedCert(null);
-          }}
-        >
-          <DialogContent className="w-11/12 sm:max-w-md sm:w-96 max-h-[80vh] overflow-auto rounded-lg">
-            <DialogHeader>
-              <div className="flex items-start gap-4 w-full">
-                <DialogTitle className="flex-1">
-                  {selectedCert?.title}
-                </DialogTitle>
-                {selectedCert?.image && (
-                  <img
-                    src={selectedCert.image}
-                    alt={selectedCert.title}
-                    className="w-28 h-20 object-contain rounded-md ml-auto"
-                  />
-                )}
+                  {mainFeatured.credentialUrl && mainFeatured.credentialUrl !== "#" && (
+                    <>
+                      <div className={styles.fcFooterDivider} aria-hidden="true" />
+                      <a href={mainFeatured.credentialUrl} target="_blank" rel="noopener noreferrer" className={styles.fcFooterCta}>
+                        <div className={styles.fcFooterTexts}>
+                          <span className={styles.fcFooterLabel}>VERIFICAÇÃO</span>
+                          <span className={styles.fcFooterValueBlue}>
+                            Ver credencial <ExternalLink size={14} />
+                          </span>
+                        </div>
+                      </a>
+                    </>
+                  )}
+                </div>
               </div>
-              <DialogDescription>
-                {selectedCert?.issuer}{" "}
-                {selectedCert?.date && <span>• {selectedCert.date}</span>}
-              </DialogDescription>
-            </DialogHeader>
+            )}
 
-            <div className="mt-4 text-sm text-slate-700 dark:text-slate-300">
-              {selectedCert?.description ??
-                (selectedCert?.id === 16
-                  ? "A AWS Re/Start foi um curso preparatório que fiz na Escola da Nuvem com 270 horas de conteúdo sobre fundamentos em nuvem, Linux, infraestrutura cloud, arquitetura cloud e etc."
-                  : "Descrição não disponível para este certificado.")}
-            </div>
-
-            <DialogFooter className="mt-6 flex items-center justify-end gap-2">
-              {selectedCert?.pdfUrl && (
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    handleDownloadPdf(selectedCert.pdfUrl!, selectedCert.title);
-                    setIsOpen(false);
-                  }}
-                >
-                  {selectedCert?.type === "Certificação"
-                    ? "Baixar Certificação"
-                    : "Baixar Certificado"}
-                </Button>
+            {/* Right: Vertical Track */}
+            <div className={styles.certificationTrack}>
+              <div className={styles.trackLine} aria-hidden="true" />
+              
+              {/* CLF-C02 */}
+              {secondaryFeatured[0] && (
+                <div className={styles.trackNodeWrapper}>
+                  <div className={`${styles.trackPoint} ${styles.trackPointCompleted}`} />
+                  <div className={styles.trackNodeContent}>
+                    <span className={styles.trackExamCode}>{secondaryFeatured[0].examCode}</span>
+                    <h4 className={styles.trackNodeTitle}>{secondaryFeatured[0].title.replace("AWS Certified ", "")}</h4>
+                    <div className={styles.trackNodeStatusRow}>
+                      <span className={styles.trackStatusLabelCompleted}>CERTIFICADO</span>
+                      {secondaryFeatured[0].date && <span className={styles.trackNodeDate}>{secondaryFeatured[0].date}</span>}
+                    </div>
+                  </div>
+                </div>
               )}
-              {selectedCert?.credentialUrl &&
-                selectedCert.credentialUrl !== "#" && (
-                  <Button variant="outline" asChild>
-                    <a
-                      href={selectedCert.credentialUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2"
-                    >
-                      {selectedCert?.type === "Certificação"
-                        ? "Ver Certificação"
-                        : "Ver Certificado"}
-                      <ExternalLink size={14} />
-                    </a>
-                  </Button>
-                )}
 
-              <DialogClose asChild>
-                <Button>Fechar</Button>
-              </DialogClose>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+              {/* PROGRESSION MILESTONE */}
+              {progressionDays !== null && progressionDays > 0 && (
+                <div 
+                  className={`${styles.progressMilestone} ${styles.revealElement}`} 
+                  aria-label={`${progressionDays} dias entre a certificação AWS Cloud Practitioner e AWS Solutions Architect Associate`}
+                >
+                  <span className={styles.progressDays}>{progressionDays} DIAS</span>
+                  <span className={styles.progressLabel}>CLF-C02 → SAA-C03</span>
+                </div>
+              )}
+
+              {/* SAA-C03 */}
+              {mainFeatured && (
+                <div className={`${styles.trackNodeWrapper} ${styles.trackNodeHighlight}`}>
+                  <div className={`${styles.trackPoint} ${styles.trackPointActive}`}>
+                    <div className={styles.trackPointGlow} />
+                  </div>
+                  <div className={styles.trackNodeContent}>
+                    <span className={styles.trackExamCode}>{mainFeatured.examCode}</span>
+                    <h4 className={styles.trackNodeTitle}>{mainFeatured.title.replace("AWS Certified ", "")}</h4>
+                    <div className={styles.trackNodeStatusRow}>
+                      <span className={styles.trackStatusLabelCompleted}>CERTIFICADO</span>
+                      {mainFeatured.date && <span className={styles.trackNodeDate}>{mainFeatured.date}</span>}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* SAP-C02 */}
+              {secondaryFeatured[1] && (
+                <div className={styles.trackNodeWrapper}>
+                  <div className={`${styles.trackPoint} ${styles.trackPointStudying}`} />
+                  <div className={styles.trackNodeContent}>
+                    <span className={styles.trackExamCode}>{secondaryFeatured[1].examCode}</span>
+                    <h4 className={styles.trackNodeTitle}>{secondaryFeatured[1].title.replace("AWS Certified ", "")}</h4>
+                    <div className={styles.trackNodeStatusRow}>
+                      <span className={styles.trackStatusLabelStudying}>EM ESTUDO</span>
+                      {secondaryFeatured[1].statusMessage && <span className={styles.trackNodeDate}>{secondaryFeatured[1].statusMessage}</span>}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Complementary Area */}
+        <div className={`${styles.credentialsExplorer} ${styles.revealElement}`} style={{ animationDelay: "500ms" }}>
+          <div className={styles.explorerHeader}>
+            <h3 className={styles.explorerTitle}>EXPLORAR CREDENCIAIS</h3>
+            
+            <div className={styles.filters} role="group" aria-label="Filtro de credenciais">
+              <button 
+                className={styles.filterBtn} 
+                data-active={filter === "all"}
+                onClick={() => setFilter("all")}
+              >
+                TODOS <span className={styles.filterCount}>{countAll}</span>
+              </button>
+              <button 
+                className={styles.filterBtn} 
+                data-active={filter === "Certificação"}
+                onClick={() => setFilter("Certificação")}
+              >
+                CERTIFICAÇÕES <span className={styles.filterCount}>{countCertificacoes}</span>
+              </button>
+              <button 
+                className={styles.filterBtn} 
+                data-active={filter === "Certificado"}
+                onClick={() => setFilter("Certificado")}
+              >
+                CERTIFICADOS <span className={styles.filterCount}>{countCertificados}</span>
+              </button>
+              <button 
+                className={styles.filterBtn} 
+                data-active={filter === "Estudando"}
+                onClick={() => setFilter("Estudando")}
+              >
+                ESTUDANDO <span className={styles.filterCount}>{countEstudando}</span>
+              </button>
+            </div>
+          </div>
+
+          <div className={styles.complementaryGrid}>
+            {complementaryCertifications.map((cert, idx) => (
+              <a 
+                key={cert.id}
+                href={cert.credentialUrl && cert.credentialUrl !== "#" ? cert.credentialUrl : cert.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${styles.compCard} ${styles.revealElement}`}
+                style={{ animationDelay: `${600 + (idx % 4) * 100}ms` }}
+                onClick={(e) => {
+                  if (cert.pdfUrl && (!cert.credentialUrl || cert.credentialUrl === "#")) {
+                    handleDownloadPdf(e, cert.pdfUrl, cert.title);
+                  }
+                }}
+              >
+                <div className={styles.compImageWrapper}>
+                  <div className={styles.certificationBadgeFrame}>
+                    <img src={cert.image} alt={cert.title} className={styles.compImage} />
+                  </div>
+                </div>
+                <div className={styles.compContent}>
+                  <span className={styles.compBadge}>{cert.type}</span>
+                  <h4 className={styles.compTitle}>{cert.title}</h4>
+                  <div className={styles.compIssuer}>{cert.issuer}</div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span className={styles.compDate}>{cert.date || cert.status}</span>
+                    {cert.pdfUrl && (!cert.credentialUrl || cert.credentialUrl === "#") ? (
+                      <Download size={14} style={{ color: "var(--certification-muted)" }} />
+                    ) : (
+                      <ExternalLink size={14} style={{ color: "var(--certification-muted)" }} />
+                    )}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
