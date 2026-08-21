@@ -5,8 +5,6 @@ import { BadgeCheck, ExternalLink, Download, CalendarDays, ShieldCheck } from "l
 import { certifications, Certification } from "../../constants/certifications";
 import styles from "./CertificationsSection.module.css";
 
-const FEATURED_IDS = new Set([1, 2, 20]);
-
 export default function CertificationsSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [filter, setFilter] = useState<"all" | "Certificação" | "Certificado" | "Estudando">("all");

@@ -307,9 +307,6 @@
   }
 }
 
-/* Corner Accents */
-.featuredCredential::before, /* can't reuse before, but we can do it via a separate div if needed. We'll skip complex corners and use border/glow as requested */
-
 /* Layout */
 .fcTopLabel {
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
