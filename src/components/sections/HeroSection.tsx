@@ -37,80 +37,21 @@ export default function HeroSection() {
       ).matches;
 
       if (reduceMotion) {
-        gsap.set(
-          [
-            "[data-hero-reveal]",
-            "[data-architecture-shell]",
-            "[data-architecture-node]",
-            "[data-architecture-signal]",
-          ].join(", "),
-          { clearProps: "all" },
-        );
-
-        gsap.set("[data-architecture-path]", {
-          strokeDashoffset: 0,
-        });
+        gsap.set("[data-hero-reveal]", { clearProps: "all" });
 
         return;
       }
-
-      gsap.set("[data-architecture-path]", {
-        strokeDasharray: 1,
-        strokeDashoffset: 1,
-      });
 
       const timeline = gsap.timeline({
         defaults: { ease: "power3.out" },
       });
 
-      timeline
-        .from("[data-hero-reveal]", {
-          y: 20,
-          opacity: 0,
-          duration: 0.58,
-          stagger: 0.09,
-        })
-        .from(
-          "[data-architecture-shell]",
-          {
-            opacity: 0,
-            x: 26,
-            duration: 0.78,
-          },
-          0.3,
-        )
-        .from(
-          "[data-architecture-node]",
-          {
-            opacity: 0,
-            y: 15,
-            scale: 0.965,
-            duration: 0.52,
-            stagger: 0.075,
-          },
-          0.5,
-        )
-        .to(
-          "[data-architecture-path]",
-          {
-            strokeDashoffset: 0,
-            duration: 0.78,
-            stagger: 0.075,
-            ease: "power2.inOut",
-          },
-          0.7,
-        )
-        .from(
-          "[data-architecture-signal]",
-          {
-            opacity: 0,
-            scale: 0,
-            transformOrigin: "center center",
-            duration: 0.25,
-            stagger: 0.04,
-          },
-          1,
-        );
+      timeline.from("[data-hero-reveal]", {
+        y: 20,
+        opacity: 0,
+        duration: 0.58,
+        stagger: 0.09,
+      });
     },
     { scope: root },
   );
