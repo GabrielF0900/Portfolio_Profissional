@@ -1,216 +1,126 @@
 "use client";
 
 import { Project } from "@/types";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { ExternalLink, Github, Youtube, Users } from "lucide-react";
+import { ArrowRight, Github, Cloud, Boxes, Braces, Layers3, FolderGit2 } from "lucide-react";
 import { event } from "@/lib/gtag";
-import { formatDate } from "@/lib/utils";
-import { TechnologiesModal } from "@/components/projects-modal/TechnologiesModal";
+import styles from "./ProjectCard.module.css";
 
 interface ProjectCardProps {
   project: Project;
   onMoreInfo: (project: Project) => void;
 }
 
+function getProjectIcon(project: Project) {
+  const category = (project.category || "").toLowerCase();
+  
+  if (category.includes("cloud") || category.includes("infrastructure")) {
+    return <Cloud aria-hidden="true" />;
+  }
+  if (category.includes("devops")) {
+    return <Boxes aria-hidden="true" />;
+  }
+  if (category.includes("backend")) {
+    return <Braces aria-hidden="true" />;
+  }
+  if (category.includes("full stack")) {
+    return <Layers3 aria-hidden="true" />;
+  }
+  
+  return <FolderGit2 aria-hidden="true" />;
+}
+
 export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
+  const visibleTechnologies = project.technologies.slice(0, 3);
+  const remaining = project.technologies.length - visibleTechnologies.length;
+
   return (
-    <Card
-      className={`group hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col ${project.status === "Em Breve"
-          ? "border-2 border-amber-500 dark:border-amber-400 bg-amber-50 dark:bg-amber-950/20"
-          : ""
-        }`}
-    >
-      {/* Imagem */}
-      <div
-        className={`aspect-video overflow-hidden relative cursor-pointer group ${project.status === "Em Breve"
-            ? "bg-gradient-to-br from-amber-200 to-amber-100 dark:from-amber-900 dark:to-amber-800 flex items-center justify-center"
-            : ""
-          }`}
-      >
-        {project.status === "Em Breve" ? (
-          <div className="text-center">
-            <div className="text-4xl mb-2">🚀</div>
-            <p className="text-lg font-bold text-amber-900 dark:text-amber-100">
-              Em Breve
-            </p>
-            <p className="text-sm text-amber-800 dark:text-amber-200">
-              Projeto Inovador
-            </p>
-          </div>
-        ) : project.links.demo || project.links.github ? (
-          <a
-            href={project.links.demo || project.links.github || undefined}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full h-full"
-          >
-            <img
-              src={project.image || "/placeholder.svg"}
-              alt={project.title}
-              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-              onError={(e) => {
-                e.currentTarget.src = "/placeholder.svg";
-              }}
-            />
-          </a>
-        ) : (
-          <img
-            src={project.image || "/placeholder.svg"}
-            alt={project.title}
-            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-            onError={(e) => {
-              e.currentTarget.src = "/placeholder.svg";
-            }}
-          />
-        )}
-        <div className="absolute top-3 left-3 flex flex-wrap gap-2 pr-3">
-          {project.featured && (
-            <Badge className="bg-slate-900 text-yellow-400 border-none hover:bg-slate-800">
-              ⭐ Destaque
-            </Badge>
-          )}
-          <Badge
-            variant="secondary"
-            className={
+    <article className={styles.card}>
+      <header className={styles.cardTopline}>
+        <span className={styles.projectId}>
+          PROJECT / {String(project.id).padStart(2, "0")}
+        </span>
+
+        <span className={styles.status}>
+          <span
+            className={styles.statusDot}
+            style={
               project.status === "Em Breve"
-                ? "bg-amber-600 text-white hover:bg-amber-700 border-none"
-                : "bg-blue-600 text-white hover:bg-blue-700 border-none"
+                ? {
+                    background: "#d59628",
+                    boxShadow: "0 0 7px rgba(213, 150, 40, 0.55)",
+                  }
+                : undefined
             }
-          >
-            {project.status}
-          </Badge>
-          {project.team && (project.team.size ?? 0) > 1 && (
-            project.team.name === 'Neukox' ? (
-              <Badge className="bg-gradient-to-r from-[#0B1B36] to-[#0A2E5C] text-[#1FB6FF] border border-[#1FB6FF]/30 hover:bg-[#0B1B36] flex items-center gap-1 shadow-[0_0_10px_rgba(31,182,255,0.2)]">
-                <Users className="w-3 h-3" /> Equipe Neukox
-              </Badge>
-            ) : (
-              <Badge className="bg-purple-600 text-white hover:bg-purple-700 border-none flex items-center gap-1">
-                <Users className="w-3 h-3" /> Trabalho em Equipe
-              </Badge>
-            )
-          )}
-        </div>
+          />
+          {project.status}
+        </span>
+      </header>
+
+      <div className={styles.cardIcon}>{getProjectIcon(project)}</div>
+
+      <div className={styles.cardMeta}>
+        <span>{project.category}</span>
+        
+        {project.team && (project.team.size ?? 0) > 1 && (
+          <>
+            <span>•</span>
+            <span>{project.team.name === "Neukox" ? "NEUKOX" : "EQUIPE"}</span>
+          </>
+        )}
+
+        {project.featured && (
+          <>
+            <span>•</span>
+            <span style={{ color: "var(--projects-blue)" }}>DESTAQUE</span>
+          </>
+        )}
       </div>
 
-      {/* Header */}
-      <CardHeader className="pb-3">
-        <div className="flex items-start justify-between gap-3">
-          <div className="flex-1 min-w-0">
-            <div className="flex gap-2 mb-2 flex-wrap">
-              <Badge variant="outline" className="text-xs">
-                {project.category}
-              </Badge>
-              {project.team && project.team.role && (
-                <Badge variant="outline" className="text-xs">
-                  {project.team.role}
-                </Badge>
-              )}
-            </div>
-            <CardTitle className="text-lg group-hover:text-primary transition-colors truncate">
-              {project.title}
-            </CardTitle>
-            <p className="text-xs text-muted-foreground mt-1">
-              {formatDate(project.startDate)} — {formatDate(project.endDate)}
-            </p>
-          </div>
-          <div className="flex flex-col gap-1">
-            {project.links.demo && (
-              <Button variant="ghost" size="sm" asChild>
-                <a
-                  href={project.links.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Ver Demo"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </Button>
-            )}
-            {project.links.github && (
-              <Button variant="ghost" size="sm" asChild>
-                <a
-                  href={project.links.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Ver Código"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    event('clique_ver_codigo', { projeto: project.title });
-                  }}
-                >
-                  <Github className="w-4 h-4" />
-                </a>
-              </Button>
-            )}
-            {project.links.video && (
-              <Button variant="ghost" size="sm" asChild>
-                <a
-                  href={project.links.video}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Vídeo"
-                >
-                  <Youtube className="h-4 w-4 text-red-600" />
-                </a>
-              </Button>
-            )}
-          </div>
-        </div>
-      </CardHeader>
+      <h3 className={styles.cardTitle}>{project.title}</h3>
 
-      {/* Content */}
-      <CardContent className="pb-3 flex-1 flex flex-col">
-        {/* Descrição resumida */}
-        <CardDescription className="mb-3 text-sm line-clamp-2 leading-relaxed">
-          {project.description.split(".")[0].substring(0, 120)}
-        </CardDescription>
+      <p className={styles.cardDescription}>{project.description}</p>
 
-        {/* Destaques minimalistas */}
-        {project.highlights && project.highlights.length > 0 && (
-          <div className="mb-4">
-            <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">
-              Destaques
-            </p>
-            <ul className="text-xs text-muted-foreground space-y-1">
-              {project.highlights.slice(0, 2).map((highlight, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <div className="w-1 h-1 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
-                  <span>{highlight}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className={styles.technologies}>
+        {visibleTechnologies.map((tech) => (
+          <span key={tech} className={styles.tech}>
+            {tech}
+          </span>
+        ))}
+        {remaining > 0 && (
+          <span className={`${styles.tech} ${styles.techMore}`}>
+            +{remaining}
+          </span>
+        )}
+      </div>
+
+      <footer className={styles.cardFooter}>
+        {project.links.github ? (
+          <a
+            href={project.links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.githubLink}
+            onClick={(e) => {
+              e.stopPropagation();
+              event("clique_ver_codigo", { projeto: project.title });
+            }}
+            aria-label="Ver código fonte no GitHub"
+          >
+            <Github aria-hidden="true" />
+          </a>
+        ) : (
+          <div /> // Placeholder to keep flex space-between correct if no github link
         )}
 
-        {/* Stack principal com modal flutuante */}
-        <div className="mb-4">
-          <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">
-            Stack
-          </p>
-          <TechnologiesModal
-            technologies={project.technologies}
-            visibleCount={5}
-          />
-        </div>
-
-        {/* Botão */}
-        <Button
+        <button
+          type="button"
+          className={styles.detailsButton}
           onClick={() => onMoreInfo(project)}
-          className="w-full mt-auto"
-          variant="default"
         >
-          MAIS INFORMAÇÕES
-        </Button>
-      </CardContent>
-    </Card>
+          Ver detalhes
+          <ArrowRight aria-hidden="true" />
+        </button>
+      </footer>
+    </article>
   );
 }

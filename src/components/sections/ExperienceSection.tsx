@@ -481,6 +481,28 @@ export default function ExperienceSection() {
                   )}
                 </div>
               ))}
+
+              <svg
+                className={styles.pipelineBusMobile}
+                viewBox="0 0 76 1000"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path className={styles.busDrop} d="M76 125 H30" />
+                <path className={styles.busDrop} d="M76 375 H30" />
+                <path className={styles.busDrop} d="M76 625 H30" />
+                <path className={styles.busDrop} d="M76 875 H30" />
+
+                <path className={styles.busBase} d="M30 42 V958" pathLength="100" />
+                <path className={styles.busSignal} d="M30 42 V958" pathLength="100" />
+
+                <circle className={`${styles.busPoint} ${styles.busPoint1}`} cx="30" cy="125" r="5" />
+                <circle className={`${styles.busPoint} ${styles.busPoint2}`} cx="30" cy="375" r="5" />
+                <circle className={`${styles.busPoint} ${styles.busPoint3}`} cx="30" cy="625" r="5" />
+                <circle className={`${styles.busPoint} ${styles.busPoint4}`} cx="30" cy="875" r="5" />
+
+                <path className={styles.busDashed} d="M10 42 V958" />
+              </svg>
             </div>
 
             <svg

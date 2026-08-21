@@ -471,7 +471,7 @@
 
 @media (max-width: 767px) {
   .wrapper {
-    min-height: 34rem;
+    min-height: 39rem;
   }
 
   .orbitStage {
@@ -484,11 +484,11 @@
   }
 
   .flowNode {
-    top: auto;
-    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100% - 2rem);
     min-width: 0;
-    max-width: calc(50% - 0.75rem);
-    transform: none;
   }
 
   .flowNode small {
@@ -498,11 +498,15 @@
   }
 
   .flowNodeLeft {
-    left: 4rem;
+    top: 1.5rem;
+    bottom: auto;
+    right: auto;
   }
 
   .flowNodeRight {
-    right: 4.5rem;
+    top: auto;
+    bottom: 1.5rem;
+    right: auto;
   }
 
   .legend,
@@ -576,17 +580,22 @@
   }
 
   .flowNode {
-    bottom: 0.75rem;
     gap: 0.45rem;
     padding: 0.55rem 0.6rem;
   }
 
   .flowNodeLeft {
-    left: 0.5rem;
+    top: 0.75rem;
+    bottom: auto;
+    left: 50%;
+    right: auto;
   }
 
   .flowNodeRight {
-    right: 0.5rem;
+    top: auto;
+    bottom: 0.75rem;
+    left: 50%;
+    right: auto;
   }
 
   .flowIcon {

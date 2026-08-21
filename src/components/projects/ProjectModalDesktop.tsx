@@ -1,9 +1,33 @@
 "use client";
 
 import { Project } from "@/types";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import {
+  CalendarDays,
+  Layers3,
+  Star,
+} from "lucide-react";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from "@/components/ui/dialog";
+
 import { formatDate } from "@/lib/utils";
-import { ActionButtons, ModalScrollContent, ModalStatusFooter } from "./ModalShared";
+
+import {
+  ModalBadges,
+  ModalTechnologies,
+  PrimaryActions,
+  ProjectHighlights,
+  ProjectMetrics,
+  ProjectVisual,
+  QuickLinks,
+  TeamInfo,
+} from "./ModalShared";
+
+import styles from "./ProjectModal.module.css";
 
 interface Props {
   project: Project;
@@ -12,67 +36,150 @@ interface Props {
   setImageModalOpen: (open: boolean) => void;
 }
 
-/** Badge com visual de selo: fundo, borda e texto bem definidos em light e dark mode */
-function ModalBadge({ children }: { children: React.ReactNode }) {
+export default function ProjectModalDesktop({
+  project,
+  open,
+  onOpenChange,
+  setImageModalOpen,
+}: Props) {
   return (
-    <span className="inline-flex items-center rounded-md border border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 px-2.5 py-0.5 text-xs font-semibold text-slate-800 dark:text-slate-100 ring-0">
-      {children}
-    </span>
-  );
-}
+    <Dialog
+      open={open}
+      onOpenChange={onOpenChange}
+    >
+      <DialogContent
+        className={styles.modal}
+      >
+        <div className={styles.desktopShell}>
+          {/* LEFT */}
+          <aside className={styles.leftColumn}>
+            <ModalBadges project={project} />
 
-export default function ProjectModalDesktop({ project, open, onOpenChange, setImageModalOpen }: Props) {
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-full max-w-4xl max-h-[85vh] overflow-hidden p-0 flex flex-col rounded-xl border border-border shadow-2xl bg-background">
+            <DialogTitle className={styles.title}>
+              {project.title}
+            </DialogTitle>
 
-        {/* Header */}
-        <div className="border-b border-border bg-card p-6 md:p-8 pr-16 shrink-0">
-          <DialogHeader className="text-left">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-
-              {/* Bloco de Informações do Projeto */}
-              <div className="space-y-3 min-w-0 flex-1">
-                {/* Selos de categoria e role */}
-                <div className="flex items-center gap-2 flex-wrap">
-                  <ModalBadge>{project.category}</ModalBadge>
-                  {project.team?.role && (
-                    <ModalBadge>{project.team.role}</ModalBadge>
-                  )}
-                </div>
-
-                <div className="space-y-1.5">
-                  <DialogTitle className="text-xl md:text-2xl font-bold tracking-tight text-card-foreground break-words">
-                    {project.title}
-                  </DialogTitle>
-                  <DialogDescription className="text-sm font-medium text-muted-foreground flex items-center gap-1.5">
-                    <span>{formatDate(project.startDate)}</span>
-                    <span className="text-muted-foreground/40">•</span>
-                    <span>{project.endDate ? formatDate(project.endDate) : "Atual"}</span>
-                  </DialogDescription>
-                </div>
-              </div>
-
-              {/* Botões de Ação */}
-              <ActionButtons
-                project={project}
-                onImageClick={() => setImageModalOpen(true)}
-                className="flex flex-row items-center gap-2.5 shrink-0 self-start md:self-center bg-muted p-2 rounded-lg border border-border"
+            <DialogDescription
+              className={styles.meta}
+            >
+              <CalendarDays
+                size={14}
+                aria-hidden="true"
               />
 
-            </div>
-          </DialogHeader>
+              <span>
+                {formatDate(project.startDate)}
+              </span>
+
+              <span
+                className={styles.metaSeparator}
+              >
+                •
+              </span>
+
+              <span>
+                {project.endDate
+                  ? formatDate(project.endDate)
+                  : "Atual"}
+              </span>
+
+              <span
+                className={styles.statusInline}
+              >
+                {project.status}
+              </span>
+            </DialogDescription>
+
+            {/* ABOUT */}
+            <section className={styles.section}>
+              <h3 className={styles.sectionTitle}>
+                <Layers3 />
+                SOBRE O PROJETO
+              </h3>
+
+              <p className={styles.description}>
+                {project.description}
+              </p>
+            </section>
+
+            {/* TECHNOLOGIES */}
+            <section className={styles.section}>
+              <h3 className={styles.sectionTitle}>
+                <Layers3 />
+                TECNOLOGIAS
+              </h3>
+
+              <ModalTechnologies
+                project={project}
+              />
+            </section>
+
+            {/* QUICK LINKS */}
+            <section className={styles.section}>
+              <h3 className={styles.sectionTitle}>
+                <Layers3 />
+                LINKS RÁPIDOS
+              </h3>
+
+              <QuickLinks project={project} />
+
+              <TeamInfo project={project} />
+            </section>
+
+            <PrimaryActions
+              project={project}
+              onImageClick={() =>
+                setImageModalOpen(true)
+              }
+            />
+          </aside>
+
+          {/* RIGHT */}
+          <main className={styles.rightColumn}>
+            <ProjectVisual
+              project={project}
+              onImageClick={() =>
+                setImageModalOpen(true)
+              }
+            />
+
+            {project.highlights &&
+              project.highlights.length > 0 && (
+                <section className={styles.section}>
+                  <h3
+                    className={
+                      styles.sectionTitle
+                    }
+                  >
+                    <Star />
+                    DESTAQUES DO PROJETO
+                  </h3>
+
+                  <ProjectHighlights
+                    project={project}
+                  />
+                </section>
+              )}
+
+            {project.metrics &&
+              project.metrics.length > 0 && (
+                <section className={styles.section}>
+                  <h3
+                    className={
+                      styles.sectionTitle
+                    }
+                  >
+                    <Layers3 />
+                    MÉTRICAS
+                  </h3>
+
+                  <ProjectMetrics
+                    project={project}
+                  />
+                </section>
+              )}
+          </main>
         </div>
-
-        {/* Conteúdo com scroll */}
-        <ModalScrollContent
-          project={project}
-          className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 min-w-0"
-        />
-
-        {/* Rodapé de Status */}
-        <ModalStatusFooter status={project.status} />
-
       </DialogContent>
     </Dialog>
   );

@@ -122,7 +122,7 @@ export const projects: PortfolioData = {
       },
       startDate: "2026-05",
       endDate: "2026-06",
-      image: "/images/19-transferido.jpeg",
+      image: "/ImagemAtualizadaSafewallet.png",
       highlights: [
         "Autenticação Stateless segura via Spring Security e tokens JWT",
         "Proteção rigorosa de credenciais com BCryptPasswordEncoder",

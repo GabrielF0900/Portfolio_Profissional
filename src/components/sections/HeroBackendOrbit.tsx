@@ -12,7 +12,7 @@ import {
   ShieldCheck,
   Workflow,
 } from "lucide-react";
-import { forwardRef, useRef } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 
 import { AnimatedBeam } from "@/components/ui/animated-beam";
 import { OrbitingCircles } from "@/components/ui/orbiting-circles";
@@ -65,6 +65,17 @@ export default function HeroBackendOrbit() {
   const requestRef = useRef<HTMLDivElement>(null);
   const coreRef = useRef<HTMLDivElement>(null);
   const awsRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => {
+      media.removeEventListener("change", update);
+    };
+  }, []);
 
   return (
     <div ref={containerRef} className={styles.wrapper}>
@@ -183,7 +194,7 @@ export default function HeroBackendOrbit() {
         gradientStartColor="#1d63ff"
         gradientStopColor="#63b3ff"
         curvature={0}
-        endXOffset={-92}
+        endXOffset={isMobile ? 0 : -92}
       />
 
       <AnimatedBeam
@@ -200,7 +211,7 @@ export default function HeroBackendOrbit() {
         gradientStartColor="#347fff"
         gradientStopColor="#9ed4ff"
         curvature={0}
-        startXOffset={92}
+        startXOffset={isMobile ? 0 : 92}
       />
 
       <div className={styles.legend} aria-hidden="true">
