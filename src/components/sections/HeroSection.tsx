@@ -1,216 +1,181 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { useRef } from "react";
 import {
   ArrowRight,
+  Code2,
+  Download,
   Github,
   Linkedin,
-  Mail,
   Zap,
-  Copy,
-  Check,
-  Download,
 } from "lucide-react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import { useScrollToSection } from "../../hooks/useScroll";
-import { toast } from "sonner";
 import { event } from "@/lib/gtag";
+import HeroBackendOrbit from "./HeroBackendOrbit";
+import styles from "./HeroSection.module.css";
+
+gsap.registerPlugin(useGSAP);
 
 export default function HeroSection() {
+  const root = useRef<HTMLElement>(null);
   const scrollToSection = useScrollToSection();
-  const [isContactOpen, setIsContactOpen] = useState(false);
-  const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
-  const emailClickedRef = useRef(false);
-
-  const handleCopyEmail = (email: string) => {
-    navigator.clipboard.writeText(email);
-    setCopiedEmail(email);
-    setTimeout(() => setCopiedEmail(null), 2000);
-  };
-
-  const handleOpenGmail = () => {
-    event('clique_link_externo', { destino: 'contato' });
-    emailClickedRef.current = true;
-    setIsContactOpen(false);
-    toast.info("Abrindo Gmail... ", {
-      description: "Você será redirecionado para compor seu email.",
-      duration: 3000,
-    });
-  };
 
   const handleDownloadCV = () => {
-    event('download_cv');
+    event("download_cv");
+
     const link = document.createElement("a");
     link.href = "/CV_GabrielFalcaoJava.pdf";
     link.download = "CV_GabrielFalcaoJava.pdf";
     link.click();
   };
 
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible" && emailClickedRef.current) {
-        emailClickedRef.current = false;
-        setTimeout(() => {
-          toast.success("Email enviado para Gabriel Falcão?", {
-            description: "Obrigado pelo contato! Ele te retornará em breve.",
-            duration: 5000,
-          });
-        }, 500);
-      }
-    };
+  useGSAP(
+    () => {
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
 
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () =>
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-  }, []);
+      if (reduceMotion) {
+        gsap.set("[data-hero-reveal]", { clearProps: "all" });
+
+        return;
+      }
+
+      const timeline = gsap.timeline({
+        defaults: { ease: "power3.out" },
+      });
+
+      timeline.from("[data-hero-reveal]", {
+        y: 20,
+        opacity: 0,
+        duration: 0.58,
+        stagger: 0.09,
+      });
+    },
+    { scope: root },
+  );
 
   return (
-    <section id="inicio" className="relative overflow-hidden pt-16">
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]" />
-      <div className="relative container mx-auto px-4 py-16 md:py-24 lg:py-32">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs md:text-sm font-medium mb-6">
-              <Zap className="w-4 h-4" />
-              Disponível para novos projetos
+    <section
+      ref={root}
+      id="inicio"
+      aria-labelledby="hero-title"
+      className={styles.hero}
+    >
+      <div className={styles.ambient} aria-hidden="true" />
+      <div className={styles.topGrid} aria-hidden="true" />
+
+      <div className={styles.container}>
+        <div className={styles.copy}>
+          <div data-hero-reveal className={styles.heroMetaRow}>
+            <div className={styles.sectionMarker}>
+              <span className={styles.sectionMarkerIcon} aria-hidden="true">
+                <Code2 />
+              </span>
+              <span className={styles.sectionMarkerNumber}>01</span>
+              <span className={styles.sectionMarkerSlash} aria-hidden="true">/</span>
+              <span className={styles.sectionMarkerLabel}>INÍCIO</span>
             </div>
-            <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-6">
+
+            <div className={styles.availability}>
+              <Zap aria-hidden="true" />
+              <span>Disponível para novos projetos</span>
+            </div>
+          </div>
+
+          <h1 id="hero-title" className={styles.heading}>
+            <span data-hero-reveal className={styles.namePrimary}>
               Gabriel Falcão
-              <span className="block text-primary">da Cruz</span>
-            </h1>
-            <p className="text-base md:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Desenvolvedor Backend Java, com atuação em Spring Boot, Spring Security e Spring Data JPA, aplicando arquitetura Cloud-Native na AWS. Certificado AWS Solutions Architect – Associate (SAA-C03) e Cloud Practitioner (CLF-C02), utilizo esse embasamento em infraestrutura para desenhar sistemas backend robustos, seguros e escaláveis desde a primeira linha de código. Tenho também experiência prática em Node.js/TypeScript, que utilizo como stack complementar em projetos full-stack.
-            </p>
+            </span>
+
+            <span data-hero-reveal className={styles.nameSecondary}>
+              da Cruz
+            </span>
+
+            <span
+              data-hero-reveal
+              className={styles.headingDivider}
+              aria-hidden="true"
+            />
+
+            <span data-hero-reveal className={styles.role}>
+              <strong>BACKEND</strong>
+              <em>JAVA.</em>
+            </span>
+          </h1>
+
+          <div
+            data-hero-reveal
+            className={styles.stack}
+            aria-label="Especialidades principais"
+          >
+            <span>Spring Boot</span>
+            <i aria-hidden="true" />
+            <span>Sistemas Distribuídos</span>
+            <i aria-hidden="true" />
+            <span>AWS</span>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-4 justify-center mb-12">
-            <Button
-              size="lg"
-              className="text-lg px-8"
+          <p data-hero-reveal className={styles.description}>
+            Desenvolvedor Backend Java com foco em soluções robustas e
+            escaláveis. Atuação com <strong>Spring Boot</strong>,{" "}
+            <strong>Spring Security</strong> e{" "}
+            <strong>Spring Data JPA</strong>, aplicando arquitetura{" "}
+            <strong>Cloud-Native na AWS</strong>. Também utilizo{" "}
+            <strong>Node.js/TypeScript</strong> como stack complementar.
+          </p>
+
+          <div data-hero-reveal className={styles.actions}>
+            <button
+              type="button"
               onClick={() => scrollToSection("projetos")}
+              className={`${styles.button} ${styles.buttonPrimary}`}
             >
-              Ver Projetos
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-lg px-8 bg-transparent"
-              onClick={() => setIsContactOpen(true)}
-            >
-              <Mail className="w-5 h-5 mr-2" />
-              Entrar em Contato
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-lg px-8 bg-transparent hover:bg-primary hover:text-primary-foreground transition-colors"
+              <span>Ver projetos</span>
+              <ArrowRight aria-hidden="true" />
+            </button>
+
+            <button
+              type="button"
               onClick={handleDownloadCV}
+              className={`${styles.button} ${styles.buttonSecondary}`}
             >
-              <Download className="w-5 h-5 mr-2" />
-              Baixar CV
-            </Button>
-
-            <Dialog open={isContactOpen} onOpenChange={setIsContactOpen}>
-              <DialogContent className="sm:max-w-md w-[95vw] p-6 sm:p-8">
-                <DialogHeader>
-                  <DialogTitle className="text-center text-xl">
-                    Entre em Contato
-                  </DialogTitle>
-                </DialogHeader>
-                <div className="flex flex-col items-center gap-4 py-2">
-                  <Mail className="w-12 h-12 text-primary" />
-                  <p className="text-sm text-muted-foreground text-center">
-                    Escolha um dos e-mails abaixo para entrar em contato:
-                  </p>
-                  <div className="flex flex-col gap-3 w-full">
-                    <div className="flex items-center justify-between gap-2 bg-muted px-4 py-3 rounded-lg overflow-hidden border">
-                      <span className="font-medium text-sm sm:text-base truncate">
-                        falcaocruz.tech@gmail.com
-                      </span>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() =>
-                          handleCopyEmail("falcaocruz.tech@gmail.com")
-                        }
-                        className="h-8 w-8 p-0 flex-shrink-0 hover:bg-slate-200 dark:hover:bg-slate-700"
-                      >
-                        {copiedEmail === "falcaocruz.tech@gmail.com" ? (
-                          <Check className="w-4 h-4 text-green-500" />
-                        ) : (
-                          <Copy className="w-4 h-4" />
-                        )}
-                      </Button>
-                    </div>
-                    <div className="flex items-center justify-between gap-2 bg-muted px-4 py-3 rounded-lg overflow-hidden border">
-                      <span className="font-medium text-sm sm:text-base truncate">
-                        Gabrielcfonline0900@gmail.com
-                      </span>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() =>
-                          handleCopyEmail("Gabrielcfonline0900@gmail.com")
-                        }
-                        className="h-8 w-8 p-0 flex-shrink-0 hover:bg-slate-200 dark:hover:bg-slate-700"
-                      >
-                        {copiedEmail === "Gabrielcfonline0900@gmail.com" ? (
-                          <Check className="w-4 h-4 text-green-500" />
-                        ) : (
-                          <Copy className="w-4 h-4" />
-                        )}
-                      </Button>
-                    </div>
-                  </div>
-                  <Button
-                    asChild
-                    className="mt-4 w-full h-11 text-base font-semibold"
-                    onClick={handleOpenGmail}
-                  >
-                    <a
-                      href="https://mail.google.com/mail/?view=cm&fs=1&to=falcaocruz.tech@gmail.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Abrir no Gmail
-                    </a>
-                  </Button>
-                </div>
-              </DialogContent>
-            </Dialog>
+              <span>Baixar CV</span>
+              <Download aria-hidden="true" />
+            </button>
           </div>
 
-          <div className="flex justify-center gap-6">
-            <Button variant="ghost" size="lg" asChild>
-              <a
-                href="https://www.linkedin.com/in/gabrielfalcaodev/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => event('clique_link_externo', { destino: 'linkedin' })}
-                className="text-muted-foreground hover:text-primary"
-              >
-                <Linkedin className="w-6 h-6" />
-              </a>
-            </Button>
-            <Button variant="ghost" size="lg" asChild>
-              <a
-                href="https://github.com/GabrielF0900"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => event('clique_link_externo', { destino: 'github' })}
-                className="text-muted-foreground hover:text-primary"
-              >
-                <Github className="w-6 h-6" />
-              </a>
-            </Button>
+          <div data-hero-reveal className={styles.socials}>
+            <a
+              href="https://github.com/GabrielF0900"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                event("clique_link_externo", { destino: "github" })
+              }
+            >
+              <Github aria-hidden="true" />
+              <span>/GabrielF0900</span>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/gabrielfalcaodev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                event("clique_link_externo", { destino: "linkedin" })
+              }
+            >
+              <Linkedin aria-hidden="true" />
+              <span>/in/gabrielfalcaodev</span>
+            </a>
           </div>
+        </div>
+
+        <div className={styles.architectureStage}>
+          <HeroBackendOrbit />
         </div>
       </div>
     </section>

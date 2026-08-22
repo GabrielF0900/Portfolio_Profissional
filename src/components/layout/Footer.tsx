@@ -1,78 +1,601 @@
-import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Clock } from "lucide-react";
+"use client";
+
+import {
+  ArrowUpRight,
+  Clock3,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+} from "lucide-react";
+
+import { useRef } from "react";
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import { event } from "@/lib/gtag";
 import { getLastUpdateFormatted } from "@/constants/lastUpdate";
 
+import styles from "./Footer.module.css";
+
+const footerNavigation = [
+  { label: "Início", href: "#inicio" },
+  { label: "Sobre", href: "#sobre" },
+  { label: "Experiência", href: "#experiencia" },
+  { label: "Projetos", href: "#projetos" },
+  { label: "Tecnologias", href: "#tecnologias" },
+  { label: "Skills", href: "#skills" },
+  { label: "Certificações", href: "#certificacoes" },
+  { label: "Contato", href: "#contato" },
+];
+
 export default function Footer() {
-  const lastUpdate = getLastUpdateFormatted();
+  const footerRef =
+    useRef<HTMLElement>(null);
+
+  const lastUpdate =
+    getLastUpdateFormatted();
+
+  useGSAP(
+    () => {
+      if (!footerRef.current) {
+        return;
+      }
+
+      const reduceMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+      if (reduceMotion) {
+        return;
+      }
+
+      gsap.registerPlugin(
+        ScrollTrigger
+      );
+
+      const timeline =
+        gsap.timeline({
+          scrollTrigger: {
+            trigger:
+              footerRef.current,
+
+            start:
+              "top 84%",
+
+            once:
+              true,
+
+            invalidateOnRefresh:
+              true,
+          },
+        });
+
+      /* =========================================
+         1. IDENTIDADE ENTRA DA ESQUERDA
+         ========================================= */
+
+      timeline.fromTo(
+        `.${styles.identity}`,
+        {
+          opacity: 0,
+          x: -34,
+        },
+        {
+          opacity: 1,
+          x: 0,
+
+          duration: 0.68,
+
+          ease:
+            "power3.out",
+
+          clearProps:
+            "transform,opacity",
+        }
+      );
+
+      /* =========================================
+         2. MONOGRAMA MATERIALIZA
+         ========================================= */
+
+      timeline.fromTo(
+        `.${styles.monogram}`,
+        {
+          opacity: 0,
+          scale: 0.82,
+          rotate: -5,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          rotate: 0,
+
+          duration: 0.58,
+
+          ease:
+            "back.out(1.3)",
+
+          clearProps:
+            "transform,opacity",
+        },
+
+        "-=0.44"
+      );
+
+      /*
+       * Os quatro cantos são montados
+       * sequencialmente.
+       */
+
+      timeline.fromTo(
+        [
+          `.${styles.cornerTL}`,
+          `.${styles.cornerTR}`,
+          `.${styles.cornerBR}`,
+          `.${styles.cornerBL}`,
+        ],
+        {
+          opacity: 0,
+          scale: 0,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+
+          duration: 0.24,
+
+          stagger: 0.055,
+
+          ease:
+            "back.out(1.8)",
+
+          clearProps:
+            "transform,opacity",
+        },
+
+        "-=0.45"
+      );
+
+      /* =========================================
+         3. TEXTO IDENTIDADE
+         ========================================= */
+
+      timeline.fromTo(
+        [
+          `.${styles.nameRow}`,
+          `.${styles.role}`,
+          `.${styles.bio}`,
+        ],
+        {
+          opacity: 0,
+          y: 14,
+        },
+        {
+          opacity: 1,
+          y: 0,
+
+          duration: 0.45,
+
+          stagger: 0.075,
+
+          ease:
+            "power2.out",
+
+          clearProps:
+            "transform,opacity",
+        },
+
+        "-=0.28"
+      );
+
+      /* =========================================
+         4. COLUNAS
+         ========================================= */
+
+      timeline.fromTo(
+        `.${styles.column}`,
+        {
+          opacity: 0,
+          y: 24,
+        },
+        {
+          opacity: 1,
+          y: 0,
+
+          duration: 0.52,
+
+          stagger: 0.1,
+
+          ease:
+            "power3.out",
+
+          clearProps:
+            "transform,opacity",
+        },
+
+        "-=0.24"
+      );
+
+      /* =========================================
+         5. UPDATE PANEL
+         ========================================= */
+
+      timeline.fromTo(
+        `.${styles.updatePanel}`,
+        {
+          opacity: 0,
+          x: 28,
+          scaleX: 0.985,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          scaleX: 1,
+
+          duration: 0.58,
+
+          ease:
+            "power3.out",
+
+          clearProps:
+            "transform,opacity",
+        },
+
+        "-=0.18"
+      );
+
+      timeline.fromTo(
+        `.${styles.updateIcon}`,
+        {
+          opacity: 0,
+          scale: 0.72,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+
+          duration: 0.36,
+
+          ease:
+            "back.out(1.6)",
+
+          clearProps:
+            "transform,opacity",
+        },
+
+        "-=0.34"
+      );
+
+      timeline.fromTo(
+        `.${styles.activeStatus}`,
+        {
+          opacity: 0,
+          x: 8,
+        },
+        {
+          opacity: 1,
+          x: 0,
+
+          duration: 0.34,
+
+          ease:
+            "power2.out",
+
+          clearProps:
+            "transform,opacity",
+        },
+
+        "-=0.25"
+      );
+
+      /* =========================================
+         6. BASE DO FOOTER
+         ========================================= */
+
+      timeline.fromTo(
+        `.${styles.bottomBar}`,
+        {
+          opacity: 0,
+          y: 12,
+        },
+        {
+          opacity: 1,
+          y: 0,
+
+          duration: 0.46,
+
+          ease:
+            "power2.out",
+
+          clearProps:
+            "transform,opacity",
+        },
+
+        "-=0.14"
+      );
+    },
+
+    {
+      scope: footerRef,
+    }
+  );
 
   return (
-    <footer className="py-8 md:py-12 bg-white dark:bg-slate-900 text-slate-700 dark:text-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Seção de última atualização */}
-          <div className="mb-6 md:mb-8 pb-6 md:pb-8 border-b border-slate-200 dark:border-slate-700">
-            <div className="bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-900 rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center gap-4 hover:from-slate-200 hover:to-slate-100 dark:hover:from-slate-700 dark:hover:to-slate-800 transition-all duration-300">
-              <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur opacity-20"></div>
-                <Clock className="relative w-6 h-6 text-blue-500 dark:text-blue-400 animate-pulse" />
+    <footer
+      ref={footerRef}
+      className={styles.footer}
+    >
+      <div
+        className={styles.footerArchitecture}
+        aria-hidden="true"
+      />
+
+      <div className={styles.container}>
+        <div className={styles.mainGrid}>
+          {/* =========================
+              IDENTIDADE
+              ========================= */}
+
+          <div className={styles.identity}>
+            <div
+              className={styles.monogram}
+              aria-hidden="true"
+            >
+              <span
+                className={styles.monogramGlow}
+              />
+
+              <span
+                className={styles.cornerTL}
+              />
+
+              <span
+                className={styles.cornerTR}
+              />
+
+              <span
+                className={styles.cornerBL}
+              />
+
+              <span
+                className={styles.cornerBR}
+              />
+
+              <span className={styles.gf}>
+                GF
+              </span>
+            </div>
+
+            <div
+              className={styles.identityText}
+            >
+              <div className={styles.nameRow}>
+                <span
+                  className={styles.statusDot}
+                  aria-hidden="true"
+                />
+
+                <h2>
+                  Gabriel Falcão da Cruz
+                </h2>
               </div>
-              <div className="flex-1">
-                <p className="text-base font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider">
-                  Última Atualização
-                </p>
-                <p className="text-base font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider">
-                  {lastUpdate}
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="inline-flex h-2.5 w-2.5 rounded-full bg-green-500"></span>
-                <span className="text-base font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider">
-                  Ativo
-                </span>
-              </div>
+
+              <p className={styles.role}>
+                Backend Java | Spring Boot |
+                AWS Solutions Architect
+                Associate (SAA-C03)
+              </p>
+
+              <p className={styles.bio}>
+                Desenvolvedor Backend com foco
+                em soluções robustas e
+                escaláveis. Atuação com Spring
+                Boot, Spring Security e Spring
+                Data JPA, aplicando arquitetura
+                Cloud-Native na AWS.
+              </p>
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <h3 className="text-base font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider">
-                Gabriel Falcão da Cruz
-              </h3>
-              <p className="text-sm text-slate-700 dark:text-slate-300 font-bold">
-                Backend Java | Spring Boot | AWS Solutions Architect Associate (SAA-C03)
-              </p>
+          {/* =========================
+              COLUNAS
+              ========================= */}
+
+          <div className={styles.linkColumns}>
+            <div className={styles.column}>
+              <h3>NAVEGAÇÃO</h3>
+
+              <nav
+                aria-label="Navegação do rodapé"
+              >
+                {footerNavigation.map(
+                  (item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                    >
+                      {item.label}
+                    </a>
+                  )
+                )}
+              </nav>
             </div>
-            <div className="flex gap-4">
-              <Button variant="ghost" size="sm" asChild>
+
+            <div className={styles.column}>
+              <h3>CONECTE-SE</h3>
+
+              <div
+                className={
+                  styles.externalLinks
+                }
+              >
                 <a
                   href="https://www.linkedin.com/in/gabrielfalcaodev/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => event('clique_link_externo', { destino: 'linkedin' })}
-                  className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
+                  onClick={() =>
+                    event(
+                      "clique_link_externo",
+                      {
+                        destino:
+                          "linkedin",
+                      }
+                    )
+                  }
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <Linkedin
+                    aria-hidden="true"
+                  />
+
+                  <span>
+                    LinkedIn
+                  </span>
+
+                  <ArrowUpRight
+                    aria-hidden="true"
+                  />
                 </a>
-              </Button>
-              <Button variant="ghost" size="sm" asChild>
+
                 <a
                   href="https://github.com/GabrielF0900"
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => event('clique_link_externo', { destino: 'github' })}
-                  className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
+                  onClick={() =>
+                    event(
+                      "clique_link_externo",
+                      {
+                        destino:
+                          "github",
+                      }
+                    )
+                  }
                 >
-                  <Github className="w-5 h-5" />
+                  <Github
+                    aria-hidden="true"
+                  />
+
+                  <span>
+                    GitHub
+                  </span>
+
+                  <ArrowUpRight
+                    aria-hidden="true"
+                  />
                 </a>
-              </Button>
+
+                <a
+                  href="mailto:falcaocruz.tech@gmail.com"
+                  onClick={() =>
+                    event(
+                      "clique_link_externo",
+                      {
+                        destino:
+                          "contato",
+                      }
+                    )
+                  }
+                >
+                  <Mail
+                    aria-hidden="true"
+                  />
+
+                  <span>
+                    Email
+                  </span>
+
+                  <ArrowUpRight
+                    aria-hidden="true"
+                  />
+                </a>
+              </div>
+            </div>
+
+            <div className={styles.column}>
+              <h3>LOCALIZAÇÃO</h3>
+
+              <div
+                className={styles.location}
+              >
+                <p>
+                  <MapPin
+                    aria-hidden="true"
+                  />
+
+                  <span>
+                    Brasil
+                  </span>
+                </p>
+
+                <span>
+                  Disponível para trabalho
+                  remoto global
+                </span>
+              </div>
             </div>
           </div>
-          <div className="border-t border-slate-200 dark:border-slate-700 mt-8 pt-8 text-center">
-            <p className="text-sm text-slate-700 dark:text-slate-300 font-bold">
-              © 2026 Gabriel Falcão da Cruz. Todos os direitos reservados.
-            </p>
+        </div>
+
+        {/* =========================
+            UPDATE
+            ========================= */}
+
+        <div className={styles.updatePanel}>
+          <div
+            className={styles.updateSignal}
+            aria-hidden="true"
+          />
+
+          <div className={styles.updateLeft}>
+            <span
+              className={styles.updateIcon}
+            >
+              <Clock3
+                aria-hidden="true"
+              />
+            </span>
+
+            <div>
+              <span
+                className={
+                  styles.updateLabel
+                }
+              >
+                ÚLTIMA ATUALIZAÇÃO
+              </span>
+
+              <strong>
+                {lastUpdate}
+              </strong>
+            </div>
           </div>
+
+          <div
+            className={styles.activeStatus}
+          >
+            <span aria-hidden="true" />
+
+            ATIVO
+          </div>
+        </div>
+
+        {/* =========================
+            BOTTOM
+            ========================= */}
+
+        <div className={styles.bottomBar}>
+          <p>
+            © <span>2026</span>{" "}
+            Gabriel Falcão da Cruz
+          </p>
+
+          <p className={styles.signature}>
+            Feito com <span>♡</span>,
+            código e propósito.
+          </p>
         </div>
       </div>
     </footer>

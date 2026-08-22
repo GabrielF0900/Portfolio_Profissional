@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Menu, X, Download } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Download, Github, Linkedin, Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { navigationItems } from "../../constants/navigation";
 import { useScrollToSection } from "../../hooks/useScroll";
@@ -23,144 +22,166 @@ export default function Navigation({ activeSection }: NavigationProps) {
   };
 
   const handleDownloadCV = () => {
-    event('download_cv');
+    event("download_cv");
     const link = document.createElement("a");
     link.href = "/CV_GabrielFalcaoJava.pdf";
     link.download = "CV_GabrielFalcaoJava.pdf";
     link.click();
   };
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMenuOpen(false);
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [isMenuOpen]);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+    <>
+      <a href="#inicio" className="skip-link">
+        Ir para o conteúdo
+      </a>
+      <nav
+        data-site-nav
+        aria-label="Navegação principal"
+        className="site-nav fixed inset-x-0 top-0 z-40 h-20 border-b border-[var(--border-subtle)] bg-[var(--nav-background)] backdrop-blur-xl"
+      >
+        <div className="mx-auto flex h-full w-full max-w-[1440px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-10 xl:px-14">
           <button
+            type="button"
             onClick={() => handleSectionClick("inicio")}
-            className="text-xl font-bold text-primary hover:text-primary/80 transition-colors"
+            className="group flex shrink-0 items-baseline gap-2 rounded-md text-left outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--surface-base)]"
+            aria-label="Voltar ao início"
           >
-            Gabriel Falcão
+            <span className="text-lg font-semibold tracking-[-0.035em] text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[var(--accent-primary)]">
+              Gabriel Falcão
+            </span>
+            <span className="hidden text-xs font-medium text-[var(--text-muted)] sm:inline">
+              Backend Java
+            </span>
           </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navigationItems.map((item: NavigationItem) => (
-              <button
-                key={item.id}
-                onClick={() => handleSectionClick(item.id)}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === item.id
-                    ? "bg-primary text-primary-foreground"
-                    : "text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-primary/10"
-                  }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Social Links Desktop */}
-          <div className="hidden md:flex items-center gap-2">
-            <Button
-              size="sm"
-              onClick={handleDownloadCV}
-              className="text-black dark:text-white bg-slate-200 dark:bg-slate-600 hover:bg-primary hover:text-primary-foreground transition-colors font-bold border-0"
-            >
-              <Download className="w-4 h-4 mr-2" />
-              Baixar CV
-            </Button>
-            <ThemeToggle />
-            <Button variant="ghost" size="sm" asChild>
-              <a
-                href="https://www.linkedin.com/in/gabrielfalcaodev/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => event('clique_link_externo', { destino: 'linkedin' })}
-                className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-            </Button>
-            <Button variant="ghost" size="sm" asChild>
-              <a
-                href="https://github.com/GabrielF0900"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => event('clique_link_externo', { destino: 'github' })}
-                className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? (
-              <X className="w-5 h-5" />
-            ) : (
-              <Menu className="w-5 h-5" />
-            )}
-          </Button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-slate-200 dark:border-slate-700">
-            <div className="flex flex-col space-y-2">
-              {navigationItems.map((item: NavigationItem) => (
+          <div className="hidden min-w-0 items-center gap-1 xl:flex">
+            {navigationItems.map((item: NavigationItem) => {
+              const isActive = activeSection === item.id;
+              return (
                 <button
+                  type="button"
                   key={item.id}
                   onClick={() => handleSectionClick(item.id)}
-                  className={`px-3 py-2.5 rounded-md text-left text-sm font-medium transition-colors ${activeSection === item.id
-                      ? "bg-primary text-primary-foreground"
-                      : "text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-primary/10"
-                    }`}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`nav-link ${isActive ? "nav-link-active" : ""}`}
                 >
                   {item.label}
                 </button>
-              ))}
-              <div className="flex flex-wrap items-center gap-2 px-3 pt-3 border-t border-slate-200 dark:border-slate-700">
-                <Button
-                  size="sm"
-                  onClick={handleDownloadCV}
-                  className="text-black dark:text-white bg-slate-200 dark:bg-slate-600 hover:bg-primary hover:text-primary-foreground transition-colors font-bold border-0"
-                >
-                  <Download className="w-4 h-4 mr-2" />
-                  Baixar CV
-                </Button>
-                <ThemeToggle />
-                <Button variant="ghost" size="sm" asChild>
-                  <a
-                    href="https://www.linkedin.com/in/gabrielfalcaodev/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => event('clique_link_externo', { destino: 'linkedin' })}
-                    className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
-                  >
-                    <Linkedin className="w-4 h-4" />
-                  </a>
-                </Button>
-                <Button variant="ghost" size="sm" asChild>
-                  <a
-                    href="https://github.com/GabrielF0900"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => event('clique_link_externo', { destino: 'github' })}
-                    className="text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-200 dark:hover:text-white dark:hover:bg-slate-700 transition-colors"
-                  >
-                    <Github className="w-4 h-4" />
-                  </a>
-                </Button>
-              </div>
-            </div>
+              );
+            })}
           </div>
-        )}
+
+          <div className="hidden shrink-0 items-center gap-1.5 xl:flex">
+            <button
+              type="button"
+              onClick={handleDownloadCV}
+              className="nav-download group"
+            >
+              <Download aria-hidden="true" className="h-4 w-4" strokeWidth={1.75} />
+              Baixar CV
+            </button>
+            <ThemeToggle />
+            <a
+              href="https://github.com/GabrielF0900"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => event("clique_link_externo", { destino: "github" })}
+              className="nav-icon-button"
+              aria-label="Abrir GitHub em nova aba"
+            >
+              <Github aria-hidden="true" className="h-4 w-4" strokeWidth={1.75} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/gabrielfalcaodev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => event("clique_link_externo", { destino: "linkedin" })}
+              className="nav-icon-button"
+              aria-label="Abrir LinkedIn em nova aba"
+            >
+              <Linkedin aria-hidden="true" className="h-4 w-4" strokeWidth={1.75} />
+            </a>
+          </div>
+
+          <button
+            type="button"
+            className="nav-icon-button xl:hidden"
+            onClick={() => setIsMenuOpen((current) => !current)}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
+            aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+          >
+            {isMenuOpen ? (
+              <X aria-hidden="true" className="h-5 w-5" strokeWidth={1.75} />
+            ) : (
+              <Menu aria-hidden="true" className="h-5 w-5" strokeWidth={1.75} />
+            )}
+          </button>
+        </div>
+      </nav>
+
+      <div
+        id="mobile-navigation"
+        className={`mobile-navigation fixed inset-x-0 top-20 z-30 border-b border-[var(--border-subtle)] bg-[var(--surface-base)] px-5 pb-6 pt-3 shadow-2xl xl:hidden ${isMenuOpen ? "mobile-navigation-open" : ""}`}
+        aria-hidden={!isMenuOpen}
+      >
+        <div className="mx-auto grid max-w-[1440px] gap-1">
+          {navigationItems.map((item: NavigationItem) => (
+            <button
+              type="button"
+              key={item.id}
+              onClick={() => handleSectionClick(item.id)}
+              tabIndex={isMenuOpen ? 0 : -1}
+              className={`mobile-nav-link ${activeSection === item.id ? "mobile-nav-link-active" : ""}`}
+            >
+              {item.label}
+            </button>
+          ))}
+          <div className="mt-3 grid grid-cols-[1fr_auto_auto_auto] gap-2 border-t border-[var(--border-subtle)] pt-4">
+            <button
+              type="button"
+              onClick={handleDownloadCV}
+              tabIndex={isMenuOpen ? 0 : -1}
+              className="nav-download justify-center"
+            >
+              <Download aria-hidden="true" className="h-4 w-4" strokeWidth={1.75} />
+              Baixar CV
+            </button>
+            <ThemeToggle />
+            <a
+              href="https://github.com/GabrielF0900"
+              target="_blank"
+              rel="noopener noreferrer"
+              tabIndex={isMenuOpen ? 0 : -1}
+              className="nav-icon-button"
+              aria-label="Abrir GitHub em nova aba"
+            >
+              <Github aria-hidden="true" className="h-4 w-4" strokeWidth={1.75} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/gabrielfalcaodev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              tabIndex={isMenuOpen ? 0 : -1}
+              className="nav-icon-button"
+              aria-label="Abrir LinkedIn em nova aba"
+            >
+              <Linkedin aria-hidden="true" className="h-4 w-4" strokeWidth={1.75} />
+            </a>
+          </div>
+        </div>
       </div>
-    </nav>
+    </>
   );
 }

@@ -1,0 +1,974 @@
+.footer {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0 1.7rem;
+  color: #a8b1bf;
+  background:
+    radial-gradient(
+      circle at 8% 25%,
+      rgba(29, 102, 255, 0.055),
+      transparent 24rem
+    ),
+    #020912;
+  border-top: 1px solid rgba(103, 132, 170, 0.18);
+}
+
+.container {
+  width: min(100% - 3rem, 1440px);
+  margin-inline: auto;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(4rem, 8vw, 9rem);
+  padding-bottom: 3.8rem;
+}
+
+.identity {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 2.1rem;
+  min-width: 0;
+}
+
+.monogram {
+  position: relative;
+  display: grid;
+  width: 8.3rem;
+  height: 8.3rem;
+  flex: 0 0 auto;
+  place-items: center;
+}
+
+.gf {
+  color: transparent;
+  font-size: 3rem;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: -0.13em;
+  -webkit-text-stroke: 1.5px #2b7fff;
+  filter: drop-shadow(0 0 9px rgba(43, 127, 255, 0.25));
+}
+
+.cornerTL,
+.cornerTR,
+.cornerBL,
+.cornerBR {
+  position: absolute;
+  width: 0.65rem;
+  height: 0.65rem;
+}
+
+.cornerTL {
+  top: 0;
+  left: 0;
+  border-top: 2px solid #267cff;
+  border-left: 2px solid #267cff;
+}
+
+.cornerTR {
+  top: 0;
+  right: 0;
+  border-top: 2px solid #267cff;
+  border-right: 2px solid #267cff;
+}
+
+.cornerBL {
+  bottom: 0;
+  left: 0;
+  border-bottom: 2px solid #267cff;
+  border-left: 2px solid #267cff;
+}
+
+.cornerBR {
+  right: 0;
+  bottom: 0;
+  border-right: 2px solid #267cff;
+  border-bottom: 2px solid #267cff;
+}
+
+.identityText {
+  min-width: 0;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.statusDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: #2d7cff;
+  box-shadow: 0 0 12px rgba(45, 124, 255, 0.8);
+}
+
+.nameRow h2 {
+  margin: 0;
+  color: #edf2f8;
+  font-size: 1.45rem;
+  font-weight: 680;
+  letter-spacing: -0.025em;
+}
+
+.role {
+  margin: 0.65rem 0 0;
+  color: #8f9aab;
+  font-size: 0.87rem;
+  line-height: 1.6;
+}
+
+.bio {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  color: #7d899b;
+  font-size: 0.86rem;
+  line-height: 1.75;
+}
+
+/* COLUMNS */
+
+.linkColumns {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.column h3 {
+  margin: 0 0 1rem;
+  color: #2f7fff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.column nav {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.column nav a {
+  width: fit-content;
+  color: #909bac;
+  font-size: 0.84rem;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.column nav a:hover,
+.column nav a:focus-visible {
+  transform: translateX(2px);
+  color: #3f8dff;
+}
+
+/* EXTERNAL */
+
+.externalLinks {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.externalLinks a {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.65rem;
+  width: fit-content;
+  color: #909bac;
+  font-size: 0.84rem;
+  transition: color 160ms ease;
+}
+
+.externalLinks a svg:first-child {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.externalLinks a svg:last-child {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.externalLinks a:hover,
+.externalLinks a:focus-visible {
+  color: #3f8dff;
+}
+
+/* LOCATION */
+
+.location {
+  display: grid;
+  gap: 1rem;
+  color: #8f9aab;
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+.location p {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+}
+
+.location p svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.location > span {
+  max-width: 10rem;
+}
+
+/* UPDATE PANEL */
+
+.updatePanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 1.1rem 1.3rem;
+  border: 1px solid rgba(88, 118, 155, 0.17);
+  border-radius: 0.75rem;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(18, 42, 72, 0.48),
+      rgba(8, 21, 39, 0.2)
+    );
+}
+
+.updateLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.updateIcon {
+  display: grid;
+  width: 2.55rem;
+  height: 2.55rem;
+  place-items: center;
+  border: 1px solid rgba(59, 132, 255, 0.26);
+  border-radius: 0.6rem;
+  color: #3988ff;
+  background: rgba(20, 54, 101, 0.25);
+}
+
+.updateIcon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.updateLeft > div {
+  display: grid;
+  gap: 0.17rem;
+}
+
+.updateLabel {
+  color: #69809f;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.updateLeft strong {
+  color: #aeb9c9;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.activeStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #91a0b3;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.activeStatus span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: #27c66f;
+  box-shadow: 0 0 10px rgba(39, 198, 111, 0.45);
+}
+
+/* BOTTOM */
+
+.bottomBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(95, 123, 159, 0.16);
+  color: #788597;
+  font-size: 0.76rem;
+}
+
+.bottomBar p {
+  margin: 0;
+}
+
+.bottomBar > p:first-child span {
+  color: #3385ff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.signature span {
+  color: #2f80ff;
+  font-size: 1.05rem;
+}
+
+/* LIGHT MODE */
+
+:global(html:not(.dark)) .footer {
+  color: #667489;
+  border-top-color: rgba(46, 77, 117, 0.12);
+  background:
+    radial-gradient(
+      circle at 8% 25%,
+      rgba(36, 112, 255, 0.07),
+      transparent 24rem
+    ),
+    #f8fbff;
+}
+
+:global(html:not(.dark)) .nameRow h2 {
+  color: #17253a;
+}
+
+:global(html:not(.dark)) .role {
+  color: #667489;
+}
+
+:global(html:not(.dark)) .bio {
+  color: #748196;
+}
+
+:global(html:not(.dark)) .column nav a,
+:global(html:not(.dark)) .externalLinks a,
+:global(html:not(.dark)) .location {
+  color: #69778b;
+}
+
+:global(html:not(.dark)) .updatePanel {
+  border-color: rgba(43, 87, 146, 0.12);
+  background: linear-gradient(
+    90deg,
+    rgba(229, 238, 250, 0.9),
+    rgba(247, 250, 254, 0.95)
+  );
+}
+
+:global(html:not(.dark)) .updateLeft strong {
+  color: #485a73;
+}
+
+:global(html:not(.dark)) .activeStatus {
+  color: #4e6077;
+}
+
+:global(html:not(.dark)) .bottomBar {
+  border-top-color: rgba(43, 77, 121, 0.12);
+  color: #718097;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .linkColumns {
+    max-width: 42rem;
+  }
+}
+
+/* =========================================================
+   FOOTER ARCHITECTURE
+   ========================================================= */
+
+.footerArchitecture {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  opacity: 0.16;
+
+  background-image:
+    linear-gradient(
+      rgba(45, 124, 255, 0.08)
+      1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(45, 124, 255, 0.08)
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    4rem 4rem;
+
+  mask-image:
+    radial-gradient(
+      ellipse 76% 70%
+      at 50% 30%,
+      #000 0%,
+      transparent 76%
+    );
+}
+
+.container {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   MONOGRAM MICRO MOTION
+   ========================================================= */
+
+.monogramGlow {
+  position: absolute;
+
+  inset: 1.15rem;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        43,
+        127,
+        255,
+        0.14
+      ),
+      transparent 68%
+    );
+
+  filter:
+    blur(8px);
+
+  animation:
+    footerMonogramBreath
+    6s
+    ease-in-out
+    infinite;
+}
+
+@keyframes footerMonogramBreath {
+  0%,
+  100% {
+    opacity: 0.35;
+
+    transform:
+      scale(0.92);
+  }
+
+  50% {
+    opacity: 0.8;
+
+    transform:
+      scale(1.06);
+  }
+}
+
+
+/* =========================================================
+   STATUS PULSE
+   ========================================================= */
+
+.statusDot {
+  animation:
+    footerBlueStatus
+    3.4s
+    ease-in-out
+    infinite;
+}
+
+@keyframes footerBlueStatus {
+  0%,
+  100% {
+    opacity: 0.65;
+
+    box-shadow:
+      0 0 7px
+      rgba(
+        45,
+        124,
+        255,
+        0.45
+      );
+  }
+
+  50% {
+    opacity: 1;
+
+    box-shadow:
+      0 0 7px
+      rgba(
+        45,
+        124,
+        255,
+        0.95
+      ),
+      0 0 16px
+      rgba(
+        45,
+        124,
+        255,
+        0.45
+      );
+  }
+}
+
+
+/* =========================================================
+   UPDATE SIGNAL
+   ========================================================= */
+
+.updatePanel {
+  position: relative;
+
+  overflow: hidden;
+}
+
+.updateSignal {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  left: -26%;
+
+  width: 18%;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transform:
+    skewX(-14deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        46,
+        127,
+        255,
+        0.05
+      ),
+      rgba(
+        67,
+        145,
+        255,
+        0.16
+      ),
+      transparent
+    );
+
+  animation:
+    footerUpdateSweep
+    8.5s
+    ease-in-out
+    infinite;
+}
+
+@keyframes footerUpdateSweep {
+  0%,
+  58% {
+    left: -26%;
+
+    opacity: 0;
+  }
+
+  64% {
+    opacity: 0.8;
+  }
+
+  84% {
+    left: 110%;
+
+    opacity: 0.25;
+  }
+
+  100% {
+    left: 110%;
+
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
+   UPDATE ICON
+   ========================================================= */
+
+.updateIcon {
+  position: relative;
+
+  z-index: 2;
+
+  animation:
+    footerClockBreath
+    5s
+    ease-in-out
+    infinite;
+}
+
+@keyframes footerClockBreath {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0
+      rgba(
+        57,
+        136,
+        255,
+        0
+      );
+  }
+
+  50% {
+    box-shadow:
+      0 0 18px
+      rgba(
+        57,
+        136,
+        255,
+        0.14
+      );
+  }
+}
+
+
+/* =========================================================
+   ACTIVE STATUS
+   ========================================================= */
+
+.activeStatus span {
+  animation:
+    footerActivePulse
+    2.8s
+    ease-in-out
+    infinite;
+}
+
+@keyframes footerActivePulse {
+  0%,
+  100% {
+    opacity: 0.65;
+
+    transform:
+      scale(0.92);
+
+    box-shadow:
+      0 0 6px
+      rgba(
+        39,
+        198,
+        111,
+        0.3
+      );
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      scale(1.12);
+
+    box-shadow:
+      0 0 7px
+      rgba(
+        39,
+        198,
+        111,
+        0.85
+      ),
+      0 0 14px
+      rgba(
+        39,
+        198,
+        111,
+        0.3
+      );
+  }
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+.externalLinks a svg:last-child {
+  transition:
+    transform
+    180ms ease;
+}
+
+.externalLinks a:hover
+svg:last-child,
+
+.externalLinks a:focus-visible
+svg:last-child {
+  transform:
+    translate(
+      2px,
+      -2px
+    );
+}
+
+
+/* =========================================================
+   BOTTOM DATA LINE
+   ========================================================= */
+
+.bottomBar {
+  position: relative;
+
+  border-top: 0;
+}
+
+.bottomBar::before {
+  position: absolute;
+
+  top: 0;
+
+  right: 0;
+  left: 0;
+
+  height: 1px;
+
+  content: "";
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(
+        77,
+        108,
+        151,
+        0.18
+      ) 15%,
+      rgba(
+        53,
+        130,
+        255,
+        0.55
+      ) 50%,
+      rgba(
+        77,
+        108,
+        151,
+        0.18
+      ) 85%,
+      transparent 100%
+    );
+
+  background-size:
+    220% 100%;
+
+  animation:
+    footerBottomSignal
+    9s
+    ease-in-out
+    infinite;
+}
+
+@keyframes footerBottomSignal {
+  0%,
+  100% {
+    background-position:
+      100% 0;
+
+    opacity:
+      0.42;
+  }
+
+  50% {
+    background-position:
+      0 0;
+
+    opacity:
+      0.8;
+  }
+}
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+:global(html:not(.dark))
+.footerArchitecture {
+  opacity:
+    0.1;
+}
+
+:global(html:not(.dark))
+.monogramGlow {
+  opacity:
+    0.22;
+}
+
+:global(html:not(.dark))
+.updateSignal {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        35,
+        112,
+        236,
+        0.03
+      ),
+      rgba(
+        35,
+        112,
+        236,
+        0.09
+      ),
+      transparent
+    );
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .footer {
+    padding: 4rem 0 1.5rem;
+  }
+
+  .container {
+    width: min(100% - 2rem, 40rem);
+  }
+
+  .mainGrid {
+    gap: 3rem;
+    padding-bottom: 2.7rem;
+  }
+
+  .identity {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
+  .monogram {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .gf {
+    font-size: 2.3rem;
+  }
+
+  .nameRow h2 {
+    font-size: 1.2rem;
+  }
+
+  .role,
+  .bio {
+    font-size: 0.8rem;
+  }
+
+  .linkColumns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.2rem 1.5rem;
+  }
+
+  .column:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .location > span {
+    max-width: 16rem;
+  }
+
+  .updatePanel {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .bottomBar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    width: calc(100% - 1.25rem);
+  }
+
+  .linkColumns {
+    grid-template-columns: 1fr;
+  }
+
+  .column:last-child {
+    grid-column: auto;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media
+(prefers-reduced-motion: reduce) {
+
+  .column nav a,
+  .externalLinks a svg:last-child {
+    transition:
+      none !important;
+  }
+
+  .column nav a:hover,
+  .column nav a:focus-visible,
+  .externalLinks a:hover
+  svg:last-child,
+  .externalLinks a:focus-visible
+  svg:last-child {
+    transform:
+      none !important;
+  }
+
+  .monogramGlow,
+  .statusDot,
+  .updateSignal,
+  .updateIcon,
+  .activeStatus span,
+  .bottomBar::before {
+    animation:
+      none !important;
+  }
+}

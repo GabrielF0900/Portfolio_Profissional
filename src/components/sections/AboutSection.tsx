@@ -1,88 +1,237 @@
-import { MapPin } from "lucide-react";
+"use client";
+
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import {
+  Cloud,
+  Crosshair,
+  LayoutPanelTop,
+  MapPin,
+  Target,
+  User,
+} from "lucide-react";
+
+import styles from "./AboutSection.module.css";
+
+const DIFFERENTIALS = [
+  {
+    icon: Cloud,
+    title: "Visão Cloud-First",
+    description:
+      "Certificado AWS Solutions Architect – Associate (SAA-C03) e Cloud Practitioner (CLF-C02); foco em robustez, segurança e custo.",
+  },
+  {
+    icon: Crosshair,
+    title: "Atenção a detalhe como vantagem competitiva",
+    description:
+      "Autismo convertido em hiperfoco analítico, rigor em revisão de código, identificação de vulnerabilidades e integridade de sistemas complexos.",
+  },
+  {
+    icon: LayoutPanelTop,
+    title: "Cultura Ágil e Documentação",
+    description:
+      "Scrum Fundamentals, uso de Kanban e valorização de documentação clara para facilitar manutenção e escalabilidade.",
+  },
+];
+
+const FRAME_PATH =
+  "M74 22 H446 L498 74 V576 L446 628 H74 L22 576 V74 Z";
 
 export default function AboutSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reduceMotion) {
+      setVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="sobre" className="py-12 md:py-20 bg-white dark:bg-slate-900">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
-                Sobre mim
-              </h2>
-              <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
-                Olá, sou Gabriel Falcão.
+    <section
+      ref={sectionRef}
+      id="sobre"
+      className={`${styles.section} ${visible ? styles.visible : ""}`}
+      aria-labelledby="about-title"
+    >
+      <div className={styles.grid} aria-hidden="true" />
+      <div className={styles.ambientGlow} aria-hidden="true" />
+
+      <div className={styles.container}>
+        <div className={styles.sectionMarker}>
+          <span
+            className={styles.sectionMarkerIcon}
+            aria-hidden="true"
+          >
+            <User />
+          </span>
+
+          <span className={styles.sectionMarkerNumber}>
+            02
+          </span>
+
+          <span
+            className={styles.sectionMarkerSlash}
+            aria-hidden="true"
+          >
+            /
+          </span>
+
+          <span className={styles.sectionMarkerLabel}>
+            SOBRE
+          </span>
+        </div>
+
+        <div className={styles.layout}>
+          <div className={styles.content}>
+            <header className={styles.heading}>
+              <h2 id="about-title">Sobre mim</h2>
+
+              <p className={styles.statement}>
+                Eu construo o que acontece
+                <br />
+                depois do <strong>clique.</strong>
               </p>
-              <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
-                Desenvolvedor Backend Java | Spring Boot | AWS Solutions Architect Associate (SAA-C03).
-                Construo sistemas backend robustos, seguros e escaláveis com Java 21 e Spring Boot,
-                aplicando meu embasamento em arquitetura AWS desde a primeira linha de código. Tenho
-                também experiência prática em Node.js/TypeScript, usada pontualmente como stack de
-                apoio em projetos anteriores.
+
+              <span className={styles.headingAccent} aria-hidden="true" />
+            </header>
+
+            <div className={styles.introduction}>
+              <p>
+                Olá, sou <strong>Gabriel Falcão.</strong>
               </p>
 
-              <h3 className="text-xl font-semibold mb-4 mt-8">
-                Meu Diferencial Técnico
-              </h3>
+              <p>
+                Desenvolvedor Backend Java | Spring Boot | AWS Solutions
+                Architect Associate (SAA-C03).
+              </p>
 
-              <div className="space-y-4 mb-8">
-                <div>
-                  <h4 className="font-semibold text-base mb-2">
-                    Visão Cloud-First
-                  </h4>
-                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    Certificado AWS Solutions Architect – Associate (SAA-C03) e Cloud Practitioner (CLF-C02).
-                    Uso esse embasamento em infraestrutura para garantir que sistemas backend sejam
-                    robustos, seguros e de baixo custo desde o design inicial.
-                  </p>
-                </div>
+              <p>
+                Construo sistemas backend robustos, seguros e escaláveis com{" "}
+                <strong>Java 21</strong> e <strong>Spring Boot</strong>,
+                aplicando embasamento em arquitetura AWS desde a primeira linha
+                de código.
+              </p>
 
-                <div>
-                  <h4 className="font-semibold text-base mb-2">
-                    Atenção a Detalhe como Vantagem Competitiva
-                  </h4>
-                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    Sou autista, e transformo isso em vantagem técnica direta: meu hiperfoco analítico
-                    sustenta rigor na revisão de código, identificação de vulnerabilidades e integridade
-                    de sistemas complexos — onde a maioria perde atenção no detalhe, eu ganho precisão.
-                    Não escondo essa característica; ela é parte de como entrego resultado técnico consistente.
-                  </p>
-                </div>
+              <p>
+                Tenho também experiência prática em{" "}
+                <strong>Node.js/TypeScript</strong> como stack complementar.
+              </p>
+            </div>
 
-                <div>
-                  <h4 className="font-semibold text-base mb-2">
-                    Cultura Ágil e Documentação
-                  </h4>
-                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    Certificado em Scrum Fundamentals (SFC™). Aplico Kanban para organizar entregas e
-                    valorizo documentação clara para facilitar manutenção e escalabilidade.
-                  </p>
-                </div>
+            <div
+              className={styles.differentials}
+              aria-label="Diferenciais técnicos"
+            >
+              {DIFFERENTIALS.map(({ icon: Icon, title, description }) => (
+                <article className={styles.differentialCard} key={title}>
+                  <div className={styles.cardHeader}>
+                    <span className={styles.cardIcon} aria-hidden="true">
+                      <Icon />
+                    </span>
+
+                    <h3>{title}</h3>
+                  </div>
+
+                  <p>{description}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className={styles.objective}>
+              <span className={styles.objectiveIcon} aria-hidden="true">
+                <Target />
+              </span>
+
+              <p>
+                <strong>Objetivo:</strong> primeira posição como Desenvolvedor
+                Backend Java Júnior.
+              </p>
+
+              <span className={styles.objectiveSignal} aria-hidden="true">
+                <i />
+                <i />
+                <i />
+              </span>
+            </div>
+          </div>
+
+          <aside className={styles.portraitArea}>
+            <div className={styles.portraitFrame}>
+              <div className={styles.frameDots} aria-hidden="true" />
+
+              <div className={styles.portrait}>
+                <Image
+                  src="/minhaFoto.webp"
+                  alt="Gabriel Falcão"
+                  fill
+                  priority={false}
+                  sizes="(max-width: 900px) 90vw, 38vw"
+                  className={styles.portraitImage}
+                />
+
+                <div className={styles.portraitShade} aria-hidden="true" />
               </div>
 
-              <h3 className="text-xl font-semibold mb-4 mt-8">
-                Objetivo Profissional
-              </h3>
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                Conseguir minha primeira posição como Desenvolvedor Backend Java Júnior, contribuindo
-                com sistemas que automatizem processos e sustentem crescimento técnico de longo prazo.
-              </p>
+              <svg 
+                className={styles.portraitCircuit} 
+                viewBox="0 0 520 650"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path 
+                  d={FRAME_PATH}
+                  stroke="currentColor" 
+                  strokeWidth="1.5"
+                  className={styles.circuitBase}
+                />
+                <path 
+                  d={FRAME_PATH}
+                  stroke="currentColor" 
+                  strokeWidth="2.5"
+                  className={styles.circuitSignal}
+                />
+                <circle cx="74" cy="22" r="3" className={styles.circuitPoint} />
+                <circle cx="498" cy="74" r="3" className={styles.circuitPointAlt} />
+                <circle cx="446" cy="628" r="3" className={styles.circuitPoint} />
+                <circle cx="22" cy="576" r="3" className={styles.circuitPointAlt} />
+              </svg>
 
-              <div className="flex items-center gap-2 text-muted-foreground mt-8">
-                <MapPin className="w-5 h-5" />
+              <div className={styles.location}>
+                <MapPin aria-hidden="true" />
                 <span>Brasil</span>
               </div>
             </div>
-            <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl overflow-hidden flex items-center justify-center">
-                <img
-                  src="/minhaFoto.webp"
-                  alt="Gabriel"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+
+            <div className={styles.systemTrace} aria-hidden="true">
+              <span />
+              <i />
+              <span />
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </section>

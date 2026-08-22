@@ -8,6 +8,7 @@ export const navigationItems: NavigationItem[] = [
   { id: "projetos", label: "Projetos" },
   { id: "tecnologias", label: "Tecnologias" },
   { id: "skills", label: "Skills" },
+  { id: "contato", label: "Contato" },
 ];
 
 export const softSkills: string[] = [

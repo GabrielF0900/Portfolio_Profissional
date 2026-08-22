@@ -18,7 +18,7 @@ export function ProjectImageModal({
   onClose,
 }: ProjectImageModalProps) {
   return (
-    <Dialog open={open} onOpenChange={onClose}>
+    <Dialog open={open} onOpenChange={(nextOpen) => { if (!nextOpen) onClose(); }}>
       <DialogContent className="w-[95vw] max-w-4xl max-h-[85vh] overflow-hidden p-4 flex flex-col bg-black border-0">
         
         {/* Adicionado para resolver o erro de acessibilidade do Radix */}

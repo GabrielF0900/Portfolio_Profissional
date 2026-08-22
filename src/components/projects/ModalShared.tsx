@@ -1,191 +1,335 @@
 "use client";
 
+import { useState } from "react";
+
 import { Project } from "@/types";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
+  ArrowUpRight,
+  ChevronDown,
+  ChevronUp,
+  Download,
   ExternalLink,
   Github,
-  Youtube,
-  Download,
   Image as ImageIcon,
+  Layers3,
+  Presentation,
+  Star,
+  Youtube,
 } from "lucide-react";
-import { TechnologiesModal } from "@/components/projects-modal/TechnologiesModal";
-import { MetricsDisplay } from "@/components/projects-modal/MetricsDisplay";
-import { cn } from "@/lib/utils";
+
 import { event } from "@/lib/gtag";
 
-export function ActionButtons({
+import styles from "./ProjectModal.module.css";
+
+export function ModalBadges({
+  project,
+}: {
+  project: Project;
+}) {
+  return (
+    <div className={styles.badges}>
+      <span className={styles.badge}>
+        {project.category}
+      </span>
+
+      {project.team?.role && (
+        <span className={styles.badge}>
+          {project.team.role}
+        </span>
+      )}
+    </div>
+  );
+}
+
+export function ModalTechnologies({
+  project,
+}: {
+  project: Project;
+}) {
+  const [expanded, setExpanded] = useState(false);
+
+  if (!project.technologies?.length) return null;
+
+  const DEFAULT_VISIBLE_COUNT = 8;
+  
+  const technologiesToShow = expanded
+    ? project.technologies
+    : project.technologies.slice(
+        0,
+        DEFAULT_VISIBLE_COUNT
+      );
+
+  const hiddenCount =
+    project.technologies.length -
+    DEFAULT_VISIBLE_COUNT;
+
+  return (
+    <div className={styles.technologies}>
+      {technologiesToShow.map((technology) => (
+        <span
+          key={technology}
+          className={styles.tech}
+        >
+          {technology}
+        </span>
+      ))}
+
+      {hiddenCount > 0 && (
+        <button
+          type="button"
+          className={styles.techToggle}
+          onClick={() => setExpanded((value) => !value)}
+          aria-expanded={expanded}
+        >
+          {expanded ? (
+            <>
+              <ChevronUp aria-hidden="true" />
+              RECOLHER
+            </>
+          ) : (
+            <>
+              +{hiddenCount}
+              <ChevronDown aria-hidden="true" />
+            </>
+          )}
+        </button>
+      )}
+    </div>
+  );
+}
+
+export function ProjectVisual({
   project,
   onImageClick,
-  className = "",
 }: {
   project: Project;
   onImageClick: () => void;
-  className?: string;
 }) {
-  return (
-    <div
-      className={`flex flex-row flex-wrap items-center gap-1.5 ${className}`}
-    >
-      {project.image && (
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={onImageClick}
-          className="h-8 w-8 shrink-0 rounded-md bg-slate-100 dark:bg-slate-800"
-          title="Ver Imagem"
-        >
-          <ImageIcon className="w-4 h-4" />
-        </Button>
-      )}
-      {project.links.demo && (
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-8 w-8 shrink-0 rounded-md bg-slate-100 dark:bg-slate-800"
-          asChild
-        >
-          <a
-            href={project.links.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Ver Demo"
-          >
-            <ExternalLink className="w-4 h-4" />
-          </a>
-        </Button>
-      )}
-      {project.links.github && (
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-8 w-8 shrink-0 rounded-md bg-slate-100 dark:bg-slate-800"
-          asChild
-        >
-          <a
-            href={project.links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Ver Código"
-            onClick={() => event('clique_ver_codigo', { projeto: project.title })}
-          >
-            <Github className="w-4 h-4" />
-          </a>
-        </Button>
-      )}
-      {project.links.video && (
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-8 w-8 shrink-0 rounded-md bg-slate-100 dark:bg-slate-800"
-          asChild
-        >
-          <a
-            href={project.links.video}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Vídeo do sistema"
-          >
-            <Youtube className="h-4 w-4 text-red-600" />
-          </a>
-        </Button>
-      )}
-      {project.links.presentation && (
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-8 w-8 shrink-0 rounded-md bg-slate-100 dark:bg-slate-800"
-          asChild
-        >
-          <a
-            href={project.links.presentation}
-            download
-            title="Baixar Apresentação"
-          >
-            <Download className="w-4 h-4" />
-          </a>
-        </Button>
-      )}
-    </div>
-  );
-}
+  if (!project.image) return null;
 
-// Atualizado: Agora recebe a prop className e usa o cn()
-export function ModalScrollContent({
-  project,
-  className,
-}: {
-  project: Project;
-  className?: string;
-}) {
   return (
-    <div className={cn("w-full p-4 sm:p-5 space-y-4 sm:space-y-5", className)}>
-      <div className="min-w-0">
-        <h3 className="font-semibold mb-1 text-[11px] sm:text-xs uppercase text-muted-foreground">
-          Sobre
-        </h3>
-        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed break-words">
-          {project.description}
-        </p>
+    <button
+      type="button"
+      className={styles.projectVisual}
+      onClick={onImageClick}
+      aria-label={`Ampliar imagem do projeto ${project.title}`}
+    >
+      <div
+        className={styles.imageChrome}
+        aria-hidden="true"
+      >
+        <span />
+        <span />
+        <span />
+
+        <small>
+          PROJECT / {String(project.id).padStart(2, "0")}
+        </small>
       </div>
 
-      {project.metrics && (
-        <div className="min-w-0">
-          <MetricsDisplay metrics={project.metrics} />
-        </div>
+      <div className={styles.imageViewport}>
+        <img
+          src={project.image}
+          alt={`Visual do projeto ${project.title}`}
+          onError={(event) => {
+            event.currentTarget.src =
+              "/placeholder.svg";
+          }}
+        />
+      </div>
+    </button>
+  );
+}
+
+export function ProjectHighlights({
+  project,
+}: {
+  project: Project;
+}) {
+  if (!project.highlights?.length) return null;
+
+  return (
+    <div className={styles.highlightsGrid}>
+      {project.highlights
+        .slice(0, 6)
+        .map((highlight, index) => (
+          <article
+            key={`${highlight}-${index}`}
+            className={styles.highlight}
+          >
+            <span className={styles.highlightIndex}>
+              {String(index + 1).padStart(2, "0")}
+            </span>
+
+            <p>{highlight}</p>
+          </article>
+        ))}
+    </div>
+  );
+}
+
+export function ProjectMetrics({
+  project,
+}: {
+  project: Project;
+}) {
+  if (!project.metrics?.length) return null;
+
+  return (
+    <div className={styles.metricsGrid}>
+      {project.metrics.map((metric) => (
+        <article
+          key={`${metric.label}-${metric.value}`}
+          className={styles.metric}
+        >
+          <strong>{metric.value}</strong>
+          <span>{metric.label}</span>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+export function QuickLinks({
+  project,
+}: {
+  project: Project;
+}) {
+  const hasAnyLink =
+    project.links.github ||
+    project.links.demo ||
+    project.links.video ||
+    project.links.presentation ||
+    project.links.case_study;
+
+  if (!hasAnyLink) return null;
+
+  return (
+    <div className={styles.quickLinks}>
+      {project.links.github && (
+        <a
+          href={project.links.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.quickLink}
+          onClick={() =>
+            event("clique_ver_codigo", {
+              projeto: project.title,
+            })
+          }
+        >
+          <Github />
+          <span>GitHub</span>
+          <ArrowUpRight className={styles.quickLinkArrow} />
+        </a>
       )}
 
-      {project.technologies && project.technologies.length > 0 && (
-        <div className="min-w-0">
-          <h3 className="font-semibold mb-2 text-[11px] sm:text-xs uppercase text-muted-foreground">
-            Tecnologias
-          </h3>
-          <TechnologiesModal
-            technologies={project.technologies}
-            visibleCount={4}
-          />
-        </div>
+      {project.links.demo && (
+        <a
+          href={project.links.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.quickLink}
+        >
+          <ExternalLink />
+          <span>Demo</span>
+          <ArrowUpRight className={styles.quickLinkArrow} />
+        </a>
       )}
 
-      {project.highlights && project.highlights.length > 0 && (
-        <div className="min-w-0">
-          <h3 className="font-semibold mb-2 text-[11px] sm:text-xs uppercase text-muted-foreground">
-            Destaques
-          </h3>
-          <ul className="text-xs sm:text-sm text-muted-foreground space-y-1.5">
-            {project.highlights.map((highlight, index) => (
-              <li key={index} className="flex items-start gap-2 min-w-0">
-                <div className="w-1 h-1 bg-blue-500 rounded-full mt-1.5 shrink-0" />
-                <span className="leading-relaxed break-words min-w-0 flex-1">
-                  {highlight}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      {project.links.video && (
+        <a
+          href={project.links.video}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.quickLink}
+        >
+          <Youtube />
+          <span>Vídeo</span>
+          <ArrowUpRight className={styles.quickLinkArrow} />
+        </a>
       )}
 
-      {project.team && (
-        <div className="min-w-0">
-          <h3 className="font-semibold mb-1 text-[11px] sm:text-xs uppercase text-muted-foreground">
-            Equipe
-          </h3>
-          <p className="text-xs sm:text-sm text-muted-foreground break-words">
-            {project.team.description}
-          </p>
-        </div>
+      {project.links.presentation && (
+        <a
+          href={project.links.presentation}
+          className={styles.quickLink}
+          download
+        >
+          <Presentation />
+          <span>Apresentação</span>
+          <Download className={styles.quickLinkArrow} />
+        </a>
+      )}
+
+      {project.links.case_study &&
+        project.links.case_study !== "#" && (
+          <a
+            href={project.links.case_study}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.quickLink}
+          >
+            <Layers3 />
+            <span>Case Study</span>
+            <ArrowUpRight className={styles.quickLinkArrow} />
+          </a>
+        )}
+    </div>
+  );
+}
+
+export function PrimaryActions({
+  project,
+  onImageClick,
+}: {
+  project: Project;
+  onImageClick: () => void;
+}) {
+  return (
+    <div className={styles.actionBar}>
+      {project.image && (
+        <button
+          type="button"
+          onClick={onImageClick}
+          className={styles.actionSecondary}
+        >
+          <ImageIcon />
+          Ver imagem
+        </button>
+      )}
+
+      {project.links.github && (
+        <a
+          href={project.links.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.actionPrimary}
+          onClick={() =>
+            event("clique_ver_codigo", {
+              projeto: project.title,
+            })
+          }
+        >
+          <Github />
+          GitHub
+          <ArrowUpRight />
+        </a>
       )}
     </div>
   );
 }
 
-export function ModalStatusFooter({ status }: { status: string }) {
+export function TeamInfo({
+  project,
+}: {
+  project: Project;
+}) {
+  if (!project.team) return null;
+
   return (
-    <div className="border-t border-border bg-card p-3 sm:p-5 shrink-0 flex items-center">
-      <Badge className="bg-green-500 text-black border-0 text-[10px] sm:text-xs font-semibold px-2.5 py-0.5">
-        ✓ {status}
-      </Badge>
-    </div>
+    <p className={styles.team}>
+      {project.team.description}
+    </p>
   );
 }

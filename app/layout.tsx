@@ -1,22 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "sonner";
 import { SectionTracker } from "@/components/analytics/SectionTracker";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
-  title: "Gabriel Falcão - Desenvolvedor",
-  description: "Portfolio pessoal de Gabriel Falcão, desenvolvedor web",
+  title: "Gabriel Falcão | Desenvolvedor Backend Java",
+  description:
+    "Portfólio de Gabriel Falcão, Desenvolvedor Backend Java com Spring Boot, sistemas distribuídos e AWS.",
   icons: {
     icon: "/favicon-gabriel.svg",
     shortcut: "/favicon-gabriel.svg",
   },
   openGraph: {
-    title: "Gabriel Falcão - Desenvolvedor",
-    description: "Portfolio pessoal de Gabriel Falcão, desenvolvedor web",
+    title: "Gabriel Falcão | Desenvolvedor Backend Java",
+    description:
+      "Projetos e experiência em Backend Java, Spring Boot, sistemas distribuídos e AWS.",
     type: "website",
   },
 };
@@ -41,7 +40,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className} suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

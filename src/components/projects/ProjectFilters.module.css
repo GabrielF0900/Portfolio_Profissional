@@ -1,0 +1,202 @@
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.filterBar {
+  display: grid;
+  grid-template-columns:
+    minmax(13rem, 0.9fr)
+    minmax(24rem, 1.7fr)
+    minmax(23rem, 1.55fr)
+    minmax(12rem, 0.8fr);
+  gap: 0;
+  width: 100%;
+  border: 1px solid var(--projects-border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: var(--projects-surface);
+  box-shadow: 0 18px 48px rgba(8, 29, 63, 0.045);
+}
+
+.filterGroup {
+  min-width: 0;
+  padding: 0.9rem 1rem 1rem;
+  border-right: 1px solid var(--projects-border);
+}
+
+.filterGroup:last-child {
+  border-right: 0;
+}
+
+.filterLabel {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--projects-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.filterOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.38rem;
+}
+
+.filterButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 1.95rem;
+  padding: 0 0.7rem;
+  border: 1px solid var(--projects-border);
+  border-radius: 0.4rem;
+  color: var(--projects-muted-strong);
+  background: var(--projects-surface-strong);
+  font-size: 0.61rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.filterButton:hover {
+  color: var(--projects-blue);
+  border-color: var(--projects-border-strong);
+  background: var(--projects-blue-soft);
+  transform: translateY(-1px);
+}
+
+.filterButtonActive {
+  color: var(--projects-blue);
+  border-color: var(--projects-border-strong);
+  background: var(--projects-blue-soft);
+}
+
+.filterIndicator {
+  width: 0.28rem;
+  height: 0.28rem;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.38;
+}
+
+.filterButtonActive .filterIndicator {
+  opacity: 1;
+  box-shadow: 0 0 7px rgba(48, 129, 255, 0.55);
+}
+
+/* FOCUS */
+.filterButton:focus-visible {
+  outline: 2px solid var(--projects-blue-bright);
+  outline-offset: 3px;
+}
+
+/* MOBILE TRIGGER */
+.mobileTrigger {
+  display: none;
+}
+
+.mobileTriggerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobileTriggerLeft > span {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.mobileActiveCount {
+  font-size: 0.6rem;
+  color: var(--projects-muted);
+  font-weight: 400;
+}
+
+.mobileApplyButton {
+  display: none;
+}
+
+@media (max-width: 1180px) {
+  .filterBar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .filterGroup:nth-child(2) {
+    border-right: 0;
+  }
+  .filterGroup:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--projects-border);
+  }
+}
+
+@media (max-width: 760px) {
+  .mobileTrigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 4rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--projects-border);
+    border-radius: 0.7rem;
+    color: var(--projects-text);
+    background: var(--projects-surface);
+    cursor: pointer;
+  }
+
+  .filterCollapse {
+    display: none;
+  }
+
+  .filterCollapseOpen {
+    display: block;
+  }
+
+  .filterBar {
+    display: block;
+  }
+
+  .filterGroup {
+    border-right: 0;
+    border-bottom: 1px solid var(--projects-border);
+    padding: 0.95rem;
+  }
+
+  .filterGroup:last-child {
+    border-bottom: 0;
+  }
+
+  .mobileApplyButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 2.8rem;
+    margin-top: 1rem;
+    background: var(--projects-blue);
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filterButton {
+    transition: none !important;
+  }
+  .filterButton:hover {
+    transform: none !important;
+  }
+}

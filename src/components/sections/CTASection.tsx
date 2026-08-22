@@ -1,177 +1,274 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Mail, Linkedin, Github, Copy, Check } from "lucide-react";
+  ArrowUpRight,
+  Check,
+  Copy,
+  Github,
+  Linkedin,
+  Mail,
+  Send,
+  ShieldCheck,
+} from "lucide-react";
+import { useRef, useState } from "react";
 import { toast } from "sonner";
 import { event } from "@/lib/gtag";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import styles from "./CTASection.module.css";
+
+const PRIMARY_EMAIL = "falcaocruz.tech@gmail.com";
 
 export default function CTASection() {
-  const [isContactOpen, setIsContactOpen] = useState(false);
-  const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
-  const emailClickedRef = useRef(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [copied, setCopied] = useState(false);
 
-  const handleCopyEmail = (email: string) => {
-    navigator.clipboard.writeText(email);
-    setCopiedEmail(email);
-    setTimeout(() => setCopiedEmail(null), 2000);
+  useGSAP(
+    () => {
+      if (!sectionRef.current) return;
+
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (reduceMotion) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 78%",
+          once: true,
+        },
+      });
+
+      /* =========================================
+         1. INTRODUÇÃO (COLUNA ESQUERDA)
+         ========================================= */
+      timeline.fromTo(
+        [
+          `.${styles.eyebrow}`,
+          `.${styles.title}`,
+          `.${styles.accentLine}`,
+          `.${styles.description}`,
+          `.${styles.circuit}`,
+        ],
+        {
+          opacity: 0,
+          y: 24,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.55,
+          stagger: 0.12,
+          ease: "power3.out",
+          clearProps: "transform,opacity",
+        }
+      );
+
+      /* =========================================
+         2. PAINEL DE CONTATO (COLUNA DIREITA)
+         ========================================= */
+      timeline.fromTo(
+        [
+          `.${styles.emailCard}`,
+          `.${styles.socialCard}`,
+          `.${styles.statement}`,
+        ],
+        {
+          opacity: 0,
+          x: 24,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.55,
+          stagger: 0.15,
+          ease: "power3.out",
+          clearProps: "transform,opacity",
+        },
+        "-=0.45"
+      );
+    },
+    { scope: sectionRef }
+  );
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(PRIMARY_EMAIL);
+
+      setCopied(true);
+
+      toast.success("E-mail copiado", {
+        description: PRIMARY_EMAIL,
+        duration: 2500,
+      });
+
+      window.setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    } catch {
+      toast.error("Não foi possível copiar o e-mail.");
+    }
   };
 
-  const handleOpenGmail = () => {
-    event('clique_link_externo', { destino: 'contato' });
-    emailClickedRef.current = true;
-    setIsContactOpen(false);
-    toast.info("Abrindo Gmail... ", {
-      description: "Você será redirecionado para compor seu email.",
-      duration: 3000,
+  const handleEmailClick = () => {
+    event("clique_link_externo", {
+      destino: "contato",
     });
   };
 
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible" && emailClickedRef.current) {
-        emailClickedRef.current = false;
-        setTimeout(() => {
-          toast.success("Email enviado para Gabriel Falcão?", {
-            description: "Obrigado pelo contato! Ele te retornará em breve.",
-            duration: 5000,
-          });
-        }, 500);
-      }
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () =>
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-  }, []);
-
   return (
-    <section className="py-12 md:py-20 bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-            Vamos trabalhar juntos?
-          </h2>
-          <p className="text-base md:text-xl mb-8 opacity-90">
-            Estou sempre aberto a novos desafios e oportunidades interessantes.
-          </p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              variant="secondary"
-              className="text-lg px-8"
-              onClick={() => setIsContactOpen(true)}
-            >
-              <Mail className="w-5 h-5 mr-2" />
-              Entrar em Contato
-            </Button>
+    <section
+      id="contato"
+      ref={sectionRef}
+      className={styles.section}
+      aria-labelledby="contact-title"
+    >
+      <div className={styles.backgroundGrid} aria-hidden="true" />
 
-            <Dialog open={isContactOpen} onOpenChange={setIsContactOpen}>
-              <DialogContent className="sm:max-w-md w-[95vw] p-6 sm:p-8">
-                <DialogHeader>
-                  <DialogTitle className="text-center text-xl">
-                    Entre em Contato
-                  </DialogTitle>
-                </DialogHeader>
-                <div className="flex flex-col items-center gap-4 py-2">
-                  <Mail className="w-12 h-12 text-primary" />
-                  <p className="text-sm text-muted-foreground text-center">
-                    Escolha um dos e-mails abaixo para entrar em contato:
-                  </p>
-                  <div className="flex flex-col gap-3 w-full">
-                    <div className="flex items-center justify-between gap-2 bg-muted px-4 py-3 rounded-lg overflow-hidden border">
-                      <span className="font-medium text-sm sm:text-base truncate">
-                        falcaocruz.tech@gmail.com
-                      </span>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() =>
-                          handleCopyEmail("falcaocruz.tech@gmail.com")
-                        }
-                        className="h-8 w-8 p-0 flex-shrink-0 hover:bg-slate-200 dark:hover:bg-slate-700"
-                      >
-                        {copiedEmail === "falcaocruz.tech@gmail.com" ? (
-                          <Check className="w-4 h-4 text-green-500" />
-                        ) : (
-                          <Copy className="w-4 h-4" />
-                        )}
-                      </Button>
-                    </div>
-                    <div className="flex items-center justify-between gap-2 bg-muted px-4 py-3 rounded-lg overflow-hidden border">
-                      <span className="font-medium text-sm sm:text-base truncate">
-                        Gabrielcfonline0900@gmail.com
-                      </span>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() =>
-                          handleCopyEmail("Gabrielcfonline0900@gmail.com")
-                        }
-                        className="h-8 w-8 p-0 flex-shrink-0 hover:bg-slate-200 dark:hover:bg-slate-700"
-                      >
-                        {copiedEmail === "Gabrielcfonline0900@gmail.com" ? (
-                          <Check className="w-4 h-4 text-green-500" />
-                        ) : (
-                          <Copy className="w-4 h-4" />
-                        )}
-                      </Button>
-                    </div>
-                  </div>
-                  <Button
-                    asChild
-                    className="mt-4 w-full h-11 text-base font-semibold"
-                    onClick={handleOpenGmail}
-                  >
-                    <a
-                      href="https://mail.google.com/mail/?view=cm&fs=1&to=falcaocruz.tech@gmail.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Abrir no Gmail
-                    </a>
-                  </Button>
-                </div>
-              </DialogContent>
-            </Dialog>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
-              asChild
-            >
+      <div className={styles.container}>
+        <div className={styles.contactGrid}>
+          {/* COLUNA ESQUERDA */}
+          <div className={styles.intro}>
+            <div className={styles.eyebrow}>
+              <Send aria-hidden="true" />
+              <span>CONTATO</span>
+            </div>
+
+            <h2 id="contact-title" className={styles.title}>
+              Vamos trabalhar
+              <br />
+              <span>juntos?</span>
+            </h2>
+
+            <div className={styles.accentLine} aria-hidden="true" />
+
+            <p className={styles.description}>
+              Estou aberto a novos desafios, oportunidades e projetos onde
+              tecnologia, arquitetura e boas decisões possam gerar impacto
+              real.
+            </p>
+
+            <div className={styles.circuit} aria-hidden="true">
+              <span className={styles.circuitLineA} />
+              <span className={styles.circuitLineB} />
+              <span className={styles.circuitLineC} />
+              <span className={styles.circuitDotA} />
+              <span className={styles.circuitDotB} />
+            </div>
+          </div>
+
+          {/* COLUNA DIREITA */}
+          <div className={styles.contactPanel}>
+            <div className={styles.emailCard}>
+              <div className={styles.emailIcon}>
+                <Mail aria-hidden="true" />
+              </div>
+
+              <div className={styles.emailContent}>
+                <span className={styles.cardLabel}>EMAIL PRINCIPAL</span>
+
+                <a
+                  href={`mailto:${PRIMARY_EMAIL}`}
+                  className={styles.emailAddress}
+                  onClick={handleEmailClick}
+                >
+                  {PRIMARY_EMAIL}
+                </a>
+
+                <span className={styles.emailMeta}>
+                  Canal direto para oportunidades e projetos
+                </span>
+              </div>
+
+              <button
+                type="button"
+                className={styles.copyButton}
+                onClick={handleCopyEmail}
+                aria-label={
+                  copied ? "E-mail copiado" : "Copiar endereço de e-mail"
+                }
+              >
+                {copied ? (
+                  <Check aria-hidden="true" />
+                ) : (
+                  <Copy aria-hidden="true" />
+                )}
+              </button>
+            </div>
+
+            <div className={styles.socialGrid}>
               <a
                 href="https://www.linkedin.com/in/gabrielfalcaodev/"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => event('clique_link_externo', { destino: 'linkedin' })}
+                className={styles.socialCard}
+                onClick={() =>
+                  event("clique_link_externo", {
+                    destino: "linkedin",
+                  })
+                }
               >
-                <Linkedin className="w-5 h-5 mr-2" />
-                LinkedIn
+                <span className={styles.socialIcon}>
+                  <Linkedin aria-hidden="true" />
+                </span>
+
+                <span className={styles.socialContent}>
+                  <span className={styles.cardLabel}>LINKEDIN</span>
+                  <span className={styles.socialValue}>
+                    /in/gabrielfalcaodev
+                  </span>
+                </span>
+
+                <ArrowUpRight
+                  aria-hidden="true"
+                  className={styles.socialArrow}
+                />
               </a>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
-              asChild
-            >
+
               <a
                 href="https://github.com/GabrielF0900"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => event('clique_link_externo', { destino: 'github' })}
+                className={styles.socialCard}
+                onClick={() =>
+                  event("clique_link_externo", {
+                    destino: "github",
+                  })
+                }
               >
-                <Github className="w-5 h-5 mr-2" />
-                GitHub
+                <span className={styles.socialIcon}>
+                  <Github aria-hidden="true" />
+                </span>
+
+                <span className={styles.socialContent}>
+                  <span className={styles.cardLabel}>GITHUB</span>
+                  <span className={styles.socialValue}>/GabrielF0900</span>
+                </span>
+
+                <ArrowUpRight
+                  aria-hidden="true"
+                  className={styles.socialArrow}
+                />
               </a>
-            </Button>
+            </div>
+
+            <div className={styles.statement}>
+              <span className={styles.statementLine} aria-hidden="true" />
+
+              <ShieldCheck aria-hidden="true" />
+
+              <p>
+                Vamos construir{" "}
+                <strong>soluções escaláveis</strong> e de alto impacto.
+              </p>
+
+              <span className={styles.statementLine} aria-hidden="true" />
+            </div>
           </div>
         </div>
       </div>
