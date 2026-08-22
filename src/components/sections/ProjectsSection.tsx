@@ -1,12 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
 import {
   ArrowUpRight,
   FolderGit2,
   Github,
   SearchX,
 } from "lucide-react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { projects } from "../../constants/projects";
 import { Project } from "../../types";
@@ -185,6 +188,8 @@ function FeaturedProject({
 }
 
 export default function ProjectsSection() {
+  const containerRef = useRef<HTMLElement>(null);
+  
   const [selectedProject, setSelectedProject] =
     useState<Project | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -223,6 +228,58 @@ export default function ProjectsSection() {
       return a.featured ? -1 : 1;
     });
   }, []);
+
+  useGSAP(() => {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reduceMotion) {
+      gsap.set([
+        `.${styles.sectionMarker}`, 
+        `.${styles.sectionHeading}`,
+        `.${styles.blockHeading}`,
+        `.${styles.primarySlot}`,
+        `.${styles.secondaryGrid} > article`,
+        `.${styles.explorerSection}`
+      ], { opacity: 1, clearProps: "all" });
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 75%",
+        once: true,
+      },
+    });
+
+    tl.fromTo(
+      [`.${styles.sectionMarker}`, `.${styles.sectionHeading}`],
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.08 }
+    )
+    .fromTo(
+      [`.${styles.blockHeading}`, `.${styles.primarySlot}`],
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.08 },
+      "-=0.4"
+    )
+    .fromTo(
+      `.${styles.secondaryGrid} > article`,
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "power2.out" },
+      "-=0.4"
+    )
+    .fromTo(
+      `.${styles.explorerSection}`,
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+      "-=0.4"
+    );
+  }, { scope: containerRef });
 
   const primaryProject = useMemo(
     () =>
@@ -425,6 +482,7 @@ export default function ProjectsSection() {
       id="projetos"
       className={styles.section}
       aria-labelledby="projects-title"
+      ref={containerRef}
     >
       <div
         className={styles.backgroundGrid}

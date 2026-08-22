@@ -333,20 +333,3 @@ export function TeamInfo({
     </p>
   );
 }
-
-/*
- * Mantidos apenas para compatibilidade temporária.
- * ProjectModalDesktop/Mobile novos não dependem mais
- * destes componentes antigos.
- */
-export function ActionButtons() {
-  return null;
-}
-
-export function ModalScrollContent() {
-  return null;
-}
-
-export function ModalStatusFooter() {
-  return null;
-}

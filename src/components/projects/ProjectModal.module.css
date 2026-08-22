@@ -58,10 +58,10 @@
 }
 
 /* =========================================================
-   DESKTOP LAYOUT
+   SCROLL CONTAINER
    ========================================================= */
 
-.desktopShell {
+.scrollContainer {
   display: grid;
 
   grid-template-columns:
@@ -84,17 +84,18 @@
     transparent;
 
   scrollbar-gutter: stable;
+  -webkit-overflow-scrolling: touch;
 }
 
-.desktopShell::-webkit-scrollbar {
+.scrollContainer::-webkit-scrollbar {
   width: 7px;
 }
 
-.desktopShell::-webkit-scrollbar-track {
+.scrollContainer::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.desktopShell::-webkit-scrollbar-thumb {
+.scrollContainer::-webkit-scrollbar-thumb {
   border-radius: 999px;
 
   background:
@@ -105,7 +106,7 @@
     );
 }
 
-.desktopShell::-webkit-scrollbar-thumb:hover {
+.scrollContainer::-webkit-scrollbar-thumb:hover {
   background:
     color-mix(
       in srgb,
@@ -146,6 +147,23 @@
     1.5rem;
 
   overflow: visible;
+}
+
+/* Base flex containers for mobile reordering */
+.header,
+.sectionAbout,
+.sectionTech,
+.sectionLinks,
+.sectionActions,
+.sectionVisual,
+.sectionHighlights,
+.sectionMetrics {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionActions {
+  margin-top: 0;
 }
 
 /* =========================================================
@@ -747,229 +765,170 @@
    MOBILE
    ========================================================= */
 
-.mobileModal {
-  position: fixed !important;
-
-  inset: 0 !important;
-  left: 0 !important;
-  top: 0 !important;
-
-  width: 100vw !important;
-  height: 100dvh !important;
-
-  max-width: none !important;
-  max-height: none !important;
-
-  margin: 0 !important;
-  padding: 0 !important;
-
-  transform: none !important;
-
-  border: 0 !important;
-  border-radius: 0 !important;
-
-  color: var(--modal-text);
-
-  background: var(--modal-bg) !important;
-
-  overflow: hidden;
-
-  box-shadow: none !important;
-}
-
-.mobileScroll {
-  width: 100%;
-  height: 100dvh;
-
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  overscroll-behavior: contain;
-
-  scrollbar-width: thin;
-  scrollbar-color:
-    var(--modal-border-blue)
-    transparent;
-
-  -webkit-overflow-scrolling: touch;
-}
-
-.mobileHeader {
-  position: relative;
-
-  z-index: 2;
-
-  padding:
-    calc(3.15rem + env(safe-area-inset-top))
-    1rem
-    1.1rem;
-
-  border-bottom:
-    1px solid
-    var(--modal-border);
-
-  background: var(--modal-bg);
-}
-
-.mobileContent {
-  display: flex;
-  flex-direction: column;
-
-  width: 100%;
-
-  padding:
-    1rem
-    1rem
-    calc(1.5rem + env(safe-area-inset-bottom));
-}
-
-.mobileTitle {
-  max-width: calc(100% - 2.5rem);
-
-  margin: 0;
-
-  color: var(--modal-text);
-
-  font-size: clamp(1.35rem, 6.4vw, 1.65rem);
-  font-weight: 720;
-  line-height: 1.05;
-  letter-spacing: -0.035em;
-
-  overflow-wrap: anywhere;
-}
-
-.mobileVisual {
-  width: 100%;
-
-  margin:
-    0
-    0
-    1.25rem;
-}
-
-.mobileHeader .badges {
-  margin-bottom: 0.8rem;
-}
-
-.mobileHeader .meta {
-  gap: 0.45rem;
-
-  margin-top: 0.7rem;
-
-  font-size: 0.68rem;
-}
-
-.mobileModal > button {
-  top: calc(0.85rem + env(safe-area-inset-top));
-  right: 0.85rem;
-  z-index: 20;
-
-  color: var(--modal-text);
-}
-
-.mobileContent .projectVisual {
-  width: 100%;
-
-  border-radius: 0.65rem;
-}
-
-.mobileContent .imageChrome {
-  height: 1.75rem;
-  min-height: 1.75rem;
-}
-
-.mobileContent .imageViewport {
-  width: 100%;
-  height: auto;
-
-  aspect-ratio: 16 / 9;
-}
-
-.mobileContent .imageViewport img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: contain;
-  object-position: center;
-}
-
-.mobileContent .section {
-  margin-top: 0;
-
-  padding:
-    1.15rem
-    0;
-
-  border-top: 1px solid var(--modal-border);
-}
-
-.mobileContent .description {
-  font-size: 0.78rem;
-  line-height: 1.7;
-}
-
-.mobileContent .sectionTitle {
-  margin-bottom: 0.75rem;
-
-  font-size: 0.58rem;
-  letter-spacing: 0.085em;
-}
-
-.mobileContent .tech {
-  min-height: 1.85rem;
-
-  padding: 0 0.62rem;
-
-  font-size: 0.62rem;
-}
-
-.mobileContent .highlightsGrid {
-  grid-template-columns: 1fr;
-
-  gap: 0.55rem;
-}
-
-.mobileContent .highlight {
-  padding: 0.8rem;
-}
-
-.mobileContent .highlight p {
-  font-size: 0.7rem;
-  line-height: 1.55;
-}
-
-.mobileContent .metricsGrid {
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
-  gap: 0.55rem;
-}
-
-.mobileContent .quickLinks {
-  grid-template-columns: 1fr;
-}
-
-.mobileContent .quickLink {
-  width: 100%;
-  min-height: 2.6rem;
-}
-
-.mobileContent .actionBar {
-  display: flex;
-  flex-wrap: wrap;
-
-  gap: 0.55rem;
-
-  width: 100%;
-
-  margin-top: 1.25rem;
-
-  padding:
-    1rem
-    0
-    0.5rem;
-
-  border-top: 1px solid var(--modal-border);
+@media (max-width: 639px) {
+  .modal {
+    position: fixed !important;
+    inset: 0 !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: var(--modal-bg) !important;
+    box-shadow: none !important;
+  }
+
+  .modal > button {
+    top: calc(0.85rem + env(safe-area-inset-top));
+    right: 0.85rem;
+    z-index: 20;
+    color: var(--modal-text);
+  }
+
+  .scrollContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .leftColumn,
+  .rightColumn {
+    display: contents;
+  }
+
+  /* Structural order for mobile */
+  .header { order: 1; }
+  .sectionVisual { order: 2; }
+  .sectionAbout { order: 3; }
+  .sectionTech { order: 4; }
+  .sectionHighlights { order: 5; }
+  .sectionMetrics { order: 6; }
+  .sectionLinks { order: 7; }
+  .sectionActions { order: 8; }
+
+  /* Mobile Specific Styling */
+  .header {
+    position: relative;
+    z-index: 2;
+    padding: calc(3.15rem + env(safe-area-inset-top)) 1rem 1.1rem;
+    border-bottom: 1px solid var(--modal-border);
+    background: var(--modal-bg);
+  }
+
+  .title {
+    max-width: calc(100% - 2.5rem);
+    font-size: clamp(1.35rem, 6.4vw, 1.65rem);
+    font-weight: 720;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    overflow-wrap: anywhere;
+  }
+
+  .meta {
+    gap: 0.45rem;
+    margin-top: 0.7rem;
+    font-size: 0.68rem;
+  }
+
+  .badges {
+    margin-bottom: 0.8rem;
+  }
+
+  .sectionVisual {
+    width: 100%;
+    margin: 0 0 1.25rem;
+    padding: 1rem 1rem 0;
+  }
+
+  .projectVisual {
+    width: 100%;
+    border-radius: 0.65rem;
+  }
+
+  .imageChrome {
+    height: 1.75rem;
+    min-height: 1.75rem;
+  }
+
+  .imageViewport {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .imageViewport img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .section {
+    margin-top: 0;
+    padding: 1.15rem 1rem;
+    border-top: 1px solid var(--modal-border);
+  }
+
+  .sectionActions {
+    padding: 1rem 1rem calc(1.5rem + env(safe-area-inset-bottom));
+  }
+
+  .description {
+    font-size: 0.78rem;
+    line-height: 1.7;
+  }
+
+  .sectionTitle {
+    margin-bottom: 0.75rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.085em;
+  }
+
+  .tech {
+    min-height: 1.85rem;
+    padding: 0 0.62rem;
+    font-size: 0.62rem;
+  }
+
+  .highlightsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .highlight {
+    padding: 0.8rem;
+  }
+
+  .highlight p {
+    font-size: 0.7rem;
+    line-height: 1.55;
+  }
+
+  .metricsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .quickLinks {
+    grid-template-columns: 1fr;
+  }
+
+  .quickLink {
+    width: 100%;
+    min-height: 2.6rem;
+  }
+
+  .actionBar {
+    margin-top: 1.25rem;
+    padding: 1rem 0 0.5rem;
+    border-top: 1px solid var(--modal-border);
+  }
 }
 
 /* =========================================================

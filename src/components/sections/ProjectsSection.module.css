@@ -368,8 +368,9 @@
     0 20px 50px rgba(16, 41, 80, 0.055);
 
   transition:
-    border-color 220ms ease,
-    box-shadow 220ms ease;
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 360ms ease,
+    box-shadow 360ms ease;
 }
 
 :global(.dark) .featuredProject {
@@ -398,11 +399,17 @@
 
 .featuredProject:hover,
 .featuredProject:focus-within {
-  border-color:
-    var(--projects-border-strong);
+  transform: translateY(-3px);
+  border-color: var(--projects-blue);
+  box-shadow: 0 24px 64px rgba(22, 88, 192, 0.12);
+}
 
+.featuredProjectPrimary:hover,
+.featuredProjectPrimary:focus-within {
+  transform: translateY(-4px);
   box-shadow:
-    0 22px 60px rgba(22, 88, 192, 0.07);
+    0 32px 80px rgba(22, 88, 192, 0.18),
+    0 0 0 1px rgba(44, 127, 255, 0.15);
 }
 
 .featuredProjectPrimary {
@@ -440,6 +447,18 @@
 
   box-shadow:
     0 0 18px rgba(44, 127, 255, 0.36);
+
+  transition:
+    opacity 380ms ease,
+    filter 380ms ease,
+    box-shadow 380ms ease;
+}
+
+.featuredProjectPrimary:hover::after,
+.featuredProjectPrimary:focus-within::after {
+  opacity: 1;
+  filter: brightness(1.4);
+  box-shadow: 0 0 32px rgba(44, 127, 255, 0.7);
 }
 
 .featuredProjectSecondary {
@@ -838,6 +857,12 @@
     var(--projects-blue-bright);
 }
 
+.featuredProject:hover .detailsButton,
+.featuredProject:focus-within .detailsButton {
+  border-color: var(--projects-blue-bright);
+  box-shadow: 0 8px 22px rgba(23, 111, 237, 0.16);
+}
+
 .githubLink {
   padding: 0 0.8rem;
 
@@ -859,12 +884,23 @@
 
   border-color:
     var(--projects-border-strong);
+
+  background: var(--projects-blue-soft);
 }
 
 .detailsButton svg,
 .githubLink svg {
   width: 0.95rem;
   height: 0.95rem;
+
+  transition: transform 180ms ease;
+}
+
+.detailsButton:hover svg,
+.detailsButton:focus-visible svg,
+.featuredProject:hover .detailsButton svg,
+.featuredProject:focus-within .detailsButton svg {
+  transform: translate(3px, -1px);
 }
 
 .featuredProjectSecondary
@@ -993,9 +1029,13 @@
 
   opacity: 1;
 
-  filter: none;
+  filter: contrast(1) brightness(1);
 
-  transform: none;
+  transform: scale(1);
+
+  transition:
+    transform 460ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 460ms ease;
 }
 
 /*
@@ -1003,7 +1043,11 @@
  * pois isso altera visualmente as cores originais.
  */
 .featuredProjectPrimary .imageOverlay {
-  display: none;
+  display: block;
+  opacity: 0.16;
+  background:
+    linear-gradient(110deg, rgba(4, 10, 20, 0.1), transparent 48%),
+    linear-gradient(180deg, transparent 76%, rgba(3, 8, 16, 0.18));
 }
 
 /* =========================================================
@@ -1154,13 +1198,18 @@
 }
 
 .featuredProjectSecondary:hover
+.imageViewport img,
+.featuredProjectSecondary:focus-within
 .imageViewport img {
-  transform: scale(1.008);
+  transform: scale(1.012);
 }
 
 .featuredProjectPrimary:hover
+.imageViewport img,
+.featuredProjectPrimary:focus-within
 .imageViewport img {
-  transform: none;
+  filter: contrast(1.025) brightness(1.018);
+  transform: scale(1.015);
 }
 
 /*
@@ -1180,6 +1229,17 @@
       transparent 78%,
       rgba(3, 8, 16, 0.11)
     );
+
+  opacity: 0.72;
+
+  transition:
+    opacity 420ms ease,
+    background 420ms ease;
+}
+
+.featuredProject:hover .imageOverlay,
+.featuredProject:focus-within .imageOverlay {
+  opacity: 0.32;
 }
 
 /* =========================================================
@@ -1847,12 +1907,15 @@
 
   .featuredProject:hover,
   .featuredProject:active,
+  .featuredProject:focus-within,
   .detailsButton:hover,
   .githubLink:hover {
     transform: none !important;
   }
 
   .featuredProject:hover
+  .imageViewport img,
+  .featuredProject:focus-within
   .imageViewport img,
   .featuredProjectSecondary:active
   .imageViewport img {

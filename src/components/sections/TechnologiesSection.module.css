@@ -1,636 +1,3059 @@
-.section {
-  position: relative;
-  overflow: hidden;
-  padding: clamp(5.5rem, 8vw, 8rem) 0 clamp(5rem, 8vw, 7.5rem);
-  background: var(--tech-bg);
+/* =========================================================
+   SECTION / TOKENS
+   ========================================================= */
 
+.section {
   --tech-bg: #f6f9fd;
-  --tech-surface: rgba(255, 255, 255, 0.82);
-  --tech-surface-strong: #ffffff;
-  --tech-surface-soft: #eef4fb;
-  --tech-text: #101722;
-  --tech-muted: #68758a;
-  --tech-muted-strong: #46566e;
-  --tech-blue: #1769ff;
-  --tech-blue-bright: #2f80ff;
-  --tech-blue-soft: rgba(23, 105, 255, 0.075);
-  --tech-border: rgba(68, 101, 147, 0.16);
-  --tech-border-strong: rgba(23, 105, 255, 0.3);
-  --tech-grid: rgba(37, 91, 170, 0.055);
-  --tech-glow: rgba(32, 105, 255, 0.12);
+
+  --tech-surface:
+    rgba(255, 255, 255, 0.92);
+
+  --tech-surface-strong:
+    #ffffff;
+
+  --tech-text:
+    #101722;
+
+  --tech-muted:
+    #68758a;
+
+  --tech-muted-strong:
+    #46566e;
+
+  --tech-blue:
+    #1769ff;
+
+  --tech-blue-bright:
+    #2f80ff;
+
+  --tech-blue-soft:
+    rgba(23, 105, 255, 0.075);
+
+  --tech-border:
+    rgba(68, 101, 147, 0.17);
+
+  --tech-border-strong:
+    rgba(23, 105, 255, 0.38);
+
+  --tech-grid:
+    rgba(37, 91, 170, 0.06);
+
+  --tech-glow:
+    rgba(32, 105, 255, 0.14);
+
+  position: relative;
+
+  isolation: isolate;
+
+  overflow: hidden;
+
+  scroll-margin-top: 5.25rem;
+
+  padding:
+    clamp(5.5rem, 8vw, 8rem)
+    0
+    clamp(5rem, 8vw, 7.5rem);
+
+  color: var(--tech-text);
+
+  background:
+    var(--tech-bg);
 }
 
 :global(.dark) .section {
-  --tech-bg: #030912;
-  --tech-surface: rgba(7, 16, 27, 0.88);
-  --tech-surface-strong: #07111d;
-  --tech-surface-soft: #0a1625;
-  --tech-text: #f3f6fa;
-  --tech-muted: #8491a4;
-  --tech-muted-strong: #b2bdcc;
-  --tech-blue: #2577ff;
-  --tech-blue-bright: #418cff;
-  --tech-blue-soft: rgba(37, 119, 255, 0.08);
-  --tech-border: rgba(94, 129, 176, 0.2);
-  --tech-border-strong: rgba(39, 118, 255, 0.46);
-  --tech-grid: rgba(40, 103, 201, 0.09);
-  --tech-glow: rgba(20, 94, 255, 0.2);
+  --tech-bg:
+    #030912;
+
+  --tech-surface:
+    rgba(7, 16, 27, 0.94);
+
+  --tech-surface-strong:
+    #07111d;
+
+  --tech-text:
+    #f3f6fa;
+
+  --tech-muted:
+    #8491a4;
+
+  --tech-muted-strong:
+    #b2bdcc;
+
+  --tech-blue:
+    #2577ff;
+
+  --tech-blue-bright:
+    #5598ff;
+
+  --tech-blue-soft:
+    rgba(37, 119, 255, 0.09);
+
+  --tech-border:
+    rgba(94, 129, 176, 0.2);
+
+  --tech-border-strong:
+    rgba(39, 118, 255, 0.54);
+
+  --tech-grid:
+    rgba(40, 103, 201, 0.09);
+
+  --tech-glow:
+    rgba(20, 94, 255, 0.22);
 }
+
+
+/* =========================================================
+   GLOBAL BACKGROUND GRID
+   ========================================================= */
+
+.gridBackground {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      var(--tech-grid) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      var(--tech-grid) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    4rem 4rem;
+
+  opacity:
+    0.38;
+
+  mask-image:
+    radial-gradient(
+      ellipse 85% 80%
+      at 50% 56%,
+      #000 8%,
+      transparent 79%
+    );
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
 
 .container {
   position: relative;
+
   z-index: 2;
-  width: min(1380px, calc(100% - 5rem));
-  margin: 0 auto;
+
+  width:
+    min(
+      1440px,
+      calc(100% - 5rem)
+    );
+
+  margin-inline:
+    auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.sectionHeader {
+  position: relative;
+
+  z-index: 3;
 }
 
 .sectionMarker {
   display: flex;
+
   align-items: center;
+
   gap: 0.5rem;
-  margin-bottom: clamp(1.45rem, 2vw, 1.8rem);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.13em;
-  line-height: 1;
-  white-space: nowrap;
-  color: var(--tech-blue);
+
+  margin-bottom:
+    clamp(1.45rem, 2vw, 1.8rem);
+
+  color:
+    var(--tech-blue);
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Consolas,
+    monospace;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    600;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.13em;
+
+  white-space:
+    nowrap;
 }
 
 .sectionMarkerIcon {
   display: grid;
-  width: 1.9rem;
-  height: 1.9rem;
-  place-items: center;
-  margin-right: 0.15rem;
-  border: 1px solid var(--tech-border-strong);
-  border-radius: 0.45rem;
-  background: var(--tech-blue-soft);
+
+  width:
+    1.9rem;
+
+  height:
+    1.9rem;
+
+  flex:
+    0 0 auto;
+
+  place-items:
+    center;
+
+  margin-right:
+    0.15rem;
+
+  border:
+    1px solid
+    var(--tech-border-strong);
+
+  border-radius:
+    0.45rem;
+
+  color:
+    var(--tech-blue);
+
+  background:
+    var(--tech-blue-soft);
 }
 
 .sectionMarkerIcon svg {
-  width: 1rem;
-  height: 1rem;
-  stroke-width: 1.6;
+  width:
+    1rem;
+
+  height:
+    1rem;
+
+  stroke-width:
+    1.6;
+}
+
+.sectionMarkerNumber {
+  color:
+    var(--tech-blue-bright);
+
+  font-weight:
+    700;
+}
+
+.sectionMarkerSlash {
+  opacity:
+    0.55;
+}
+
+.sectionMarkerLabel {
+  color:
+    var(--tech-blue);
 }
 
 .title {
-  margin: 0;
-  color: var(--tech-text);
-  font-size: clamp(4.1rem, 7vw, 6.6rem);
-  font-weight: 730;
-  line-height: 0.9;
-  letter-spacing: -0.07em;
+  margin:
+    0;
+
+  color:
+    var(--tech-text);
+
+  font-size:
+    clamp(
+      4.1rem,
+      7vw,
+      6.6rem
+    );
+
+  font-weight:
+    730;
+
+  line-height:
+    0.9;
+
+  letter-spacing:
+    -0.07em;
 }
 
 .lead {
-  max-width: 38rem;
-  margin: 1.4rem 0 0;
-  color: var(--tech-muted);
-  font-size: clamp(0.9rem, 1.15vw, 1.05rem);
-  line-height: 1.65;
+  max-width:
+    38rem;
+
+  margin:
+    1.4rem
+    0
+    0;
+
+  color:
+    var(--tech-muted);
+
+  font-size:
+    clamp(
+      0.9rem,
+      1.15vw,
+      1.05rem
+    );
+
+  line-height:
+    1.65;
 }
 
 .accentLine {
-  width: 3rem;
-  height: 2px;
-  margin-top: 1.5rem;
-  background: var(--tech-blue);
-  box-shadow: 0 0 14px var(--tech-glow);
+  width:
+    3rem;
+
+  height:
+    2px;
+
+  margin-top:
+    1.5rem;
+
+  background:
+    var(--tech-blue);
+
+  box-shadow:
+    0 0 14px
+    var(--tech-glow);
 }
 
-.ecosystem {
-  position: relative;
-  margin-top: clamp(4rem, 6vw, 6rem);
-  min-height: 42rem;
-}
 
-.ecosystemGrid {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: minmax(18rem, 0.95fr) minmax(17rem, 0.72fr) minmax(23rem, 1.1fr);
-  grid-template-rows: repeat(2, minmax(13.5rem, auto));
-  grid-template-areas:
-    "distributed core tools"
-    "cloud core frontend";
-  column-gap: 2.75rem;
-  row-gap: 1rem;
-  align-items: stretch;
-}
-
-.distributedCard { grid-area: distributed; }
-.cloudCard { grid-area: cloud; }
-.coreCard { grid-area: core; }
-.toolsCard { grid-area: tools; }
-.frontendCard { grid-area: frontend; }
+/* =========================================================
+   SHARED TECHNOLOGY CARD
+   ========================================================= */
 
 .groupCard {
   position: relative;
-  min-width: 0;
-  padding: 1.25rem 1.35rem;
-  border: 1px solid var(--tech-border);
-  border-radius: 0.75rem;
-  background: linear-gradient(145deg, var(--tech-blue-soft), transparent 55%), var(--tech-surface);
-  box-shadow: 0 20px 55px rgba(4, 24, 57, 0.06);
-  backdrop-filter: blur(12px);
+
+  min-width:
+    0;
+
+  overflow:
+    hidden;
+
+  padding:
+    1.25rem
+    1.35rem;
+
+  border:
+    1px solid
+    var(--tech-border);
+
+  border-radius:
+    0.78rem;
+
+  color:
+    var(--tech-text);
+
+  background:
+    linear-gradient(
+      125deg,
+      var(--tech-blue-soft),
+      transparent 43%
+    ),
+    var(--tech-surface);
+
+  box-shadow:
+    inset
+    0 1px 0
+    rgba(255, 255, 255, 0.055),
+    0 18px 48px
+    rgba(4, 24, 57, 0.055);
+
   transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
+    transform
+      240ms
+      cubic-bezier(0.16, 1, 0.3, 1),
+    border-color
+      220ms ease,
+    box-shadow
+      220ms ease;
+}
+
+.groupCard::after {
+  position:
+    absolute;
+
+  inset:
+    0.42rem;
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+
+  border:
+    1px solid
+    transparent;
+
+  border-radius:
+    0.52rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(89, 151, 255, 0.13),
+      transparent 28%
+    )
+    border-box;
+
+  mask:
+    linear-gradient(#000 0 0)
+      padding-box,
+    linear-gradient(#000 0 0);
+
+  mask-composite:
+    exclude;
+
+  opacity:
+    0.45;
 }
 
 .groupCard:hover {
-  transform: translateY(-2px);
-  border-color: var(--tech-border-strong);
-  box-shadow: 0 22px 58px rgba(24, 94, 205, 0.12);
+  transform:
+    translateY(-3px);
+
+  border-color:
+    var(--tech-border-strong);
+
+  box-shadow:
+    inset
+    0 1px 0
+    rgba(120, 169, 255, 0.12),
+    0 22px 58px
+    rgba(24, 94, 205, 0.15);
 }
 
+
+/* =========================================================
+   GROUP HEADER
+   ========================================================= */
+
 .groupHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-bottom: 0.9rem;
-  margin-bottom: 0.85rem;
-  border-bottom: 1px solid var(--tech-border);
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    1rem;
+
+  padding-bottom:
+    0.9rem;
+
+  margin-bottom:
+    0.88rem;
+
+  border-bottom:
+    1px solid
+    var(--tech-border);
 }
 
 .groupHeader h3 {
-  margin: 0;
-  color: var(--tech-blue);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  min-width:
+    0;
+
+  margin:
+    0;
+
+  color:
+    var(--tech-blue);
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Consolas,
+    monospace;
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    700;
+
+  line-height:
+    1.3;
+
+  letter-spacing:
+    0.1em;
 }
 
 .groupHeader > span {
-  display: grid;
-  width: 1.8rem;
-  height: 1.8rem;
-  place-items: center;
-  color: var(--tech-muted);
+  display:
+    grid;
+
+  width:
+    1.8rem;
+
+  height:
+    1.8rem;
+
+  flex:
+    0 0 auto;
+
+  place-items:
+    center;
+
+  color:
+    var(--tech-muted);
 }
 
 .groupHeader svg {
-  width: 1.05rem;
-  height: 1.05rem;
-  stroke-width: 1.5;
+  width:
+    1.05rem;
+
+  height:
+    1.05rem;
+
+  stroke-width:
+    1.5;
 }
 
+
+/* =========================================================
+   TECHNOLOGY ITEMS
+   ========================================================= */
+
 .groupList {
-  display: grid;
-  gap: 0.62rem;
+  display:
+    grid;
+
+  gap:
+    0.62rem;
 }
 
 .technologyItem {
-  display: flex;
-  align-items: center;
-  gap: 0.72rem;
-  min-height: 1.75rem;
-  color: var(--tech-muted-strong);
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    0.7rem;
+
+  min-width:
+    0;
+
+  min-height:
+    1.75rem;
+
+  color:
+    var(--tech-muted-strong);
 
   transition:
-    transform 160ms ease,
-    color 160ms ease;
-}
-
-.technologyItem:hover {
-  transform: translateX(2px);
-  color: var(--tech-text);
+    transform
+      180ms ease,
+    color
+      180ms ease;
 }
 
 .technologyName {
-  font-size: 0.79rem;
-  font-weight: 520;
-  line-height: 1.25;
+  min-width:
+    0;
+
+  font-size:
+    0.79rem;
+
+  font-weight:
+    520;
+
+  line-height:
+    1.25;
 }
 
 .technologyIcon {
-  display: grid;
-  width: 1.45rem;
-  height: 1.45rem;
-  flex: 0 0 auto;
-  place-items: center;
-  color: var(--brand-color);
+  display:
+    grid;
+
+  width:
+    1.45rem;
+
+  height:
+    1.45rem;
+
+  flex:
+    0 0 auto;
+
+  place-items:
+    center;
+
+  color:
+    var(--brand-color);
 
   transition:
-    transform 180ms ease,
-    filter 180ms ease;
+    transform
+      180ms ease,
+    filter
+      180ms ease;
+}
+
+.technologyIcon img,
+.technologyIcon svg {
+  display:
+    block;
+
+  width:
+    1.15rem;
+
+  height:
+    1.15rem;
+
+  object-fit:
+    contain;
+}
+
+.technologyIcon svg {
+  stroke-width:
+    1.8;
+}
+
+.technologyItem:hover {
+  transform:
+    translateX(3px);
+
+  color:
+    var(--tech-text);
 }
 
 .technologyItem:hover
 .technologyIcon {
-  transform: translateY(-1px);
+  transform:
+    scale(1.07);
+
   filter:
     drop-shadow(
-      0 0 5px
+      0 0 6px
       color-mix(
         in srgb,
-        var(--brand-color) 45%,
+        var(--brand-color) 48%,
         transparent
       )
     );
 }
 
-.technologyIcon svg {
-  width: 1.15rem;
-  height: 1.15rem;
-  stroke-width: 1.8;
-}
+
+/* =========================================================
+   BACKEND CORE
+   ========================================================= */
 
 .coreCard {
-  position: relative;
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-height: 31.5rem;
-  padding: 1.45rem 1.4rem 1.5rem;
-  border: 1px solid var(--tech-blue);
-  border-radius: 0.85rem;
-  overflow: hidden;
-  background: radial-gradient(circle at 50% 38%, rgba(37, 119, 255, 0.13), transparent 38%), var(--tech-surface-strong);
-  box-shadow:
-    0 0 0 1px rgba(47, 128, 255, 0.11),
-    0 0 34px var(--tech-glow),
-    0 28px 75px rgba(5, 29, 73, 0.16);
-  transition: border-color 180ms ease;
-}
+  position:
+    relative;
 
-.coreCard:hover {
-  border-color: var(--tech-blue-bright);
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    var(--tech-blue-bright);
+
+  border-radius:
+    0.9rem;
+
+  color:
+    var(--tech-text);
+
+  background:
+    radial-gradient(
+      circle at 50% 31%,
+      rgba(47, 128, 255, 0.2),
+      transparent 34%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(37, 119, 255, 0.06),
+      transparent 50%
+    ),
+    var(--tech-surface-strong);
+
+  box-shadow:
+    0 0 0 1px
+      rgba(47, 128, 255, 0.13),
+    0 0 38px
+      var(--tech-glow),
+    0 30px 80px
+      rgba(5, 29, 73, 0.18);
+
+  transition:
+    border-color
+      220ms ease,
+    box-shadow
+      220ms ease;
 }
 
 .coreCard::before {
-  position: absolute;
-  inset: 0.55rem;
-  content: "";
-  pointer-events: none;
-  border: 1px solid var(--tech-border);
-  border-radius: 0.58rem;
+  position:
+    absolute;
+
+  inset:
+    0.55rem;
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--tech-border-strong) 58%,
+      var(--tech-border)
+    );
+
+  border-radius:
+    0.62rem;
+
+  box-shadow:
+    inset
+    0 0 24px
+    rgba(37, 119, 255, 0.045);
 }
 
 .coreEyebrow {
-  position: relative;
-  z-index: 2;
-  display: block;
-  margin-top: 0.35rem;
-  color: var(--tech-blue);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-align: center;
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  display:
+    block;
+
+  color:
+    var(--tech-blue-bright);
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Consolas,
+    monospace;
+
+  font-size:
+    0.58rem;
+
+  font-weight:
+    700;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.1em;
+
+  text-align:
+    center;
 }
 
 .coreTitle {
-  position: relative;
-  z-index: 2;
-  margin: 0.45rem 0 0;
-  color: var(--tech-text);
-  font-size: clamp(1.7rem, 2vw, 2.15rem);
-  font-weight: 720;
-  letter-spacing: -0.045em;
-  text-align: center;
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  margin:
+    0.55rem
+    0
+    0;
+
+  color:
+    var(--tech-text);
+
+  font-size:
+    clamp(
+      1.85rem,
+      2.15vw,
+      2.35rem
+    );
+
+  font-weight:
+    740;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    -0.05em;
+
+  text-align:
+    center;
 }
 
+
+/* =========================================================
+   CORE SYMBOL
+   ========================================================= */
+
 .coreSymbol {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  width: 5.4rem;
-  height: 5.4rem;
-  place-items: center;
-  margin: 1.55rem auto 1.45rem;
-  color: var(--tech-blue-bright);
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  display:
+    grid;
+
+  width:
+    6.2rem;
+
+  height:
+    6.2rem;
+
+  flex:
+    0 0 auto;
+
+  place-items:
+    center;
+
+  margin:
+    1.45rem
+    auto
+    1.35rem;
+
+  color:
+    var(--tech-blue-bright);
+
+  animation:
+    coreSymbolBreath
+    5.8s
+    ease-in-out
+    infinite;
+}
+
+.coreSymbol::before,
+.coreSymbol::after {
+  position:
+    absolute;
+
+  content:
+    "";
+
+  clip-path:
+    polygon(
+      25% 6.7%,
+      75% 6.7%,
+      100% 50%,
+      75% 93.3%,
+      25% 93.3%,
+      0 50%
+    );
 }
 
 .coreSymbol::before {
-  position: absolute;
-  inset: 0;
-  content: "";
-  border: 2px solid var(--tech-blue);
-  background: var(--tech-blue-soft);
-  clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%);
-  box-shadow: 0 0 28px var(--tech-glow);
+  inset:
+    0;
+
+  border:
+    2px solid
+    var(--tech-blue-bright);
+
+  background:
+    var(--tech-blue-soft);
+
+  box-shadow:
+    0 0 24px
+    rgba(47, 128, 255, 0.22);
+}
+
+.coreSymbol::after {
+  inset:
+    0.55rem;
+
+  border:
+    1px solid
+    rgba(91, 156, 255, 0.5);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(47, 128, 255, 0.14),
+      transparent 67%
+    );
 }
 
 .coreSymbol svg {
-  position: relative;
-  z-index: 1;
-  width: 2.25rem;
-  height: 2.25rem;
-  stroke-width: 1.7;
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  width:
+    2.45rem;
+
+  height:
+    2.45rem;
+
+  stroke-width:
+    1.65;
 }
 
+@keyframes coreSymbolBreath {
+  0%,
+  100% {
+    transform:
+      scale(1);
+
+    filter:
+      drop-shadow(
+        0 0 8px
+        rgba(54, 137, 255, 0.42)
+      );
+  }
+
+  50% {
+    transform:
+      scale(1.04);
+
+    filter:
+      drop-shadow(
+        0 0 16px
+        rgba(75, 151, 255, 0.7)
+      );
+  }
+}
+
+
+/* =========================================================
+   CORE LIST
+   ========================================================= */
+
 .coreList {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  gap: 0.75rem;
-  width: 100%;
-  max-width: 12rem;
-  margin: 0 auto;
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  display:
+    grid;
+
+  width:
+    100%;
+
+  max-width:
+    12.5rem;
+
+  margin:
+    0 auto;
+
+  gap:
+    0.7rem;
 }
 
 .coreItem {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  min-height: 2rem;
-  color: var(--tech-text);
+  min-height:
+    2rem;
+
+  color:
+    var(--tech-text);
 }
 
 .coreItem .technologyName {
-  font-size: 0.86rem;
-  font-weight: 560;
+  font-size:
+    0.86rem;
+
+  font-weight:
+    570;
 }
 
-.distributedCard,
-.cloudCard,
-.toolsCard,
+
+/* =========================================================
+   CORE PLATFORM
+   ========================================================= */
+
+.corePlatform {
+  position:
+    absolute;
+
+  z-index:
+    1;
+
+  right:
+    12%;
+
+  bottom:
+    1.2rem;
+
+  left:
+    12%;
+
+  height:
+    3rem;
+
+  pointer-events:
+    none;
+}
+
+.corePlatform span {
+  position:
+    absolute;
+
+  right:
+    0;
+
+  bottom:
+    0;
+
+  left:
+    0;
+
+  height:
+    1.22rem;
+
+  border:
+    1px solid
+    rgba(47, 128, 255, 0.54);
+
+  border-radius:
+    50%;
+
+  box-shadow:
+    0 0 18px
+    rgba(47, 128, 255, 0.2);
+
+  transform:
+    perspective(10rem)
+    rotateX(62deg);
+}
+
+.corePlatform span:last-child {
+  right:
+    16%;
+
+  bottom:
+    0.55rem;
+
+  left:
+    16%;
+
+  opacity:
+    0.46;
+}
+
+
+/* =========================================================
+   DESKTOP ECOSYSTEM
+   ========================================================= */
+
+.desktopEcosystem {
+  display:
+    block;
+}
+
+.mobileEcosystem {
+  display:
+    none;
+}
+
+.ecosystem {
+  position:
+    relative;
+
+  min-height:
+    41rem;
+
+  margin-top:
+    clamp(3.8rem, 5vw, 5rem);
+
+  isolation:
+    isolate;
+}
+
+
+/* =========================================================
+   DESKTOP ARCHITECTURE BACKGROUND
+   ========================================================= */
+
+.architectureGrid {
+  position:
+    absolute;
+
+  z-index:
+    0;
+
+  right:
+    7%;
+
+  bottom:
+    -1rem;
+
+  left:
+    7%;
+
+  height:
+    20rem;
+
+  pointer-events:
+    none;
+
+  background-image:
+    linear-gradient(
+      rgba(37, 119, 255, 0.13)
+      1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(37, 119, 255, 0.13)
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    3rem 2.2rem;
+
+  opacity:
+    0.38;
+
+  transform:
+    perspective(28rem)
+    rotateX(63deg)
+    scaleX(1.13);
+
+  transform-origin:
+    bottom center;
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      #000 8%,
+      transparent 73%
+    );
+}
+
+.verticalArchitecture {
+  position:
+    absolute;
+
+  z-index:
+    0;
+
+  top:
+    -2rem;
+
+  bottom:
+    5rem;
+
+  left:
+    50%;
+
+  width:
+    min(36rem, 48%);
+
+  pointer-events:
+    none;
+
+  transform:
+    translateX(-50%);
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 4.8rem,
+      rgba(47, 128, 255, 0.1)
+        4.8rem
+        calc(4.8rem + 1px)
+    );
+
+  opacity:
+    0.38;
+
+  mask-image:
+    linear-gradient(
+      transparent,
+      #000 26%,
+      #000 70%,
+      transparent
+    );
+}
+
+
+/* =========================================================
+   DESKTOP GRID
+   ========================================================= */
+
+.ecosystemGrid {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(17.5rem, 0.94fr)
+    minmax(18.5rem, 0.74fr)
+    minmax(21rem, 0.94fr);
+
+  grid-template-rows:
+    repeat(
+      2,
+      minmax(14rem, auto)
+    );
+
+  grid-template-areas:
+    "distributed core tools"
+    "cloud core frontend";
+
+  column-gap:
+    clamp(
+      4.2rem,
+      5.2vw,
+      6rem
+    );
+
+  row-gap:
+    1.15rem;
+
+  align-items:
+    stretch;
+}
+
+.distributedCard {
+  grid-area:
+    distributed;
+}
+
+.cloudCard {
+  grid-area:
+    cloud;
+}
+
+.coreCard {
+  grid-area:
+    core;
+}
+
+.toolsCard {
+  grid-area:
+    tools;
+}
+
 .frontendCard {
-  min-height: 13.5rem;
+  grid-area:
+    frontend;
 }
 
-.toolsCard .groupList {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 1rem;
-  row-gap: 0.62rem;
+.desktopEcosystem
+.groupCard {
+  min-height:
+    14rem;
 }
 
-.frontendCard .groupList {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: 0.75rem;
-  row-gap: 0.62rem;
+.desktopEcosystem
+.coreCard {
+  align-self:
+    center;
+
+  min-height:
+    34rem;
+
+  padding:
+    1.65rem
+    1.5rem
+    4.8rem;
 }
 
-.connectorLayer {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  pointer-events: none;
+.desktopEcosystem
+.toolsCard
+.groupList {
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  column-gap:
+    1rem;
 }
 
-.connectorBase {
-  fill: none;
-  stroke: var(--tech-blue);
-  stroke-width: 1.5;
-  vector-effect: non-scaling-stroke;
-  opacity: 0.62;
-  filter: drop-shadow(0 0 5px rgba(37, 119, 255, 0.4));
+.desktopEcosystem
+.frontendCard
+.groupList {
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  column-gap:
+    0.8rem;
 }
 
-.connectorFlow {
-  fill: none;
-  stroke: var(--tech-blue-bright);
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-dasharray: 7 11;
-  vector-effect: non-scaling-stroke;
-  opacity: 0.98;
-  filter: drop-shadow(0 0 6px rgba(47, 128, 255, 0.62));
-  animation: connectorFlow 9s linear infinite;
-}
 
-.connectorDot {
-  fill: var(--tech-blue-bright);
-  filter: drop-shadow(0 0 5px rgba(47, 128, 255, 0.78));
-}
-
-.connectorDotCore {
-  fill: var(--tech-blue-bright);
-  filter: drop-shadow(0 0 7px rgba(47, 128, 255, 0.88));
-}
-
-@keyframes connectorFlow {
-  to { stroke-dashoffset: -72; }
-}
-
-.gridBackground {
-  position: absolute;
-  inset: -4rem 12% -2rem;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.7;
-  background-image: linear-gradient(var(--tech-grid) 1px, transparent 1px), linear-gradient(90deg, var(--tech-grid) 1px, transparent 1px);
-  background-size: 3.5rem 3.5rem;
-  mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
-}
+/* =========================================================
+   CORE GLOW
+   ========================================================= */
 
 .coreGlow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 0;
-  width: 32rem;
-  height: 32rem;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--tech-glow), transparent 68%);
-  filter: blur(16px);
-  opacity: 0.72;
-  animation: coreGlowBreath 5.5s ease-in-out infinite;
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  left:
+    50%;
+
+  z-index:
+    0;
+
+  width:
+    28rem;
+
+  height:
+    37rem;
+
+  pointer-events:
+    none;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      var(--tech-glow),
+      transparent 68%
+    );
+
+  filter:
+    blur(14px);
+
+  opacity:
+    0.72;
+
+  transform:
+    translate(-50%, -50%);
+
+  animation:
+    coreGlowBreath
+    5.8s
+    ease-in-out
+    infinite;
+
+  transition:
+    opacity 220ms ease,
+    filter 220ms ease;
 }
 
 @keyframes coreGlowBreath {
-  0%, 100% { opacity: 0.52; }
-  50% { opacity: 0.82; }
+  0%,
+  100% {
+    opacity:
+      0.53;
+  }
+
+  50% {
+    opacity:
+      0.84;
+  }
 }
 
+
+/* =========================================================
+   CONNECTOR SVG
+   ========================================================= */
+
+.connectorLayer {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  z-index:
+    1;
+
+  width:
+    100%;
+
+  height:
+    calc(100% - 2.5rem);
+
+  overflow:
+    visible;
+
+  pointer-events:
+    none;
+}
+
+.connector {
+  opacity:
+    0.9;
+
+  transition:
+    opacity
+    220ms ease;
+}
+
+
+/* BASE CIRCUIT */
+
+.connectorBase {
+  fill:
+    none;
+
+  stroke:
+    rgba(23, 105, 255, 0.56);
+
+  stroke-width:
+    1.8;
+
+  vector-effect:
+    non-scaling-stroke;
+
+  opacity:
+    0.8;
+
+  filter:
+    drop-shadow(
+      0 0 4px
+      rgba(23, 105, 255, 0.27)
+    );
+
+  transition:
+    stroke-width 220ms ease,
+    opacity 220ms ease,
+    filter 220ms ease;
+}
+
+:global(.dark)
+.connectorBase {
+  stroke:
+    rgba(57, 143, 255, 0.92);
+
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(47, 128, 255, 0.45)
+    );
+}
+
+
+/* MOVING DATA SIGNAL */
+
+.connectorFlow {
+  fill:
+    none;
+
+  stroke:
+    var(--tech-blue-bright);
+
+  stroke-width:
+    2.6;
+
+  stroke-linecap:
+    round;
+
+  stroke-dasharray:
+    30 102;
+
+  vector-effect:
+    non-scaling-stroke;
+
+  opacity:
+    1;
+
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(23, 105, 255, 0.58)
+    );
+
+  animation:
+    connectorFlow
+    3.65s
+    linear
+    infinite;
+
+  animation-delay:
+    var(
+      --connector-delay,
+      0s
+    );
+
+  transition:
+    stroke-width 220ms ease,
+    opacity 220ms ease,
+    filter 220ms ease;
+}
+
+:global(.dark)
+.connectorFlow {
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(93, 166, 255, 1)
+    )
+    drop-shadow(
+      0 0 11px
+      rgba(40, 119, 255, 0.58)
+    );
+}
+
+@keyframes connectorFlow {
+  from {
+    stroke-dashoffset:
+      0;
+  }
+
+  to {
+    stroke-dashoffset:
+      -132;
+  }
+}
+
+
+/* =========================================================
+   CONNECTOR NODES
+   ========================================================= */
+
+.connectorDot,
+.connectorDotCore {
+  fill:
+    var(--tech-blue-bright);
+}
+
+.connectorDot {
+  filter:
+    drop-shadow(
+      0 0 6px
+      rgba(82, 157, 255, 0.96)
+    );
+}
+
+.connectorDotCore {
+  filter:
+    drop-shadow(
+      0 0 9px
+      rgba(74, 150, 255, 1)
+    );
+}
+
+.connectorHalo,
+.connectorHaloCore {
+  fill:
+    var(--tech-blue);
+
+  opacity:
+    0.25;
+
+  transform-box:
+    fill-box;
+
+  transform-origin:
+    center;
+
+  animation:
+    connectorNodePulse
+    3.1s
+    ease-in-out
+    infinite;
+}
+
+.connectorHaloCore {
+  animation-delay:
+    1.55s;
+}
+
+@keyframes connectorNodePulse {
+  0%,
+  100% {
+    opacity:
+      0.24;
+
+    transform:
+      scale(1);
+  }
+
+  50% {
+    opacity:
+      0.72;
+
+    transform:
+      scale(1.3);
+  }
+}
+
+
+/* =========================================================
+   ACTIVE GROUP
+   ========================================================= */
+
+.ecosystem[data-active-group]
+.connector {
+  opacity:
+    0.34;
+}
+
+.ecosystem[data-active-group="distributed"]
+.distributedConnector,
+
+.ecosystem[data-active-group="cloud"]
+.cloudConnector,
+
+.ecosystem[data-active-group="tools"]
+.toolsConnector,
+
+.ecosystem[data-active-group="frontend"]
+.frontendConnector {
+  opacity:
+    1;
+}
+
+.ecosystem[data-active-group="distributed"]
+.distributedConnector
+.connectorBase,
+
+.ecosystem[data-active-group="cloud"]
+.cloudConnector
+.connectorBase,
+
+.ecosystem[data-active-group="tools"]
+.toolsConnector
+.connectorBase,
+
+.ecosystem[data-active-group="frontend"]
+.frontendConnector
+.connectorBase {
+  stroke-width:
+    2.2;
+
+  opacity:
+    1;
+}
+
+.ecosystem[data-active-group="distributed"]
+.distributedConnector
+.connectorFlow,
+
+.ecosystem[data-active-group="cloud"]
+.cloudConnector
+.connectorFlow,
+
+.ecosystem[data-active-group="tools"]
+.toolsConnector
+.connectorFlow,
+
+.ecosystem[data-active-group="frontend"]
+.frontendConnector
+.connectorFlow {
+  stroke-width:
+    3.1;
+
+  opacity:
+    1;
+
+  filter:
+    drop-shadow(
+      0 0 7px
+      rgba(80, 155, 255, 1)
+    )
+    drop-shadow(
+      0 0 15px
+      rgba(45, 123, 255, 0.65)
+    );
+}
+
+.ecosystem[data-active-group]
+.coreCard {
+  border-color:
+    var(--tech-blue-bright);
+
+  box-shadow:
+    0 0 0 1px
+      rgba(70, 145, 255, 0.17),
+    0 0 50px
+      rgba(35, 115, 255, 0.28),
+    0 30px 82px
+      rgba(4, 27, 69, 0.2);
+}
+
+.ecosystem[data-active-group]
+.coreGlow {
+  opacity:
+    0.92;
+
+  filter:
+    blur(12px);
+}
+
+
+/* =========================================================
+   DESKTOP LEGEND
+   ========================================================= */
+
 .legend {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2.6rem;
-  color: var(--tech-blue);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.62rem;
-  font-weight: 650;
-  letter-spacing: 0.13em;
-  text-align: center;
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    1rem;
+
+  margin-top:
+    2.7rem;
+
+  color:
+    var(--tech-blue);
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Consolas,
+    monospace;
+
+  font-size:
+    0.61rem;
+
+  font-weight:
+    650;
+
+  line-height:
+    1.4;
+
+  letter-spacing:
+    0.13em;
+
+  text-align:
+    center;
 }
 
 .legend > span {
-  width: 2rem;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--tech-blue));
-  opacity: 0.65;
+  width:
+    2.2rem;
+
+  height:
+    1px;
+
+  flex:
+    0 0 auto;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--tech-blue)
+    );
+
+  opacity:
+    0.66;
 }
 
 .legend > span:last-child {
-  transform: scaleX(-1);
+  transform:
+    scaleX(-1);
 }
 
-@media (max-width: 1180px) {
+
+/* =========================================================
+   DESKTOP 1181+
+   ========================================================= */
+
+@media (min-width: 1181px) {
+  .desktopEcosystem
+  .toolsCard
+  .groupList {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .desktopEcosystem
+  .frontendCard
+  .groupList {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+  }
+}
+
+
+/* =========================================================
+   COMPACT DESKTOP 980–1180
+   ========================================================= */
+
+@media
+(min-width: 980px)
+and
+(max-width: 1180px) {
+
   .container {
-    width: min(100% - 3rem, 1200px);
+    width:
+      min(
+        calc(100% - 2.5rem),
+        1160px
+      );
+  }
+
+  .ecosystem {
+    min-height:
+      39rem;
   }
 
   .ecosystemGrid {
-    grid-template-columns: minmax(15rem, 0.9fr) minmax(15rem, 0.72fr) minmax(19rem, 1fr);
-    column-gap: 1.5rem;
+    grid-template-columns:
+      minmax(14rem, 0.92fr)
+      minmax(17.5rem, 0.78fr)
+      minmax(17.5rem, 0.96fr);
+
+    column-gap:
+      2.25rem;
+
+    row-gap:
+      1rem;
   }
 
-  .frontendCard .groupList {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .desktopEcosystem
+  .coreCard {
+    min-height:
+      32rem;
+  }
+
+  .desktopEcosystem
+  .frontendCard
+  .groupList {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .connectorBase {
+    stroke-width:
+      1.65;
+  }
+
+  .connectorFlow {
+    stroke-width:
+      2.3;
   }
 }
 
-@media (max-width: 980px) {
+
+/* =========================================================
+   TABLET 680–979
+   ========================================================= */
+
+@media
+(min-width: 680px)
+and
+(max-width: 979px) {
+
+  .container {
+    width:
+      min(
+        calc(100% - 3rem),
+        56rem
+      );
+  }
+
   .ecosystem {
-    min-height: 0;
+    min-height:
+      0;
+
+    margin-top:
+      3.4rem;
+  }
+
+  .connectorLayer,
+  .verticalArchitecture {
+    display:
+      none;
+  }
+
+  .architectureGrid {
+    right:
+      0;
+
+    left:
+      0;
+
+    opacity:
+      0.25;
   }
 
   .ecosystemGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: auto;
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    grid-template-rows:
+      auto;
+
     grid-template-areas:
       "core core"
       "distributed tools"
       "cloud frontend";
-    gap: 1rem;
+
+    gap:
+      1rem;
   }
 
+  .desktopEcosystem
   .coreCard {
-    width: 100%;
-    min-height: 0;
-    padding: 1.5rem;
+    width:
+      100%;
+
+    min-height:
+      0;
+
+    padding:
+      1.6rem
+      1.5rem
+      3.7rem;
   }
 
+  .desktopEcosystem
   .coreList {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    max-width: none;
-    gap: 0.65rem;
-    margin-top: 0.5rem;
+    grid-template-columns:
+      repeat(
+        5,
+        minmax(0, 1fr)
+      );
+
+    max-width:
+      none;
+
+    margin-top:
+      0.4rem;
+
+    gap:
+      0.6rem;
   }
 
+  .desktopEcosystem
   .coreItem {
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.4rem;
-    min-height: 4.25rem;
-    text-align: center;
+    flex-direction:
+      column;
+
+    justify-content:
+      center;
+
+    gap:
+      0.4rem;
+
+    min-height:
+      4rem;
+
+    text-align:
+      center;
   }
 
-  .connectorLayer {
-    display: none;
+  .desktopEcosystem
+  .groupCard {
+    min-height:
+      0;
+
+    height:
+      auto;
+  }
+
+  .desktopEcosystem
+  .groupCard
+  .groupList {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    column-gap:
+      0.75rem;
   }
 
   .coreGlow {
-    width: 26rem;
-    height: 26rem;
+    top:
+      10rem;
+
+    width:
+      28rem;
+
+    height:
+      23rem;
   }
 }
 
-@media (max-width: 680px) {
+
+/* =========================================================
+   MOBILE <= 679
+   ========================================================= */
+
+@media (max-width: 679px) {
+
   .section {
-    padding: 5rem 0;
+    scroll-margin-top:
+      4.3rem;
+
+    padding:
+      4.4rem
+      0
+      4.5rem;
   }
 
   .container {
-    width: min(100% - 2rem, 1200px);
+    width:
+      min(
+        calc(100% - 1.5rem),
+        42rem
+      );
+  }
+
+  .sectionMarker {
+    margin-bottom:
+      1.15rem;
+
+    font-size:
+      0.64rem;
+  }
+
+  .sectionMarkerIcon {
+    width:
+      1.7rem;
+
+    height:
+      1.7rem;
   }
 
   .title {
-    font-size: clamp(3.4rem, 17vw, 4.8rem);
+    font-size:
+      clamp(
+        2.8rem,
+        14vw,
+        4.15rem
+      );
+
+    line-height:
+      0.95;
   }
 
   .lead {
-    max-width: 100%;
+    max-width:
+      31rem;
+
+    margin-top:
+      1rem;
+
+    font-size:
+      0.84rem;
+
+    line-height:
+      1.6;
   }
 
-  .ecosystem {
-    margin-top: 3.5rem;
+  .accentLine {
+    width:
+      2.7rem;
+
+    margin-top:
+      1.15rem;
   }
 
-  .ecosystemGrid {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "core"
-      "distributed"
-      "cloud"
-      "tools"
-      "frontend";
+  /* DESKTOP COMPLETAMENTE DESLIGADO */
+
+  .desktopEcosystem {
+    display:
+      none !important;
   }
 
-  .coreList {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.55rem;
+  /* MOBILE */
+
+  .mobileEcosystem {
+    position:
+      relative;
+
+    display:
+      block;
+
+    margin-top:
+      2.5rem;
+
+    isolation:
+      isolate;
   }
 
-  .toolsCard .groupList,
-  .frontendCard .groupList {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .mobilePipeline {
+    position:
+      relative;
+
+    z-index:
+      2;
+
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    width:
+      100%;
   }
 
-  .groupCard {
-    padding: 1.15rem;
-  }
 
-  .legend {
-    font-size: 0.54rem;
-    letter-spacing: 0.09em;
-  }
+  /* =====================================================
+     MOBILE BACKGROUND
+     ===================================================== */
 
-  .legend > span {
-    width: 1rem;
-  }
-}
+  .mobileArchitectureGrid {
+    position:
+      absolute;
 
-@media (max-width: 420px) {
-  .coreList {
-    grid-template-columns: 1fr;
-  }
+    inset:
+      -1rem -1rem 0;
 
-  .toolsCard .groupList,
-  .frontendCard .groupList {
-    grid-template-columns: 1fr;
-  }
+    z-index:
+      0;
 
-  .technologyName {
-    font-size: 0.76rem;
-  }
+    pointer-events:
+      none;
 
-  .legend {
-    gap: 0.55rem;
-  }
-}
-
-/* Touch devices do not expose a persistent hover state. Keep the ecosystem
-   legible with a restrained ambient treatment and use :active for feedback. */
-@media (hover: none), (pointer: coarse) {
-  .groupCard {
-    border-color:
-      color-mix(
-        in srgb,
-        var(--tech-border-strong) 72%,
-        var(--tech-border)
+    background-image:
+      linear-gradient(
+        rgba(37, 119, 255, 0.08)
+        1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(37, 119, 255, 0.08)
+        1px,
+        transparent 1px
       );
-    box-shadow: 0 16px 38px rgba(24, 94, 205, 0.07);
+
+    background-size:
+      2.5rem 2.5rem;
+
+    opacity:
+      0.22;
+
+    mask-image:
+      linear-gradient(
+        transparent,
+        #000 6%,
+        #000 93%,
+        transparent
+      );
+  }
+
+  :global(.dark)
+  .mobileArchitectureGrid {
+    background-image:
+      linear-gradient(
+        rgba(37, 119, 255, 0.11)
+        1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(37, 119, 255, 0.11)
+        1px,
+        transparent 1px
+      );
+
+    opacity:
+      0.25;
+  }
+
+  .mobileCoreGlow {
+    position:
+      absolute;
+
+    top:
+      -2.5rem;
+
+    left:
+      50%;
+
+    z-index:
+      0;
+
+    width:
+      min(
+        22rem,
+        90vw
+      );
+
+    height:
+      22rem;
+
+    pointer-events:
+      none;
+
+    border-radius:
+      50%;
+
+    background:
+      radial-gradient(
+        circle,
+        var(--tech-glow),
+        transparent 69%
+      );
+
+    opacity:
+      0.5;
+
+    transform:
+      translateX(-50%);
+  }
+
+
+  /* =====================================================
+     MOBILE CORE
+     ===================================================== */
+
+  .mobileEcosystem
+  .coreCard {
+    grid-area:
+      auto;
+
+    width:
+      100%;
+
+    min-height:
+      0 !important;
+
+    height:
+      auto !important;
+
+    padding:
+      1.35rem
+      1rem
+      1.2rem;
+
+    border-radius:
+      0.85rem;
+  }
+
+  .mobileEcosystem
+  .coreEyebrow {
+    margin-top:
+      0.15rem;
+  }
+
+  .mobileEcosystem
+  .coreTitle {
+    margin-top:
+      0.5rem;
+
+    font-size:
+      clamp(
+        1.75rem,
+        8vw,
+        2.15rem
+      );
+  }
+
+  .mobileEcosystem
+  .coreSymbol {
+    width:
+      4.7rem;
+
+    height:
+      4.7rem;
+
+    margin:
+      1rem
+      auto
+      0.9rem;
+  }
+
+  .mobileEcosystem
+  .coreSymbol svg {
+    width:
+      2rem;
+
+    height:
+      2rem;
+  }
+
+  .mobileEcosystem
+  .coreList {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    width:
+      100%;
+
+    max-width:
+      none;
+
+    gap:
+      0.55rem
+      0.8rem;
+
+    margin:
+      0;
+  }
+
+  .mobileEcosystem
+  .coreItem {
+    display:
+      flex;
+
+    flex-direction:
+      row;
+
+    justify-content:
+      flex-start;
+
+    gap:
+      0.5rem;
+
+    min-height:
+      2.35rem;
+
+    text-align:
+      left;
+  }
+
+  .mobileEcosystem
+  .coreItem
+  .technologyName {
+    font-size:
+      0.76rem;
+  }
+
+  /* platform leaves document flow clean */
+
+  .mobileEcosystem
+  .corePlatform {
+    position:
+      relative;
+
+    right:
+      auto;
+
+    bottom:
+      auto;
+
+    left:
+      auto;
+
+    width:
+      68%;
+
+    height:
+      1.4rem;
+
+    margin:
+      0.85rem
+      auto
+      0;
+  }
+
+  .mobileEcosystem
+  .corePlatform span {
+    height:
+      0.72rem;
+  }
+
+  .mobileEcosystem
+  .corePlatform span:last-child {
+    bottom:
+      0.34rem;
+  }
+
+
+  /* =====================================================
+     MOBILE CARDS
+     ===================================================== */
+
+  .mobileEcosystem
+  .groupCard {
+    grid-area:
+      auto;
+
+    width:
+      100%;
+
+    min-height:
+      0 !important;
+
+    height:
+      auto !important;
+
+    padding:
+      1rem;
+
+    border-radius:
+      0.72rem;
+
+    box-shadow:
+      inset
+      0 1px 0
+      rgba(255, 255, 255, 0.045),
+      0 12px 32px
+      rgba(4, 24, 57, 0.055);
+  }
+
+  .mobileEcosystem
+  .groupHeader {
+    padding-bottom:
+      0.7rem;
+
+    margin-bottom:
+      0.72rem;
+  }
+
+  .mobileEcosystem
+  .groupHeader h3 {
+    font-size:
+      0.61rem;
+
+    line-height:
+      1.35;
+
+    letter-spacing:
+      0.085em;
+  }
+
+  .mobileEcosystem
+  .groupHeader > span {
+    width:
+      1.55rem;
+
+    height:
+      1.55rem;
+  }
+
+  .mobileEcosystem
+  .groupList {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      ) !important;
+
+    column-gap:
+      0.65rem;
+
+    row-gap:
+      0.48rem;
+  }
+
+  .mobileEcosystem
+  .technologyItem {
+    gap:
+      0.46rem;
+
+    min-height:
+      2rem;
+  }
+
+  .mobileEcosystem
+  .technologyName {
+    overflow-wrap:
+      anywhere;
+
+    font-size:
+      0.7rem;
+
+    line-height:
+      1.25;
+  }
+
+  .mobileEcosystem
+  .technologyIcon {
+    width:
+      1.25rem;
+
+    height:
+      1.25rem;
+  }
+
+  .mobileEcosystem
+  .technologyIcon img,
+  .mobileEcosystem
+  .technologyIcon svg {
+    width:
+      1rem;
+
+    height:
+      1rem;
+  }
+
+
+  /* =====================================================
+     MOBILE PIPELINE CONNECTOR
+     ===================================================== */
+
+  .mobileConnector {
+    position:
+      relative;
+
+    width:
+      100%;
+
+    height:
+      54px;
+
+    flex:
+      0 0 54px;
+
+    overflow:
+      hidden;
+  }
+
+  .mobileConnectorLine {
+    position:
+      absolute;
+
+    top:
+      0;
+
+    bottom:
+      0;
+
+    left:
+      50%;
+
+    width:
+      1.5px;
+
+    transform:
+      translateX(-50%);
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(23, 105, 255, 0.24),
+        rgba(23, 105, 255, 0.88),
+        rgba(23, 105, 255, 0.24)
+      );
+
+    box-shadow:
+      0 0 4px
+      rgba(23, 105, 255, 0.22);
+  }
+
+  :global(.dark)
+  .mobileConnectorLine {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(70, 151, 255, 0.3),
+        rgba(74, 151, 255, 1),
+        rgba(70, 151, 255, 0.3)
+      );
+
+    box-shadow:
+      0 0 5px
+      rgba(67, 146, 255, 0.42);
+  }
+
+  .mobileConnectorSignal {
+    position:
+      absolute;
+
+    top:
+      -18px;
+
+    left:
+      50%;
+
+    width:
+      3px;
+
+    height:
+      19px;
+
+    border-radius:
+      999px;
+
+    transform:
+      translateX(-50%);
+
+    background:
+      linear-gradient(
+        180deg,
+        transparent,
+        #72b4ff 28%,
+        #2e7fff 70%,
+        transparent
+      );
+
+    box-shadow:
+      0 0 5px
+      rgba(46, 127, 255, 0.72),
+      0 0 10px
+      rgba(45, 120, 255, 0.36);
+
+    animation:
+      mobileSignalFlow
+      2.7s
+      linear
+      infinite;
+  }
+
+  :global(.dark)
+  .mobileConnectorSignal {
+    box-shadow:
+      0 0 6px
+      rgba(87, 162, 255, 1),
+      0 0 13px
+      rgba(45, 120, 255, 0.62);
+  }
+
+  .mobileConnectorNode {
+    position:
+      absolute;
+
+    top:
+      50%;
+
+    left:
+      50%;
+
+    width:
+      7px;
+
+    height:
+      7px;
+
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.42);
+
+    border-radius:
+      50%;
+
+    background:
+      var(--tech-blue-bright);
+
+    box-shadow:
+      0 0 6px
+      rgba(76, 152, 255, 0.96),
+      0 0 12px
+      rgba(49, 126, 255, 0.6);
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      );
+
+    animation:
+      mobileNodePulse
+      2.8s
+      ease-in-out
+      infinite;
+  }
+
+  .mobileConnectorArrow {
+    position:
+      absolute;
+
+    bottom:
+      4px;
+
+    left:
+      50%;
+
+    width:
+      6px;
+
+    height:
+      6px;
+
+    border-right:
+      1.5px solid
+      var(--tech-blue-bright);
+
+    border-bottom:
+      1.5px solid
+      var(--tech-blue-bright);
+
+    transform:
+      translateX(-50%)
+      rotate(45deg);
+
+    opacity:
+      0.78;
+  }
+
+  @keyframes mobileSignalFlow {
+    from {
+      transform:
+        translate(
+          -50%,
+          0
+        );
+    }
+
+    to {
+      transform:
+        translate(
+          -50%,
+          72px
+        );
+    }
+  }
+
+  @keyframes mobileNodePulse {
+    0%,
+    100% {
+      opacity:
+        0.64;
+
+      box-shadow:
+        0 0 5px
+        rgba(76, 152, 255, 0.75);
+    }
+
+    50% {
+      opacity:
+        1;
+
+      box-shadow:
+        0 0 8px
+        rgba(76, 152, 255, 1),
+        0 0 15px
+        rgba(49, 126, 255, 0.72);
+    }
+  }
+
+
+  /* =====================================================
+     MOBILE LEGEND
+     ===================================================== */
+
+  .mobileLegend {
+    position:
+      relative;
+
+    z-index:
+      2;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    gap:
+      0.55rem;
+
+    margin-top:
+      1.9rem;
+
+    color:
+      var(--tech-blue);
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Consolas,
+      monospace;
+
+    font-size:
+      0.48rem;
+
+    font-weight:
+      650;
+
+    line-height:
+      1.45;
+
+    letter-spacing:
+      0.075em;
+
+    text-align:
+      center;
+  }
+
+  .mobileLegend > span {
+    width:
+      0.9rem;
+
+    height:
+      1px;
+
+    flex:
+      0 0 auto;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        var(--tech-blue)
+      );
+
+    opacity:
+      0.64;
+  }
+
+  .mobileLegend > span:last-child {
+    transform:
+      scaleX(-1);
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE <= 359
+   ========================================================= */
+
+@media (max-width: 359px) {
+
+  .section {
+    padding:
+      4rem
+      0;
+  }
+
+  .container {
+    width:
+      calc(100% - 1.25rem);
+  }
+
+  .title {
+    font-size:
+      clamp(
+        2.6rem,
+        14vw,
+        3.25rem
+      );
+  }
+
+  .lead {
+    font-size:
+      0.79rem;
+  }
+
+  .mobileEcosystem {
+    margin-top:
+      2.2rem;
+  }
+
+  .mobileEcosystem
+  .coreCard {
+    padding:
+      1.2rem
+      0.8rem
+      1rem;
+  }
+
+  .mobileEcosystem
+  .groupCard {
+    padding:
+      0.85rem
+      0.78rem;
+  }
+
+  .mobileEcosystem
+  .groupList {
+    column-gap:
+      0.35rem;
+
+    row-gap:
+      0.4rem;
+  }
+
+  .mobileEcosystem
+  .coreList {
+    column-gap:
+      0.35rem;
+  }
+
+  .mobileEcosystem
+  .technologyItem {
+    gap:
+      0.35rem;
+  }
+
+  .mobileEcosystem
+  .technologyName {
+    font-size:
+      0.65rem;
+  }
+
+  .mobileEcosystem
+  .technologyIcon {
+    width:
+      1.15rem;
+
+    height:
+      1.15rem;
+  }
+
+  .mobileEcosystem
+  .technologyIcon img,
+  .mobileEcosystem
+  .technologyIcon svg {
+    width:
+      0.92rem;
+
+    height:
+      0.92rem;
+  }
+
+  .mobileConnector {
+    height:
+      48px;
+
+    flex-basis:
+      48px;
+  }
+
+  .mobileConnectorSignal {
+    animation-duration:
+      2.5s;
+  }
+
+  .mobileLegend {
+    font-size:
+      0.43rem;
+
+    letter-spacing:
+      0.055em;
+  }
+}
+
+
+/* =========================================================
+   MOBILE 430–679
+   ========================================================= */
+
+@media
+(min-width: 430px)
+and
+(max-width: 679px) {
+
+  .container {
+    width:
+      min(
+        calc(100% - 2rem),
+        38rem
+      );
+  }
+
+  .mobileEcosystem
+  .groupCard {
+    padding:
+      1.1rem
+      1.1rem;
+  }
+
+  .mobileEcosystem
+  .technologyName {
+    font-size:
+      0.75rem;
+  }
+
+  .mobileConnector {
+    height:
+      58px;
+
+    flex-basis:
+      58px;
+  }
+}
+
+
+/* =========================================================
+   TOUCH
+   ========================================================= */
+
+@media
+(hover: none),
+(pointer: coarse) {
+
+  .groupCard:hover {
+    transform:
+      none;
   }
 
   .groupCard:active {
-    border-color: var(--tech-border-strong);
-    box-shadow: 0 18px 44px rgba(24, 94, 205, 0.12);
+    transform:
+      translateY(-1px);
+
+    border-color:
+      var(--tech-border-strong);
+
+    box-shadow:
+      0 18px 42px
+      rgba(24, 94, 205, 0.1);
+  }
+
+  .technologyItem:hover {
+    transform:
+      none;
   }
 
   .technologyItem:active {
-    transform: translateX(2px);
-    color: var(--tech-text);
+    color:
+      var(--tech-text);
   }
 
-  .technologyItem:active .technologyIcon {
-    transform: translateY(-1px);
+  .technologyItem:active
+  .technologyIcon {
+    transform:
+      scale(1.06);
+
     filter:
       drop-shadow(
         0 0 5px
@@ -641,29 +3064,60 @@
         )
       );
   }
-
-  .coreCard {
-    border-color: var(--tech-blue-bright);
-  }
 }
 
-@media (prefers-reduced-motion: reduce) {
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media
+(prefers-reduced-motion: reduce) {
+
+  .coreSymbol,
   .coreGlow,
-  .connectorFlow {
-    animation: none !important;
+  .connectorFlow,
+  .connectorHalo,
+  .connectorHaloCore,
+  .mobileConnectorSignal,
+  .mobileConnectorNode {
+    animation:
+      none !important;
   }
 
   .groupCard,
   .technologyItem,
-  .technologyIcon {
-    transition: none !important;
+  .technologyIcon,
+  .coreCard,
+  .coreGlow,
+  .connector,
+  .connectorBase,
+  .connectorFlow {
+    transition:
+      none !important;
   }
 
   .groupCard:hover,
   .groupCard:active,
   .technologyItem:hover,
   .technologyItem:active,
-  .technologyItem:active .technologyIcon {
-    transform: none !important;
+  .technologyItem:hover
+  .technologyIcon,
+  .technologyItem:active
+  .technologyIcon {
+    transform:
+      none !important;
+  }
+
+  .sectionHeader,
+  .desktopEcosystem,
+  .mobileEcosystem,
+  .coreCard,
+  .groupCard {
+    opacity:
+      1 !important;
+
+    transform:
+      none !important;
   }
 }
