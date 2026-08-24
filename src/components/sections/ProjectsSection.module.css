@@ -1272,7 +1272,7 @@
   position: absolute;
 
   top: 0;
-  left: -12%;
+  left: 0;
 
   width: 12%;
   height: 1px;
@@ -1288,6 +1288,7 @@
     );
 
   opacity: 0.72;
+  transform: translateX(-100%);
 
   animation:
     projectDividerScan
@@ -1298,12 +1299,12 @@
 
 @keyframes projectDividerScan {
   0% {
-    left: -12%;
+    transform: translateX(-100%);
   }
 
   55%,
   100% {
-    left: 100%;
+    transform: translateX(835%);
   }
 }
 
@@ -1895,12 +1896,35 @@
    REDUCED MOTION
    ========================================================= */
 
+.showAllButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  margin: 1.5rem auto 0;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid var(--projects-border);
+  border-radius: 0.75rem;
+  color: var(--projects-blue);
+  background: var(--projects-surface);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.showAllButton:hover,
+.showAllButton:focus-visible {
+  border-color: var(--projects-blue);
+  transform: translateY(-1px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .featuredProject,
   .imageViewport img,
   .detailsButton,
   .githubLink,
-  .sectionDivider::before {
+  .sectionDivider::before,
+  .showAllButton {
     transition: none !important;
     animation: none !important;
   }
@@ -1920,5 +1944,18 @@
   .featuredProjectSecondary:active
   .imageViewport img {
     transform: none !important;
+  }
+}
+
+@media (max-width: 820px) {
+  .section *,
+  .section *::before,
+  .section *::after {
+    animation: none !important;
+  }
+
+  .sectionDivider::before {
+    opacity: 0.35;
+    transform: translateX(370%);
   }
 }

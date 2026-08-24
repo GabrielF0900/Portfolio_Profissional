@@ -982,6 +982,7 @@
     transform: none;
   }
 }
+
 .sectionMarker,
 .heading,
 .introduction,
@@ -1024,5 +1025,21 @@
   }
 }
 
+@media (max-width: 820px) {
+  .section *,
+  .section *::before,
+  .section *::after {
+    animation: none !important;
+  }
 
-
+  .sectionMarker,
+  .heading,
+  .introduction,
+  .differentials,
+  .portraitArea,
+  .objective {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

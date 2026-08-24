@@ -104,7 +104,7 @@ export default function ProjectCard({ project, onMoreInfo }: ProjectCardProps) {
               e.stopPropagation();
               event("clique_ver_codigo", { projeto: project.title });
             }}
-            aria-label="Ver código fonte no GitHub"
+            aria-label={`Ver código do projeto ${project.title} no GitHub`}
           >
             <Github aria-hidden="true" />
           </a>

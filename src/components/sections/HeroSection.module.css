@@ -1184,8 +1184,19 @@
     padding-top: 2.5rem;
   }
 
+  .heroMetaRow,
   .availability {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .availability {
+    justify-content: center;
     padding-inline: 0.8rem;
+  }
+
+  .availability span {
+    white-space: normal;
   }
 
   .namePrimary {

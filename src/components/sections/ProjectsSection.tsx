@@ -191,6 +191,7 @@ export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] =
     useState<Project | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [showAllProjects, setShowAllProjects] = useState(false);
 
   const [ecosystem, setEcosystem] =
     useState<Ecosystem>("Todos");
@@ -420,6 +421,10 @@ export default function ProjectsSection() {
     area,
     projectType,
   ]);
+
+  const visibleProjects = showAllProjects
+    ? filteredProjects
+    : filteredProjects.slice(0, 8);
 
   const activeFilterChips = useMemo(() => {
     const chips: {
@@ -678,15 +683,28 @@ export default function ProjectsSection() {
               )}
 
               {filteredProjects.length > 0 ? (
-                <div className={styles.projectsGrid}>
-                  {filteredProjects.map((project) => (
-                    <ProjectCard
-                      key={project.id}
-                      project={project}
-                      onMoreInfo={handleMoreInfo}
-                    />
-                  ))}
-                </div>
+                <>
+                  <div id="projects-grid" className={styles.projectsGrid}>
+                    {visibleProjects.map((project) => (
+                      <ProjectCard
+                        key={project.id}
+                        project={project}
+                        onMoreInfo={handleMoreInfo}
+                      />
+                    ))}
+                  </div>
+                  {filteredProjects.length > 8 && (
+                    <button
+                      type="button"
+                      className={styles.showAllButton}
+                      aria-expanded={showAllProjects}
+                      aria-controls="projects-grid"
+                      onClick={() => setShowAllProjects((current) => !current)}
+                    >
+                      {showAllProjects ? "Mostrar menos projetos" : "Ver todos os projetos"}
+                    </button>
+                  )}
+                </>
               ) : (
                 <div className={styles.emptyState}>
                   <span
@@ -719,11 +737,13 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        <ProjectModal
-          project={selectedProject}
-          open={modalOpen}
-          onOpenChange={setModalOpen}
-        />
+        {modalOpen && selectedProject && (
+          <ProjectModal
+            project={selectedProject}
+            open={modalOpen}
+            onOpenChange={setModalOpen}
+          />
+        )}
       </div>
     </section>
   );
