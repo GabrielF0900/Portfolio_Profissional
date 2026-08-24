@@ -559,7 +559,7 @@ useGSAP(
 
           <div className={styles.legend}>
             <span aria-hidden="true">
-              //
+              {"//"}
             </span>
 
             PESSOAS
@@ -573,7 +573,7 @@ useGSAP(
             PROPÓSITO
 
             <span aria-hidden="true">
-              //
+              {"//"}
             </span>
           </div>
         </div>

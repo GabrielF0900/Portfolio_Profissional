@@ -183,11 +183,10 @@ export default function AboutSection() {
 
               <div className={styles.portrait}>
                 <Image
-                  src="/minhaFoto.webp"
+                  src="/images/profile/gabriel-profile.webp"
                   alt="Gabriel Falcão"
                   fill
-                  priority={false}
-                  sizes="(max-width: 900px) 90vw, 38vw"
+                  sizes="(max-width: 850px) 90vw, 440px"
                   className={styles.portraitImage}
                 />
 

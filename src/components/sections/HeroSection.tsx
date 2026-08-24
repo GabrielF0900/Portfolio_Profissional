@@ -38,7 +38,7 @@ export default function HeroSection() {
       ).matches;
 
       if (reduceMotion) {
-        gsap.set("[data-hero-reveal]", { clearProps: "all" });
+        gsap.set("[data-hero-animate]", { clearProps: "all" });
 
         return;
       }
@@ -47,11 +47,11 @@ export default function HeroSection() {
         defaults: { ease: "power3.out" },
       });
 
-      timeline.from("[data-hero-reveal]", {
-        y: 20,
+      timeline.from("[data-hero-animate]", {
+        y: 16,
         opacity: 0,
-        duration: 0.58,
-        stagger: 0.09,
+        duration: 0.45,
+        stagger: 0.06,
       });
     },
     { scope: root },
@@ -69,7 +69,7 @@ export default function HeroSection() {
 
       <div className={styles.container}>
         <div className={styles.copy}>
-          <div data-hero-reveal className={styles.heroMetaRow}>
+          <div data-hero-animate className={styles.heroMetaRow}>
             <div className={styles.sectionMarker}>
               <span className={styles.sectionMarkerIcon} aria-hidden="true">
                 <Code2 />
@@ -86,28 +86,27 @@ export default function HeroSection() {
           </div>
 
           <h1 id="hero-title" className={styles.heading}>
-            <span data-hero-reveal className={styles.namePrimary}>
+            <span className={styles.namePrimary}>
               Gabriel Falcão
             </span>
 
-            <span data-hero-reveal className={styles.nameSecondary}>
+            <span className={styles.nameSecondary}>
               da Cruz
             </span>
 
             <span
-              data-hero-reveal
               className={styles.headingDivider}
               aria-hidden="true"
             />
 
-            <span data-hero-reveal className={styles.role}>
+            <span className={styles.role}>
               <strong>BACKEND</strong>
               <em>JAVA.</em>
             </span>
           </h1>
 
           <div
-            data-hero-reveal
+            data-hero-animate
             className={styles.stack}
             aria-label="Especialidades principais"
           >
@@ -118,7 +117,7 @@ export default function HeroSection() {
             <span>AWS</span>
           </div>
 
-          <p data-hero-reveal className={styles.description}>
+          <p className={styles.description}>
             Desenvolvedor Backend Java com foco em soluções robustas e
             escaláveis. Atuação com <strong>Spring Boot</strong>,{" "}
             <strong>Spring Security</strong> e{" "}
@@ -127,7 +126,7 @@ export default function HeroSection() {
             <strong>Node.js/TypeScript</strong> como stack complementar.
           </p>
 
-          <div data-hero-reveal className={styles.actions}>
+          <div data-hero-animate className={styles.actions}>
             <button
               type="button"
               onClick={() => scrollToSection("projetos")}
@@ -147,7 +146,7 @@ export default function HeroSection() {
             </button>
           </div>
 
-          <div data-hero-reveal className={styles.socials}>
+          <div data-hero-animate className={styles.socials}>
             <a
               href="https://github.com/GabrielF0900"
               target="_blank"

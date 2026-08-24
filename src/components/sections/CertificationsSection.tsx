@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { BadgeCheck, ExternalLink, Download, CalendarDays, ShieldCheck } from "lucide-react";
 import { certifications, Certification } from "../../constants/certifications";
 import styles from "./CertificationsSection.module.css";
@@ -144,7 +145,7 @@ export default function CertificationsSection() {
                 <div className={styles.fcLayout}>
                   <div className={styles.fcBadgeArea}>
                     <div className={styles.fcAmbientGlow} aria-hidden="true" />
-                    <img src={mainFeatured.image} alt={mainFeatured.title} className={styles.fcImage} />
+                    <Image src={mainFeatured.image} alt={mainFeatured.title} fill sizes="(max-width: 768px) 289px, 165px" className={styles.fcImage} />
                   </div>
                   
                   <div className={styles.fcInfoArea}>
@@ -331,7 +332,7 @@ export default function CertificationsSection() {
               >
                 <div className={styles.compImageWrapper}>
                   <div className={styles.certificationBadgeFrame}>
-                    <img src={cert.image} alt={cert.title} className={styles.compImage} />
+                    <Image src={cert.image} alt={cert.title} fill sizes="48px" className={styles.compImage} />
                   </div>
                 </div>
                 <div className={styles.compContent}>

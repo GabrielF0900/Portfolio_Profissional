@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "sonner";
 import { SectionTracker } from "@/components/analytics/SectionTracker";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -27,20 +28,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EQ2R1WD4VR"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+      <body suppressHydrationWarning>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-EQ2R1WD4VR" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-EQ2R1WD4VR');
-            `,
-          }}
-        />
-      </head>
-      <body suppressHydrationWarning>
+          `}
+        </Script>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

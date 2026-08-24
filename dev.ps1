@@ -15,4 +15,4 @@ if (Test-Path $nextDir) {
 
 # Inicia o servidor de desenvolvimento
 Write-Host "🚀 Iniciando servidor de desenvolvimento..." -ForegroundColor Green
-npm run dev
+pnpm dev

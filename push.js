@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { execSync } = require("child_process");
+const { execFileSync } = require("child_process");
 
 console.log("\n📤 Atualizando data de ultima atualizacao...\n");
 
@@ -104,24 +104,20 @@ console.log(
 try {
   // Adiciona o arquivo
   console.log("📝 Adicionando arquivo...");
-  execSync("git add src/constants/lastUpdate.ts", {
+  execFileSync("git", ["add", "src/constants/lastUpdate.ts"], {
     stdio: "inherit",
-    shell: true,
   });
 
   // Faz commit com a mensagem fornecida
   console.log("\n📝 Fazendo commit...");
-  const escapedMessage = commitMessage.replace(/"/g, '\\"');
-  execSync(`git commit -m "${escapedMessage}"`, {
+  execFileSync("git", ["commit", "-m", commitMessage], {
     stdio: "inherit",
-    shell: true,
   });
 
   // Faz push
   console.log("\n🚀 Fazendo push...");
-  execSync("git push", {
+  execFileSync("git", ["push"], {
     stdio: "inherit",
-    shell: true,
   });
 
   console.log("\n✨ Push concluido com sucesso!\n");
