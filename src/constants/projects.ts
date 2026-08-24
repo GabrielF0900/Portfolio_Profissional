@@ -73,7 +73,7 @@ export const projects: PortfolioData = {
       },
       startDate: "2026-07",
       endDate: "2026-07",
-      image: "/fotoApresentacaoMicrosservico.png",
+      image: "/images/projects/spring-cloud-microservices.webp",
       highlights: [
         "Arquitetura em monorepo com service-main, service.one e service.notification",
         "Configuração externalizada via Spring Cloud Config a partir de repositório Git",
@@ -122,7 +122,7 @@ export const projects: PortfolioData = {
       },
       startDate: "2026-05",
       endDate: "2026-06",
-      image: "/ImagemAtualizadaSafewallet.png",
+      image: "/images/projects/safewallet-core.webp",
       highlights: [
         "Autenticação Stateless segura via Spring Security e tokens JWT",
         "Proteção rigorosa de credenciais com BCryptPasswordEncoder",

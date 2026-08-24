@@ -15,6 +15,7 @@ import { projects } from "../../constants/projects";
 import { Project } from "../../types";
 import ProjectModal from "../projects/ProjectModal";
 import ProjectCard from "../projects/ProjectCard";
+import { ProjectImage } from "../projects/ProjectImage";
 import ProjectFilters, {
   Ecosystem,
   Area,
@@ -172,12 +173,9 @@ function FeaturedProject({
         </div>
 
         <div className={styles.imageViewport}>
-          <img
+          <ProjectImage
             src={project.image || "/placeholder.svg"}
             alt={`Visual do projeto ${getDisplayTitle(project)}`}
-            onError={(event) => {
-              event.currentTarget.src = "/placeholder.svg";
-            }}
           />
 
           <div className={styles.imageOverlay} aria-hidden="true" />

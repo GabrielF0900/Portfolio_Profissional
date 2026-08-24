@@ -9,4 +9,4 @@ if [ -d ".next" ]; then
 fi
 
 # Inicia o servidor de desenvolvimento
-npm run dev --legacy-peer-deps 2>/dev/null || npm run dev
+pnpm dev

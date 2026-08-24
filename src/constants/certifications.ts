@@ -33,7 +33,7 @@ export const certifications: Certification[] = [
     issuer: "Scrum Study",
     type: "Certificação",
     status: "Certificado",
-    image: "/certification/scrumfundamentals.png",
+    image: "/images/certifications/scrum.webp",
     date: "Emitido em 12/11/2024",
     credentialUrl:
       "https://www.scrumstudy.com/certification/verify?type=SFC&number=1055958",
@@ -44,7 +44,7 @@ export const certifications: Certification[] = [
     issuer: "Amazon Web Services",
     type: "Certificado",
     status: "Certificado",
-    image: "/certificados/awsrestartgraduate.png",
+    image: "/images/certifications/aws-restart.webp",
     date: "Emitido em 15/02/2026",
     credentialUrl:
       "https://www.credly.com/badges/fcbb935d-5dda-44e1-a782-9cb5ce32bd0f",
@@ -189,7 +189,7 @@ export const certifications: Certification[] = [
     issuer: "Amazon Web Services",
     type: "Certificação",
     status: "Certificado",
-    image: "/certification/practitioner.png",
+    image: "/images/certifications/aws-practitioner.webp",
     examCode: "CLF-C02",
     date: "Emitido em 25/02/2026",
     credentialUrl:
@@ -201,7 +201,7 @@ export const certifications: Certification[] = [
     issuer: "Amazon Web Services",
     type: "Certificação",
     status: "Certificado",
-    image: "/certification/aws-architect-associate.png",
+    image: "/images/certifications/aws-associate.webp",
     examCode: "SAA-C03",
     date: "Emitido em 25/03/2026",
     credentialUrl:
@@ -213,7 +213,7 @@ export const certifications: Certification[] = [
     issuer: "Amazon Web Services",
     type: "Certificação",
     status: "Estudando",
-    image: "/certification/aws-architect-professional-teste.png",
+    image: "/images/certifications/aws-professional.webp",
     examCode: "SAP-C02",
     statusMessage: "Estudos iniciados em 25/03/2026",
     description:

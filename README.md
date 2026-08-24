@@ -1,202 +1,56 @@
-# Portfolio Profissional - Gabriel Falcão da Cruz
+# Portfólio Profissional — Gabriel Falcão
 
-## TL;DR (Resumo Executivo)
+![Banner do portfólio](.github/assets/portfolio-banner.jpg)
 
-| | |
-|---|---|
-| **O que é** | Portfolio interativo do Full Stack \| AWS SAA-C03 — Vitrine moderna de projetos cloud-native e arquitetura serverless |
-| **Problema Resolvido** | Apresentar profissionalmente a jornada de desenvolvedor full stack focado em automações cloud, escalabilidade e soluções serverless |
-| **Stack & AWS** | Next.js • React • TypeScript • Tailwind CSS • Vercel |
-| **Resultado Prático** | Interface otimizada para performance (SEO-friendly), responsiva em todos os dispositivos e com tema dinâmico claro/escuro automático |
+Portfólio de Desenvolvedor Backend Java, com projetos em Spring Boot, sistemas distribuídos, arquitetura Cloud-Native e AWS.
 
----
+## Tecnologias
 
-<div align="center">
+- Next.js 14.2.3 e React 18.3.1
+- TypeScript e Tailwind CSS
+- GSAP e Motion
+- pnpm 9
 
-![Portfolio Banner](/public/Banner_README/Banner_README.jpg)
+## Desenvolvimento
 
-**Desenvolvedor Full Stack | Criando experiências digitais excepcionais**
+Requer Node.js 20 ou superior e pnpm via Corepack.
 
-[🌐 Ver Portfolio](https://www.gabrielfalcaodacruz.tech/) · [📧 Contato](mailto:falcaocruz.tech@gmail.com) · [💼 LinkedIn](https://www.linkedin.com/in/gabrielfalcaodev/) · [🐙 GitHub](https://github.com/GabrielF0900)
-
----
-
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
-![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
-
-</div>
-
-## Sobre o Projeto
-
-Um portfolio moderno e responsivo que apresenta minha jornada como desenvolvedor Full Stack. Construído com foco em performance, acessibilidade e experiência do usuário, este projeto demonstra minhas habilidades técnicas através de uma interface elegante e funcional.
-
-### ✨ Destaques
-
-```
-�  Interface moderna e intuitiva
-📱  Design responsivo para todos os dispositivos  
-⚡  Otimizado para performance e SEO
-🌙  Tema claro/escuro dinâmico
-🔧  Arquitetura modular e escalável
+```bash
+corepack enable
+pnpm install
+pnpm dev
 ```
 
----
+Validações e build:
 
-## 📋 Seções do Portfólio
-
-### 🏠 **Home / Hero Section**
-Apresentação inicial e destacada com:
-- Saudação personalizada
-- Badge de disponibilidade para projetos
-- Call-to-action para explorar trabalhos
-- Links diretos para redes sociais
-- Navegação rápida para seções
-
-### 👤 **Seção Sobre**
-Informações pessoais e profissionais:
-- Apresentação como Desenvolvedor Full Stack
-- Background e experiência geral
-- Localization e disponibilidade
-- Descrição das paixões profissionais
-
-### 💼 **Seção Experiência Profissional**
-Histórico profissional detalhado:
-
-**Fundador e Programador Full Stack @ Neukox** (2025 - Presente)
-- Responsável por arquitetura de software
-- Desenvolvimento de aplicações web modernas (React, Next.js, TypeScript)
-- Implementação de sistemas escaláveis com APIs RESTful
-- Principais responsabilidades e conquistas documentadas
-
-### 🚀 **Seção Projetos**
-Portfólio completo de projetos categorizado em abas:
-
-**Em Destaque (Featured)**
-- Projetos mais relevantes e recentes
-- Mix de infraestrutura cloud e full stack
-
-**Projetos Pessoais**
-- **banking-core-java** — Sistema bancário modular com Java 21 (LTS), arquitetura em camadas e padrões de alta escala | [GitHub](https://github.com/GabrielF0900/banking-core-java)
-- **Nebula-Archive** — Orquestrador de mídia serverless com NestJS, AWS Lambda, S3 e DynamoDB | [GitHub](https://github.com/GabrielF0900/Nebula-Archive)
-- **AWS-Nexus: IaC Blueprint** — Infrastructure as Code com CloudFormation, VPC, EC2, CloudWatch, SNS | [GitHub](https://github.com/GabrielF0900/AWS-Nexus-IaC-Blueprint)
-- **CloudFront - NewEdge** — Distribuição global com S3 e CloudFront com Origin Access Control | [GitHub](https://github.com/GabrielF0900/CloudFront-NewEdge)
-- **AWS S3 Auto Remediator** — Sistema automatizado de remediação com Lambda e EventBridge | [GitHub](https://github.com/GabrielF0900/aws-s3-auto-remediator)
-- **Conexão Backend Database** — Infraestrutura robusta com VPC, EC2, RDS e S3 | [GitHub](https://github.com/GabrielF0900/Projeto-02-A-Conexao-o-Backend-Database)
-- **Tarefix** — App de gerenciamento de tarefas com React, TypeScript, PostgreSQL e Docker | [GitHub](https://github.com/GabrielF0900/Tarefix)
-
-**Projetos Colaborativos**
-- **CityShield - TCC Escola da Nuvem** — Plataforma de segurança inteligente Event-Driven serverless com Rekognition, GuardDuty e análise de ameaças | [GitHub](https://github.com/GabrielF0900/CityShield-TCC-Escola-da-Nuvem-)
-- **Sistema de Gerenciamento de TCC** — Plataforma para criação e gerenciamento de Trabalhos de Conclusão de Curso com dashboard administrativo | [GitHub](https://github.com/Neukox/Sistema_De_Gerenciamento_De_TCC)
-- **Sistema de Gerenciamento de Chamados** — Plataforma com criptografia de ponta a ponta e chat em tempo real via WebSocket | [GitHub](https://github.com/Neukox/Sistema_De_Gerenciamento_De_Chamados)
-- **MindTrack** — Plataforma colaborativa para apoio ao bem-estar mental com registro de reflexões e dashboards analíticos | [GitHub](https://github.com/Neukox/MindTrack)
-
-### 🛠️ **Seção Tecnologias Usadas Neste Portfólio**
-Stack completo utilizado:
-
-**Frontend:**
-- React, TypeScript, Tailwind CSS
-
-**Backend:**
-- Node.js, Express, Prisma ORM, PostgreSQL
-
-**DevOps:**
-- Docker, Git & GitHub
-
-**Ferramentas:**
-- VS Code
-
-### 🎯 **Seção Skills**
-Competências agrupadas por categoria:
-- **Languages:** JavaScript, TypeScript
-- **Frontend:** React, TypeScript, Tailwind CSS, Design Responsivo
-- **Backend:** Node.js, Express, REST APIs, Databases
-- **Cloud:** AWS Services, Infrastructure as Code, Serverless
-- **DevOps:** Docker, Git, CI/CD
-- **Soft Skills:** Liderança, Comunicação, Problem-solving
-
-### 📜 **Seção Certificações**
-Qualificações profissionais obtidas:
-- **AWS re/Start Graduate** — Amazon Web Services (270h de conteúdo cloud)
-- **Scrum Fundamentals Certified** — Metodologia Ágil
-- **Docker Fundamentals** — DIO
-- **Autenticação com JWT** — Node.js e TypeScript
-- **Java COMPLETO - POO** — Udemy
-- **NLW Agents** — Rocketseat
-- E mais...
-
-Cada certificação inclui data de emissão e link para comprovação.
-
----
-
-## 🛠️ Stack Tecnológica Utilizada
-
-### Frontend
-```
-✨ React 19           - UI Components
-✨ TypeScript         - Type-safe JavaScript
-✨ Tailwind CSS       - Utility-first styling
+```bash
+pnpm typecheck
+pnpm lint
+pnpm build
+pnpm check
+pnpm start
 ```
 
-### Backend & Database
-```
-🔧 Node.js           - JavaScript runtime
-🔧 Express.js        - Web framework (se aplicável)
-🔧 Prisma ORM        - Type-safe database client
-🔧 PostgreSQL        - Relational database
-```
+## Otimização de imagens
 
-### DevOps
-```
-🔧 Docker            - Containerização
-🔧 GitHub            - Version control
+As imagens ativas ficam organizadas em `public/images/`. Para recriar os WebP quando os arquivos-fonte definidos no script estiverem disponíveis:
+
+```bash
+pnpm optimize:images
 ```
 
-Para explorar todos os projetos, certificações e mais informações detalhadas, acesse o **portfólio online completo** em: https://www.gabrielfalcaodacruz.tech/
+O script usa Sharp, limita as dimensões ao tamanho necessário na interface e não amplia imagens menores.
 
----
+## Atualização, commit e push
 
-## 👨‍💻 Sobre o Desenvolvedor
+```bash
+pnpm run push -- "chore: mensagem do commit"
+```
 
-Meu nome é **Gabriel Falcão da Cruz**, sou um **Desenvolvedor Full Stack** que trabalha em projetos colaborativos, acadêmicos e pessoais, com especialização em:
+Esse comando atualiza `src/constants/lastUpdate.ts` com o horário de Brasília, adiciona o arquivo ao Git, cria o commit com a mensagem informada e executa o push. Revise o diretório de trabalho antes de utilizá-lo.
 
-- ✨ Desenvolvimento Full Stack moderno (React, Node.js)
-- ☁️ Arquitetura e infraestrutura cloud (AWS)
-- 🏗️ Infrastructure as Code (CloudFormation)
-- 🔒 Segurança e boas práticas de desenvolvimento
-- 📊 APIs RESTful e microsserviços
-- 🚀 Performance e otimizações web
+## Links
 
-### 📍 Localização
-🇧🇷 **Brasil** (Disponível para trabalho remoto)
-
-### 🎯 Disponibilidade
-✅ **Disponível para novos projetos, freelances e oportunidades em tempo integral**
-
----
-
-## 🔗 Links de Contato
-
-- 📧 **Email**: falcaocruz.tech@gmail.com
-- 💼 **LinkedIn**: https://www.linkedin.com/in/gabrielfalcaodev/
-- 🐙 **GitHub**: https://github.com/GabrielF0900
-- 🌐 **Portfólio Online**: https://www.gabrielfalcaodacruz.tech/
-
----
-
-## 📞 Conecte-se Comigo
-
-<div align="center">
-
-[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gabrielfalcaodev/)
-[![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/GabrielF0900)
-[![Gmail](https://img.shields.io/badge/-Gmail-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:falcaocruz.tech@gmail.com)
-
----
-
-**Desenvolvido com ❤️ por Gabriel Falcão da Cruz**
-
-*Última atualização: 8 de maio de 2026*
-
-</div>
+- [Portfólio](https://www.gabrielfalcaodacruz.tech/)
+- [GitHub](https://github.com/GabrielF0900)
+- [LinkedIn](https://www.linkedin.com/in/gabrielfalcaodev/)

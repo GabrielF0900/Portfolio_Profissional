@@ -1,46 +1,23 @@
-# Dockerfile otimizado para Render
-FROM node:18-alpine
+FROM node:20-alpine
 
-# Instalar dependências do sistema
 RUN apk add --no-cache libc6-compat
-
 WORKDIR /app
+RUN corepack enable
 
-# Copiar arquivos de dependências
-COPY package*.json ./
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 
-# Instalar dependências (incluindo dev dependencies para build)
-RUN npm ci --legacy-peer-deps
-
-# Copiar código fonte
 COPY . .
+RUN pnpm build
 
-# Gerar Prisma Client se existir
-RUN if [ -f "prisma/schema.prisma" ]; then npx prisma generate; fi
-
-# Build da aplicação
-RUN npm run build
-
-# Remover node_modules e reinstalar apenas produção
-RUN rm -rf node_modules
-RUN npm ci --only=production --legacy-peer-deps
-
-# Criar usuário não-root
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-# Configurar permissões
-RUN chown -R nextjs:nodejs /app
+RUN addgroup --system --gid 1001 nodejs \
+  && adduser --system --uid 1001 nextjs \
+  && chown -R nextjs:nodejs /app
 USER nextjs
 
-# Expor porta
-EXPOSE 3000
-
-# Variáveis de ambiente
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
-
-# Comando de inicialização
-CMD ["npm", "start"]
+EXPOSE 3000
+CMD ["pnpm", "start"]

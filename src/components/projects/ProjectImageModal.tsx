@@ -3,6 +3,7 @@
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ProjectImage } from "./ProjectImage";
 
 interface ProjectImageModalProps {
   imageUrl: string;
@@ -41,8 +42,8 @@ export function ProjectImageModal({
           <div className="w-10" />
         </div>
 
-        <div className="flex-1 flex items-center justify-center overflow-hidden rounded-lg">
-          <img
+        <div className="relative flex-1 flex items-center justify-center overflow-hidden rounded-lg">
+          <ProjectImage
             src={imageUrl}
             alt={imageAlt}
             className="w-full h-full object-contain"

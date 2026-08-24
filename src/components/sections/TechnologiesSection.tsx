@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 
 import {
   Atom,
@@ -278,12 +279,12 @@ function TechnologyItem({
         }
       >
         {brand && !hasError ? (
-          <img
+          <Image
             src={`https://cdn.simpleicons.org/${brand.slug}/${brand.color}`}
             alt=""
             aria-hidden="true"
-            loading="lazy"
-            decoding="async"
+            width={32}
+            height={32}
             onError={() => setHasError(true)}
           />
         ) : (

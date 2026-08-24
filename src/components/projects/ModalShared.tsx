@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ProjectImage } from "./ProjectImage";
 
 import { Project } from "@/types";
 import {
@@ -128,13 +129,9 @@ export function ProjectVisual({
       </div>
 
       <div className={styles.imageViewport}>
-        <img
+        <ProjectImage
           src={project.image}
           alt={`Visual do projeto ${project.title}`}
-          onError={(event) => {
-            event.currentTarget.src =
-              "/placeholder.svg";
-          }}
         />
       </div>
     </button>
