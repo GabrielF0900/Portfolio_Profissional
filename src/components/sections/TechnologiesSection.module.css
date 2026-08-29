@@ -3121,3 +3121,20 @@ and
       none !important;
   }
 }
+
+@media (max-width: 820px) {
+  .section *,
+  .section *::before,
+  .section *::after {
+    animation: none !important;
+  }
+
+  .sectionHeader,
+  .desktopEcosystem,
+  .mobileEcosystem,
+  .coreCard,
+  .groupCard {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

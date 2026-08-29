@@ -1,5 +1,3 @@
-"use client";
-
 // Layout Components
 import Navigation from "../layout/Navigation";
 import Footer from "../layout/Footer";
@@ -17,17 +15,12 @@ import CTASection from "../sections/CTASection";
 // Widgets & Global Components
 import ScrollToTop from "../ScrollToTop";
 
-// Hooks
-import { useActiveSection } from "../../hooks/useScroll";
-
 export default function Portfolio() {
-  const activeSection = useActiveSection();
-
   return (
     <>
       <div className="relative min-h-screen overflow-x-hidden bg-[var(--surface-base)]">
         {/* 1. Navegação fixa no topo */}
-        <Navigation activeSection={activeSection} />
+        <Navigation />
 
         {/* 2. Conteúdo Principal */}
         <main className="w-full max-w-full overflow-x-hidden">

@@ -316,20 +316,11 @@ export default function CertificationsSection() {
           </div>
 
           <div className={styles.complementaryGrid}>
-            {complementaryCertifications.map((cert, idx) => (
-              <a 
-                key={cert.id}
-                href={cert.credentialUrl && cert.credentialUrl !== "#" ? cert.credentialUrl : cert.pdfUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.compCard} ${styles.revealElement}`}
-                style={{ animationDelay: `${600 + (idx % 4) * 100}ms` }}
-                onClick={(e) => {
-                  if (cert.pdfUrl && (!cert.credentialUrl || cert.credentialUrl === "#")) {
-                    handleDownloadPdf(e, cert.pdfUrl, cert.title);
-                  }
-                }}
-              >
+            {complementaryCertifications.map((cert, idx) => {
+              const credentialUrl = cert.credentialUrl && cert.credentialUrl !== "#"
+                ? cert.credentialUrl
+                : cert.pdfUrl;
+              const cardContent = <>
                 <div className={styles.compImageWrapper}>
                   <div className={styles.certificationBadgeFrame}>
                     <Image src={cert.image} alt={cert.title} fill sizes="48px" className={styles.compImage} />
@@ -348,8 +339,36 @@ export default function CertificationsSection() {
                     )}
                   </div>
                 </div>
-              </a>
-            ))}
+              </>;
+              const cardClassName = `${styles.compCard} ${styles.revealElement}`;
+              const cardStyle = { animationDelay: `${600 + (idx % 4) * 100}ms` };
+
+              if (!credentialUrl) {
+                return (
+                  <article key={cert.id} className={cardClassName} style={cardStyle}>
+                    {cardContent}
+                  </article>
+                );
+              }
+
+              return (
+                <a
+                  key={cert.id}
+                  href={credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cardClassName}
+                  style={cardStyle}
+                  onClick={(e) => {
+                    if (cert.pdfUrl && (!cert.credentialUrl || cert.credentialUrl === "#")) {
+                      handleDownloadPdf(e, cert.pdfUrl, cert.title);
+                    }
+                  }}
+                >
+                  {cardContent}
+                </a>
+              );
+            })}
           </div>
         </div>
 

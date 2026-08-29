@@ -7,9 +7,11 @@ export function SectionTracker() {
   const trackedSections = useRef<Set<string>>(new Set());
 
   useEffect(() => {
+    let observer: IntersectionObserver | null = null;
+
     // Atraso sutil para garantir a renderização das seções
     const timer = setTimeout(() => {
-      const observer = new IntersectionObserver(
+      const sectionObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -25,15 +27,15 @@ export function SectionTracker() {
         { threshold: 0.5 }
       );
 
-      document.querySelectorAll('section[id]').forEach((s) => observer.observe(s));
+      observer = sectionObserver;
+      document.querySelectorAll('section[id]').forEach((s) => sectionObserver.observe(s));
 
-      return () => {
-        document.querySelectorAll('section[id]').forEach((s) => observer.unobserve(s));
-        observer.disconnect();
-      };
     }, 1000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      observer?.disconnect();
+    };
   }, []);
 
   return null;

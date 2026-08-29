@@ -1,65 +1,14 @@
-"use client";
-
-import { useRef } from "react";
 import {
-  ArrowRight,
   Code2,
-  Download,
-  Github,
-  Linkedin,
   Zap,
 } from "lucide-react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-import { useScrollToSection } from "../../hooks/useScroll";
-import { event } from "@/lib/gtag";
 import HeroBackendOrbit from "./HeroBackendOrbit";
+import HeroActions from "./HeroActions";
 import styles from "./HeroSection.module.css";
 
-gsap.registerPlugin(useGSAP);
-
 export default function HeroSection() {
-  const root = useRef<HTMLElement>(null);
-  const scrollToSection = useScrollToSection();
-
-  const handleDownloadCV = () => {
-    event("download_cv");
-
-    const link = document.createElement("a");
-    link.href = "/CV_GabrielFalcaoJava.pdf";
-    link.download = "CV_GabrielFalcaoJava.pdf";
-    link.click();
-  };
-
-  useGSAP(
-    () => {
-      const reduceMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-
-      if (reduceMotion) {
-        gsap.set("[data-hero-animate]", { clearProps: "all" });
-
-        return;
-      }
-
-      const timeline = gsap.timeline({
-        defaults: { ease: "power3.out" },
-      });
-
-      timeline.from("[data-hero-animate]", {
-        y: 16,
-        opacity: 0,
-        duration: 0.45,
-        stagger: 0.06,
-      });
-    },
-    { scope: root },
-  );
-
   return (
     <section
-      ref={root}
       id="inicio"
       aria-labelledby="hero-title"
       className={styles.hero}
@@ -69,7 +18,7 @@ export default function HeroSection() {
 
       <div className={styles.container}>
         <div className={styles.copy}>
-          <div data-hero-animate className={styles.heroMetaRow}>
+          <div className={styles.heroMetaRow}>
             <div className={styles.sectionMarker}>
               <span className={styles.sectionMarkerIcon} aria-hidden="true">
                 <Code2 />
@@ -106,7 +55,6 @@ export default function HeroSection() {
           </h1>
 
           <div
-            data-hero-animate
             className={styles.stack}
             aria-label="Especialidades principais"
           >
@@ -126,51 +74,13 @@ export default function HeroSection() {
             <strong>Node.js/TypeScript</strong> como stack complementar.
           </p>
 
-          <div data-hero-animate className={styles.actions}>
-            <button
-              type="button"
-              onClick={() => scrollToSection("projetos")}
-              className={`${styles.button} ${styles.buttonPrimary}`}
-            >
-              <span>Ver projetos</span>
-              <ArrowRight aria-hidden="true" />
-            </button>
-
-            <button
-              type="button"
-              onClick={handleDownloadCV}
-              className={`${styles.button} ${styles.buttonSecondary}`}
-            >
-              <span>Baixar CV</span>
-              <Download aria-hidden="true" />
-            </button>
-          </div>
-
-          <div data-hero-animate className={styles.socials}>
-            <a
-              href="https://github.com/GabrielF0900"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() =>
-                event("clique_link_externo", { destino: "github" })
-              }
-            >
-              <Github aria-hidden="true" />
-              <span>/GabrielF0900</span>
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/gabrielfalcaodev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() =>
-                event("clique_link_externo", { destino: "linkedin" })
-              }
-            >
-              <Linkedin aria-hidden="true" />
-              <span>/in/gabrielfalcaodev</span>
-            </a>
-          </div>
+          <HeroActions
+            actionsClassName={styles.actions}
+            buttonClassName={styles.button}
+            primaryClassName={styles.buttonPrimary}
+            secondaryClassName={styles.buttonSecondary}
+            socialsClassName={styles.socials}
+          />
         </div>
 
         <div className={styles.architectureStage}>

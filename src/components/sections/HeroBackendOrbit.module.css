@@ -684,3 +684,16 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+@media (max-width: 820px) {
+  .wrapper *,
+  .wrapper *::before,
+  .wrapper *::after {
+    animation: none !important;
+  }
+
+  .radialGlow,
+  .coreHalo {
+    filter: none;
+  }
+}

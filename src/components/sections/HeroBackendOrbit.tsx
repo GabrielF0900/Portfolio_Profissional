@@ -186,7 +186,7 @@ export default function HeroBackendOrbit() {
         fromRef={requestRef}
         toRef={coreRef}
         duration={3.6}
-        repeat={Infinity}
+        repeat={isMobile ? 0 : Infinity}
         repeatDelay={0.6}
         pathColor="rgba(45, 102, 185, 0.32)"
         pathWidth={1.5}
@@ -203,7 +203,7 @@ export default function HeroBackendOrbit() {
         toRef={awsRef}
         duration={3.6}
         delay={0.45}
-        repeat={Infinity}
+        repeat={isMobile ? 0 : Infinity}
         repeatDelay={0.5}
         pathColor="rgba(45, 102, 185, 0.3)"
         pathWidth={1.6}

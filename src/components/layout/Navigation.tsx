@@ -4,16 +4,13 @@ import { useEffect, useState } from "react";
 import { Download, Github, Linkedin, Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { navigationItems } from "../../constants/navigation";
-import { useScrollToSection } from "../../hooks/useScroll";
+import { useActiveSection, useScrollToSection } from "../../hooks/useScroll";
 import { NavigationItem } from "../../types";
 import { event } from "@/lib/gtag";
 
-interface NavigationProps {
-  activeSection: string;
-}
-
-export default function Navigation({ activeSection }: NavigationProps) {
+export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const activeSection = useActiveSection();
   const scrollToSection = useScrollToSection();
 
   const handleSectionClick = (sectionId: string) => {
