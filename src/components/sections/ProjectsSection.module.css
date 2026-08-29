@@ -1946,16 +1946,3 @@
     transform: none !important;
   }
 }
-
-@media (max-width: 820px) {
-  .section *,
-  .section *::before,
-  .section *::after {
-    animation: none !important;
-  }
-
-  .sectionDivider::before {
-    opacity: 0.35;
-    transform: translateX(370%);
-  }
-}

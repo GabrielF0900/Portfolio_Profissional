@@ -828,11 +828,3 @@
     transform: none;
   }
 }
-
-@media (max-width: 820px) {
-  .section *,
-  .section *::before,
-  .section *::after {
-    animation: none !important;
-  }
-}
