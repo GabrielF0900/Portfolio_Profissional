@@ -972,11 +972,3 @@ svg:last-child {
       none !important;
   }
 }
-
-@media (max-width: 820px) {
-  .footer *,
-  .footer *::before,
-  .footer *::after {
-    animation: none !important;
-  }
-}

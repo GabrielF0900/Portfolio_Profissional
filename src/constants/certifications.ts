@@ -208,6 +208,16 @@ export const certifications: Certification[] = [
       "https://www.credly.com/badges/5b451a38-a517-4e50-bf57-edd91f7fd821",
   },
   {
+    id: 21,
+    title: "AWS Certified Developer - Associate",
+    issuer: "Amazon Web Services",
+    type: "Certificação",
+    status: "Estudando",
+    image: "/images/certifications/aws-developer.webp",
+    examCode: "DVA-C02",
+    statusMessage: "Em estudo",
+  },
+  {
     id: 20, // Ajustado ligeiramente para evitar ID duplicado com o de Java
     title: "AWS Certified Solutions Architect - Professional",
     issuer: "Amazon Web Services",
