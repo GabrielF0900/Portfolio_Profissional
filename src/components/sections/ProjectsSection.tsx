@@ -29,14 +29,14 @@ const FEATURED_PROJECT_IDS = {
   primary: 22,
   springCloud: 23,
   kubernetes: 24,
-  resilientAudit: 21,
+  resilientAudit: 8,
 } as const;
 
 const FEATURED_DISPLAY_TITLES: Record<number, string> = {
   22: "SafeWallet Core",
   23: "Spring Cloud Microservices",
   24: "Kubernetes Lab",
-  21: "Resilient Audit Batch",
+  8: "AWS Resilient Order Processor",
 };
 
 function getDisplayTitle(project: Project) {

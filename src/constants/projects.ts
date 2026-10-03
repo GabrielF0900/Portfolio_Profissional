@@ -168,7 +168,7 @@ export const projects: PortfolioData = {
         "Segurança com IAM Roles e princípio de privilégio mínimo",
         "Observabilidade da API e logs estruturados no Amazon CloudWatch",
       ],
-      featured: true,
+      featured: false,
       links: {
         github: "https://github.com/GabrielF0900/resilient-audit-batch",
         case_study: null,
@@ -490,7 +490,7 @@ export const projects: PortfolioData = {
         "Resiliência a picos de carga",
         "Sem perda de dados",
       ],
-      featured: false,
+      featured: true,
       links: {
         github: "https://github.com/GabrielF0900/aws-resilient-order-processor",
         case_study: null,
