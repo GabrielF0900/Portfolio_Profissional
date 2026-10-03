@@ -21,8 +21,8 @@ export default function Navigation() {
   const handleDownloadCV = () => {
     event("download_cv");
     const link = document.createElement("a");
-    link.href = "/CV_GabrielFalcaoJava.pdf";
-    link.download = "CV_GabrielFalcaoJava.pdf";
+    link.href = "/CV_GabrielFalcaoDaCruzBackend.pdf";
+    link.download = "CV_GabrielFalcaoDaCruzBackend.pdf";
     link.click();
   };
 
