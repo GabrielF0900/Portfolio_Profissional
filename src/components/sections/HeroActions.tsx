@@ -34,8 +34,8 @@ export default function HeroActions({
         </button>
 
         <a
-          href="/CV_GabrielFalcaoJava.pdf"
-          download="CV_GabrielFalcaoJava.pdf"
+          href="/CV_GabrielFalcaoDaCruzBackend.pdf"
+          download="CV_GabrielFalcaoDaCruzBackend.pdf"
           onClick={() => event("download_cv")}
           className={`${buttonClassName} ${secondaryClassName}`}
         >
